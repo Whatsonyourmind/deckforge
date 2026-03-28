@@ -1,7 +1,7 @@
 # Requirements: DeckForge
 
 **Defined:** 2026-03-28
-**Core Value:** Any agent or human can produce a board-ready presentation in a single API call — with professional layout, consistent branding, and verified quality.
+**Core Value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
 
 ## v1 Requirements
 
@@ -57,15 +57,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **LAYOUT-01**: Constraint-based layout solver using kiwisolver on 12-column grid
 - [ ] **LAYOUT-02**: Text measurement via Pillow + FreeType for bounding box calculation
-- [ ] **LAYOUT-03**: Adaptive content handling: overflow → reduce font → reflow → split to multi-slide
-- [ ] **LAYOUT-04**: Visual hierarchy enforcement (title → subtitle → body → footnote)
+- [ ] **LAYOUT-03**: Adaptive content handling: overflow -> reduce font -> reflow -> split to multi-slide
+- [ ] **LAYOUT-04**: Visual hierarchy enforcement (title -> subtitle -> body -> footnote)
 - [ ] **LAYOUT-05**: Consistent spacing verification (+-2px tolerance) and alignment snapping
 - [ ] **LAYOUT-06**: Layout patterns per slide type (title, bullets, two_column, chart, table, etc.)
 
 ### Theme Engine
 
 - [ ] **THEME-01**: 15 curated themes defined in YAML with full color/typography/spacing specs
-- [ ] **THEME-02**: Theme registry that loads and resolves variable references ($colors.primary → #0A1E3D)
+- [ ] **THEME-02**: Theme registry that loads and resolves variable references ($colors.primary -> #0A1E3D)
 - [ ] **THEME-03**: Brand kit overlay system (colors, fonts, logo placement) merging on top of themes
 - [ ] **THEME-04**: Slide masters per slide type within each theme
 - [ ] **THEME-05**: Color theory engine with WCAG AA contrast validation (4.5:1 text, 3:1 large)
@@ -77,13 +77,13 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **CONTENT-03**: Per-slide content expansion (headlines <=8 words, bullets <=12 words, speaker notes)
 - [ ] **CONTENT-04**: Cross-slide consistency refinement (terminology, tense, style, redundancy elimination)
 - [ ] **CONTENT-05**: Model-agnostic LLM adapter (Claude, OpenAI, Gemini, Ollama) with fallback chains
-- [ ] **CONTENT-06**: BYO model key support — user provides their own API key and model choice
+- [ ] **CONTENT-06**: BYO model key support -- user provides their own API key and model choice
 
 ### Chart Engine
 
 - [ ] **CHART-01**: Native editable PPTX charts for supported types
 - [ ] **CHART-02**: Static image fallback via Plotly/Kaleido for unsupported chart types
-- [ ] **CHART-03**: Chart type recommender (data → best chart type suggestion)
+- [ ] **CHART-03**: Chart type recommender (data -> best chart type suggestion)
 - [ ] **CHART-04**: Axis, label, legend formatting with theme-aware styling
 - [ ] **CHART-05**: Financial chart types: waterfall (stacked bar workaround), sensitivity table, football field
 
@@ -115,7 +115,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **DECK-01**: List, get, delete generated decks with metadata
 - [ ] **DECK-02**: Get the IR that produced a deck (reproducibility)
-- [ ] **DECK-03**: Re-export deck to different format (pptx ↔ gslides)
+- [ ] **DECK-03**: Re-export deck to different format (pptx <-> gslides)
 - [ ] **DECK-04**: Append slides to existing deck
 - [ ] **DECK-05**: Replace specific slides in existing deck
 - [ ] **DECK-06**: Reorder slides in existing deck
@@ -124,13 +124,13 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Batch Operations
 
 - [ ] **BATCH-01**: Batch render multiple decks in one request
-- [ ] **BATCH-02**: Batch variations — same content with multiple themes
+- [ ] **BATCH-02**: Batch variations -- same content with multiple themes
 
 ### TypeScript SDK
 
 - [ ] **SDK-01**: DeckForge client class with typed methods for all API endpoints
 - [ ] **SDK-02**: Fluent builder API (Presentation.create(), Slide.titleSlide(), Elements.lineChart())
-- [ ] **SDK-03**: SSE streaming helper (df.generate.stream() → AsyncGenerator)
+- [ ] **SDK-03**: SSE streaming helper (df.generate.stream() -> AsyncGenerator)
 - [ ] **SDK-04**: Auto-generated types from Pydantic IR via OpenAPI
 - [ ] **SDK-05**: Published to npm as @deckforge/sdk
 
@@ -197,13 +197,116 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated during roadmap creation) | | |
+| IR-01 | Phase 1: Foundation + IR Schema | Pending |
+| IR-02 | Phase 1: Foundation + IR Schema | Pending |
+| IR-03 | Phase 1: Foundation + IR Schema | Pending |
+| IR-04 | Phase 1: Foundation + IR Schema | Pending |
+| IR-05 | Phase 1: Foundation + IR Schema | Pending |
+| IR-06 | Phase 1: Foundation + IR Schema | Pending |
+| API-01 | Phase 3: PPTX Rendering | Pending |
+| API-02 | Phase 4: Content Generation Pipeline | Pending |
+| API-03 | Phase 3: PPTX Rendering | Pending |
+| API-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| API-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| API-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| API-07 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| API-08 | Phase 1: Foundation + IR Schema | Pending |
+| API-09 | Phase 1: Foundation + IR Schema | Pending |
+| API-10 | Phase 1: Foundation + IR Schema | Pending |
+| API-11 | Phase 1: Foundation + IR Schema | Pending |
+| API-12 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| API-13 | Phase 4: Content Generation Pipeline | Pending |
+| API-14 | Phase 1: Foundation + IR Schema | Pending |
+| PPTX-01 | Phase 3: PPTX Rendering | Pending |
+| PPTX-02 | Phase 3: PPTX Rendering | Pending |
+| PPTX-03 | Phase 3: PPTX Rendering | Pending |
+| PPTX-04 | Phase 3: PPTX Rendering | Pending |
+| PPTX-05 | Phase 3: PPTX Rendering | Pending |
+| PPTX-06 | Phase 3: PPTX Rendering | Pending |
+| PPTX-07 | Phase 3: PPTX Rendering | Pending |
+| PPTX-08 | Phase 3: PPTX Rendering | Pending |
+| GSLIDES-01 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-02 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-03 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-04 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-05 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-06 | Phase 6: Google Slides Output | Pending |
+| LAYOUT-01 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-02 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-03 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-04 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-05 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-06 | Phase 2: Layout Engine + Theme System | Pending |
+| THEME-01 | Phase 2: Layout Engine + Theme System | Pending |
+| THEME-02 | Phase 2: Layout Engine + Theme System | Pending |
+| THEME-03 | Phase 2: Layout Engine + Theme System | Pending |
+| THEME-04 | Phase 2: Layout Engine + Theme System | Pending |
+| THEME-05 | Phase 2: Layout Engine + Theme System | Pending |
+| CONTENT-01 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-02 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-03 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-04 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-05 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-06 | Phase 4: Content Generation Pipeline | Pending |
+| CHART-01 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| CHART-02 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| CHART-03 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| CHART-04 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| CHART-05 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-01 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-02 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-03 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-04 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-05 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-06 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-07 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-08 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-09 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-10 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-11 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| QA-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-03 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-05 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-06 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-07 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-03 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-05 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-06 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-07 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| BATCH-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| BATCH-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| SDK-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| SDK-02 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| SDK-03 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| SDK-04 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| SDK-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-02 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-03 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-04 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| WORKER-01 | Phase 1: Foundation + IR Schema | Pending |
+| WORKER-02 | Phase 1: Foundation + IR Schema | Pending |
+| WORKER-03 | Phase 1: Foundation + IR Schema | Pending |
+| WORKER-04 | Phase 1: Foundation + IR Schema | Pending |
+| WORKER-05 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-01 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-02 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-03 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-04 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-05 | Phase 1: Foundation + IR Schema | Pending |
 
 **Coverage:**
-- v1 requirements: 89 total
-- Mapped to phases: 0
-- Unmapped: 89
+- v1 requirements: 104 total
+- Mapped to phases: 104
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-28*
-*Last updated: 2026-03-28 after initial definition*
+*Last updated: 2026-03-26 after roadmap creation (traceability populated)*
