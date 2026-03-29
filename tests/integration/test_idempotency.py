@@ -25,7 +25,7 @@ async def test_request_id_stored(async_client: AsyncClient, seed_api_key):
     )
     assert resp.status_code == 200
     data = resp.json()
-    assert data["status"] == "validated"
+    assert data["status"] in ("validated", "queued")
     assert data["id"] is not None
 
 

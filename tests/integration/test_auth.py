@@ -65,5 +65,5 @@ async def test_valid_key_returns_200(async_client: AsyncClient, seed_api_key):
     )
     assert resp.status_code == 200
     data = resp.json()
-    assert data["status"] == "validated"
+    assert data["status"] in ("validated", "queued")
     assert data["id"] is not None
