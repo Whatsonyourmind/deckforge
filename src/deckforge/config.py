@@ -45,5 +45,18 @@ class Settings(BaseSettings):
     DEBUG: bool = True
     ENVIRONMENT: Literal["development", "staging", "production"] = "development"
 
+    # LLM provider settings
+    LLM_DEFAULT_PROVIDER: str = "claude"
+    LLM_FALLBACK_CHAIN: str = "claude,openai,gemini"
+    ANTHROPIC_API_KEY: str | None = None
+    OPENAI_API_KEY: str | None = None
+    GEMINI_API_KEY: str | None = None
+    OLLAMA_BASE_URL: str = "http://localhost:11434"
+
+    @property
+    def llm_fallback_list(self) -> list[str]:
+        """Parse the comma-separated fallback chain into a list."""
+        return [p.strip() for p in self.LLM_FALLBACK_CHAIN.split(",") if p.strip()]
+
 
 settings = Settings()
