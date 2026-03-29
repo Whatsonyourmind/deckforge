@@ -1,0 +1,17 @@
+__pycache__
+*.pyc
+.git
+.github
+.planning
+.claude
+.agents
+sdk/node_modules
+sdk/dist
+tests
+*.md
+.env*
+.venv
+venv
+.mypy_cache
+.pytest_cache
+.ruff_cache
