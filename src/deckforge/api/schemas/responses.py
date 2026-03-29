@@ -26,6 +26,20 @@ class RenderResponse(BaseModel):
     quality_score: int | None = None
 
 
+class ThumbnailItem(BaseModel):
+    """Single slide thumbnail in a preview response."""
+
+    slide_index: int
+    image_base64: str
+
+
+class PreviewResponse(BaseModel):
+    """POST /v1/render/preview response."""
+
+    slide_count: int
+    thumbnails: list[ThumbnailItem]
+
+
 class JobResponse(BaseModel):
     """GET /v1/jobs/{job_id} response."""
 

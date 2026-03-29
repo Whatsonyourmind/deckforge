@@ -9,6 +9,7 @@ from fastapi import FastAPI
 
 from deckforge.api.routes.health import router as health_router
 from deckforge.api.routes.jobs import router as jobs_router
+from deckforge.api.routes.preview import router as preview_router
 from deckforge.api.routes.render import router as render_router
 
 
@@ -23,6 +24,7 @@ def create_app(lifespan=None) -> FastAPI:
 
     app.include_router(health_router, prefix="/v1")
     app.include_router(render_router, prefix="/v1")
+    app.include_router(preview_router, prefix="/v1")
     app.include_router(jobs_router, prefix="/v1")
 
     return app
