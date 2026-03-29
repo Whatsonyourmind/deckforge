@@ -165,7 +165,7 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 |-------|----------------|--------|-----------|
 | 1. Foundation + IR Schema | 3/3 | Complete   | 2026-03-29 |
 | 2. Layout Engine + Theme System | 3/3 | Complete    | 2026-03-29 |
-| 3. PPTX Rendering | 0/3 | Not started | - |
+| 3. PPTX Rendering | 1/3 | In progress | - |
 | 4. Content Generation Pipeline | 0/2 | Not started | - |
 | 5. Chart Engine + Finance Vertical | 0/3 | Not started | - |
 | 6. Google Slides Output | 0/2 | Not started | - |

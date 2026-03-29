@@ -35,14 +35,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### PPTX Rendering
 
-- [ ] **PPTX-01**: Render all 23 universal slide types to well-formatted PPTX
+- [x] **PPTX-01**: Render all 23 universal slide types to well-formatted PPTX
 - [ ] **PPTX-02**: Render native editable charts (bar, line, pie, scatter, combo, area, donut, radar, funnel, treemap)
 - [ ] **PPTX-03**: Render static image charts via Plotly for unsupported types (waterfall, heatmap, sankey, gantt, football_field)
-- [ ] **PPTX-04**: Render data tables with header/body/footer rows, conditional formatting, and proper alignment
-- [ ] **PPTX-05**: Embed images from URLs or base64 with proper sizing and positioning
-- [ ] **PPTX-06**: Support slide transitions (none, fade, slide, push)
-- [ ] **PPTX-07**: Include speaker notes from IR in generated PPTX
-- [ ] **PPTX-08**: 16:9 widescreen aspect ratio (13.333" x 7.5")
+- [x] **PPTX-04**: Render data tables with header/body/footer rows, conditional formatting, and proper alignment
+- [x] **PPTX-05**: Embed images from URLs or base64 with proper sizing and positioning
+- [x] **PPTX-06**: Support slide transitions (none, fade, slide, push)
+- [x] **PPTX-07**: Include speaker notes from IR in generated PPTX
+- [x] **PPTX-08**: 16:9 widescreen aspect ratio (13.333" x 7.5")
 
 ### Google Slides Rendering
 
