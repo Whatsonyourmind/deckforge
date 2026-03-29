@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
 
+from deckforge.rendering.gslides.charts import SheetsChartBuilder
+from deckforge.rendering.gslides.cleanup import cleanup_temp_spreadsheets
 from deckforge.rendering.gslides.converter import generate_object_id
 from deckforge.rendering.gslides.finance_builders import FINANCE_SLIDE_TYPES
 from deckforge.rendering.gslides.request_builder import SlideRequestBuilder
@@ -26,7 +28,6 @@ class GoogleSlidesResult:
     presentation_url: str  # https://docs.google.com/presentation/d/{id}/edit
     title: str
     slide_count: int
-    charts_placeholder: bool  # True until 06-02 wires Sheets charts
 
 
 class GoogleSlidesRenderer:
@@ -93,8 +94,22 @@ class GoogleSlidesRenderer:
                 body={"requests": delete_requests},
             ).execute()
 
-        # 4. Build all requests
+        # 4. Check if any chart elements exist and create SheetsChartBuilder
+        has_charts = self._has_chart_elements(layout_results)
+        charts_builder: SheetsChartBuilder | None = None
+        if has_charts and credentials is not None:
+            try:
+                charts_builder = SheetsChartBuilder(credentials, presentation_id)
+                charts_builder.create_spreadsheet()
+            except Exception:
+                logger.warning(
+                    "Failed to create Sheets chart builder, charts will use placeholders"
+                )
+                charts_builder = None
+
+        # 5. Build all requests
         all_requests: list[dict] = []
+        chart_requests: list[dict] = []  # Charts must be sent after slides exist
 
         for idx, layout_result in enumerate(layout_results):
             ir_slide = layout_result.slide
@@ -131,8 +146,15 @@ class GoogleSlidesRenderer:
                         continue
 
                     try:
-                        elem_reqs = builder.dispatch_element(element, position, theme)
-                        all_requests.extend(elem_reqs)
+                        elem_reqs = builder.dispatch_element(
+                            element, position, theme, charts_builder
+                        )
+                        # Separate chart requests (CreateSheetsChart)
+                        for req in elem_reqs:
+                            if "createSheetsChart" in req:
+                                chart_requests.append(req)
+                            else:
+                                all_requests.append(req)
                     except Exception:
                         logger.exception(
                             "Failed to build requests for element type=%s",
@@ -144,10 +166,31 @@ class GoogleSlidesRenderer:
             if notes:
                 all_requests.extend(builder.build_speaker_notes(notes))
 
-        # 5. Send requests in batches
+        # 6. Send main requests (slides + shapes + text + tables + images)
         self._send_batch_requests(service, presentation_id, all_requests, HttpError)
 
-        # 6. Return result
+        # 7. Send chart requests (CreateSheetsChart -- slides must exist first)
+        if chart_requests:
+            self._send_batch_requests(
+                service, presentation_id, chart_requests, HttpError
+            )
+
+        # 8. Cleanup temp spreadsheets
+        if charts_builder and charts_builder.spreadsheet_id:
+            try:
+                from googleapiclient.discovery import build as build_svc
+
+                drive_svc = build_svc("drive", "v3", credentials=credentials)
+                cleanup_temp_spreadsheets(
+                    drive_svc, [charts_builder.spreadsheet_id]
+                )
+            except Exception:
+                logger.warning(
+                    "Failed to clean up temp spreadsheet %s",
+                    charts_builder.spreadsheet_id,
+                )
+
+        # 9. Return result
         presentation_url = f"https://docs.google.com/presentation/d/{presentation_id}/edit"
 
         return GoogleSlidesResult(
@@ -155,8 +198,19 @@ class GoogleSlidesRenderer:
             presentation_url=presentation_url,
             title=title,
             slide_count=len(layout_results),
-            charts_placeholder=True,
         )
+
+    @staticmethod
+    def _has_chart_elements(layout_results: list[LayoutResult]) -> bool:
+        """Check if any layout result contains chart elements."""
+        for lr in layout_results:
+            for element in lr.slide.elements:
+                etype = element.type
+                if hasattr(etype, "value"):
+                    etype = etype.value
+                if etype == "chart":
+                    return True
+        return False
 
     def _send_batch_requests(
         self,
