@@ -26,16 +26,19 @@ def _make_ir(
     generation_options: dict | None = None,
     theme: str = "executive-dark",
 ) -> dict:
-    """Build a minimal valid IR dict for testing."""
-    types = slide_types or ["title"] * slide_count
+    """Build a minimal valid IR dict for testing.
+
+    Uses 'title_slide' as the default slide_type (valid discriminator tag).
+    Each slide gets a 'label' field for test identification (not part of model).
+    """
+    types = slide_types or ["title_slide"] * slide_count
     slides = []
     for i, st in enumerate(types):
         slide: dict = {
             "slide_type": st,
-            "title": f"Slide {i + 1}",
             "elements": [],
         }
-        # Add chart elements if requested
+        # Add chart elements if requested (only on first slide)
         for c in range(chart_count if i == 0 else 0):
             slide["elements"].append(
                 {
@@ -90,7 +93,7 @@ class TestCostEstimator:
 
     def test_finance_slide_surcharge(self):
         """Finance slides add 0.5 each."""
-        types = ["title", "comp_table", "dcf_summary"]
+        types = ["title_slide", "comp_table", "dcf_summary"]
         ir = _make_ir(slide_count=3, slide_types=types)
         result = self.estimator.estimate_from_ir(ir)
         # base = ceil(3/10) = 1, finance = 2 * 0.5 = 1.0, total = ceil(2.0) = 2
@@ -121,7 +124,7 @@ class TestCostEstimator:
 
     def test_combined_surcharges(self):
         """Finance + charts + NL all combined."""
-        types = ["comp_table", "dcf_summary", "title", "title", "title"]
+        types = ["comp_table", "dcf_summary", "title_slide", "title_slide", "title_slide"]
         ir = _make_ir(
             slide_count=5,
             slide_types=types,
@@ -158,10 +161,10 @@ class TestDeckOperations:
     def test_append_slides(self):
         """Appending slides increases the slide list."""
         ir = _make_ir(slide_count=2)
-        new_slides = [{"slide_type": "title", "title": "Appended", "elements": []}]
+        new_slides = [{"slide_type": "title_slide", "elements": [], "speaker_notes": "appended"}]
         result = self.ops.append_slides(ir, new_slides)
         assert len(result["slides"]) == 3
-        assert result["slides"][-1]["title"] == "Appended"
+        assert result["slides"][-1]["speaker_notes"] == "appended"
 
     def test_append_slides_validates(self):
         """Appended slides with invalid data raise ValueError."""
@@ -173,28 +176,33 @@ class TestDeckOperations:
     def test_replace_slide(self):
         """Replace slide at index replaces correctly."""
         ir = _make_ir(slide_count=3)
-        new_slide = {"slide_type": "title", "title": "Replaced", "elements": []}
+        new_slide = {"slide_type": "agenda", "elements": [], "speaker_notes": "replaced"}
         result = self.ops.replace_slide(ir, 1, new_slide)
-        assert result["slides"][1]["title"] == "Replaced"
+        assert result["slides"][1]["slide_type"] == "agenda"
+        assert result["slides"][1]["speaker_notes"] == "replaced"
         assert len(result["slides"]) == 3
 
     def test_replace_slide_invalid_index(self):
         """Replace with out-of-range index raises ValueError."""
         ir = _make_ir(slide_count=2)
-        new_slide = {"slide_type": "title", "title": "X", "elements": []}
+        new_slide = {"slide_type": "title_slide", "elements": []}
         with pytest.raises(ValueError, match="index"):
             self.ops.replace_slide(ir, 5, new_slide)
 
     def test_reorder_slides(self):
         """Reorder slides per new index list."""
         ir = _make_ir(slide_count=3)
-        ir["slides"][0]["title"] = "A"
-        ir["slides"][1]["title"] = "B"
-        ir["slides"][2]["title"] = "C"
+        # Use different slide_types to track reordering
+        ir["slides"][0]["slide_type"] = "title_slide"
+        ir["slides"][0]["speaker_notes"] = "A"
+        ir["slides"][1]["slide_type"] = "agenda"
+        ir["slides"][1]["speaker_notes"] = "B"
+        ir["slides"][2]["slide_type"] = "key_message"
+        ir["slides"][2]["speaker_notes"] = "C"
         result = self.ops.reorder_slides(ir, [2, 0, 1])
-        assert result["slides"][0]["title"] == "C"
-        assert result["slides"][1]["title"] == "A"
-        assert result["slides"][2]["title"] == "B"
+        assert result["slides"][0]["speaker_notes"] == "C"
+        assert result["slides"][1]["speaker_notes"] == "A"
+        assert result["slides"][2]["speaker_notes"] == "B"
 
     def test_reorder_slides_invalid_indices(self):
         """Reorder with wrong number of indices raises ValueError."""
