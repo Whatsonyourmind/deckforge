@@ -99,12 +99,12 @@ Plans:
   3. A comp_table slide with EV/EBITDA and P/E multiples renders with median highlight, conditional formatting, and proper financial number formatting (1x, 2.5x, $1.2B)
   4. A DCF summary with sensitivity matrix, a waterfall chart with positive/negative coloring, and a deal overview one-pager all render correctly from structured IR input
   5. CSV or Excel file data can be ingested and auto-mapped to the appropriate finance slide type
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
-- [ ] 05-03: TBD
+- [ ] 05-01-PLAN.md -- Static chart engine: Plotly renderers for waterfall, heatmap, sankey, gantt, football field, sensitivity, funnel, treemap, tornado, sunburst + chart recommender (Wave 1)
+- [ ] 05-02-PLAN.md -- Finance data layer: financial number formatter, conditional formatting engine, CSV/Excel data ingestion with auto-mapping (Wave 1)
+- [ ] 05-03-PLAN.md -- Finance slide renderers: comp_table, dcf_summary, waterfall_chart, deal_overview, returns_analysis, capital_structure, market_landscape, investment_thesis, risk_matrix + PptxRenderer integration (Wave 2)
 
 ### Phase 6: Google Slides Output
 **Goal**: The same IR that produces PPTX also produces a native Google Slides presentation with editable Sheets-backed charts
