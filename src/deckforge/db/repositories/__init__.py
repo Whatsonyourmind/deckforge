@@ -6,6 +6,7 @@ Usage:
     deck = await deck_repo.create(session, api_key_id=key_id, ir_snapshot=ir)
 """
 
+from deckforge.db.repositories.analytics import AnalyticsRepository
 from deckforge.db.repositories.api_key import ApiKeyRepository
 from deckforge.db.repositories.batch import BatchRepository
 from deckforge.db.repositories.deck import DeckRepository
@@ -13,6 +14,7 @@ from deckforge.db.repositories.job import JobRepository
 from deckforge.db.repositories.usage import UsageRepository
 from deckforge.db.repositories.webhook import WebhookRepository
 
+analytics_repo = AnalyticsRepository()
 api_key_repo = ApiKeyRepository()
 batch_repo = BatchRepository()
 deck_repo = DeckRepository()
@@ -21,12 +23,14 @@ usage_repo = UsageRepository()
 webhook_repo = WebhookRepository()
 
 __all__ = [
+    "AnalyticsRepository",
     "ApiKeyRepository",
     "BatchRepository",
     "DeckRepository",
     "JobRepository",
     "UsageRepository",
     "WebhookRepository",
+    "analytics_repo",
     "api_key_repo",
     "batch_repo",
     "deck_repo",
