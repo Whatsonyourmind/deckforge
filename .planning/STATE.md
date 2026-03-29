@@ -201,6 +201,7 @@ Recent decisions affecting current work:
 ### Roadmap Evolution
 
 - Phase 9 added: Monetization and Go-To-Market — x402 machine payments, Unkey API keys, MCP server, landing page, npm SDK publishing
+- Phase 10 added: Zero-Budget Growth Engine — MCP directory listings, GitHub SEO, Product Hunt, blog content, agent integrations, community seeding
 
 ### Pending Todos
 
