@@ -20,6 +20,7 @@ class RenderResponse(BaseModel):
 
     id: str
     status: str
+    job_id: str | None = None
     ir: dict | None = None
     download_url: str | None = None
     quality_score: int | None = None
