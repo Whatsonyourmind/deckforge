@@ -163,7 +163,7 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation + IR Schema | 0/3 | Not started | - |
+| 1. Foundation + IR Schema | 1/3 | In Progress | - |
 | 2. Layout Engine + Theme System | 0/3 | Not started | - |
 | 3. PPTX Rendering | 0/3 | Not started | - |
 | 4. Content Generation Pipeline | 0/2 | Not started | - |
