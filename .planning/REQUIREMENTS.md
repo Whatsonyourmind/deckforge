@@ -29,7 +29,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **API-09**: API key authentication (dk_live_/dk_test_ format) with scoped permissions
 - [x] **API-10**: Rate limiting per API key per tier (10/60/custom req/min)
 - [x] **API-11**: OpenAPI 3.1 spec auto-generated from Pydantic models
-- [ ] **API-12**: Webhook registration and async completion notifications
+- [x] **API-12**: Webhook registration and async completion notifications
 - [x] **API-13**: SSE streaming for generation progress events
 - [x] **API-14**: Idempotent operations via client-provided request_id
 
@@ -123,8 +123,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Batch Operations
 
-- [ ] **BATCH-01**: Batch render multiple decks in one request
-- [ ] **BATCH-02**: Batch variations -- same content with multiple themes
+- [x] **BATCH-01**: Batch render multiple decks in one request
+- [x] **BATCH-02**: Batch variations -- same content with multiple themes
 
 ### TypeScript SDK
 
@@ -214,7 +214,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | API-09 | Phase 1: Foundation + IR Schema | Complete |
 | API-10 | Phase 1: Foundation + IR Schema | Complete |
 | API-11 | Phase 1: Foundation + IR Schema | Complete |
-| API-12 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| API-12 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | API-13 | Phase 4: Content Generation Pipeline | Complete |
 | API-14 | Phase 1: Foundation + IR Schema | Complete |
 | PPTX-01 | Phase 3: PPTX Rendering | Pending |
@@ -278,8 +278,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DECK-05 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | DECK-06 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | DECK-07 | Phase 7: QA Pipeline + Deck Operations | Complete |
-| BATCH-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| BATCH-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| BATCH-01 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| BATCH-02 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | SDK-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | SDK-02 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | SDK-03 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
