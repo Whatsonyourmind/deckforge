@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-02-PLAN.md (Financial Data Layer)
-last_updated: "2026-03-29T02:27:30.735Z"
+stopped_at: Completed 04-01-PLAN.md (LLM Adapter Layer)
+last_updated: "2026-03-29T02:28:39.896Z"
 last_activity: 2026-03-29 -- Completed 05-02 Financial Data Layer plan
 progress:
   total_phases: 8
   completed_phases: 3
   total_plans: 14
-  completed_plans: 10
+  completed_plans: 11
   percent: 78
 ---
 
@@ -64,6 +64,7 @@ Progress: [███████░░░] 78% (11/14 plans)
 | Phase 03 P02 | 8min | 2 tasks | 9 files |
 | Phase 03 P03 | 6min | 2 tasks | 10 files |
 | Phase 05 P02 | 6min | 2 tasks | 8 files |
+| Phase 04 P01 | 8min | 2 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -118,6 +119,9 @@ Recent decisions affecting current work:
 - [05-02]: Lighten factor 0.85 (85% white blend) for median highlight backgrounds
 - [05-02]: Sensitivity table detected by numeric-looking column headers (regex matching)
 - [05-02]: Column type detection: header keywords first, value-range inspection as fallback
+- [Phase 04]: Custom adapters wrapping official SDKs instead of LiteLLM (supply chain compromise)
+- [Phase 04]: Claude tool_use, OpenAI json_schema, Gemini response_schema for structured output
+- [Phase 04]: Ollama retry-on-ValidationError (up to 3 attempts) with error feedback for self-correction
 
 ### Pending Todos
 
@@ -132,6 +136,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T02:27:30.726Z
-Stopped at: Completed 05-02-PLAN.md (Financial Data Layer)
+Last session: 2026-03-29T02:28:39.891Z
+Stopped at: Completed 04-01-PLAN.md (LLM Adapter Layer)
 Resume file: None

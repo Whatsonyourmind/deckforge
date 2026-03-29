@@ -76,8 +76,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **CONTENT-02**: Outline generation with narrative arc (pyramid principle, MECE, situation-complication-resolution)
 - [ ] **CONTENT-03**: Per-slide content expansion (headlines <=8 words, bullets <=12 words, speaker notes)
 - [ ] **CONTENT-04**: Cross-slide consistency refinement (terminology, tense, style, redundancy elimination)
-- [ ] **CONTENT-05**: Model-agnostic LLM adapter (Claude, OpenAI, Gemini, Ollama) with fallback chains
-- [ ] **CONTENT-06**: BYO model key support -- user provides their own API key and model choice
+- [x] **CONTENT-05**: Model-agnostic LLM adapter (Claude, OpenAI, Gemini, Ollama) with fallback chains
+- [x] **CONTENT-06**: BYO model key support -- user provides their own API key and model choice
 
 ### Chart Engine
 
@@ -246,8 +246,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONTENT-02 | Phase 4: Content Generation Pipeline | Pending |
 | CONTENT-03 | Phase 4: Content Generation Pipeline | Pending |
 | CONTENT-04 | Phase 4: Content Generation Pipeline | Pending |
-| CONTENT-05 | Phase 4: Content Generation Pipeline | Pending |
-| CONTENT-06 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-05 | Phase 4: Content Generation Pipeline | Complete |
+| CONTENT-06 | Phase 4: Content Generation Pipeline | Complete |
 | CHART-01 | Phase 5: Chart Engine + Finance Vertical | Pending |
 | CHART-02 | Phase 5: Chart Engine + Finance Vertical | Pending |
 | CHART-03 | Phase 5: Chart Engine + Finance Vertical | Pending |
