@@ -36,8 +36,8 @@ Requirements for initial release. Each maps to roadmap phases.
 ### PPTX Rendering
 
 - [x] **PPTX-01**: Render all 23 universal slide types to well-formatted PPTX
-- [ ] **PPTX-02**: Render native editable charts (bar, line, pie, scatter, combo, area, donut, radar, funnel, treemap)
-- [ ] **PPTX-03**: Render static image charts via Plotly for unsupported types (waterfall, heatmap, sankey, gantt, football_field)
+- [x] **PPTX-02**: Render native editable charts (bar, line, pie, scatter, combo, area, donut, radar, funnel, treemap)
+- [x] **PPTX-03**: Render static image charts via Plotly for unsupported types (waterfall, heatmap, sankey, gantt, football_field)
 - [x] **PPTX-04**: Render data tables with header/body/footer rows, conditional formatting, and proper alignment
 - [x] **PPTX-05**: Embed images from URLs or base64 with proper sizing and positioning
 - [x] **PPTX-06**: Support slide transitions (none, fade, slide, push)
@@ -218,8 +218,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | API-13 | Phase 4: Content Generation Pipeline | Pending |
 | API-14 | Phase 1: Foundation + IR Schema | Complete |
 | PPTX-01 | Phase 3: PPTX Rendering | Pending |
-| PPTX-02 | Phase 3: PPTX Rendering | Pending |
-| PPTX-03 | Phase 3: PPTX Rendering | Pending |
+| PPTX-02 | Phase 3: PPTX Rendering | Complete |
+| PPTX-03 | Phase 3: PPTX Rendering | Complete |
 | PPTX-04 | Phase 3: PPTX Rendering | Pending |
 | PPTX-05 | Phase 3: PPTX Rendering | Pending |
 | PPTX-06 | Phase 3: PPTX Rendering | Pending |
