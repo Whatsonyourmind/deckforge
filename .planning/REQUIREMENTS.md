@@ -18,9 +18,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### API & Infrastructure
 
-- [ ] **API-01**: POST /v1/render accepts IR JSON and returns rendered PPTX synchronously (<=10 slides)
+- [x] **API-01**: POST /v1/render accepts IR JSON and returns rendered PPTX synchronously (<=10 slides)
 - [ ] **API-02**: POST /v1/generate accepts NL prompt and returns deck asynchronously with job tracking
-- [ ] **API-03**: POST /v1/render/preview returns first N slides as PNG thumbnails
+- [x] **API-03**: POST /v1/render/preview returns first N slides as PNG thumbnails
 - [ ] **API-04**: POST /v1/estimate returns credit cost estimate for a given IR or prompt
 - [ ] **API-05**: GET /v1/themes lists all available themes with metadata
 - [ ] **API-06**: GET /v1/slide-types lists all slide types with example IR
@@ -203,9 +203,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | IR-04 | Phase 1: Foundation + IR Schema | Complete |
 | IR-05 | Phase 1: Foundation + IR Schema | Complete |
 | IR-06 | Phase 1: Foundation + IR Schema | Complete |
-| API-01 | Phase 3: PPTX Rendering | Pending |
+| API-01 | Phase 3: PPTX Rendering | Complete |
 | API-02 | Phase 4: Content Generation Pipeline | Pending |
-| API-03 | Phase 3: PPTX Rendering | Pending |
+| API-03 | Phase 3: PPTX Rendering | Complete |
 | API-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | API-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | API-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |

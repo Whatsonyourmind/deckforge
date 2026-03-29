@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-02-PLAN.md (Native Editable Chart Renderers)
-last_updated: "2026-03-29T01:53:34Z"
-last_activity: 2026-03-29 -- Completed 03-02 Native Editable Chart Renderers plan
+stopped_at: Completed 03-03-PLAN.md (Render Pipeline Integration)
+last_updated: "2026-03-29T02:03:54Z"
+last_activity: 2026-03-29 -- Completed 03-03 Render Pipeline Integration plan (Phase 3 complete)
 progress:
   total_phases: 8
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 9
-  completed_plans: 8
-  percent: 89
+  completed_plans: 9
+  percent: 100
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phase 3: PPTX Rendering (IN PROGRESS - 2 of 3 plans done)
+**Current focus:** Phase 3: PPTX Rendering (COMPLETE - 3 of 3 plans done)
 
 ## Current Position
 
-Phase: 3 of 8 (PPTX Rendering)
-Plan: 2 of 3 in current phase
-Status: In Progress
-Last activity: 2026-03-29 -- Completed 03-02 Native Editable Chart Renderers plan
+Phase: 3 of 8 (PPTX Rendering) -- COMPLETE
+Plan: 3 of 3 in current phase
+Status: Phase Complete
+Last activity: 2026-03-29 -- Completed 03-03 Render Pipeline Integration plan (Phase 3 complete)
 
-Progress: [█████████░] 89% (Phase 3 Plan 2/3)
+Progress: [██████████] 100% (Phase 3 Complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: 8min
-- Total execution time: 0.9 hours
+- Total plans completed: 9
+- Average duration: 7.7min
+- Total execution time: 1.0 hours
 
 **By Phase:**
 
@@ -45,10 +45,10 @@ Progress: [█████████░] 89% (Phase 3 Plan 2/3)
 |-------|-------|-------|----------|
 | 01-foundation-ir-schema | 3 | 24min | 8min |
 | 02-layout-engine-theme-system | 3 | 23min | 7.7min |
-| 03-pptx-rendering | 2 | 15min | 7.5min |
+| 03-pptx-rendering | 3 | 21min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (9min), 02-03 (8min), 03-01 (7min), 03-02 (8min)
+- Last 5 plans: 02-03 (8min), 03-01 (7min), 03-02 (8min), 03-03 (6min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -60,6 +60,7 @@ Progress: [█████████░] 89% (Phase 3 Plan 2/3)
 | Phase 02 P03 | 8min | 2 tasks | 17 files |
 | Phase 03 P01 | 7min | 2 tasks | 12 files |
 | Phase 03 P02 | 8min | 2 tasks | 9 files |
+| Phase 03 P03 | 6min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -105,6 +106,11 @@ Recent decisions affecting current work:
 - [03-02]: Pie/donut axis access wraps ValueError (not just AttributeError) since python-pptx raises ValueError for axisless charts
 - [03-02]: PlaceholderChartRenderer creates styled rectangles for Phase 5 deferred types instead of raising errors
 - [03-02]: Donut hole size set via lxml XML manipulation (python-pptx doesn't expose holeSize property)
+- [03-03]: render_pipeline() as shared sync function callable from both API sync path and ARQ worker task
+- [03-03]: SYNC_RENDER_THRESHOLD=10 slides for sync vs async decision boundary in /v1/render
+- [03-03]: StreamingResponse with Content-Disposition for direct PPTX download (sync path)
+- [03-03]: 3-tier thumbnail fallback: LibreOffice headless -> pdf2image -> Pillow placeholder PNGs
+- [03-03]: pdf2image as optional dependency group [preview] to keep base install lightweight
 
 ### Pending Todos
 
@@ -119,6 +125,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T01:53:34Z
-Stopped at: Completed 03-02-PLAN.md (Native Editable Chart Renderers)
+Last session: 2026-03-29T02:03:54Z
+Stopped at: Completed 03-03-PLAN.md (Render Pipeline Integration) -- Phase 3 complete
 Resume file: None
