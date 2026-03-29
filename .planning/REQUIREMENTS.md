@@ -57,10 +57,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **LAYOUT-01**: Constraint-based layout solver using kiwisolver on 12-column grid
 - [x] **LAYOUT-02**: Text measurement via Pillow + FreeType for bounding box calculation
-- [ ] **LAYOUT-03**: Adaptive content handling: overflow -> reduce font -> reflow -> split to multi-slide
-- [ ] **LAYOUT-04**: Visual hierarchy enforcement (title -> subtitle -> body -> footnote)
+- [x] **LAYOUT-03**: Adaptive content handling: overflow -> reduce font -> reflow -> split to multi-slide
+- [x] **LAYOUT-04**: Visual hierarchy enforcement (title -> subtitle -> body -> footnote)
 - [x] **LAYOUT-05**: Consistent spacing verification (+-2px tolerance) and alignment snapping
-- [ ] **LAYOUT-06**: Layout patterns per slide type (title, bullets, two_column, chart, table, etc.)
+- [x] **LAYOUT-06**: Layout patterns per slide type (title, bullets, two_column, chart, table, etc.)
 
 ### Theme Engine
 
@@ -233,10 +233,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GSLIDES-06 | Phase 6: Google Slides Output | Pending |
 | LAYOUT-01 | Phase 2: Layout Engine + Theme System | Complete |
 | LAYOUT-02 | Phase 2: Layout Engine + Theme System | Complete |
-| LAYOUT-03 | Phase 2: Layout Engine + Theme System | Pending |
-| LAYOUT-04 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-03 | Phase 2: Layout Engine + Theme System | Complete |
+| LAYOUT-04 | Phase 2: Layout Engine + Theme System | Complete |
 | LAYOUT-05 | Phase 2: Layout Engine + Theme System | Complete |
-| LAYOUT-06 | Phase 2: Layout Engine + Theme System | Pending |
+| LAYOUT-06 | Phase 2: Layout Engine + Theme System | Complete |
 | THEME-01 | Phase 2: Layout Engine + Theme System | Complete |
 | THEME-02 | Phase 2: Layout Engine + Theme System | Complete |
 | THEME-03 | Phase 2: Layout Engine + Theme System | Complete |
