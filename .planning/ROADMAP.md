@@ -26,7 +26,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 ### Phase 1: Foundation + IR Schema
 **Goal**: A running API server with the complete IR schema that accepts, validates, and rejects slide payloads -- plus the async infrastructure that all later phases depend on
 **Depends on**: Nothing (first phase)
-**Requirements**: IR-01, IR-02, IR-03, IR-04, IR-05, IR-06, INFRA-01, INFRA-02, INFRA-03, INFRA-04, INFRA-05, API-08, API-09, API-10, API-11, API-14, WORKER-01, WORKER-02, WORKER-03, WORKER-04, WORKER-05
+**Requirements**: IR-01, IR-02, IR-03, IR-04, IR-05, IR-06, INFRA-01, INFRA-02, INFRA-03, INFRA-04, API-08, API-09, API-10, API-11, API-14, WORKER-01, WORKER-02, WORKER-03, WORKER-04, WORKER-05
 **Success Criteria** (what must be TRUE):
   1. An API client can POST a valid IR JSON payload and receive a 200 response with the parsed IR echoed back; an invalid payload returns a descriptive 422 error
   2. An API client can authenticate with a dk_live_ or dk_test_ API key and receives 401 for missing/invalid keys
@@ -141,7 +141,7 @@ Plans:
 ### Phase 8: TypeScript SDK + Billing + Launch
 **Goal**: Developers can integrate DeckForge via a typed npm package, usage is metered and billed, and the API is publicly discoverable
 **Depends on**: Phase 7
-**Requirements**: SDK-01, SDK-02, SDK-03, SDK-04, SDK-05, BILL-01, BILL-02, BILL-03, BILL-04, BILL-05, BILL-06, API-05, API-06, API-07
+**Requirements**: SDK-01, SDK-02, SDK-03, SDK-04, SDK-05, BILL-01, BILL-02, BILL-03, BILL-04, BILL-05, BILL-06, API-05, API-06, API-07, INFRA-05
 **Success Criteria** (what must be TRUE):
   1. A TypeScript developer can npm install @deckforge/sdk and generate a presentation using the fluent builder API (Presentation.create().addSlide(...).render()) with full type safety
   2. The SDK streams generation progress via an async generator and all types are auto-generated from the OpenAPI spec
