@@ -89,15 +89,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Finance Vertical
 
-- [ ] **FIN-01**: comp_table slide type with EV/EBITDA, P/E formatting, median highlight, conditional formatting
-- [ ] **FIN-02**: dcf_summary slide type with assumptions table and 2-variable sensitivity matrix
-- [ ] **FIN-03**: waterfall_chart slide type with auto-color positive/negative bars and running total
-- [ ] **FIN-04**: deal_overview one-pager with traffic light indicators and unit economics
-- [ ] **FIN-05**: returns_analysis with IRR/MOIC/CoC matrix and scenario table
-- [ ] **FIN-06**: capital_structure with sources & uses and debt stack visualization
-- [ ] **FIN-07**: market_landscape with TAM/SAM/SOM and competitive positioning
-- [ ] **FIN-08**: investment_thesis with numbered thesis points and risk/reward framework
-- [ ] **FIN-09**: risk_matrix heat map with likelihood/impact axes
+- [x] **FIN-01**: comp_table slide type with EV/EBITDA, P/E formatting, median highlight, conditional formatting
+- [x] **FIN-02**: dcf_summary slide type with assumptions table and 2-variable sensitivity matrix
+- [x] **FIN-03**: waterfall_chart slide type with auto-color positive/negative bars and running total
+- [x] **FIN-04**: deal_overview one-pager with traffic light indicators and unit economics
+- [x] **FIN-05**: returns_analysis with IRR/MOIC/CoC matrix and scenario table
+- [x] **FIN-06**: capital_structure with sources & uses and debt stack visualization
+- [x] **FIN-07**: market_landscape with TAM/SAM/SOM and competitive positioning
+- [x] **FIN-08**: investment_thesis with numbered thesis points and risk/reward framework
+- [x] **FIN-09**: risk_matrix heat map with likelihood/impact axes
 - [x] **FIN-10**: Financial data ingestion from CSV/Excel with auto-detect structure
 - [x] **FIN-11**: Currency/percentage/multiple formatting engine
 
@@ -253,15 +253,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CHART-03 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | CHART-04 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | CHART-05 | Phase 5: Chart Engine + Finance Vertical | Complete |
-| FIN-01 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-02 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-03 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-04 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-05 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-06 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-07 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-08 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-09 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-01 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-02 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-03 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-04 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-05 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-06 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-07 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-08 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-09 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | FIN-10 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | FIN-11 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | QA-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
