@@ -1,0 +1,204 @@
+name: Soft Pastel
+description: Muted pastel palette with rounded feeling, Nunito font — gentle and approachable
+version: "1.0"
+
+colors:
+  blush: "#FFE4E6"
+  lavender: "#E8E0F0"
+  mint: "#D1FAE5"
+  sky: "#E0F2FE"
+  peach: "#FEF0E6"
+  white: "#FFFFFF"
+  gray_50: "#FAFAFA"
+  gray_600: "#4B5563"
+  gray_700: "#374151"
+  gray_800: "#1F2937"
+  rose_600: "#E11D48"
+  green_600: "#16A34A"
+  amber_600: "#D97706"
+
+palette:
+  primary: "$colors.gray_800"
+  secondary: "$colors.gray_700"
+  accent: "$colors.rose_600"
+  background: "$colors.white"
+  surface: "$colors.gray_50"
+  text_primary: "$colors.gray_800"
+  text_secondary: "$colors.gray_700"
+  text_muted: "$colors.gray_600"
+  positive: "$colors.green_600"
+  negative: "$colors.rose_600"
+  warning: "$colors.amber_600"
+
+typography:
+  heading_family: Nunito
+  body_family: Nunito
+  mono_family: Fira Code
+  scale:
+    h1: 40
+    h2: 32
+    h3: 26
+    subtitle: 20
+    body: 16
+    caption: 13
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.6
+  margin_bottom: 0.6
+  margin_left: 0.85
+  margin_right: 0.85
+  gutter: 0.35
+  element_gap: 0.25
+  section_gap: 0.55
+
+slide_masters:
+  title_slide:
+    background: "$colors.lavender"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 40
+        font_weight: 700
+        color: "$colors.gray_800"
+        alignment: center
+      subtitle:
+        font_family: Nunito
+        font_size: 20
+        color: "$colors.gray_600"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 32
+        font_weight: 700
+        color: "$colors.gray_800"
+      bullets:
+        font_family: Nunito
+        font_size: 16
+        color: "$colors.gray_700"
+        bullet_color: "$colors.rose_600"
+        indent: 0.4
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 32
+        font_weight: 700
+        color: "$colors.gray_800"
+      left_column:
+        font_family: Nunito
+        font_size: 16
+        color: "$colors.gray_700"
+      right_column:
+        font_family: Nunito
+        font_size: 16
+        color: "$colors.gray_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 32
+        font_weight: 700
+        color: "$colors.gray_800"
+      chart_area:
+        background: "$colors.gray_50"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 32
+        font_weight: 700
+        color: "$colors.gray_800"
+      table_area:
+        font_family: Nunito
+        font_size: 14
+        color: "$colors.gray_800"
+  section_divider:
+    background: "$colors.blush"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 40
+        font_weight: 700
+        color: "$colors.gray_800"
+        alignment: center
+  quote_slide:
+    background: "$colors.sky"
+    regions:
+      quote:
+        font_family: Nunito
+        font_size: 26
+        color: "$colors.gray_800"
+        alignment: center
+      attribution:
+        font_family: Nunito
+        font_size: 14
+        color: "$colors.gray_600"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 32
+        font_weight: 700
+        color: "$colors.gray_800"
+      caption:
+        font_family: Nunito
+        font_size: 13
+        color: "$colors.gray_600"
+  stats_callout:
+    background: "$colors.mint"
+    regions:
+      number:
+        font_family: Nunito
+        font_size: 56
+        font_weight: 700
+        color: "$colors.gray_800"
+        alignment: center
+      label:
+        font_family: Nunito
+        font_size: 16
+        color: "$colors.gray_600"
+        alignment: center
+  thank_you:
+    background: "$colors.lavender"
+    regions:
+      title:
+        font_family: Nunito
+        font_size: 40
+        font_weight: 700
+        color: "$colors.gray_800"
+        alignment: center
+
+chart_colors:
+  - "#F472B6"
+  - "#A78BFA"
+  - "#67E8F9"
+  - "#86EFAC"
+  - "#FDE68A"
+  - "#FCA5A5"
+
+logo:
+  max_width: 0.9
+  max_height: 0.45
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

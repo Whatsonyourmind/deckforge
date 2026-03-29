@@ -1,0 +1,204 @@
+name: Minimal Light
+description: Light gray backgrounds with subtle borders, Inter font — minimalist and clean
+version: "1.0"
+
+colors:
+  white: "#FFFFFF"
+  gray_50: "#FAFAFA"
+  gray_100: "#F5F5F5"
+  gray_200: "#E5E5E5"
+  gray_500: "#737373"
+  gray_700: "#404040"
+  gray_900: "#171717"
+  indigo_600: "#4F46E5"
+  green_600: "#16A34A"
+  red_600: "#DC2626"
+  amber_600: "#D97706"
+
+palette:
+  primary: "$colors.gray_900"
+  secondary: "$colors.gray_700"
+  accent: "$colors.indigo_600"
+  background: "$colors.white"
+  surface: "$colors.gray_50"
+  text_primary: "$colors.gray_900"
+  text_secondary: "$colors.gray_700"
+  text_muted: "$colors.gray_500"
+  positive: "$colors.green_600"
+  negative: "$colors.red_600"
+  warning: "$colors.amber_600"
+
+typography:
+  heading_family: Inter
+  body_family: Inter
+  mono_family: JetBrains Mono
+  scale:
+    h1: 40
+    h2: 32
+    h3: 26
+    subtitle: 20
+    body: 16
+    caption: 13
+    footnote: 10
+  weights:
+    heading: 600
+    subtitle: 500
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.6
+  margin_bottom: 0.6
+  margin_left: 0.8
+  margin_right: 0.8
+  gutter: 0.35
+  element_gap: 0.25
+  section_gap: 0.6
+
+slide_masters:
+  title_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 40
+        font_weight: 600
+        color: "$colors.gray_900"
+        alignment: center
+      subtitle:
+        font_family: Inter
+        font_size: 20
+        color: "$colors.gray_500"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 32
+        font_weight: 600
+        color: "$colors.gray_900"
+      bullets:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.gray_700"
+        bullet_color: "$colors.indigo_600"
+        indent: 0.4
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 32
+        font_weight: 600
+        color: "$colors.gray_900"
+      left_column:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.gray_700"
+      right_column:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.gray_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 32
+        font_weight: 600
+        color: "$colors.gray_900"
+      chart_area:
+        background: "$colors.gray_50"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 32
+        font_weight: 600
+        color: "$colors.gray_900"
+      table_area:
+        font_family: Inter
+        font_size: 14
+        color: "$colors.gray_900"
+        background: "$colors.gray_50"
+  section_divider:
+    background: "$colors.gray_100"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 40
+        font_weight: 600
+        color: "$colors.gray_900"
+        alignment: center
+  quote_slide:
+    background: "$palette.background"
+    regions:
+      quote:
+        font_family: Inter
+        font_size: 26
+        font_weight: 400
+        color: "$colors.gray_900"
+        alignment: center
+      attribution:
+        font_family: Inter
+        font_size: 14
+        color: "$colors.gray_500"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 32
+        font_weight: 600
+        color: "$colors.gray_900"
+      caption:
+        font_family: Inter
+        font_size: 13
+        color: "$colors.gray_500"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Inter
+        font_size: 56
+        font_weight: 600
+        color: "$colors.indigo_600"
+        alignment: center
+      label:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.gray_500"
+        alignment: center
+  thank_you:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Inter
+        font_size: 40
+        font_weight: 600
+        color: "$colors.gray_900"
+        alignment: center
+
+chart_colors:
+  - "$colors.indigo_600"
+  - "#0EA5E9"
+  - "#10B981"
+  - "#F59E0B"
+  - "#EF4444"
+  - "#8B5CF6"
+
+logo:
+  max_width: 0.9
+  max_height: 0.4
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

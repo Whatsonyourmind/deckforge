@@ -1,0 +1,203 @@
+name: Ocean Depth
+description: Deep blues and teals with aquatic palette — clean sans-serif, calming depth
+version: "1.0"
+
+colors:
+  deep_navy: "#0C1E3A"
+  ocean_blue: "#1E40AF"
+  teal_600: "#0D9488"
+  teal_400: "#2DD4BF"
+  sky_100: "#E0F2FE"
+  white: "#FFFFFF"
+  ice_blue: "#F0F9FF"
+  slate_700: "#334155"
+  slate_800: "#1E293B"
+  green_600: "#16A34A"
+  red_600: "#DC2626"
+  amber_500: "#F59E0B"
+
+palette:
+  primary: "$colors.ocean_blue"
+  secondary: "$colors.teal_600"
+  accent: "$colors.teal_400"
+  background: "$colors.white"
+  surface: "$colors.ice_blue"
+  text_primary: "$colors.slate_800"
+  text_secondary: "$colors.slate_700"
+  text_muted: "#64748B"
+  positive: "$colors.green_600"
+  negative: "$colors.red_600"
+  warning: "$colors.amber_500"
+
+typography:
+  heading_family: DM Sans
+  body_family: DM Sans
+  mono_family: JetBrains Mono
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 500
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.5
+  margin_bottom: 0.5
+  margin_left: 0.75
+  margin_right: 0.75
+  gutter: 0.3
+  element_gap: 0.2
+  section_gap: 0.5
+
+slide_masters:
+  title_slide:
+    background: "$colors.deep_navy"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: DM Sans
+        font_size: 22
+        color: "$colors.teal_400"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 36
+        font_weight: 700
+        color: "$colors.deep_navy"
+      bullets:
+        font_family: DM Sans
+        font_size: 18
+        color: "$colors.slate_700"
+        bullet_color: "$colors.teal_600"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 36
+        font_weight: 700
+        color: "$colors.deep_navy"
+      left_column:
+        font_family: DM Sans
+        font_size: 18
+        color: "$colors.slate_700"
+      right_column:
+        font_family: DM Sans
+        font_size: 18
+        color: "$colors.slate_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 36
+        font_weight: 700
+        color: "$colors.deep_navy"
+      chart_area:
+        background: "$colors.ice_blue"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 36
+        font_weight: 700
+        color: "$colors.deep_navy"
+      table_area:
+        font_family: DM Sans
+        font_size: 14
+        color: "$colors.slate_800"
+  section_divider:
+    background: "$colors.ocean_blue"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+  quote_slide:
+    background: "$colors.ice_blue"
+    regions:
+      quote:
+        font_family: DM Sans
+        font_size: 28
+        color: "$colors.deep_navy"
+        alignment: center
+      attribution:
+        font_family: DM Sans
+        font_size: 16
+        color: "#64748B"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 36
+        font_weight: 700
+        color: "$colors.deep_navy"
+      caption:
+        font_family: DM Sans
+        font_size: 14
+        color: "#64748B"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: DM Sans
+        font_size: 60
+        font_weight: 700
+        color: "$colors.ocean_blue"
+        alignment: center
+      label:
+        font_family: DM Sans
+        font_size: 18
+        color: "$colors.slate_700"
+        alignment: center
+  thank_you:
+    background: "$colors.deep_navy"
+    regions:
+      title:
+        font_family: DM Sans
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+
+chart_colors:
+  - "$colors.ocean_blue"
+  - "$colors.teal_600"
+  - "$colors.teal_400"
+  - "#F59E0B"
+  - "#EF4444"
+  - "#8B5CF6"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

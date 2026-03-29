@@ -1,0 +1,205 @@
+name: Monochrome
+description: Grayscale with single accent color — sophisticated restraint and clarity
+version: "1.0"
+
+colors:
+  black: "#000000"
+  gray_900: "#171717"
+  gray_800: "#262626"
+  gray_700: "#404040"
+  gray_500: "#737373"
+  gray_300: "#D4D4D4"
+  gray_100: "#F5F5F5"
+  white: "#FFFFFF"
+  accent_teal: "#0D9488"
+  green_700: "#15803D"
+  red_700: "#B91C1C"
+  amber_700: "#B45309"
+
+palette:
+  primary: "$colors.black"
+  secondary: "$colors.gray_800"
+  accent: "$colors.accent_teal"
+  background: "$colors.white"
+  surface: "$colors.gray_100"
+  text_primary: "$colors.gray_900"
+  text_secondary: "$colors.gray_700"
+  text_muted: "$colors.gray_500"
+  positive: "$colors.green_700"
+  negative: "$colors.red_700"
+  warning: "$colors.amber_700"
+
+typography:
+  heading_family: Helvetica Neue
+  body_family: Helvetica Neue
+  mono_family: SF Mono
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 500
+    body: 400
+    caption: 300
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.55
+  margin_bottom: 0.55
+  margin_left: 0.8
+  margin_right: 0.8
+  gutter: 0.3
+  element_gap: 0.25
+  section_gap: 0.5
+
+slide_masters:
+  title_slide:
+    background: "$colors.black"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Helvetica Neue
+        font_size: 22
+        font_weight: 300
+        color: "$colors.gray_300"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 36
+        font_weight: 700
+        color: "$colors.black"
+      bullets:
+        font_family: Helvetica Neue
+        font_size: 18
+        color: "$colors.gray_700"
+        bullet_color: "$colors.accent_teal"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 36
+        font_weight: 700
+        color: "$colors.black"
+      left_column:
+        font_family: Helvetica Neue
+        font_size: 18
+        color: "$colors.gray_700"
+      right_column:
+        font_family: Helvetica Neue
+        font_size: 18
+        color: "$colors.gray_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 36
+        font_weight: 700
+        color: "$colors.black"
+      chart_area:
+        background: "$colors.gray_100"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 36
+        font_weight: 700
+        color: "$colors.black"
+      table_area:
+        font_family: Helvetica Neue
+        font_size: 14
+        color: "$colors.gray_900"
+  section_divider:
+    background: "$colors.gray_900"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+  quote_slide:
+    background: "$colors.gray_100"
+    regions:
+      quote:
+        font_family: Helvetica Neue
+        font_size: 28
+        font_weight: 300
+        color: "$colors.black"
+        alignment: center
+      attribution:
+        font_family: Helvetica Neue
+        font_size: 16
+        color: "$colors.gray_500"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 36
+        font_weight: 700
+        color: "$colors.black"
+      caption:
+        font_family: Helvetica Neue
+        font_size: 14
+        color: "$colors.gray_500"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Helvetica Neue
+        font_size: 60
+        font_weight: 700
+        color: "$colors.accent_teal"
+        alignment: center
+      label:
+        font_family: Helvetica Neue
+        font_size: 18
+        font_weight: 300
+        color: "$colors.gray_700"
+        alignment: center
+  thank_you:
+    background: "$colors.black"
+    regions:
+      title:
+        font_family: Helvetica Neue
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+
+chart_colors:
+  - "$colors.black"
+  - "$colors.gray_700"
+  - "$colors.gray_500"
+  - "$colors.accent_teal"
+  - "$colors.gray_300"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

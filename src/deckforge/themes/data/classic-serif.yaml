@@ -1,0 +1,201 @@
+name: Classic Serif
+description: Traditional serif fonts with cream backgrounds — timeless and elegant
+version: "1.0"
+
+colors:
+  cream: "#FDF6E3"
+  ivory: "#FAF3E0"
+  parchment: "#F5EDDC"
+  dark_brown: "#2C1810"
+  medium_brown: "#4A3728"
+  warm_gray: "#6B5E50"
+  burgundy: "#800020"
+  forest: "#1B4332"
+  crimson: "#991B1B"
+  gold_dark: "#92400E"
+
+palette:
+  primary: "$colors.dark_brown"
+  secondary: "$colors.burgundy"
+  accent: "$colors.burgundy"
+  background: "$colors.cream"
+  surface: "$colors.ivory"
+  text_primary: "$colors.dark_brown"
+  text_secondary: "$colors.medium_brown"
+  text_muted: "$colors.warm_gray"
+  positive: "$colors.forest"
+  negative: "$colors.crimson"
+  warning: "$colors.gold_dark"
+
+typography:
+  heading_family: Merriweather
+  body_family: Source Serif Pro
+  mono_family: Courier New
+  scale:
+    h1: 42
+    h2: 34
+    h3: 26
+    subtitle: 22
+    body: 17
+    caption: 13
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.6
+
+spacing:
+  margin_top: 0.6
+  margin_bottom: 0.6
+  margin_left: 0.85
+  margin_right: 0.85
+  gutter: 0.35
+  element_gap: 0.25
+  section_gap: 0.55
+
+slide_masters:
+  title_slide:
+    background: "$colors.dark_brown"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 42
+        font_weight: 700
+        color: "$colors.cream"
+        alignment: center
+      subtitle:
+        font_family: Source Serif Pro
+        font_size: 22
+        color: "$colors.parchment"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 34
+        font_weight: 700
+        color: "$colors.dark_brown"
+      bullets:
+        font_family: Source Serif Pro
+        font_size: 17
+        color: "$colors.medium_brown"
+        bullet_color: "$colors.burgundy"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 34
+        font_weight: 700
+        color: "$colors.dark_brown"
+      left_column:
+        font_family: Source Serif Pro
+        font_size: 17
+        color: "$colors.medium_brown"
+      right_column:
+        font_family: Source Serif Pro
+        font_size: 17
+        color: "$colors.medium_brown"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 34
+        font_weight: 700
+        color: "$colors.dark_brown"
+      chart_area:
+        background: "$colors.ivory"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 34
+        font_weight: 700
+        color: "$colors.dark_brown"
+      table_area:
+        font_family: Source Serif Pro
+        font_size: 14
+        color: "$colors.dark_brown"
+  section_divider:
+    background: "$colors.burgundy"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 42
+        font_weight: 700
+        color: "$colors.cream"
+        alignment: center
+  quote_slide:
+    background: "$colors.ivory"
+    regions:
+      quote:
+        font_family: Merriweather
+        font_size: 26
+        color: "$colors.dark_brown"
+        alignment: center
+      attribution:
+        font_family: Source Serif Pro
+        font_size: 16
+        color: "$colors.warm_gray"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 34
+        font_weight: 700
+        color: "$colors.dark_brown"
+      caption:
+        font_family: Source Serif Pro
+        font_size: 13
+        color: "$colors.warm_gray"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Merriweather
+        font_size: 56
+        font_weight: 700
+        color: "$colors.burgundy"
+        alignment: center
+      label:
+        font_family: Source Serif Pro
+        font_size: 17
+        color: "$colors.medium_brown"
+        alignment: center
+  thank_you:
+    background: "$colors.dark_brown"
+    regions:
+      title:
+        font_family: Merriweather
+        font_size: 42
+        font_weight: 700
+        color: "$colors.cream"
+        alignment: center
+
+chart_colors:
+  - "$colors.burgundy"
+  - "$colors.forest"
+  - "$colors.gold_dark"
+  - "#7C3AED"
+  - "#0891B2"
+  - "#DB2777"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

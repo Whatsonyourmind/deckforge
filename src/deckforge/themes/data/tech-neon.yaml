@@ -1,0 +1,204 @@
+name: Tech Neon
+description: Dark backgrounds with neon accent colors, monospace-influenced — tech startup vibe
+version: "1.0"
+
+colors:
+  black_900: "#0F0F0F"
+  gray_900: "#171717"
+  gray_800: "#262626"
+  gray_600: "#525252"
+  neon_green: "#39FF14"
+  neon_cyan: "#00F0FF"
+  neon_pink: "#FF10F0"
+  neon_yellow: "#E8FF00"
+  white: "#FFFFFF"
+  off_white: "#E5E5E5"
+  light_gray: "#A3A3A3"
+  red_500: "#EF4444"
+
+palette:
+  primary: "$colors.neon_green"
+  secondary: "$colors.neon_cyan"
+  accent: "$colors.neon_pink"
+  background: "$colors.black_900"
+  surface: "$colors.gray_900"
+  text_primary: "$colors.white"
+  text_secondary: "$colors.off_white"
+  text_muted: "$colors.light_gray"
+  positive: "$colors.neon_green"
+  negative: "$colors.red_500"
+  warning: "$colors.neon_yellow"
+
+typography:
+  heading_family: Space Grotesk
+  body_family: Inter
+  mono_family: JetBrains Mono
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 500
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.5
+  margin_bottom: 0.5
+  margin_left: 0.75
+  margin_right: 0.75
+  gutter: 0.3
+  element_gap: 0.2
+  section_gap: 0.5
+
+slide_masters:
+  title_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 44
+        font_weight: 700
+        color: "$colors.neon_green"
+        alignment: center
+      subtitle:
+        font_family: Inter
+        font_size: 22
+        color: "$colors.neon_cyan"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      bullets:
+        font_family: Inter
+        font_size: 18
+        color: "$colors.off_white"
+        bullet_color: "$colors.neon_green"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      left_column:
+        font_family: Inter
+        font_size: 18
+        color: "$colors.off_white"
+      right_column:
+        font_family: Inter
+        font_size: 18
+        color: "$colors.off_white"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      chart_area:
+        background: "$colors.gray_900"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      table_area:
+        font_family: JetBrains Mono
+        font_size: 13
+        color: "$colors.off_white"
+        background: "$colors.gray_900"
+  section_divider:
+    background: "$colors.gray_800"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 44
+        font_weight: 700
+        color: "$colors.neon_cyan"
+        alignment: center
+  quote_slide:
+    background: "$palette.background"
+    regions:
+      quote:
+        font_family: Space Grotesk
+        font_size: 28
+        color: "$colors.neon_green"
+        alignment: center
+      attribution:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.light_gray"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      caption:
+        font_family: Inter
+        font_size: 14
+        color: "$colors.light_gray"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Space Grotesk
+        font_size: 60
+        font_weight: 700
+        color: "$colors.neon_green"
+        alignment: center
+      label:
+        font_family: Inter
+        font_size: 18
+        color: "$colors.off_white"
+        alignment: center
+  thank_you:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Space Grotesk
+        font_size: 44
+        font_weight: 700
+        color: "$colors.neon_green"
+        alignment: center
+
+chart_colors:
+  - "$colors.neon_green"
+  - "$colors.neon_cyan"
+  - "$colors.neon_pink"
+  - "$colors.neon_yellow"
+  - "#8B5CF6"
+  - "#F97316"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 0.9
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

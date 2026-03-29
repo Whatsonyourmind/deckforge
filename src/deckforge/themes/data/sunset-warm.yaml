@@ -1,0 +1,203 @@
+name: Sunset Warm
+description: Warm oranges, coral, and golden tones — inviting and energetic warmth
+version: "1.0"
+
+colors:
+  deep_coral: "#C4402F"
+  sunset_orange: "#EA580C"
+  golden: "#CA8A04"
+  peach: "#FFF7ED"
+  warm_cream: "#FFFBF5"
+  apricot: "#FFEDD5"
+  charcoal: "#1C1917"
+  warm_dark: "#292524"
+  warm_medium: "#57534E"
+  green_700: "#15803D"
+  red_700: "#B91C1C"
+  amber_600: "#D97706"
+
+palette:
+  primary: "$colors.sunset_orange"
+  secondary: "$colors.deep_coral"
+  accent: "$colors.golden"
+  background: "$colors.warm_cream"
+  surface: "$colors.peach"
+  text_primary: "$colors.charcoal"
+  text_secondary: "$colors.warm_dark"
+  text_muted: "$colors.warm_medium"
+  positive: "$colors.green_700"
+  negative: "$colors.red_700"
+  warning: "$colors.amber_600"
+
+typography:
+  heading_family: Raleway
+  body_family: Open Sans
+  mono_family: Fira Code
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.5
+  margin_bottom: 0.5
+  margin_left: 0.75
+  margin_right: 0.75
+  gutter: 0.3
+  element_gap: 0.2
+  section_gap: 0.5
+
+slide_masters:
+  title_slide:
+    background: "$colors.charcoal"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 44
+        font_weight: 700
+        color: "$colors.warm_cream"
+        alignment: center
+      subtitle:
+        font_family: Open Sans
+        font_size: 22
+        color: "$colors.golden"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 36
+        font_weight: 700
+        color: "$colors.charcoal"
+      bullets:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.warm_dark"
+        bullet_color: "$colors.sunset_orange"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 36
+        font_weight: 700
+        color: "$colors.charcoal"
+      left_column:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.warm_dark"
+      right_column:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.warm_dark"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 36
+        font_weight: 700
+        color: "$colors.charcoal"
+      chart_area:
+        background: "$colors.peach"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 36
+        font_weight: 700
+        color: "$colors.charcoal"
+      table_area:
+        font_family: Open Sans
+        font_size: 14
+        color: "$colors.charcoal"
+  section_divider:
+    background: "$colors.sunset_orange"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 44
+        font_weight: 700
+        color: "$colors.warm_cream"
+        alignment: center
+  quote_slide:
+    background: "$colors.peach"
+    regions:
+      quote:
+        font_family: Raleway
+        font_size: 28
+        color: "$colors.charcoal"
+        alignment: center
+      attribution:
+        font_family: Open Sans
+        font_size: 16
+        color: "$colors.warm_medium"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 36
+        font_weight: 700
+        color: "$colors.charcoal"
+      caption:
+        font_family: Open Sans
+        font_size: 14
+        color: "$colors.warm_medium"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Raleway
+        font_size: 60
+        font_weight: 700
+        color: "$colors.sunset_orange"
+        alignment: center
+      label:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.warm_dark"
+        alignment: center
+  thank_you:
+    background: "$colors.charcoal"
+    regions:
+      title:
+        font_family: Raleway
+        font_size: 44
+        font_weight: 700
+        color: "$colors.warm_cream"
+        alignment: center
+
+chart_colors:
+  - "$colors.sunset_orange"
+  - "$colors.golden"
+  - "$colors.deep_coral"
+  - "#16A34A"
+  - "#7C3AED"
+  - "#0891B2"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height
