@@ -98,8 +98,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **FIN-07**: market_landscape with TAM/SAM/SOM and competitive positioning
 - [ ] **FIN-08**: investment_thesis with numbered thesis points and risk/reward framework
 - [ ] **FIN-09**: risk_matrix heat map with likelihood/impact axes
-- [ ] **FIN-10**: Financial data ingestion from CSV/Excel with auto-detect structure
-- [ ] **FIN-11**: Currency/percentage/multiple formatting engine
+- [x] **FIN-10**: Financial data ingestion from CSV/Excel with auto-detect structure
+- [x] **FIN-11**: Currency/percentage/multiple formatting engine
 
 ### QA Pipeline
 
@@ -262,8 +262,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FIN-07 | Phase 5: Chart Engine + Finance Vertical | Pending |
 | FIN-08 | Phase 5: Chart Engine + Finance Vertical | Pending |
 | FIN-09 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-10 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| FIN-11 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| FIN-10 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| FIN-11 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | QA-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | QA-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | QA-03 | Phase 7: QA Pipeline + Deck Operations | Pending |
