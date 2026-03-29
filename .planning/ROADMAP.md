@@ -33,12 +33,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Docker Compose brings up the full local stack (API + Redis + PostgreSQL + MinIO + workers) with a single command
   4. An async job submitted to the worker queue is picked up, executed, and its completion status is retrievable via the API
   5. The OpenAPI spec is auto-generated and accessible at /docs with all IR models documented
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md -- Complete IR schema: 32 slide types, element types, chart subtypes, metadata, validation (Wave 1)
+- [ ] 01-02-PLAN.md -- Infrastructure: Docker Compose, Dockerfile, SQLAlchemy models, Alembic, config (Wave 1)
+- [ ] 01-03-PLAN.md -- API skeleton + auth + rate limiting + workers + OpenAPI + idempotency (Wave 2)
 
 ### Phase 2: Layout Engine + Theme System
 **Goal**: Slides are positioned and styled by a constraint-based solver and theme definitions -- no hard-coded coordinates, content adapts to volume
