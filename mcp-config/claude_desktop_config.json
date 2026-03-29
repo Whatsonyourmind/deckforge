@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "deckforge": {
+      "command": "python",
+      "args": ["-m", "deckforge.mcp.server"],
+      "env": {
+        "DECKFORGE_API_KEY": "dk_live_your_key_here"
+      }
+    }
+  }
+}
