@@ -50,12 +50,12 @@ Plans:
   3. A theme YAML file fully controls colors, typography, and spacing of a rendered slide, and switching themes produces visually distinct but structurally identical output
   4. A brand kit overlay (custom colors, fonts, logo) merges on top of any theme and the logo appears in the specified position on every slide
   5. All text meets WCAG AA contrast ratios (4.5:1 for body text, 3:1 for large text) against its background
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md -- Layout foundation: types, 12-column grid system, kiwisolver wrapper, Pillow text measurer (Wave 1)
+- [ ] 02-02-PLAN.md -- Theme system: 15 YAML themes, variable resolver, brand kit merger, WCAG contrast checker (Wave 1)
+- [ ] 02-03-PLAN.md -- Layout patterns for all 32 slide types, adaptive overflow handler, LayoutEngine orchestrator (Wave 2)
 
 ### Phase 3: PPTX Rendering
 **Goal**: A complete PPTX file with all 23 universal slide types renders correctly and opens in PowerPoint/LibreOffice without errors
