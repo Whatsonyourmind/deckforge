@@ -10,6 +10,7 @@ from pptx import Presentation as PptxPresentation
 from pptx.util import Inches
 
 from deckforge.rendering.element_renderers import render_element
+from deckforge.rendering.slide_renderers import render_finance_slide
 from deckforge.rendering.utils import (
     get_blank_layout,
     set_slide_background,
@@ -91,7 +92,16 @@ class PptxRenderer:
         set_slide_background(slide, bg_color)
 
     def _render_elements(self, slide, ir_slide, theme: ResolvedTheme) -> None:
-        """Render all elements on the slide."""
+        """Render all elements on the slide.
+
+        Finance slide types are dispatched to FINANCE_SLIDE_RENDERERS for
+        full-slide rendering. Non-finance slides use the element-by-element path.
+        """
+        # Check if this is a finance slide type -- if so, the finance renderer
+        # handles the entire slide (title, tables, charts, positioning).
+        if render_finance_slide(slide, ir_slide, theme):
+            return
+
         for element in ir_slide.elements:
             position = element.position
             if position is None:
