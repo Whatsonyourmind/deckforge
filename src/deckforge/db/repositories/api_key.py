@@ -88,3 +88,18 @@ class ApiKeyRepository:
         )
         await session.execute(stmt)
         await session.flush()
+
+    async def update_google_token(
+        self,
+        session: AsyncSession,
+        key_id: uuid.UUID,
+        refresh_token: str | None,
+    ) -> None:
+        """Store or clear the Google OAuth refresh token for an API key."""
+        stmt = (
+            update(ApiKey)
+            .where(ApiKey.id == key_id)
+            .values(google_refresh_token=refresh_token)
+        )
+        await session.execute(stmt)
+        await session.flush()

@@ -44,6 +44,9 @@ class ApiKey(Base):
     is_test: Mapped[bool] = mapped_column(default=False)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     last_used_at: Mapped[datetime | None] = mapped_column(default=None)
+    google_refresh_token: Mapped[str | None] = mapped_column(
+        String(512), default=None
+    )
 
     def __repr__(self) -> str:
         return f"<ApiKey {self.key_prefix}>"
