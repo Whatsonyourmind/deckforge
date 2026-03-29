@@ -164,7 +164,7 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation + IR Schema | 3/3 | Complete   | 2026-03-29 |
-| 2. Layout Engine + Theme System | 0/3 | Not started | - |
+| 2. Layout Engine + Theme System | 2/3 | In Progress | - |
 | 3. PPTX Rendering | 0/3 | Not started | - |
 | 4. Content Generation Pipeline | 0/2 | Not started | - |
 | 5. Chart Engine + Finance Vertical | 0/3 | Not started | - |
