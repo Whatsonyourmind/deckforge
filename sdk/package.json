@@ -1,7 +1,7 @@
 {
   "name": "@deckforge/sdk",
   "version": "0.1.0",
-  "description": "TypeScript SDK for the DeckForge presentation generation API",
+  "description": "TypeScript SDK for AI-powered presentation generation. 32 slide types, 15 themes, native charts, finance vertical. Generate executive-ready PowerPoint decks via API.",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -28,7 +28,21 @@
     "presentation",
     "slides",
     "pptx",
-    "sdk"
+    "powerpoint",
+    "sdk",
+    "api",
+    "ai",
+    "slide-generation",
+    "deck",
+    "mcp",
+    "ai-agents",
+    "charts",
+    "finance",
+    "google-slides",
+    "typescript",
+    "executive",
+    "pitch-deck",
+    "board-deck"
   ],
   "license": "MIT",
   "repository": {
