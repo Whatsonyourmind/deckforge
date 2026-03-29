@@ -66,3 +66,14 @@ class SSEProgressEvent(BaseModel):
     progress: float
     timestamp: str
     detail: dict | None = None
+
+
+class GoogleSlidesRenderResponse(BaseModel):
+    """POST /v1/render?output_format=gslides response."""
+
+    id: str
+    status: str
+    presentation_id: str
+    presentation_url: str
+    title: str
+    slide_count: int

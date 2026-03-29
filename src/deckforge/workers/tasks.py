@@ -61,17 +61,26 @@ async def publish_progress(
                 await session.commit()
 
 
-def render_pipeline(presentation: Presentation) -> bytes:
-    """Run the full render pipeline synchronously: layout -> theme -> PPTX.
+def render_pipeline(
+    presentation: Presentation,
+    output_format: str = "pptx",
+    credentials=None,
+) -> bytes:
+    """Run the full render pipeline synchronously.
+
+    Supports PPTX (default) and Google Slides output formats.
 
     This is the core rendering function shared by both the async worker task
     and the synchronous API path (<=10 slides).
 
     Args:
         presentation: Validated IR Presentation model.
+        output_format: "pptx" (default) or "gslides" for Google Slides.
+        credentials: Google OAuth credentials (required for gslides).
 
     Returns:
-        Raw bytes of the generated .pptx file.
+        Raw bytes of the generated .pptx file (for pptx format),
+        or GoogleSlidesResult (for gslides format).
     """
     theme_registry = ThemeRegistry()
     text_measurer = TextMeasurer()
@@ -86,9 +95,15 @@ def render_pipeline(presentation: Presentation) -> bytes:
         presentation.brand_kit,
     )
 
-    # Render PPTX
-    renderer = PptxRenderer()
-    return renderer.render(presentation, layout_results, theme)
+    if output_format == "gslides":
+        from deckforge.rendering.gslides import GoogleSlidesRenderer
+
+        renderer = GoogleSlidesRenderer()
+        return renderer.render(presentation, layout_results, theme, credentials)
+    else:
+        # Default: PPTX
+        renderer = PptxRenderer()
+        return renderer.render(presentation, layout_results, theme)
 
 
 async def render_presentation(
