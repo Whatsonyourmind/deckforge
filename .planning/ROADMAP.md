@@ -117,11 +117,11 @@ Plans:
   2. Charts in Google Slides are backed by Google Sheets and a user can click through to edit the underlying data
   3. A user authenticates via OAuth 2.0 and the generated presentation appears in their Google Drive with a shareable URL
   4. Temporary Sheets spreadsheets created for chart data are cleaned up after chart creation completes
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md -- Google Slides renderer core: EMU converter, batchUpdate request builders for all element types + finance slides, OAuth handler, GoogleSlidesRenderer orchestrator (Wave 1)
+- [ ] 06-02-PLAN.md -- Sheets-backed charts + API integration: SheetsChartBuilder for editable charts, temp spreadsheet cleanup, OAuth endpoints, output_format=gslides on /v1/render (Wave 2)
 
 ### Phase 7: QA Pipeline + Deck Operations
 **Goal**: Every deck passes automated quality checks before delivery, and users can compose, modify, and batch-process existing decks
