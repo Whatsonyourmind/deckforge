@@ -300,7 +300,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-02 | Phase 1: Foundation + IR Schema | Pending |
 | INFRA-03 | Phase 1: Foundation + IR Schema | Pending |
 | INFRA-04 | Phase 1: Foundation + IR Schema | Pending |
-| INFRA-05 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 
 **Coverage:**
 - v1 requirements: 104 total
