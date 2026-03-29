@@ -53,6 +53,11 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str | None = None
     OLLAMA_BASE_URL: str = "http://localhost:11434"
 
+    # Google OAuth (for Google Slides output)
+    GOOGLE_CLIENT_ID: str | None = None
+    GOOGLE_CLIENT_SECRET: str | None = None
+    GOOGLE_REDIRECT_URI: str = "http://localhost:8000/v1/auth/google/callback"
+
     @property
     def llm_fallback_list(self) -> list[str]:
         """Parse the comma-separated fallback chain into a list."""

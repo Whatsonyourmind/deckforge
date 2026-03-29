@@ -1,4 +1,4 @@
-"""DeckForge rendering package -- PPTX rendering engine."""
+"""DeckForge rendering package -- PPTX and Google Slides rendering engines."""
 
 from __future__ import annotations
 
@@ -19,3 +19,11 @@ __all__ = [
     "set_slide_background",
     "set_transition",
 ]
+
+# Google Slides renderer is optional (requires google-api-python-client)
+try:
+    from deckforge.rendering.gslides import GoogleSlidesRenderer, GoogleSlidesResult
+
+    __all__.extend(["GoogleSlidesRenderer", "GoogleSlidesResult"])
+except ImportError:
+    pass
