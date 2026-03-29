@@ -1,7 +1,10 @@
-"""Redis token-bucket rate limiter.
+"""Rate limiting via Unkey verification response.
 
-Uses an atomic Lua script to implement a token-bucket algorithm per API key,
-with tier-based limits (starter: 10/min, pro: 60/min, enterprise: 600/min).
+In production (Unkey mode), rate limiting is handled automatically by Unkey
+during key verification — the AuthContext.rate_limited flag is set when the
+key has exceeded its configured rate limit.
+
+In development (DB mode), the legacy Redis token bucket is used as fallback.
 """
 
 from __future__ import annotations
@@ -15,12 +18,7 @@ from redis.asyncio import Redis
 from deckforge.api.deps import RedisClient
 from deckforge.api.middleware.auth import CurrentApiKey
 
-# Lua script for atomic token bucket refill + consume.
-# KEYS[1] = bucket key
-# ARGV[1] = max_tokens (capacity)
-# ARGV[2] = refill_rate (tokens per second)
-# ARGV[3] = now (current timestamp as float)
-# Returns: {allowed (0/1), remaining_tokens, retry_after_ms}
+# Legacy Lua script for atomic token bucket (used in DB-auth fallback mode).
 TOKEN_BUCKET_SCRIPT = """
 local key = KEYS[1]
 local capacity = tonumber(ARGV[1])
@@ -32,14 +30,12 @@ local tokens = tonumber(bucket[1])
 local last_refill = tonumber(bucket[2])
 
 if tokens == nil then
-    -- First request: initialize bucket at full capacity minus 1
     tokens = capacity - 1
     redis.call('HMSET', key, 'tokens', tokens, 'last_refill', now)
     redis.call('EXPIRE', key, 120)
     return {1, tokens, 0}
 end
 
--- Refill tokens based on elapsed time
 local elapsed = now - last_refill
 local refill = math.floor(elapsed * refill_rate)
 if refill > 0 then
@@ -48,7 +44,6 @@ if refill > 0 then
 end
 
 if tokens < 1 then
-    -- Not enough tokens; calculate retry-after in milliseconds
     local deficit = 1 - tokens
     local retry_after_ms = math.ceil((deficit / refill_rate) * 1000)
     redis.call('HMSET', key, 'tokens', tokens, 'last_refill', last_refill)
@@ -56,14 +51,13 @@ if tokens < 1 then
     return {0, 0, retry_after_ms}
 end
 
--- Consume one token
 tokens = tokens - 1
 redis.call('HMSET', key, 'tokens', tokens, 'last_refill', last_refill)
 redis.call('EXPIRE', key, 120)
 return {1, tokens, 0}
 """
 
-# Tier limits: requests per minute -> capacity and refill_rate (tokens/sec)
+# Tier limits for legacy Redis-based rate limiting
 TIER_LIMITS: dict[str, dict[str, float]] = {
     "starter": {"capacity": 10, "refill_rate": 10 / 60},
     "pro": {"capacity": 60, "refill_rate": 60 / 60},
@@ -76,11 +70,7 @@ async def check_rate_limit(
     api_key_id: str,
     tier: str,
 ) -> tuple[bool, int, int]:
-    """Check if the request is within the rate limit.
-
-    Returns:
-        (allowed, remaining_tokens, retry_after_ms)
-    """
+    """Legacy check for DB-auth mode. Returns (allowed, remaining, retry_after_ms)."""
     limits = TIER_LIMITS.get(tier, TIER_LIMITS["starter"])
     bucket_key = f"ratelimit:{api_key_id}"
 
@@ -106,11 +96,33 @@ async def rate_limit_dependency(
 ) -> None:
     """FastAPI dependency that enforces rate limiting.
 
-    Raises HTTP 429 with Retry-After header if the rate limit is exceeded.
+    - Unkey mode: Checks AuthContext.rate_limited flag (Unkey handles limits).
+    - DB mode: Falls back to Redis token bucket.
+    - x402 mode: Skips rate limiting (payment is per-call).
+
+    Raises HTTP 429 with Retry-After header if rate limit exceeded.
     """
+    # x402 payments are not rate-limited (they pay per call)
+    if api_key.source == "x402":
+        return
+
+    # Unkey mode: rate limiting handled in verify_key response
+    if api_key.source == "unkey":
+        if api_key.rate_limited:
+            raise HTTPException(
+                status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                detail="Rate limit exceeded. Try again later.",
+                headers={
+                    "Retry-After": "60",
+                    "X-RateLimit-Remaining": "0",
+                },
+            )
+        return
+
+    # DB fallback mode: use legacy Redis token bucket
     allowed, remaining, retry_after_ms = await check_rate_limit(
         redis,
-        str(api_key.id),
+        api_key.key_id,
         api_key.tier,
     )
 
