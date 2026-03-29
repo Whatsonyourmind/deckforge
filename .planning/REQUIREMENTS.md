@@ -19,7 +19,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### API & Infrastructure
 
 - [x] **API-01**: POST /v1/render accepts IR JSON and returns rendered PPTX synchronously (<=10 slides)
-- [ ] **API-02**: POST /v1/generate accepts NL prompt and returns deck asynchronously with job tracking
+- [x] **API-02**: POST /v1/generate accepts NL prompt and returns deck asynchronously with job tracking
 - [x] **API-03**: POST /v1/render/preview returns first N slides as PNG thumbnails
 - [ ] **API-04**: POST /v1/estimate returns credit cost estimate for a given IR or prompt
 - [ ] **API-05**: GET /v1/themes lists all available themes with metadata
@@ -30,7 +30,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **API-10**: Rate limiting per API key per tier (10/60/custom req/min)
 - [x] **API-11**: OpenAPI 3.1 spec auto-generated from Pydantic models
 - [ ] **API-12**: Webhook registration and async completion notifications
-- [ ] **API-13**: SSE streaming for generation progress events
+- [x] **API-13**: SSE streaming for generation progress events
 - [x] **API-14**: Idempotent operations via client-provided request_id
 
 ### PPTX Rendering
@@ -72,10 +72,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Content Generation
 
-- [ ] **CONTENT-01**: Intent parsing from NL prompt (purpose, audience, slide_count, topics, tone)
-- [ ] **CONTENT-02**: Outline generation with narrative arc (pyramid principle, MECE, situation-complication-resolution)
-- [ ] **CONTENT-03**: Per-slide content expansion (headlines <=8 words, bullets <=12 words, speaker notes)
-- [ ] **CONTENT-04**: Cross-slide consistency refinement (terminology, tense, style, redundancy elimination)
+- [x] **CONTENT-01**: Intent parsing from NL prompt (purpose, audience, slide_count, topics, tone)
+- [x] **CONTENT-02**: Outline generation with narrative arc (pyramid principle, MECE, situation-complication-resolution)
+- [x] **CONTENT-03**: Per-slide content expansion (headlines <=8 words, bullets <=12 words, speaker notes)
+- [x] **CONTENT-04**: Cross-slide consistency refinement (terminology, tense, style, redundancy elimination)
 - [x] **CONTENT-05**: Model-agnostic LLM adapter (Claude, OpenAI, Gemini, Ollama) with fallback chains
 - [x] **CONTENT-06**: BYO model key support -- user provides their own API key and model choice
 
@@ -204,7 +204,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | IR-05 | Phase 1: Foundation + IR Schema | Complete |
 | IR-06 | Phase 1: Foundation + IR Schema | Complete |
 | API-01 | Phase 3: PPTX Rendering | Complete |
-| API-02 | Phase 4: Content Generation Pipeline | Pending |
+| API-02 | Phase 4: Content Generation Pipeline | Complete |
 | API-03 | Phase 3: PPTX Rendering | Complete |
 | API-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | API-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
@@ -215,7 +215,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | API-10 | Phase 1: Foundation + IR Schema | Complete |
 | API-11 | Phase 1: Foundation + IR Schema | Complete |
 | API-12 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| API-13 | Phase 4: Content Generation Pipeline | Pending |
+| API-13 | Phase 4: Content Generation Pipeline | Complete |
 | API-14 | Phase 1: Foundation + IR Schema | Complete |
 | PPTX-01 | Phase 3: PPTX Rendering | Pending |
 | PPTX-02 | Phase 3: PPTX Rendering | Complete |
@@ -242,10 +242,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-03 | Phase 2: Layout Engine + Theme System | Complete |
 | THEME-04 | Phase 2: Layout Engine + Theme System | Complete |
 | THEME-05 | Phase 2: Layout Engine + Theme System | Complete |
-| CONTENT-01 | Phase 4: Content Generation Pipeline | Pending |
-| CONTENT-02 | Phase 4: Content Generation Pipeline | Pending |
-| CONTENT-03 | Phase 4: Content Generation Pipeline | Pending |
-| CONTENT-04 | Phase 4: Content Generation Pipeline | Pending |
+| CONTENT-01 | Phase 4: Content Generation Pipeline | Complete |
+| CONTENT-02 | Phase 4: Content Generation Pipeline | Complete |
+| CONTENT-03 | Phase 4: Content Generation Pipeline | Complete |
+| CONTENT-04 | Phase 4: Content Generation Pipeline | Complete |
 | CONTENT-05 | Phase 4: Content Generation Pipeline | Complete |
 | CONTENT-06 | Phase 4: Content Generation Pipeline | Complete |
 | CHART-01 | Phase 5: Chart Engine + Finance Vertical | Complete |

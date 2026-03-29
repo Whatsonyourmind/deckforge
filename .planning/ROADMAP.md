@@ -14,9 +14,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation + IR Schema** - Project infrastructure, IR Pydantic models, API skeleton, auth, async workers (completed 2026-03-29)
 - [x] **Phase 2: Layout Engine + Theme System** - Constraint-based layout solver, 15 curated themes, brand kit overlay (completed 2026-03-29)
-- [ ] **Phase 3: PPTX Rendering** - python-pptx renderer for all 23 universal slide types with sync render endpoint
-- [ ] **Phase 4: Content Generation Pipeline** - NL-to-IR via model-agnostic LLM orchestration with async generation
-- [ ] **Phase 5: Chart Engine + Finance Vertical** - Native/static charts and all 9 finance-specific slide types
+- [x] **Phase 3: PPTX Rendering** - python-pptx renderer for all 23 universal slide types with sync render endpoint (completed 2026-03-29)
+- [x] **Phase 4: Content Generation Pipeline** - NL-to-IR via model-agnostic LLM orchestration with async generation (completed 2026-03-29)
+- [x] **Phase 5: Chart Engine + Finance Vertical** - Native/static charts and all 9 finance-specific slide types (completed 2026-03-29)
 - [ ] **Phase 6: Google Slides Output** - Native Google Slides renderer with Sheets-backed editable charts
 - [ ] **Phase 7: QA Pipeline + Deck Operations** - 5-pass quality assurance, auto-fix, deck composability, batch ops
 - [ ] **Phase 8: TypeScript SDK + Billing + Launch** - npm SDK, Stripe billing, discovery endpoints, launch readiness
@@ -85,9 +85,11 @@ Plans:
   4. Cross-slide consistency is enforced: no contradictory terminology, consistent tense and capitalization, no redundant slides
 **Plans:** 2 plans
 
+**Plans:** 2/2 plans complete
+
 Plans:
-- [ ] 04-01-PLAN.md -- LLM adapters: abstract base, Claude/OpenAI/Gemini/Ollama implementations, router with fallback chains, BYO key support (Wave 1)
-- [ ] 04-02-PLAN.md -- Content pipeline: intent parser, outliner, slide writer, cross-slide refiner, prompt templates, POST /v1/generate with SSE streaming (Wave 2)
+- [x] 04-01-PLAN.md -- LLM adapters: abstract base, Claude/OpenAI/Gemini/Ollama implementations, router with fallback chains, BYO key support (Wave 1)
+- [x] 04-02-PLAN.md -- Content pipeline: intent parser, outliner, slide writer, cross-slide refiner, prompt templates, POST /v1/generate with SSE streaming (Wave 2)
 
 ### Phase 5: Chart Engine + Finance Vertical
 **Goal**: Data visualizations render as native editable charts (or static fallbacks), and all 9 finance-specific slide types produce institutional-grade output
@@ -166,8 +168,8 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | 1. Foundation + IR Schema | 3/3 | Complete   | 2026-03-29 |
 | 2. Layout Engine + Theme System | 3/3 | Complete    | 2026-03-29 |
 | 3. PPTX Rendering | 3/3 | Complete | 2026-03-29 |
-| 4. Content Generation Pipeline | 1/2 | In progress | - |
-| 5. Chart Engine + Finance Vertical | 1/3 | In progress | - |
+| 4. Content Generation Pipeline | 2/2 | Complete | 2026-03-29 |
+| 5. Chart Engine + Finance Vertical | 3/3 | Complete | 2026-03-29 |
 | 6. Google Slides Output | 0/2 | Not started | - |
 | 7. QA Pipeline + Deck Operations | 0/3 | Not started | - |
 | 8. TypeScript SDK + Billing + Launch | 0/3 | Not started | - |
