@@ -25,13 +25,13 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **API-05**: GET /v1/themes lists all available themes with metadata
 - [ ] **API-06**: GET /v1/slide-types lists all slide types with example IR
 - [ ] **API-07**: GET /v1/capabilities returns API capabilities and limits
-- [ ] **API-08**: GET /v1/health returns API health status
-- [ ] **API-09**: API key authentication (dk_live_/dk_test_ format) with scoped permissions
-- [ ] **API-10**: Rate limiting per API key per tier (10/60/custom req/min)
-- [ ] **API-11**: OpenAPI 3.1 spec auto-generated from Pydantic models
+- [x] **API-08**: GET /v1/health returns API health status
+- [x] **API-09**: API key authentication (dk_live_/dk_test_ format) with scoped permissions
+- [x] **API-10**: Rate limiting per API key per tier (10/60/custom req/min)
+- [x] **API-11**: OpenAPI 3.1 spec auto-generated from Pydantic models
 - [ ] **API-12**: Webhook registration and async completion notifications
 - [ ] **API-13**: SSE streaming for generation progress events
-- [ ] **API-14**: Idempotent operations via client-provided request_id
+- [x] **API-14**: Idempotent operations via client-provided request_id
 
 ### PPTX Rendering
 
@@ -145,11 +145,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Async & Workers
 
-- [ ] **WORKER-01**: ARQ + Redis task queue for content generation and rendering jobs
-- [ ] **WORKER-02**: Separate content worker pool (I/O-bound) and render worker pool (CPU-bound)
-- [ ] **WORKER-03**: S3/R2 file storage for generated presentations
-- [ ] **WORKER-04**: Webhook delivery on job completion
-- [ ] **WORKER-05**: Job status tracking with progress events
+- [x] **WORKER-01**: ARQ + Redis task queue for content generation and rendering jobs
+- [x] **WORKER-02**: Separate content worker pool (I/O-bound) and render worker pool (CPU-bound)
+- [x] **WORKER-03**: S3/R2 file storage for generated presentations
+- [x] **WORKER-04**: Webhook delivery on job completion
+- [x] **WORKER-05**: Job status tracking with progress events
 
 ### Infrastructure
 
@@ -210,13 +210,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | API-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | API-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | API-07 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| API-08 | Phase 1: Foundation + IR Schema | Pending |
-| API-09 | Phase 1: Foundation + IR Schema | Pending |
-| API-10 | Phase 1: Foundation + IR Schema | Pending |
-| API-11 | Phase 1: Foundation + IR Schema | Pending |
+| API-08 | Phase 1: Foundation + IR Schema | Complete |
+| API-09 | Phase 1: Foundation + IR Schema | Complete |
+| API-10 | Phase 1: Foundation + IR Schema | Complete |
+| API-11 | Phase 1: Foundation + IR Schema | Complete |
 | API-12 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | API-13 | Phase 4: Content Generation Pipeline | Pending |
-| API-14 | Phase 1: Foundation + IR Schema | Pending |
+| API-14 | Phase 1: Foundation + IR Schema | Complete |
 | PPTX-01 | Phase 3: PPTX Rendering | Pending |
 | PPTX-02 | Phase 3: PPTX Rendering | Pending |
 | PPTX-03 | Phase 3: PPTX Rendering | Pending |
@@ -291,11 +291,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BILL-04 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | BILL-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | BILL-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| WORKER-01 | Phase 1: Foundation + IR Schema | Pending |
-| WORKER-02 | Phase 1: Foundation + IR Schema | Pending |
-| WORKER-03 | Phase 1: Foundation + IR Schema | Pending |
-| WORKER-04 | Phase 1: Foundation + IR Schema | Pending |
-| WORKER-05 | Phase 1: Foundation + IR Schema | Pending |
+| WORKER-01 | Phase 1: Foundation + IR Schema | Complete |
+| WORKER-02 | Phase 1: Foundation + IR Schema | Complete |
+| WORKER-03 | Phase 1: Foundation + IR Schema | Complete |
+| WORKER-04 | Phase 1: Foundation + IR Schema | Complete |
+| WORKER-05 | Phase 1: Foundation + IR Schema | Complete |
 | INFRA-01 | Phase 1: Foundation + IR Schema | Complete |
 | INFRA-02 | Phase 1: Foundation + IR Schema | Complete |
 | INFRA-03 | Phase 1: Foundation + IR Schema | Complete |

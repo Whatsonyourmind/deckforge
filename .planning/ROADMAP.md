@@ -12,7 +12,7 @@ DeckForge delivers an API-first presentation generation platform in eight phases
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation + IR Schema** - Project infrastructure, IR Pydantic models, API skeleton, auth, async workers
+- [x] **Phase 1: Foundation + IR Schema** - Project infrastructure, IR Pydantic models, API skeleton, auth, async workers (completed 2026-03-29)
 - [ ] **Phase 2: Layout Engine + Theme System** - Constraint-based layout solver, 15 curated themes, brand kit overlay
 - [ ] **Phase 3: PPTX Rendering** - python-pptx renderer for all 23 universal slide types with sync render endpoint
 - [ ] **Phase 4: Content Generation Pipeline** - NL-to-IR via model-agnostic LLM orchestration with async generation
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Docker Compose brings up the full local stack (API + Redis + PostgreSQL + MinIO + workers) with a single command
   4. An async job submitted to the worker queue is picked up, executed, and its completion status is retrievable via the API
   5. The OpenAPI spec is auto-generated and accessible at /docs with all IR models documented
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 
 Plans:
 - [ ] 01-01-PLAN.md -- Complete IR schema: 32 slide types, element types, chart subtypes, metadata, validation (Wave 1)
@@ -163,7 +163,7 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation + IR Schema | 1/3 | In Progress | - |
+| 1. Foundation + IR Schema | 3/3 | Complete   | 2026-03-29 |
 | 2. Layout Engine + Theme System | 0/3 | Not started | - |
 | 3. PPTX Rendering | 0/3 | Not started | - |
 | 4. Content Generation Pipeline | 0/2 | Not started | - |
