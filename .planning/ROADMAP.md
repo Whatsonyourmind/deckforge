@@ -133,12 +133,12 @@ Plans:
   3. A user can append, replace, reorder, and retheme slides on an existing deck through the API and receive the modified deck
   4. POST /v1/estimate returns accurate credit cost for a given IR, and webhook callbacks fire on async job completion
   5. Batch render produces multiple decks (or theme variations of one deck) in a single request
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
-- [ ] 07-03: TBD
+- [ ] 07-01-PLAN.md -- 5-pass QA pipeline: structural, text, visual, data, brand checkers + auto-fix engine + executive readiness scorer (Wave 1)
+- [ ] 07-02-PLAN.md -- Deck operations: CRUD endpoints, append/replace/reorder/retheme mutations, cost estimation endpoint (Wave 1)
+- [ ] 07-03-PLAN.md -- Batch render/variations with ARQ fan-out, webhook registration with HMAC signing, wire QA into render pipeline (Wave 2)
 
 ### Phase 8: TypeScript SDK + Billing + Launch
 **Goal**: Developers can integrate DeckForge via a typed npm package, usage is metered and billed, and the API is publicly discoverable
@@ -150,12 +150,12 @@ Plans:
   3. A new user signs up on Starter tier (free, 50 credits), generates decks, sees credit balance decrease, and hits the limit -- upgrade to Pro unlocks 500 credits with Stripe payment
   4. GET /v1/themes, /v1/slide-types, and /v1/capabilities return complete self-describing API metadata that an agent can use to discover what DeckForge can do
   5. Credit costs are estimated before generation (pre-flight reservation) and actual charges reflect surcharges for NL, finance, and Google Slides output
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
-- [ ] 08-03: TBD
+- [ ] 08-01-PLAN.md -- TypeScript SDK: project scaffold, OpenAPI type generation, DeckForge client, fluent builder API, SSE streaming helper (Wave 1)
+- [ ] 08-02-PLAN.md -- Stripe billing: tier definitions, credit reservation/deduction/release, Stripe subscriptions + metering, usage dashboard, credit middleware (Wave 1)
+- [ ] 08-03-PLAN.md -- Discovery endpoints (/v1/themes, /v1/slide-types, /v1/capabilities), slide type registry, production Dockerfile, Fly.io deployment config (Wave 2)
 
 ## Progress
 
