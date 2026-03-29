@@ -1,0 +1,304 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Digital Transformation Strategy: Meridian Retail Group",
+    "author": "Strategy & Corporate Finance Practice",
+    "created_at": "2026-03-26T10:00:00Z",
+    "description": "McKinsey-style corporate strategy assessment for Meridian Retail Group's $1.4B digital transformation initiative"
+  },
+  "theme": "corporate-blue",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Digital Transformation Strategy",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Meridian Retail Group | Board Strategy Review | March 2026",
+          "role": "subtitle"
+        }
+      ],
+      "speaker_notes": "Good morning. Today we present our findings from a 12-week diagnostic of Meridian's digital readiness and a recommended transformation roadmap that captures $340M in incremental EBITDA by 2029."
+    },
+    {
+      "slide_type": "executive_summary",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Executive Summary",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Meridian Retail Group faces an inflection point: digital-native competitors have captured 23% of addressable market share in 3 years. Our diagnostic reveals $340M in untapped EBITDA through three pillars: (1) unified omnichannel platform replacing 14 legacy systems, (2) AI-driven demand forecasting reducing inventory waste by 31%, and (3) personalization engine lifting conversion rates from 2.1% to 4.8%. Total investment: $1.4B over 3 years. Payback: 2.7 years. Risk-adjusted IRR: 28%.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The key insight from our diagnostic: Meridian is not behind in digital -- it is fragmented. The 14 disconnected systems create more data loss than any competitor advantage. Unifying them unlocks the $340M."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Market Analysis: The Digital Imperative",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "E-commerce penetration in retail reached 38% in 2025, up from 21% in 2020 -- Meridian's digital share is 14%",
+            "Digital-native competitors (Shein, Temu, Amazon) grew 3.2x faster than traditional retail in FY2025",
+            "Consumer expectation gap: 78% of Meridian's target demographic expects same-day delivery; Meridian offers 3-5 day",
+            "Store traffic declined 12% YoY but basket size increased 8% -- physical retail is shifting to experiential",
+            "McKinsey Digital Quotient assessment scores Meridian at 34/100 vs. industry median of 52/100",
+            "Top-quartile digital retailers achieve 2.4x higher EBITDA margins than bottom-quartile peers"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The data is unambiguous. Meridian's digital gap is not a future risk -- it is a current P&L drag. The 24-point DQ gap translates directly to the margin differential we see in the financials."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Revenue Trends: Digital vs. Traditional Channels",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "bar",
+          "data": {
+            "categories": ["FY2022", "FY2023", "FY2024", "FY2025", "FY2026E"],
+            "series": [
+              {
+                "name": "Traditional Retail",
+                "values": [8200, 7800, 7400, 6900, 6500]
+              },
+              {
+                "name": "E-Commerce",
+                "values": [1100, 1450, 1900, 2400, 3100]
+              },
+              {
+                "name": "Omnichannel (BOPIS/Ship-from-Store)",
+                "values": [300, 520, 780, 1050, 1400]
+              }
+            ]
+          },
+          "config": {
+            "stacked": false,
+            "show_values": true,
+            "y_axis_label": "Revenue ($M)",
+            "number_format": "$#,##0"
+          }
+        }
+      ],
+      "speaker_notes": "Traditional revenue is declining at 5-6% annually while digital channels grow 25-30%. The crossover point -- where digital exceeds traditional -- arrives in FY2029 at current trajectories. The question is whether Meridian leads that transition or is disrupted by it."
+    },
+    {
+      "slide_type": "comparison",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Digital vs. Traditional Operating Model",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Traditional Model (Current State)",
+          "role": "left_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "14 disconnected systems across channels",
+            "48-hour inventory visibility lag",
+            "2.1% online conversion rate",
+            "3-5 day delivery standard",
+            "Manual markdown optimization",
+            "Siloed customer data (no single view)",
+            "12-week product launch cycle",
+            "EBITDA margin: 8.2%"
+          ],
+          "role": "left_body"
+        },
+        {
+          "type": "text",
+          "content": "Digital-First Model (Target State)",
+          "role": "right_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Unified commerce platform (single codebase)",
+            "Real-time inventory across all nodes",
+            "4.8% projected conversion rate (+129%)",
+            "Same-day / next-day delivery (85% coverage)",
+            "AI-driven dynamic pricing (3.2% margin lift)",
+            "360-degree customer profile with CDP",
+            "4-week product launch cycle (3x faster)",
+            "Target EBITDA margin: 12.6% (+440bps)"
+          ],
+          "role": "right_body"
+        }
+      ],
+      "speaker_notes": "Every metric improves under the digital-first model. The 440 basis point margin expansion is the primary financial justification. But the speed advantage -- 4-week vs 12-week launch cycles -- is what creates sustainable competitive advantage."
+    },
+    {
+      "slide_type": "timeline",
+      "elements": [
+        {
+          "type": "text",
+          "content": "3-Year Digital Transformation Roadmap",
+          "role": "title"
+        },
+        {
+          "type": "timeline",
+          "items": [
+            {
+              "date": "Q2-Q4 2026",
+              "title": "Foundation",
+              "description": "Unified commerce platform selection and integration. CDP deployment. Cloud migration for 6 core systems. Investment: $420M."
+            },
+            {
+              "date": "Q1-Q4 2027",
+              "title": "Acceleration",
+              "description": "AI demand forecasting rollout (31% waste reduction). Personalization engine launch. Same-day delivery in top 40 markets. Investment: $520M."
+            },
+            {
+              "date": "Q1-Q4 2028",
+              "title": "Scale & Optimize",
+              "description": "Full omnichannel integration. Dynamic pricing across all channels. Autonomous store operations pilot. Investment: $460M."
+            },
+            {
+              "date": "Q1 2029",
+              "title": "Payback",
+              "description": "Cumulative EBITDA uplift exceeds $1.4B investment. Run-rate incremental EBITDA: $340M/year. Digital revenue share: 52%."
+            }
+          ]
+        }
+      ],
+      "speaker_notes": "The 3-year horizon is aggressive but achievable. The Foundation phase is the highest-risk period -- platform selection and legacy decommissioning. We recommend a parallel-run approach rather than big-bang migration."
+    },
+    {
+      "slide_type": "two_column",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Risk Assessment and Mitigations",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Key Risks",
+          "role": "left_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Platform migration disrupts holiday season (probability: 25%, impact: $180M revenue at risk)",
+            "Talent gap: need 340 digital roles, market is tight (probability: 60%, impact: 6-month delay)",
+            "Change resistance from 12,000 store associates (probability: 70%, impact: adoption lag)",
+            "Vendor lock-in with unified platform (probability: 40%, impact: future flexibility)",
+            "Competitor acceleration during transition (probability: 50%, impact: market share)"
+          ],
+          "role": "left_body"
+        },
+        {
+          "type": "text",
+          "content": "Mitigations",
+          "role": "right_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Freeze major migrations during Q4; parallel-run approach with instant rollback capability",
+            "Acqui-hire 2 digital agencies ($40M); partner with Infosys for 200 managed resources",
+            "Invest $28M in change management; gamified training program; 500 digital champions",
+            "Microservices architecture with abstraction layers; negotiate exit clauses in vendor contracts",
+            "War room with weekly competitive intelligence; pre-build 6-month feature pipeline buffer"
+          ],
+          "role": "right_body"
+        }
+      ],
+      "speaker_notes": "The talent risk is the one I lose sleep over. Every Fortune 500 is competing for the same digital talent. The acqui-hire strategy is unconventional but gives us 150 experienced digital builders on day one."
+    },
+    {
+      "slide_type": "table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Transformation KPI Dashboard",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["KPI", "Current (FY2025)", "Year 1 Target", "Year 2 Target", "Year 3 Target", "Benchmark (Top Quartile)"],
+            "rows": [
+              ["Digital Revenue Share", "14%", "22%", "35%", "52%", "48%"],
+              ["Online Conversion Rate", "2.1%", "2.8%", "3.6%", "4.8%", "4.5%"],
+              ["Inventory Turns", "4.2x", "5.1x", "6.3x", "7.8x", "7.2x"],
+              ["Customer Acquisition Cost", "$84", "$72", "$58", "$45", "$42"],
+              ["NPS Score", "32", "41", "52", "65", "62"],
+              ["EBITDA Margin", "8.2%", "9.1%", "10.8%", "12.6%", "12.0%"],
+              ["Digital Quotient Score", "34", "48", "62", "75", "72"],
+              ["Time-to-Market (weeks)", "12", "8", "6", "4", "5"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "striped_rows": true,
+            "highlight_column": 4
+          }
+        }
+      ],
+      "speaker_notes": "Note that our Year 3 targets exceed top-quartile benchmarks on 5 of 8 KPIs. This is intentional -- catching up to the median is insufficient. Meridian needs to leapfrog to earn back market share."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Strategic Recommendations",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "APPROVE the $1.4B, 3-year digital transformation program with phased funding gates at each 12-month milestone",
+            "APPOINT a Chief Digital Officer with P&L authority reporting directly to the CEO -- not buried under CTO or CMO",
+            "EXECUTE the acqui-hire of two digital agencies (Pixelshift and DataCraft) for $40M combined to close the talent gap immediately",
+            "RESTRUCTURE the technology organization from project-based to product-based teams aligned with customer journeys",
+            "ESTABLISH a Digital Transformation Office (DTO) with quarterly board reporting cadence and kill criteria at each gate",
+            "PARTNER with a strategic systems integrator (recommended: Infosys) for 200 managed resources over 18 months"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "Six clear actions requiring board approval today. The CDO appointment is the single most important decision -- without executive ownership at the right level, transformation programs fail 70% of the time."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Digital Transformation: A $340M Annual Opportunity",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "The market will not wait. Every quarter of delay costs Meridian approximately $28M in unrealized EBITDA and 0.8 points of market share. We recommend immediate approval of Phase 1 funding ($420M) with a Q2 2026 start date.\n\nStrategy & Corporate Finance Practice | Confidential",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "Thank you. The urgency is real but the opportunity is larger than the risk. We are happy to take questions on any aspect of the analysis, timeline, or financial model."
+    }
+  ]
+}

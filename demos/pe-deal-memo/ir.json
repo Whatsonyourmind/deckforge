@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Project Nimbus: CloudMetrics Acquisition",
+    "author": "Apex Capital Partners | Deal Team",
+    "created_at": "2026-03-26T10:00:00Z",
+    "description": "Investment Committee memorandum for the proposed acquisition of CloudMetrics Inc., a $200M ARR vertical SaaS platform serving mid-market healthcare providers"
+  },
+  "theme": "finance-pro",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Project Nimbus: CloudMetrics Acquisition",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Investment Committee Memorandum | Apex Capital Partners | Fund VII | Confidential",
+          "role": "subtitle"
+        }
+      ],
+      "speaker_notes": "Presenting Project Nimbus for IC approval. CloudMetrics is a $200M ARR vertical SaaS platform serving 1,200 mid-market healthcare providers. We are seeking approval for a $1.8B acquisition at 9.0x NTM revenue."
+    },
+    {
+      "slide_type": "deal_overview",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Deal Overview",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Parameter", "Detail"],
+            "rows": [
+              ["Target", "CloudMetrics Inc."],
+              ["Sector", "Healthcare IT / Vertical SaaS"],
+              ["LTM Revenue", "$192M (NTM: $218M)"],
+              ["LTM EBITDA", "$48M (25% margin)"],
+              ["Revenue Growth", "32% YoY (NTM: 28%)"],
+              ["Enterprise Value", "$1,800M"],
+              ["EV/NTM Revenue", "8.3x"],
+              ["EV/LTM EBITDA", "37.5x"],
+              ["Net Revenue Retention", "128%"],
+              ["Gross Margin", "82%"],
+              ["Customers", "1,200 mid-market healthcare providers"],
+              ["Source", "Proprietary (founder relationship since 2023)"],
+              ["Seller Motivation", "Founder liquidity + growth capital for expansion into payer vertical"],
+              ["Expected Close", "Q3 2026"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "highlight_column": 1
+          }
+        }
+      ],
+      "speaker_notes": "Key highlights: 32% growth, 128% NRR, 82% gross margins. This is a Rule of 57 business. The proprietary sourcing gives us a 4-week exclusivity window before the company runs a broader process."
+    },
+    {
+      "slide_type": "investment_thesis",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Investment Thesis",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "MARKET: Healthcare IT TAM expanding from $48B (2025) to $92B (2030) driven by regulatory mandates (TEFCA, CMS interoperability rules) and value-based care transition",
+            "MOAT: CloudMetrics has 78% market share in mid-market RCM analytics -- switching costs are 18+ months of implementation, creating near-zero churn (1.2% gross revenue churn)",
+            "EXPANSION: Proven land-and-expand motion: average contract value grew from $82K to $165K over 3 years via module upsells (clinical analytics, population health, payer contracting)",
+            "MARGIN EXPANSION: Path from 25% to 38% EBITDA margin via (a) reducing professional services from 18% to 8% of revenue through self-service onboarding, (b) migrating 40% of customers from on-prem to cloud (2.3x margin uplift), and (c) offshore R&D center (save $12M/yr)",
+            "EXIT: Strategic acquirers (Epic, Oracle Health, Veeva) actively consolidating healthcare IT at 10-14x revenue; financial sponsor exits at 8-10x"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The thesis rests on three pillars: regulatory tailwinds making healthcare IT non-discretionary, a dominant market position with extreme switching costs, and a clear operational playbook to expand margins 1,300 basis points. The payer vertical expansion is pure upside -- not modeled in the base case."
+    },
+    {
+      "slide_type": "comp_table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Comparable Company Analysis",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Company", "EV ($M)", "Revenue ($M)", "EV/Revenue", "EV/EBITDA", "Revenue Growth", "EBITDA Margin", "NRR", "Gross Margin"],
+            "rows": [
+              ["Veeva Systems", "42,800", "2,780", "15.4x", "52.0x", "18%", "30%", "122%", "84%"],
+              ["Health Catalyst", "1,280", "312", "4.1x", "NM", "14%", "-8%", "108%", "52%"],
+              ["Phreesia", "3,100", "456", "6.8x", "45.3x", "22%", "15%", "115%", "68%"],
+              ["Netsmart (private)", "2,800", "620", "4.5x", "22.4x", "12%", "20%", "105%", "65%"],
+              ["Inovalon", "7,200", "890", "8.1x", "28.8x", "16%", "28%", "118%", "78%"],
+              ["CloudMetrics (Target)", "1,800", "218", "8.3x", "37.5x", "32%", "25%", "128%", "82%"],
+              ["Median (excl. target)", "-", "-", "6.8x", "28.8x", "16%", "20%", "115%", "68%"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "striped_rows": true,
+            "conditional_formatting": {
+              "highlight_median_row": true,
+              "highlight_target_row": true
+            }
+          }
+        }
+      ],
+      "speaker_notes": "CloudMetrics trades at a premium to the median -- 8.3x vs 6.8x revenue -- but the premium is justified by best-in-class growth (32% vs 16% median), NRR (128% vs 115%), and gross margins (82% vs 68%). On a growth-adjusted basis (EV/Revenue/Growth), CloudMetrics is actually cheaper than Veeva and Phreesia."
+    },
+    {
+      "slide_type": "dcf_summary",
+      "elements": [
+        {
+          "type": "text",
+          "content": "DCF Valuation & Sensitivity Analysis",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Assumption", "Value"],
+            "rows": [
+              ["Revenue CAGR (5yr)", "24%"],
+              ["Terminal Growth Rate", "3.0%"],
+              ["WACC", "11.5%"],
+              ["Terminal EBITDA Margin", "38%"],
+              ["Exit Multiple", "12.0x EV/EBITDA"],
+              ["Implied EV", "$2,140M"],
+              ["Implied EV/NTM Revenue", "9.8x"]
+            ]
+          },
+          "config": {
+            "header_style": "dark"
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["WACC \\ Exit Multiple", "10.0x", "11.0x", "12.0x", "13.0x", "14.0x"],
+            "rows": [
+              ["10.0%", "$1,980M", "$2,180M", "$2,380M", "$2,580M", "$2,780M"],
+              ["10.5%", "$1,890M", "$2,080M", "$2,270M", "$2,460M", "$2,650M"],
+              ["11.0%", "$1,810M", "$1,990M", "$2,170M", "$2,350M", "$2,530M"],
+              ["11.5%", "$1,730M", "$1,900M", "$2,070M", "$2,250M", "$2,420M"],
+              ["12.0%", "$1,660M", "$1,820M", "$1,980M", "$2,150M", "$2,310M"],
+              ["12.5%", "$1,590M", "$1,750M", "$1,900M", "$2,060M", "$2,210M"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "highlight_cell": {"row": 3, "col": 2},
+            "number_format": "$#,##0"
+          }
+        }
+      ],
+      "speaker_notes": "The DCF yields an implied EV of $2.14B -- 19% above our proposed acquisition price of $1.8B, providing a meaningful margin of safety. The sensitivity table shows that even at the harsh end (12.5% WACC, 10.0x exit), the implied value of $1.59B still represents reasonable downside at only 12% below our entry price."
+    },
+    {
+      "slide_type": "returns_analysis",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Returns Analysis: IRR & MOIC Scenarios",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Scenario", "Revenue Exit ($M)", "EBITDA Margin", "Exit Multiple", "Exit EV ($M)", "Equity Value ($M)", "MOIC", "Gross IRR"],
+            "rows": [
+              ["Bear Case", "480", "30%", "8.0x", "1,152", "552", "1.5x", "12%"],
+              ["Base Case", "620", "35%", "10.0x", "2,170", "1,570", "3.1x", "28%"],
+              ["Bull Case", "780", "38%", "12.0x", "3,557", "2,957", "5.2x", "42%"],
+              ["Home Run (Payer vertical)", "950", "40%", "14.0x", "5,320", "4,720", "8.4x", "56%"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "highlight_row": 1,
+            "conditional_formatting": {
+              "irr_threshold": 20
+            }
+          }
+        },
+        {
+          "type": "text",
+          "content": "Base case assumes 5-year hold, $600M equity check (33% equity / 67% debt). Bear case assumes growth deceleration to 15% and margin compression. Bull case assumes successful payer vertical launch adding $160M ARR by Year 4.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The base case delivers a 3.1x MOIC and 28% gross IRR -- well above our 2.5x / 20% Fund VII hurdle. Even the bear case returns 1.5x / 12%, protecting our capital. The home run scenario -- cracking the payer vertical -- is a real possibility given CloudMetrics' existing data assets and two signed LOIs from major payers."
+    },
+    {
+      "slide_type": "capital_structure",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Proposed Capital Structure",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Source", "Amount ($M)", "% of Total", "Rate / Terms", "Multiple"],
+            "rows": [
+              ["Senior Secured Term Loan B", "720", "40%", "SOFR + 425bps, 1% floor", "3.6x LTM EBITDA"],
+              ["Second Lien Term Loan", "360", "20%", "SOFR + 750bps, 1% floor", "1.8x LTM EBITDA"],
+              ["Mezzanine / PIK Notes", "120", "7%", "12% cash + 3% PIK", "0.6x LTM EBITDA"],
+              ["Sponsor Equity", "540", "30%", "-", "-"],
+              ["Management Rollover", "60", "3%", "-", "-"],
+              ["Total Sources", "1,800", "100%", "-", "6.0x Total Leverage"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "highlight_row": 5,
+            "striped_rows": true
+          }
+        }
+      ],
+      "speaker_notes": "Total leverage of 6.0x LTM EBITDA is within market norms for a high-growth SaaS acquisition. The 82% gross margin and 128% NRR provide strong debt service coverage. We expect to delever to 3.5x by Year 3 through EBITDA growth alone -- no mandatory prepayments required."
+    },
+    {
+      "slide_type": "risk_matrix",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Risk Assessment Matrix",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Risk Factor", "Probability", "Impact", "Score", "Mitigation"],
+            "rows": [
+              ["Customer concentration (top 10 = 28% ARR)", "Medium", "High", "12", "Diversification KPI in management incentive plan; no single customer >4%"],
+              ["Key person risk (CTO/founder)", "Medium", "High", "12", "24-month retention package + equity rollover; CTO succession plan required pre-close"],
+              ["Regulatory change (CMS reimbursement cuts)", "Low", "Very High", "10", "Product pivot to cost reduction (defensive) from revenue optimization (offensive)"],
+              ["Cloud migration execution risk", "High", "Medium", "12", "Phased migration with rollback; hire VP Cloud Engineering pre-close"],
+              ["Competition from Epic/Oracle bundling", "Medium", "Medium", "9", "Deepen integrations; best-of-breed positioning; M&A for adjacencies"],
+              ["Macro / recession reduces health IT spend", "Low", "Medium", "6", "Healthcare IT is 80% non-discretionary regulatory spend; counter-cyclical"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "striped_rows": true
+          }
+        }
+      ],
+      "speaker_notes": "Three risks score 12 -- the highest tier. Customer concentration is real but improving: top 10 was 38% two years ago, now 28%. The CTO retention package and cloud migration VP are must-haves before close -- both are incorporated in our transaction cost estimates."
+    },
+    {
+      "slide_type": "market_landscape",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Healthcare IT Market Landscape",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Healthcare IT spending is projected to reach $92B by 2030 (12% CAGR from $48B in 2025). Three secular tailwinds: (1) TEFCA mandate requiring nationwide health data interoperability by 2027, (2) CMS value-based care reimbursement covering 60% of Medicare payments by 2028, (3) AI adoption in clinical workflows reaching 45% penetration by 2029. CloudMetrics is positioned at the intersection of all three trends -- its RCM analytics platform is the data foundation required for each regulatory compliance initiative.",
+          "role": "body"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Epic (dominant in large health systems, weak in mid-market -- CloudMetrics' sweet spot)",
+            "Oracle Health / Cerner (enterprise EHR, struggling with integration post-acquisition)",
+            "Veeva Systems (life sciences vertical SaaS -- potential acquirer at 15x revenue)",
+            "Health Catalyst (direct competitor, 4.1x revenue -- growth decelerating)",
+            "Phreesia (patient intake adjacent -- potential M&A target for CloudMetrics)"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The competitive landscape actually works in our favor. Epic dominates large health systems but has minimal mid-market presence. Oracle is distracted by integration issues. Health Catalyst is the closest comp but growing at half CloudMetrics' rate. The real strategic question is whether we can position CloudMetrics as the acquisition target for Epic or Veeva at a premium exit."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "IC Recommendation: Approve Project Nimbus",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Requesting approval for a $600M equity commitment from Fund VII to acquire CloudMetrics at $1.8B enterprise value (8.3x NTM revenue). Base case: 3.1x MOIC / 28% IRR over 5 years. Exclusivity expires April 15, 2026.\n\nNext Steps: (1) Approve equity commitment, (2) Engage Quality of Earnings firm, (3) Finalize debt commitment letters, (4) Execute management presentations.\n\nApex Capital Partners | Fund VII | Strictly Confidential",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "We need IC approval today to maintain our exclusivity window. The founder has indicated willingness to roll 10% equity and stay as CTO for 3 years. Our conviction level is high -- this is the best-positioned asset we have seen in healthcare IT in Fund VII's investment period."
+    }
+  ]
+}

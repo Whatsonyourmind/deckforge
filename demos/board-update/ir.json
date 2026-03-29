@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Q4 2026 Board Update: DataPulse",
+    "author": "DataPulse Inc. | Office of the CEO",
+    "created_at": "2026-03-26T10:00:00Z",
+    "description": "Quarterly board update for DataPulse, a B2B SaaS company with $50M ARR, covering performance metrics, product updates, and strategic priorities"
+  },
+  "theme": "executive-dark",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "DataPulse | Q4 2026 Board Update",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Prepared for the Board of Directors | January 2027 | Confidential",
+          "role": "subtitle"
+        }
+      ],
+      "speaker_notes": "Welcome everyone. DataPulse closed Q4 at $50.2M ARR, up 34% year-over-year, slightly ahead of our $49M plan. I will walk through the financial performance, product milestones, pipeline health, and our priorities for Q1."
+    },
+    {
+      "slide_type": "executive_summary",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Q4 Executive Summary",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "DataPulse delivered a strong Q4: $50.2M ARR (+34% YoY, +$4.1M net new ARR in Q4), with net revenue retention climbing to 124% from 118% in Q3. Gross margin improved 200bps to 81% through infrastructure optimization. We closed 3 enterprise logos ($500K+ ACV) including Johnson Controls and Siemens Digital. Product highlights: shipped AI Insights module (38% adoption in first 6 weeks) and achieved SOC 2 Type II certification. Cash position: $28M with 22 months of runway at current burn. Key concern: sales cycle lengthening in mid-market segment (42 days to 58 days) -- addressing with new sales enablement program in Q1.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The headline is that Q4 was our best quarter in company history by every metric except mid-market sales velocity. The enterprise motion is working -- 3 logos over $500K ACV -- but mid-market cycles are stretching. I'll dive deeper into that in the pipeline section."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "ARR Growth: Quarterly Progression",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "bar",
+          "data": {
+            "categories": ["Q1'25", "Q2'25", "Q3'25", "Q4'25", "Q1'26", "Q2'26", "Q3'26", "Q4'26"],
+            "series": [
+              {
+                "name": "ARR ($M)",
+                "values": [28.4, 31.2, 34.8, 37.5, 40.1, 43.6, 46.1, 50.2]
+              },
+              {
+                "name": "Net New ARR ($M)",
+                "values": [2.8, 2.8, 3.6, 2.7, 2.6, 3.5, 2.5, 4.1]
+              }
+            ]
+          },
+          "config": {
+            "stacked": false,
+            "show_values": true,
+            "y_axis_label": "ARR ($M)",
+            "number_format": "$#,##0.0M"
+          }
+        }
+      ],
+      "speaker_notes": "The trend line shows steady compounding with Q4 being an inflection point. The $4.1M net new ARR in Q4 was our highest quarterly add ever, driven by the three enterprise logos and strong expansion within existing accounts. Note the seasonality -- Q2 and Q4 tend to be our strongest quarters due to budget cycles."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Net Revenue Retention: Waterfall Analysis",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "waterfall",
+          "data": {
+            "categories": ["Beginning ARR", "Expansion", "New Logos", "Contraction", "Churn", "Ending ARR"],
+            "series": [
+              {
+                "name": "ARR Movement ($M)",
+                "values": [46.1, 5.8, 2.4, -1.9, -2.2, 50.2]
+              }
+            ]
+          },
+          "config": {
+            "show_values": true,
+            "positive_color": "#22c55e",
+            "negative_color": "#ef4444",
+            "total_color": "#3b82f6",
+            "number_format": "$#,##0.0M"
+          }
+        }
+      ],
+      "speaker_notes": "The waterfall tells an important story. Expansion ($5.8M) is now our largest growth driver -- larger than new logos ($2.4M). This is the hallmark of a healthy SaaS business. Gross churn of $2.2M (4.8% annualized) is within our 5% target. Contraction of $1.9M is concerning -- driven primarily by 4 mid-market customers downsizing headcount after layoffs."
+    },
+    {
+      "slide_type": "table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Key Metrics Dashboard",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Metric", "Q3 2026", "Q4 2026", "QoQ Change", "FY 2026 Target", "Status"],
+            "rows": [
+              ["ARR", "$46.1M", "$50.2M", "+$4.1M (+9%)", "$49.0M", "BEAT"],
+              ["Net Revenue Retention", "118%", "124%", "+600bps", "120%", "BEAT"],
+              ["Gross Margin", "79%", "81%", "+200bps", "80%", "BEAT"],
+              ["CAC Payback (months)", "16", "14", "-2 months", "15", "BEAT"],
+              ["LTV/CAC", "4.8x", "5.2x", "+0.4x", "4.5x", "BEAT"],
+              ["Magic Number", "0.82", "0.91", "+0.09", "0.80", "BEAT"],
+              ["Gross Churn (annual)", "5.2%", "4.8%", "-40bps", "5.0%", "BEAT"],
+              ["Avg ACV (new logos)", "$68K", "$84K", "+$16K (+24%)", "$72K", "BEAT"],
+              ["Sales Cycle (days)", "42", "58", "+16 days", "45", "MISS"],
+              ["Cash ($M)", "$32M", "$28M", "-$4M", "$25M", "ON TRACK"],
+              ["Headcount", "142", "158", "+16", "155", "ON TRACK"],
+              ["Burn Multiple", "1.4x", "1.1x", "-0.3x", "1.5x", "BEAT"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "striped_rows": true,
+            "conditional_formatting": {
+              "status_colors": {
+                "BEAT": "#22c55e",
+                "MISS": "#ef4444",
+                "ON TRACK": "#f59e0b"
+              }
+            }
+          }
+        }
+      ],
+      "speaker_notes": "11 of 12 metrics are at or above target. The one miss -- sales cycle lengthening from 42 to 58 days -- is concentrated in mid-market. Enterprise cycles actually shortened. This is our top operational priority for Q1. The burn multiple improvement to 1.1x puts us in best-in-class territory for our stage."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Product Updates: Q4 Releases",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "AI Insights Module (shipped Oct 15): Automated anomaly detection and root cause analysis across all customer data. 38% adoption in first 6 weeks. Driving $1.2M in pipeline from existing customers upgrading.",
+            "SOC 2 Type II Certification (completed Nov 30): Required for enterprise deals. Immediately unblocked 4 pipeline opportunities worth $2.1M ACV combined. Annual audit now scheduled for Q3.",
+            "API v3 Launch (shipped Dec 1): GraphQL-based API with real-time webhooks. 62 customers migrated from v2. Third-party integrations now possible without custom engineering work.",
+            "Performance Optimization: Dashboard load time reduced from 3.2s to 0.8s (75% improvement). Infrastructure costs reduced 18% through migration to ARM-based compute.",
+            "Upcoming Q1: Self-serve onboarding (reduce time-to-value from 14 days to 2 days), HIPAA compliance module, native Salesforce integration"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The AI Insights module is the biggest product bet we have made. 38% adoption in 6 weeks tells us the market wants this. More importantly, it is driving expansion revenue -- customers are upgrading their plans to get AI Insights access. The SOC 2 certification was 8 months of work but it immediately opened enterprise doors that were previously closed."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Pipeline Health: Sales Funnel Analysis",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "funnel",
+          "data": {
+            "categories": ["SQLs Generated", "Discovery Calls", "Demos Completed", "Proposals Sent", "Negotiations", "Closed Won"],
+            "series": [
+              {
+                "name": "Q4 Pipeline",
+                "values": [482, 312, 186, 98, 52, 28]
+              }
+            ]
+          },
+          "config": {
+            "show_values": true,
+            "show_conversion_rates": true,
+            "number_format": "#,##0"
+          }
+        }
+      ],
+      "speaker_notes": "The funnel is healthy at the top -- 482 SQLs is a record quarter, up 28% from Q3. But the conversion from demo to proposal dropped from 62% to 53%. Exit interviews show the #1 objection is 'we need to see ROI proof with our own data before committing.' We are launching a free POC program in Q1 to address this directly."
+    },
+    {
+      "slide_type": "two_column",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Strategic Assessment: Risks & Opportunities",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Risks",
+          "role": "left_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Mid-market sales cycle elongation (42 to 58 days) threatens Q1 pipeline conversion -- could impact $3.2M in expected bookings",
+            "Two competitors (MetricFlow, InsightHub) raised $50M+ rounds in Q4 -- expect increased marketing spend and pricing pressure",
+            "Engineering team turnover: lost 3 senior engineers (2 to FAANG, 1 to startup) -- backfill timeline is 8 weeks",
+            "Customer concentration: top 5 accounts = 18% of ARR (was 14% in Q1) -- enterprise success is double-edged"
+          ],
+          "role": "left_body"
+        },
+        {
+          "type": "text",
+          "content": "Opportunities",
+          "role": "right_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "AI Insights upsell pipeline: $4.2M in qualified expansion opportunities from existing customers upgrading to AI tier",
+            "HIPAA module opens healthcare vertical ($8B TAM) -- 12 healthcare companies in pipeline contingent on HIPAA certification (Q1 target)",
+            "Partnership with Snowflake: Joint go-to-market agreement signed, launching co-sell motion in February targeting Snowflake's 9,400 customers",
+            "International expansion: 8 inbound enterprise inquiries from UK/EU -- zero sales effort, pure organic demand"
+          ],
+          "role": "right_body"
+        }
+      ],
+      "speaker_notes": "I want to be transparent about the risks. The sales cycle issue is the most urgent -- if we don't fix it in Q1, we miss our H1 plan. The engineering turnover is manageable but painful. On the opportunity side, the AI Insights expansion and Snowflake partnership together represent more upside than our entire Q1 new logo target."
+    },
+    {
+      "slide_type": "timeline",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Q1 2027 Priorities",
+          "role": "title"
+        },
+        {
+          "type": "timeline",
+          "items": [
+            {
+              "date": "January",
+              "title": "Sales Velocity Program",
+              "description": "Launch free 14-day POC program to address demo-to-proposal conversion drop. Implement new sales enablement content library. Target: reduce mid-market cycle to 45 days."
+            },
+            {
+              "date": "February",
+              "title": "Snowflake Co-Sell Launch",
+              "description": "Go live on Snowflake marketplace listing. Joint webinar (target: 500 registrants). 3 co-sell AEs embedded with Snowflake team."
+            },
+            {
+              "date": "March",
+              "title": "HIPAA & Healthcare Push",
+              "description": "HIPAA compliance certification complete. Launch healthcare vertical marketing campaign. Activate 12 pipeline opportunities ($3.8M ACV). Ship self-serve onboarding."
+            },
+            {
+              "date": "End of Q1",
+              "title": "Targets",
+              "description": "$56M ARR (+$5.8M net new). 180 customers (+22). Gross margin 82%. Series C readiness assessment with board."
+            }
+          ]
+        }
+      ],
+      "speaker_notes": "Three bets for Q1: fix mid-market velocity, activate the Snowflake partnership, and open the healthcare vertical. Any one of these alone would make Q1 a success. All three together put us on the path to $75M ARR by year-end and a strong Series C position."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "DataPulse: Building the Analytics Platform for Modern Business",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "$50.2M ARR | 34% YoY Growth | 124% NRR | 81% Gross Margin | 22 Months Runway\n\nQ1 Target: $56M ARR | Series C readiness by Q3 2027\n\nBoard Actions Requested:\n1. Approve Q1 2027 operating plan and $4.2M incremental sales hiring budget\n2. Approve free POC program (estimated $380K quarterly cost in cloud infrastructure)\n3. Approve Series C banker selection process (kickoff March 2027)\n\nConfidential | DataPulse Inc.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "Three board approvals needed today. The incremental sales hiring is the most time-sensitive -- we need to post those roles this week to have reps ramped by Q2. Thank you all for your continued guidance. Questions?"
+    }
+  ]
+}

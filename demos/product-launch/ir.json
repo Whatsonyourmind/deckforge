@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "AI Copilot Suite: Product Launch",
+    "author": "Nexus Systems | Product Team",
+    "created_at": "2026-03-26T10:00:00Z",
+    "description": "Product launch deck for Nexus Systems' AI Copilot Suite, a new AI features package for enterprise software customers"
+  },
+  "theme": "minimal-light",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Introducing AI Copilot Suite",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Nexus Systems | Enterprise AI That Works on Day One",
+          "role": "subtitle"
+        }
+      ],
+      "speaker_notes": "Good morning. Today we announce AI Copilot Suite -- the most significant product launch in Nexus Systems' history. This is not an AI experiment. It is production-grade AI that works on day one, trained on 8 years of customer workflow data, and it will redefine what our customers expect from enterprise software."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Why Now: The Enterprise AI Inflection",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "92% of enterprise executives say AI is their top technology priority in 2026 (Gartner CIO Survey) -- but only 14% have deployed AI in production workflows",
+            "The gap is not model capability -- it is integration. AI needs context from existing systems, not just prompts.",
+            "Nexus Systems processes 2.8 billion transactions annually across 4,200 enterprise customers -- we have the context layer that standalone AI tools lack",
+            "Customers are spending $340K annually on average with point-solution AI tools that don't connect to their Nexus data -- money leaving our ecosystem",
+            "Competitive pressure: 3 of our top 5 competitors shipped AI features in the last 6 months. We must lead, not follow."
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The timing is driven by customer demand, competitive pressure, and our unique data advantage. No one else has 2.8 billion transactions of real enterprise workflow data. That is our moat. The standalone AI tools our customers are buying do not have this context -- and they never will."
+    },
+    {
+      "slide_type": "comparison",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Before & After: Enterprise Workflow Transformation",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Before: Manual Workflows",
+          "role": "left_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Report generation: 4-6 hours of manual data pulling, formatting, and review",
+            "Anomaly detection: Monthly batch process catches issues 3-4 weeks late",
+            "Customer response: 24-48 hour SLA for complex queries requiring cross-system lookups",
+            "Forecasting: Quarterly process using Excel models with 30%+ error rates",
+            "Onboarding: 14-day average time-to-productivity for new team members",
+            "Data entry: 2.5 hours/day per operations analyst on repetitive tasks"
+          ],
+          "role": "left_body"
+        },
+        {
+          "type": "text",
+          "content": "After: AI Copilot Suite",
+          "role": "right_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Report generation: Natural language request to formatted report in 90 seconds",
+            "Anomaly detection: Real-time alerting with root cause analysis and remediation suggestions",
+            "Customer response: Instant AI-drafted responses with full context from Nexus data",
+            "Forecasting: Continuous ML-based forecasting with 8% error rate and confidence intervals",
+            "Onboarding: AI-guided workflows reduce time-to-productivity to 3 days",
+            "Data entry: 85% automation rate with human-in-the-loop validation for exceptions"
+          ],
+          "role": "right_body"
+        }
+      ],
+      "speaker_notes": "Every improvement here is based on actual beta customer data, not projections. The report generation time reduction from 4 hours to 90 seconds was measured across 12 beta customers. The forecasting improvement from 30% to 8% error rate was validated by our data science team against customer ground truth."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "User Research: What Customers Want from AI",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "bar",
+          "data": {
+            "categories": [
+              "Automated reporting",
+              "Anomaly detection",
+              "Natural language queries",
+              "Predictive analytics",
+              "Document processing",
+              "Workflow automation",
+              "Smart recommendations"
+            ],
+            "series": [
+              {
+                "name": "% of customers requesting (n=840)",
+                "values": [78, 72, 68, 65, 61, 58, 52]
+              }
+            ]
+          },
+          "config": {
+            "horizontal": true,
+            "show_values": true,
+            "y_axis_label": "Feature",
+            "x_axis_label": "% of Customers Requesting",
+            "number_format": "#,##0%",
+            "colors": ["#6366f1"]
+          }
+        }
+      ],
+      "speaker_notes": "We surveyed 840 customers. Every feature in AI Copilot Suite maps directly to these top requests. We are not building AI for the sake of AI -- we are solving the specific problems our customers told us about. The top 3 (reporting, anomaly detection, NL queries) are all in our Day 1 launch."
+    },
+    {
+      "slide_type": "two_column",
+      "elements": [
+        {
+          "type": "text",
+          "content": "AI Copilot Suite: Feature Overview",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Core AI Features (All Tiers)",
+          "role": "left_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "NexusChat: Natural language interface to all Nexus data and actions. Ask questions, run reports, create records -- in plain English.",
+            "Smart Reports: Describe the report you need. AI generates it with charts, tables, and executive summaries. Editable in-place.",
+            "Anomaly Radar: Real-time anomaly detection across all data streams. Root cause analysis. Configurable alert thresholds.",
+            "AutoFill: Intelligent data entry that learns from patterns. 85% automation rate for repetitive tasks."
+          ],
+          "role": "left_body"
+        },
+        {
+          "type": "text",
+          "content": "Advanced AI (Pro + Enterprise)",
+          "role": "right_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Predictive Engine: ML-based forecasting for revenue, churn, capacity, and custom metrics. 8% MAPE vs. 30%+ with spreadsheets.",
+            "Workflow AI: Design automated workflows in natural language. 'When a deal closes over $100K, create an onboarding project and notify CS.'",
+            "Document Intelligence: Upload contracts, invoices, reports. AI extracts, categorizes, and enters data into the right Nexus fields.",
+            "Custom AI Models: Train domain-specific models on your data. SOC 2 compliant. Data never leaves your tenant."
+          ],
+          "role": "right_body"
+        }
+      ],
+      "speaker_notes": "The core features ship with every Nexus license at no additional cost. This is a strategic decision -- we want 100% adoption to build the training data flywheel. Advanced features are where the monetization happens -- Pro and Enterprise tiers. This follows the Figma playbook: make the core product so good that everyone uses it, then charge for power features."
+    },
+    {
+      "slide_type": "timeline",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Launch Timeline: April - September 2026",
+          "role": "title"
+        },
+        {
+          "type": "timeline",
+          "items": [
+            {
+              "date": "April 1",
+              "title": "Private Beta Expansion",
+              "description": "Expand from 50 to 500 beta customers. Focus on enterprise accounts. Dedicated Slack channel for feedback. Weekly iteration cycles."
+            },
+            {
+              "date": "May 15",
+              "title": "Public Launch (Core Features)",
+              "description": "NexusChat, Smart Reports, Anomaly Radar, and AutoFill available to all 4,200 customers. Press event. Product Hunt launch. Analyst briefings."
+            },
+            {
+              "date": "July 1",
+              "title": "Advanced AI GA",
+              "description": "Predictive Engine, Workflow AI, Document Intelligence general availability. New pricing tiers active. Partner API for third-party AI integrations."
+            },
+            {
+              "date": "September 1",
+              "title": "Custom AI Models + Marketplace",
+              "description": "Customer-trainable models. AI Marketplace for community-built models and workflows. Annual conference keynote showcase."
+            }
+          ]
+        }
+      ],
+      "speaker_notes": "Five months from today to full launch. We have deliberately staged this to learn from each phase. Private beta gives us 500 customers worth of feedback before public launch. Core features launch free to maximize adoption. Advanced features monetize once we have proven value."
+    },
+    {
+      "slide_type": "table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Pricing: AI Copilot Suite Tiers",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Feature", "Standard (Included)", "Pro ($49/user/mo)", "Enterprise (Custom)"],
+            "rows": [
+              ["NexusChat (NL queries)", "Included", "Included", "Included"],
+              ["Smart Reports", "5/month", "Unlimited", "Unlimited"],
+              ["Anomaly Radar", "Basic (daily)", "Real-time", "Real-time + custom"],
+              ["AutoFill", "Included", "Included", "Included"],
+              ["Predictive Engine", "-", "3 models", "Unlimited models"],
+              ["Workflow AI", "-", "10 workflows", "Unlimited"],
+              ["Document Intelligence", "-", "100 docs/mo", "Unlimited"],
+              ["Custom AI Models", "-", "-", "Included"],
+              ["AI Marketplace", "-", "-", "Included"],
+              ["Dedicated AI Support", "-", "-", "Included"],
+              ["Data Residency Options", "-", "-", "US/EU/APAC"],
+              ["Expected Revenue Impact", "$0 (strategic)", "$24M ARR (Y1)", "$18M ARR (Y1)"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "striped_rows": true,
+            "highlight_column": 2
+          }
+        }
+      ],
+      "speaker_notes": "The pricing is designed around a land-and-expand motion. Standard is free for everyone -- this drives adoption and creates demand for Pro. We estimate 15% of users upgrade to Pro in Year 1 at $49/user/month. Enterprise is custom-priced for our top 200 accounts. Total Year 1 AI revenue projection: $42M."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Go-To-Market Strategy",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "PRODUCT-LED GROWTH: Core AI features free for all 4,200 customers. In-app upgrade prompts when users hit Pro feature limits. Self-serve checkout.",
+            "ENTERPRISE SALES: Dedicated AI solutions team (8 AEs, 4 SEs) targeting top 200 accounts. Custom ROI calculators. Proof-of-value engagements.",
+            "CONTENT MARKETING: 12-part AI transformation webinar series. Case studies from beta customers. Partnership with Gartner on AI in Enterprise report.",
+            "PARTNER CHANNEL: SI partners (Deloitte, Accenture, Wipro) trained on AI Copilot implementation. Referral incentive: 15% of first-year AI revenue.",
+            "CUSTOMER SUCCESS: Proactive AI adoption team. Weekly office hours. AI readiness assessment for every enterprise account. 90-day adoption playbook.",
+            "ANALYST RELATIONS: Pre-brief with Gartner, Forrester, IDC before public launch. Target: inclusion in next Magic Quadrant as AI innovation leader."
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The GTM motion is three-pronged: product-led for mass adoption, direct sales for enterprise, and partners for implementation. The most important metric in the first 90 days is daily active AI users -- not revenue. If we get 60% of our user base using AI weekly, the revenue will follow."
+    },
+    {
+      "slide_type": "quote",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Customer Testimonial",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "AI Copilot Suite eliminated 6 hours of manual reporting per analyst per week. Our team of 45 analysts effectively gained 11 full-time employees worth of capacity -- without hiring anyone. The ROI was immediate and obvious. This is the first AI tool my team actually uses every day.",
+          "role": "body"
+        },
+        {
+          "type": "text",
+          "content": "-- Jennifer Walsh, VP Operations, TechForward Inc. (Beta Customer, 2,800 seat deployment)",
+          "role": "attribution"
+        }
+      ],
+      "speaker_notes": "Jennifer's team was one of our first 50 beta customers. The 6 hours per analyst per week is a number her team tracked independently -- we didn't prompt them. This quote will be central to our launch marketing. We have 8 more testimonials of similar quality lined up for launch day."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "AI Copilot Suite: Enterprise AI That Works on Day One",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Launch: May 15, 2026 | 4,200 Customers | $42M Year 1 Revenue Target\n\nKey Dates:\n- April 1: Private beta expansion (500 customers)\n- May 15: Public launch (core features, all customers)\n- July 1: Advanced AI GA + new pricing tiers\n- September 1: Custom models + AI Marketplace\n\nnexussystems.com/ai | ai-copilot@nexussystems.com\n\nNexus Systems | Confidential",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "This is the biggest product launch in Nexus Systems history. The team has been working on this for 18 months and I could not be more proud of what we have built. Let's change what our customers expect from enterprise software. Questions?"
+    }
+  ]
+}

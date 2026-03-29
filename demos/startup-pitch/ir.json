@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "OptiChain: AI-Powered Supply Chain Optimization",
+    "author": "OptiChain Inc. | Series A",
+    "created_at": "2026-03-26T10:00:00Z",
+    "description": "Series A pitch deck for OptiChain, seeking $18M to scale AI-driven demand forecasting and inventory optimization"
+  },
+  "theme": "modern-gradient",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "OptiChain",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "AI-Powered Supply Chain Optimization | Series A | $18M",
+          "role": "subtitle"
+        }
+      ],
+      "speaker_notes": "Thank you for making time today. OptiChain uses machine learning to solve the $2.3 trillion supply chain waste problem. We have 47 customers, $4.8M ARR growing 220% year-over-year, and we are raising $18M to scale."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "The Problem: $2.3T in Supply Chain Waste",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Manufacturers lose $2.3 trillion annually to supply chain inefficiencies -- excess inventory, stockouts, and demand forecasting errors",
+            "Current forecasting tools use statistical models built in the 1990s (exponential smoothing, ARIMA) with 35-45% error rates on SKU-level predictions",
+            "The average manufacturer carries 67 days of inventory -- top performers carry 28 days. That gap is $840B in trapped working capital globally",
+            "Supply chain disruptions increased 4x since 2020 (COVID, Suez Canal, chip shortage, Red Sea). Static models cannot adapt to volatility",
+            "Supply chain planners spend 60% of their time in spreadsheets manually adjusting forecasts -- not optimizing strategy"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "These are not hypothetical numbers. Our customers confirmed them during discovery. One $500M manufacturer was carrying $180M in excess inventory -- 130 days of supply -- because they did not trust their forecasting system. They were right not to trust it."
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "The Solution: ML-Driven Demand Intelligence",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Proprietary transformer-based demand forecasting model trained on 2.8B data points across 14 manufacturing verticals -- 12% error rate vs. industry 38%",
+            "Autonomous inventory optimization: multi-echelon reorder points, safety stock, and allocation computed continuously, not quarterly",
+            "External signal ingestion: weather, port congestion, commodity prices, social sentiment, and 140+ real-time data feeds auto-integrated",
+            "Prescriptive recommendations: not just 'what will happen' but 'what to do' -- reroute shipments, adjust production schedules, pre-position inventory",
+            "Deploys in 6 weeks (not 18 months like legacy ERP add-ons). Connects to SAP, Oracle, NetSuite via pre-built connectors"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The key technical insight: demand signals are sequential time series with external covariates. Transformers -- the same architecture behind GPT -- excel at exactly this pattern. We fine-tune a foundation model per customer with their historical data, achieving 12% MAPE vs. 38% industry average."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Market Opportunity: TAM / SAM / SOM",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "bar",
+          "data": {
+            "categories": ["TAM", "SAM", "SOM (2029)"],
+            "series": [
+              {
+                "name": "Market Size ($B)",
+                "values": [28.4, 8.6, 1.2]
+              }
+            ]
+          },
+          "config": {
+            "show_values": true,
+            "y_axis_label": "Market Size ($B)",
+            "number_format": "$#,##0.0B",
+            "colors": ["#6366f1"]
+          }
+        },
+        {
+          "type": "text",
+          "content": "TAM: $28.4B global supply chain analytics & optimization (Gartner 2026). SAM: $8.6B mid-market manufacturers ($100M-$5B revenue) in North America and Europe. SOM: $1.2B achievable by 2029 with current go-to-market motion and planned geographic expansion.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "We are targeting the mid-market deliberately. Enterprise is dominated by Blue Yonder and Kinaxis with 3-year implementations. SMB cannot afford dedicated supply chain software. Mid-market manufacturers are underserved and have the pain -- they have complex supply chains but no dedicated planning tools."
+    },
+    {
+      "slide_type": "two_column",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Product: Two Core Modules",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Demand Intelligence",
+          "role": "left_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "SKU-level demand forecasting (12% MAPE)",
+            "New product launch prediction (no history needed)",
+            "Promotion impact modeling",
+            "Cannibalization analysis",
+            "External signal integration (140+ feeds)",
+            "Automated forecast adjustment"
+          ],
+          "role": "left_body"
+        },
+        {
+          "type": "text",
+          "content": "Inventory Optimizer",
+          "role": "right_header"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Multi-echelon inventory optimization",
+            "Dynamic safety stock computation",
+            "Allocation and replenishment automation",
+            "Stockout risk scoring and alerting",
+            "Working capital impact simulation",
+            "What-if scenario planning"
+          ],
+          "role": "right_body"
+        }
+      ],
+      "speaker_notes": "Demand Intelligence is the entry product -- it sells the vision and generates immediate ROI. Inventory Optimizer is the expansion product -- it drives deeper integration and higher ACV. 72% of customers who start with Demand Intelligence add Inventory Optimizer within 12 months."
+    },
+    {
+      "slide_type": "timeline",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Traction: 18 Months of Momentum",
+          "role": "title"
+        },
+        {
+          "type": "timeline",
+          "items": [
+            {
+              "date": "Q3 2024",
+              "title": "$3.2M Seed Raised",
+              "description": "Led by Sequoia Scout. Built founding team of 8 (3 ex-Amazon Supply Chain, 2 ex-Blue Yonder ML). First 5 design partners signed."
+            },
+            {
+              "date": "Q1 2025",
+              "title": "Product Launch + First Revenue",
+              "description": "$420K ARR from 5 design partners converting to paid. 28% average inventory reduction demonstrated across all 5."
+            },
+            {
+              "date": "Q3 2025",
+              "title": "$2.1M ARR",
+              "description": "22 paying customers. Launched Inventory Optimizer module. Won Unilever mid-market division ($180K ACV). NRR: 142%."
+            },
+            {
+              "date": "Q1 2026",
+              "title": "$4.8M ARR (Current)",
+              "description": "47 customers, $102K average ACV, 220% YoY growth, 142% NRR, 78% gross margin. Team: 34 people."
+            }
+          ]
+        }
+      ],
+      "speaker_notes": "The trajectory speaks for itself: $0 to $4.8M ARR in 18 months, with net revenue retention of 142%. We are not just acquiring customers -- we are expanding within them. The average customer has increased their contract value 42% after the first year."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Revenue Projections: Path to $50M ARR",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "line",
+          "data": {
+            "categories": ["Q1'25", "Q2'25", "Q3'25", "Q4'25", "Q1'26", "Q2'26E", "Q3'26E", "Q4'26E", "Q1'27E", "Q2'27E", "Q3'27E", "Q4'27E"],
+            "series": [
+              {
+                "name": "ARR ($M)",
+                "values": [0.42, 0.95, 2.1, 3.2, 4.8, 7.2, 10.5, 14.8, 20.1, 26.8, 35.2, 48.6]
+              }
+            ]
+          },
+          "config": {
+            "show_values": true,
+            "y_axis_label": "ARR ($M)",
+            "number_format": "$#,##0.0M",
+            "show_trend_line": true
+          }
+        }
+      ],
+      "speaker_notes": "We project reaching $48.6M ARR by Q4 2027 -- roughly 10x from current. This assumes we grow the sales team from 6 to 24 reps, each ramping to $2M+ quota. Our current reps are producing $1.8M per head at full ramp, and our win rate is 38% against legacy incumbents."
+    },
+    {
+      "slide_type": "team",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Leadership Team",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sarah Chen, CEO -- Ex-Amazon VP Supply Chain (8 years). Built Amazon's demand forecasting platform serving $350B in GMV. Stanford MBA.",
+            "Dr. Raj Patel, CTO -- Ex-Blue Yonder Chief Scientist. 23 publications in ML for supply chain. PhD MIT CSAIL. Led team of 80 ML engineers.",
+            "Marcus Williams, CRO -- Ex-Kinaxis VP Sales. Scaled Kinaxis mid-market revenue from $12M to $95M in 4 years. Brings rolodex of 200+ VP Supply Chain contacts.",
+            "Dr. Lisa Zhang, VP Engineering -- Ex-Google Brain. Built production ML systems at Google Scale. PhD Stanford NLP.",
+            "Advisory Board: Former CPO of Procter & Gamble, CTO of Flexport, GP at Andreessen Horowitz (supply chain thesis)"
+          ],
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "This team has built and scaled the exact systems we are competing against. Sarah built Amazon's forecasting platform. Raj designed Blue Yonder's ML models. Marcus sold Kinaxis to the same buyer persona. We did not just study the problem -- we built the previous generation of solutions and know exactly where they fall short."
+    },
+    {
+      "slide_type": "table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Series A: $18M Funding Ask",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Use of Funds", "Amount ($M)", "% of Round", "Outcome"],
+            "rows": [
+              ["Sales & Marketing", "8.1", "45%", "Grow from 6 to 24 AEs; scale demand gen to 200 SQLs/quarter"],
+              ["R&D / Engineering", "5.4", "30%", "Hire 18 engineers; launch Supplier Collaboration module (Q2 2027)"],
+              ["Customer Success", "2.7", "15%", "Scale CS team to 12; maintain 142% NRR through onboarding excellence"],
+              ["G&A / Buffer", "1.8", "10%", "Finance, legal, office expansion; 6-month cash buffer at projected burn"],
+              ["Total", "18.0", "100%", "Path to $50M ARR by Q4 2027; 18-month runway to Series B or profitability"]
+            ]
+          },
+          "config": {
+            "header_style": "dark",
+            "highlight_row": 4,
+            "striped_rows": true
+          }
+        }
+      ],
+      "speaker_notes": "The $18M gets us to $50M ARR with 18 months of runway. At that point we are either raising a Series B at $500M+ valuation or we are cash-flow positive. 45% goes to sales because we have proven product-market fit -- the bottleneck is distribution, not product."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "OptiChain: Eliminating $2.3T in Supply Chain Waste",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "$4.8M ARR | 220% YoY Growth | 142% NRR | 47 Customers | 78% Gross Margin\n\nRaising $18M Series A to scale from $4.8M to $50M ARR in 18 months.\n\nContact: sarah@optichain.ai | optichain.ai",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "We are solving a $2.3 trillion problem with technology that is 3x more accurate than incumbent solutions. We have the team that built the last generation, the product-market fit metrics to prove demand, and the capital efficiency to reach $50M ARR on this round. We would love to have you join us."
+    }
+  ]
+}
