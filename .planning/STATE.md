@@ -3,45 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 07-03-PLAN.md (Batch render, webhooks, QA integration -- Phase 07 complete)
-last_updated: "2026-03-29T03:39:52.028Z"
-last_activity: 2026-03-29 -- Completed 07-03 batch/webhooks/QA integration (Phase 07 complete)
+stopped_at: Completed 08-01-PLAN.md (TypeScript SDK with fluent builder, streaming, 67 tests)
+last_updated: "2026-03-29T07:59:45Z"
+last_activity: 2026-03-29 -- Completed 08-01 TypeScript SDK (@deckforge/sdk)
 progress:
   total_phases: 8
   completed_phases: 7
   total_plans: 22
-  completed_plans: 19
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: executing
-stopped_at: Completed 07-03-PLAN.md (Batch render, webhooks, QA integration -- Phase 07 complete)
-last_updated: "2026-03-29T03:36:57Z"
-last_activity: 2026-03-29 -- Completed 07-03 batch/webhooks/QA integration (Phase 07 complete, 3/3 plans)
-progress:
-  total_phases: 8
-  completed_phases: 7
-  total_plans: 22
-  completed_plans: 21
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: executing
-stopped_at: Completed 04-02-PLAN.md (Content Generation Pipeline)
-last_updated: "2026-03-29T02:46:53Z"
-last_activity: 2026-03-29 -- Completed 04-02 Content Generation Pipeline (Phase 04 complete)
-progress:
-  total_phases: 8
-  completed_phases: 5
-  total_plans: 14
-  completed_plans: 14
-  percent: 100
+  completed_plans: 20
 ---
 
 # Project State
@@ -51,23 +20,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phases 1-7 complete. 21 of 22 plans done. Ready for Phase 08 (deployment/packaging).
+**Current focus:** Phase 08 in progress. 20 of 22 plans done. SDK complete, billing and deployment remaining.
 
 ## Current Position
 
-Phase: 7 of 8 -- Phases 01-07 COMPLETE
-Plan: 21 of 22 plans complete
-Status: Phase 07 complete (QA pipeline + deck ops + batch/webhooks)
-Last activity: 2026-03-29 -- Completed 07-03 batch/webhooks/QA integration (Phase 07 complete)
+Phase: 8 of 8 -- Phase 08 in progress (1/3 plans complete)
+Plan: 20 of 22 plans complete
+Status: Executing Phase 08 (TypeScript SDK + Billing + Launch)
+Last activity: 2026-03-29 -- Completed 08-01 TypeScript SDK (@deckforge/sdk)
 
-Progress: [█████████▌] 95% (21/22 plans)
+Progress: [█████████▊] 91% (20/22 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
-- Average duration: 7.7min
-- Total execution time: 2.7 hours
+- Total plans completed: 20
+- Average duration: 7.6min
+- Total execution time: 2.8 hours
 
 **By Phase:**
 
@@ -80,10 +49,11 @@ Progress: [█████████▌] 95% (21/22 plans)
 | 05-chart-engine-finance-vertical | 3 | 24min | 8min |
 | 06-google-slides-renderer | 2 | 16min | 8min |
 | 07-qa-pipeline-deck-operations | 3 | 22min | 7.3min |
+| 08-typescript-sdk-billing-launch | 1/3 | 6min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 06-02 (8min), 07-01 (8min), 07-02 (6min), 07-03 (8min)
-- Trend: Consistent ~7-8min per plan
+- Last 5 plans: 07-01 (8min), 07-02 (6min), 07-03 (8min), 08-01 (6min)
+- Trend: Consistent ~6-8min per plan
 
 *Updated after each plan completion*
 | Phase 01 P01 | 9min | 2 tasks | 24 files |
@@ -105,6 +75,7 @@ Progress: [█████████▌] 95% (21/22 plans)
 | Phase 07 P01 | 8min | 2 tasks | 12 files |
 | Phase 07 P02 | 6min | 2 tasks | 9 files |
 | Phase 07 P03 | 8min | 2 tasks | 18 files |
+| Phase 08 P01 | 6min | 2 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -192,6 +163,12 @@ Recent decisions affecting current work:
 - [07-03]: Webhook secret masked in list response (only shown once at creation time)
 - [07-03]: render_pipeline returns tuple (bytes, QAReport) -- all callers updated to destructure
 - [07-03]: Batch completion checks total_done = completed + failed vs total_items for status transitions
+- [08-01]: Hand-written TypeScript types mirroring Pydantic IR models (no OpenAPI codegen dependency)
+- [08-01]: Immutable builder pattern -- all mutation methods return new instances
+- [08-01]: fetch + ReadableStream for SSE (not EventSource) to support Authorization headers
+- [08-01]: Slide factory covers all 32 types with typed inputs that construct correct element arrays
+- [08-01]: Chart factory covers all 24 chart types with typed constructor functions
+- [08-01]: Exports ordering: types first for correct TypeScript resolution
 
 ### Pending Todos
 
@@ -206,6 +183,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T03:36:57Z
-Stopped at: Completed 07-03-PLAN.md (Batch render, webhooks, QA integration -- Phase 07 complete)
+Last session: 2026-03-29T07:59:45Z
+Stopped at: Completed 08-01-PLAN.md (TypeScript SDK with fluent builder, streaming, 67 tests)
 Resume file: None

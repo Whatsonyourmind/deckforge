@@ -128,11 +128,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### TypeScript SDK
 
-- [ ] **SDK-01**: DeckForge client class with typed methods for all API endpoints
-- [ ] **SDK-02**: Fluent builder API (Presentation.create(), Slide.titleSlide(), Elements.lineChart())
-- [ ] **SDK-03**: SSE streaming helper (df.generate.stream() -> AsyncGenerator)
-- [ ] **SDK-04**: Auto-generated types from Pydantic IR via OpenAPI
-- [ ] **SDK-05**: Published to npm as @deckforge/sdk
+- [x] **SDK-01**: DeckForge client class with typed methods for all API endpoints
+- [x] **SDK-02**: Fluent builder API (Presentation.create(), Slide.titleSlide(), Elements.lineChart())
+- [x] **SDK-03**: SSE streaming helper (df.generate.stream() -> AsyncGenerator)
+- [x] **SDK-04**: Auto-generated types from Pydantic IR via OpenAPI
+- [x] **SDK-05**: Published to npm as @deckforge/sdk
 
 ### Billing & Auth
 
@@ -280,11 +280,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DECK-07 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | BATCH-01 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | BATCH-02 | Phase 7: QA Pipeline + Deck Operations | Complete |
-| SDK-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| SDK-02 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| SDK-03 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| SDK-04 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| SDK-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| SDK-01 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| SDK-02 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| SDK-03 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| SDK-04 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| SDK-05 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
 | BILL-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | BILL-02 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | BILL-03 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
