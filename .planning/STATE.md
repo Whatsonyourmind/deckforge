@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 11-02 verification scripts
-last_updated: "2026-03-29T21:23:06Z"
+stopped_at: Completed 11-01-PLAN.md (README, .env.example, bootstrap-db.sh, CLAUDE.md)
+last_updated: "2026-03-29T21:26:41.402Z"
 last_activity: 2026-03-29 -- Completed 11-02 verification scripts (Docker, smoke test, demo validation)
 progress:
   total_phases: 11
@@ -88,6 +88,7 @@ Progress: [█████████ ] 97% (30/31 plans)
 | Phase 10 P02 | 13min | 3 tasks | 16 files |
 | Phase 10 P03 | 10min | 3 tasks | 9 files |
 | Phase 11 P02 | 3min | 2 tasks | 3 files |
+| Phase 11 P01 | 6min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -216,6 +217,8 @@ Recent decisions affecting current work:
 - [11-02]: Render endpoint body is raw Presentation JSON (not wrapped in presentation key)
 - [11-02]: validate-demos.py uses render_pipeline directly in --direct mode to avoid server dependency
 - [11-02]: Docker verify uses grep-based service detection for portability across Compose v1/v2
+- [Phase 11]: Bootstrap script uses sync SQLAlchemy engine for CLI compatibility
+- [Phase 11]: .env.example only uncomments local dev essentials; optional integrations commented with docs
 
 ### Roadmap Evolution
 
@@ -235,6 +238,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T21:23:06Z
-Stopped at: Completed 11-02-PLAN.md (verification scripts)
+Last session: 2026-03-29T21:26:41.394Z
+Stopped at: Completed 11-01-PLAN.md (README, .env.example, bootstrap-db.sh, CLAUDE.md)
 Resume file: None
