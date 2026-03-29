@@ -83,11 +83,11 @@ Plans:
   2. The generated IR produces a presentation with a logical narrative arc -- not a random sequence of slides but a structured argument
   3. A user can provide their own LLM API key (OpenAI, Anthropic, Google, or Ollama endpoint) and generation uses that model instead of the default
   4. Cross-slide consistency is enforced: no contradictory terminology, consistent tense and capitalization, no redundant slides
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- LLM adapters: abstract base, Claude/OpenAI/Gemini/Ollama implementations, router with fallback chains, BYO key support (Wave 1)
+- [ ] 04-02-PLAN.md -- Content pipeline: intent parser, outliner, slide writer, cross-slide refiner, prompt templates, POST /v1/generate with SSE streaming (Wave 2)
 
 ### Phase 5: Chart Engine + Finance Vertical
 **Goal**: Data visualizations render as native editable charts (or static fallbacks), and all 9 finance-specific slide types produce institutional-grade output
