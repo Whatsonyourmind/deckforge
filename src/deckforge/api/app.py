@@ -8,6 +8,8 @@ from __future__ import annotations
 from fastapi import FastAPI
 
 from deckforge.api.routes.auth_google import router as auth_google_router
+from deckforge.api.routes.decks import router as decks_router
+from deckforge.api.routes.estimate import router as estimate_router
 from deckforge.api.routes.generate import router as generate_router
 from deckforge.api.routes.health import router as health_router
 from deckforge.api.routes.jobs import router as jobs_router
@@ -30,5 +32,7 @@ def create_app(lifespan=None) -> FastAPI:
     app.include_router(preview_router, prefix="/v1")
     app.include_router(jobs_router, prefix="/v1")
     app.include_router(auth_google_router, prefix="/v1")
+    app.include_router(decks_router, prefix="/v1")
+    app.include_router(estimate_router, prefix="/v1")
 
     return app
