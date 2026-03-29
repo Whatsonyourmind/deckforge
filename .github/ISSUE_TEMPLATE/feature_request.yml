@@ -1,0 +1,66 @@
+name: Feature Request
+description: Suggest a new feature or improvement for DeckForge
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We appreciate feature suggestions. Please describe your idea below.
+
+  - type: textarea
+    id: feature
+    attributes:
+      label: Feature Description
+      description: A clear description of the feature you'd like.
+      placeholder: I'd like the SDK to support exporting presentations as PDF...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe the problem this feature would solve or the workflow it enables.
+      placeholder: Our team needs to distribute presentations as PDFs for compliance reasons...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you've considered.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of DeckForge would this affect?
+      options:
+        - TypeScript SDK (@deckforge/sdk)
+        - Python API
+        - MCP Server
+        - Rendering Engine
+        - Content Generation
+        - Charts
+        - Themes
+        - Billing
+        - Documentation
+        - Other
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Nice to have
+        - Important for my workflow
+        - Blocking my adoption
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any mockups, examples, or references.
