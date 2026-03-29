@@ -47,10 +47,10 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Google Slides Rendering
 
 - [x] **GSLIDES-01**: Render all 23 universal slide types to native Google Slides via API
-- [ ] **GSLIDES-02**: Create Sheets-backed editable charts linked into Slides
+- [x] **GSLIDES-02**: Create Sheets-backed editable charts linked into Slides
 - [x] **GSLIDES-03**: Handle OAuth 2.0 for user's Google Drive access
 - [x] **GSLIDES-04**: Use batchUpdate for efficient API usage
-- [ ] **GSLIDES-05**: Clean up temporary Sheets spreadsheets after chart creation
+- [x] **GSLIDES-05**: Clean up temporary Sheets spreadsheets after chart creation
 - [x] **GSLIDES-06**: Return Slides URL and presentation_id
 
 ### Layout Engine
@@ -226,10 +226,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PPTX-07 | Phase 3: PPTX Rendering | Pending |
 | PPTX-08 | Phase 3: PPTX Rendering | Pending |
 | GSLIDES-01 | Phase 6: Google Slides Output | Complete |
-| GSLIDES-02 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-02 | Phase 6: Google Slides Output | Complete |
 | GSLIDES-03 | Phase 6: Google Slides Output | Complete |
 | GSLIDES-04 | Phase 6: Google Slides Output | Complete |
-| GSLIDES-05 | Phase 6: Google Slides Output | Pending |
+| GSLIDES-05 | Phase 6: Google Slides Output | Complete |
 | GSLIDES-06 | Phase 6: Google Slides Output | Complete |
 | LAYOUT-01 | Phase 2: Layout Engine + Theme System | Complete |
 | LAYOUT-02 | Phase 2: Layout Engine + Theme System | Complete |
