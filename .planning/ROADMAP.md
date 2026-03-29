@@ -20,6 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 6: Google Slides Output** - Native Google Slides renderer with Sheets-backed editable charts (completed 2026-03-29)
 - [x] **Phase 7: QA Pipeline + Deck Operations** - 5-pass quality assurance, auto-fix, deck composability, batch ops (completed 2026-03-29)
 - [x] **Phase 8: TypeScript SDK + Billing + Launch** - npm SDK, Stripe billing, discovery endpoints, launch readiness (completed 2026-03-29)
+- [ ] **Phase 9: Monetization and Go-To-Market** - x402 machine payments, Unkey API keys, MCP server, landing page, npm SDK publishing, analytics
 
 ## Phase Details
 
@@ -157,11 +158,29 @@ Plans:
 - [x] 08-02-PLAN.md -- Stripe billing: tier definitions, credit reservation/deduction/release, Stripe subscriptions + metering, usage dashboard, credit middleware (Wave 1)
 - [x] 08-03-PLAN.md -- Discovery endpoints (/v1/themes, /v1/slide-types, /v1/capabilities), slide type registry, production Dockerfile, Fly.io deployment config (Wave 2)
 
+### Phase 9: Monetization and Go-To-Market
+**Goal:** DeckForge is discoverable, purchasable, and payable by both humans (Stripe subscriptions) and AI agents (x402 machine payments in USDC) -- with landing page, MCP server, npm SDK published, and dual revenue streams active
+**Depends on:** Phase 8
+**Requirements**: GTM-01, GTM-02, GTM-03, GTM-04, GTM-05, GTM-06, GTM-07, GTM-08, GTM-09, GTM-10, GTM-11, GTM-12
+**Success Criteria** (what must be TRUE):
+  1. An AI agent can discover DeckForge via MCP server, call render/generate tools, and pay per-call in USDC via x402 protocol
+  2. A human developer can visit the landing page, sign up, get an API key, and generate their first deck within 5 minutes
+  3. The npm SDK (@deckforge/sdk) is published and installable, with working examples in the README
+  4. Unkey manages all API key lifecycle (creation, rotation, revocation, usage tracking) in production
+  5. GET /v1/pricing returns tier details and per-call x402 pricing that agents can parse programmatically
+**Plans:** 3 plans
+
+Plans:
+- [ ] 09-01-PLAN.md -- x402 machine payments + Unkey API keys: dual auth middleware, x402 payment verification/settlement, Unkey replacing custom auth, per-call pricing config, GET /v1/pricing (Wave 1)
+- [ ] 09-02-PLAN.md -- MCP server + SDK publishing: 6-tool MCP server, GitHub Actions npm publish workflow, marketing README, issue templates, contribution guide (Wave 1)
+- [ ] 09-03-PLAN.md -- Landing page + onboarding + analytics: static landing page, developer onboarding flow, PaymentEvent model, usage analytics dashboard with Stripe/x402 revenue split (Wave 2)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
+Note: Phase 9 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends on both (Wave 2).
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -173,19 +192,4 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | 6. Google Slides Output | 2/2 | Complete | 2026-03-29 |
 | 7. QA Pipeline + Deck Operations | 3/3 | Complete | 2026-03-29 |
 | 8. TypeScript SDK + Billing + Launch | 3/3 | Complete | 2026-03-29 |
-
-### Phase 9: Monetization and Go-To-Market
-
-**Goal:** DeckForge is discoverable, purchasable, and payable by both humans (Stripe subscriptions) and AI agents (x402 machine payments in USDC) — with landing page, MCP server, npm SDK published, and dual revenue streams active
-**Depends on:** Phase 8
-**Requirements**: GTM-01, GTM-02, GTM-03, GTM-04, GTM-05, GTM-06, GTM-07, GTM-08, GTM-09, GTM-10, GTM-11, GTM-12
-**Success Criteria** (what must be TRUE):
-  1. An AI agent can discover DeckForge via MCP server, call render/generate tools, and pay per-call in USDC via x402 protocol
-  2. A human developer can visit the landing page, sign up, get an API key, and generate their first deck within 5 minutes
-  3. The npm SDK (@deckforge/sdk) is published and installable, with working examples in the README
-  4. Unkey manages all API key lifecycle (creation, rotation, revocation, usage tracking) in production
-  5. GET /v1/pricing returns tier details and per-call x402 pricing that agents can parse programmatically
-**Plans**: TBD
-
-Plans:
-- [ ] TBD (run /gsd:plan-phase 9 to break down)
+| 9. Monetization and Go-To-Market | 0/3 | In Progress | - |
