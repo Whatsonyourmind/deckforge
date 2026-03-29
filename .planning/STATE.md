@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 06-02-PLAN.md (Sheets Charts + API Integration) -- Phase 06 complete
-last_updated: "2026-03-29T03:15:40.502Z"
+stopped_at: Completed 07-02-PLAN.md (Deck CRUD + Mutation Operations)
+last_updated: "2026-03-29T03:25:06.144Z"
 last_activity: 2026-03-29 -- Completed 04-02 Content Generation Pipeline (Phase 04 complete)
 progress:
   total_phases: 8
   completed_phases: 6
   total_plans: 22
-  completed_plans: 16
+  completed_plans: 17
 ---
 
 ---
@@ -85,6 +85,7 @@ Progress: [██████████] 100% (14/14 plans)
 | Phase 04 P02 | 13min | 2 tasks | 20 files |
 | Phase 06 P01 | 8min | 2 tasks | 14 files |
 | Phase 06 P02 | 8min | 2 tasks | 15 files |
+| Phase 07 P02 | 6min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -161,6 +162,9 @@ Recent decisions affecting current work:
 - [Phase 06]: google-api-python-client is optional dependency with conditional import
 - [Phase 06]: 2-phase batchUpdate: slides first, then CreateSheetsChart (charts reference existing slides)
 - [Phase 06]: google_refresh_token stored plaintext on ApiKey model (TODO: Fernet encryption)
+- [Phase 07]: Stateless DeckOperations class operating on IR dicts with Presentation.model_validate() re-validation
+- [Phase 07]: CostEstimator uses ceil(slides/10) base + per-type surcharges (finance 0.5, chart 0.2, NL +2)
+- [Phase 07]: Services layer pattern: stateless classes in src/deckforge/services/ for business logic
 
 ### Pending Todos
 
@@ -175,6 +179,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T03:14:40.015Z
-Stopped at: Completed 06-02-PLAN.md (Sheets Charts + API Integration) -- Phase 06 complete
+Last session: 2026-03-29T03:25:06.140Z
+Stopped at: Completed 07-02-PLAN.md (Deck CRUD + Mutation Operations)
 Resume file: None

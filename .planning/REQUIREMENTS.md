@@ -21,7 +21,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **API-01**: POST /v1/render accepts IR JSON and returns rendered PPTX synchronously (<=10 slides)
 - [x] **API-02**: POST /v1/generate accepts NL prompt and returns deck asynchronously with job tracking
 - [x] **API-03**: POST /v1/render/preview returns first N slides as PNG thumbnails
-- [ ] **API-04**: POST /v1/estimate returns credit cost estimate for a given IR or prompt
+- [x] **API-04**: POST /v1/estimate returns credit cost estimate for a given IR or prompt
 - [ ] **API-05**: GET /v1/themes lists all available themes with metadata
 - [ ] **API-06**: GET /v1/slide-types lists all slide types with example IR
 - [ ] **API-07**: GET /v1/capabilities returns API capabilities and limits
@@ -113,13 +113,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Deck Operations
 
-- [ ] **DECK-01**: List, get, delete generated decks with metadata
-- [ ] **DECK-02**: Get the IR that produced a deck (reproducibility)
-- [ ] **DECK-03**: Re-export deck to different format (pptx <-> gslides)
-- [ ] **DECK-04**: Append slides to existing deck
-- [ ] **DECK-05**: Replace specific slides in existing deck
-- [ ] **DECK-06**: Reorder slides in existing deck
-- [ ] **DECK-07**: Retheme existing deck with different theme
+- [x] **DECK-01**: List, get, delete generated decks with metadata
+- [x] **DECK-02**: Get the IR that produced a deck (reproducibility)
+- [x] **DECK-03**: Re-export deck to different format (pptx <-> gslides)
+- [x] **DECK-04**: Append slides to existing deck
+- [x] **DECK-05**: Replace specific slides in existing deck
+- [x] **DECK-06**: Reorder slides in existing deck
+- [x] **DECK-07**: Retheme existing deck with different theme
 
 ### Batch Operations
 
@@ -206,7 +206,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | API-01 | Phase 3: PPTX Rendering | Complete |
 | API-02 | Phase 4: Content Generation Pipeline | Complete |
 | API-03 | Phase 3: PPTX Rendering | Complete |
-| API-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| API-04 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | API-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | API-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 | API-07 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
@@ -271,13 +271,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QA-05 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | QA-06 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | QA-07 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-03 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-05 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-06 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| DECK-07 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| DECK-01 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| DECK-02 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| DECK-03 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| DECK-04 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| DECK-05 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| DECK-06 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| DECK-07 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | BATCH-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | BATCH-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
 | SDK-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
