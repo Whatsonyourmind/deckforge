@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeckForge vs Beautiful.ai vs Gamma vs SlidesAI -- API-First AI Presentations</title>
+  <meta name="description" content="Compare DeckForge with Beautiful.ai, Gamma, and SlidesAI. See why API-first wins for developers and AI agents. Feature matrix, pricing, and architecture comparison." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DeckForge vs Beautiful.ai vs Gamma vs SlidesAI" />
+  <meta property="og:description" content="API-first AI presentation generation. Compare features, pricing, and architecture across 4 platforms." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://deckforge.io/compare" />
+  <meta property="og:image" content="https://deckforge.io/og-comparison.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DeckForge vs Beautiful.ai vs Gamma vs SlidesAI" />
+  <meta name="twitter:description" content="API-first AI presentation generation. Compare features, pricing, and architecture." />
+  <meta name="twitter:image" content="https://deckforge.io/og-comparison.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://deckforge.io/compare" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#E8ECF4',
+              100: '#C5CEE0',
+              200: '#8E9FBF',
+              300: '#5A72A0',
+              400: '#344D7A',
+              500: '#1A2F54',
+              600: '#0F1F3D',
+              700: '#0A1E3D',
+              800: '#071428',
+              900: '#040D1A',
+            },
+            accent: {
+              DEFAULT: '#3B82F6',
+              light: '#60A5FA',
+              dark: '#2563EB',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .check { color: #22c55e; }
+    .cross { color: #6b7280; }
+    .highlight-row td { background-color: rgba(59, 130, 246, 0.08); }
+    .comparison-table th:first-child,
+    .comparison-table td:first-child { text-align: left; }
+    .comparison-table th:not(:first-child),
+    .comparison-table td:not(:first-child) { text-align: center; }
+  </style>
+</head>
+<body class="bg-navy-900 text-gray-100 font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-navy-900/80 backdrop-blur-md border-b border-navy-600/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="https://deckforge.io" class="flex items-center gap-2">
+          <span class="text-2xl font-bold bg-gradient-to-r from-accent-light to-blue-400 bg-clip-text text-transparent">DeckForge</span>
+          <span class="text-xs text-navy-200 border border-navy-400 rounded px-1.5 py-0.5">vs</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#comparison" class="text-navy-200 hover:text-white transition-colors text-sm">Comparison</a>
+          <a href="#why-api" class="text-navy-200 hover:text-white transition-colors text-sm">Why API-First</a>
+          <a href="#pricing" class="text-navy-200 hover:text-white transition-colors text-sm">Pricing</a>
+          <a href="https://deckforge.io" class="text-navy-200 hover:text-white transition-colors text-sm">Home</a>
+          <a href="https://github.com/Whatsonyourmind/deckforge" class="text-navy-200 hover:text-white transition-colors text-sm" target="_blank">GitHub</a>
+          <a href="https://deckforge.io#pricing" class="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Get API Key</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-28 pb-16 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        DeckForge vs Beautiful.ai vs Gamma vs SlidesAI
+      </h1>
+      <p class="text-xl text-navy-200 max-w-3xl mx-auto mb-8">
+        The only AI presentation platform built API-first for developers and AI agents.
+        Compare features, architecture, and pricing.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#comparison" class="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          View Full Comparison
+        </a>
+        <a href="https://docs.deckforge.io" class="border border-navy-400 text-navy-100 hover:bg-navy-700 px-6 py-3 rounded-lg font-medium transition-colors">
+          API Documentation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section id="comparison" class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">Feature Comparison</h2>
+      <p class="text-navy-200 text-center mb-12 max-w-2xl mx-auto">
+        Side-by-side comparison across API access, slide types, AI capabilities, and developer tools.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-navy-600/30">
+        <table class="comparison-table w-full text-sm">
+          <thead>
+            <tr class="bg-navy-700">
+              <th class="px-6 py-4 font-semibold text-left">Feature</th>
+              <th class="px-6 py-4 font-semibold">
+                <span class="bg-gradient-to-r from-accent-light to-blue-400 bg-clip-text text-transparent">DeckForge</span>
+              </th>
+              <th class="px-6 py-4 font-semibold text-navy-200">Beautiful.ai</th>
+              <th class="px-6 py-4 font-semibold text-navy-200">Gamma</th>
+              <th class="px-6 py-4 font-semibold text-navy-200">SlidesAI</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-navy-700">
+            <!-- Developer & Agent Features -->
+            <tr class="bg-navy-800/50">
+              <td colspan="5" class="px-6 py-3 font-semibold text-accent-light text-xs uppercase tracking-wider">Developer &amp; Agent Features</td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">API Access</td>
+              <td class="px-6 py-3"><span class="check font-semibold">Full REST API</span></td>
+              <td class="px-6 py-3"><span class="cross">No public API</span></td>
+              <td class="px-6 py-3"><span class="cross">Limited API</span></td>
+              <td class="px-6 py-3"><span class="cross">Google Slides add-on</span></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">MCP Server</td>
+              <td class="px-6 py-3"><span class="check font-semibold">Yes (6 tools)</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">Machine Payments (x402)</td>
+              <td class="px-6 py-3"><span class="check font-semibold">USDC per-call</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">TypeScript SDK</td>
+              <td class="px-6 py-3"><span class="check font-semibold">@deckforge/sdk</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">Open Source</td>
+              <td class="px-6 py-3"><span class="check font-semibold">Yes (MIT)</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Agent Framework Integrations</td>
+              <td class="px-6 py-3"><span class="check font-semibold">LangChain, CrewAI, AutoGen</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+
+            <!-- Content & Slide Types -->
+            <tr class="bg-navy-800/50">
+              <td colspan="5" class="px-6 py-3 font-semibold text-accent-light text-xs uppercase tracking-wider">Content &amp; Slide Types</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Slide Types</td>
+              <td class="px-6 py-3"><span class="check font-semibold">32</span> <span class="text-navy-300 text-xs">(23 universal + 9 finance)</span></td>
+              <td class="px-6 py-3 text-navy-200">~20 templates</td>
+              <td class="px-6 py-3 text-navy-200">~15</td>
+              <td class="px-6 py-3 text-navy-200">~10</td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">Chart Types</td>
+              <td class="px-6 py-3"><span class="check font-semibold">24</span> <span class="text-navy-300 text-xs">(native editable)</span></td>
+              <td class="px-6 py-3 text-navy-200">Limited</td>
+              <td class="px-6 py-3 text-navy-200">Basic</td>
+              <td class="px-6 py-3 text-navy-200">Basic</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Finance Vertical</td>
+              <td class="px-6 py-3"><span class="check font-semibold">9 specialized types</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">Themes</td>
+              <td class="px-6 py-3 text-navy-100">15 curated</td>
+              <td class="px-6 py-3 text-navy-200">60+ templates</td>
+              <td class="px-6 py-3 text-navy-200">AI-generated</td>
+              <td class="px-6 py-3 text-navy-200">Google Slides themes</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Brand Kit</td>
+              <td class="px-6 py-3"><span class="check font-semibold">Yes</span> <span class="text-navy-300 text-xs">(overlay on any theme)</span></td>
+              <td class="px-6 py-3 text-navy-200">Yes</td>
+              <td class="px-6 py-3 text-navy-200">Limited</td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+
+            <!-- Architecture -->
+            <tr class="bg-navy-800/50">
+              <td colspan="5" class="px-6 py-3 font-semibold text-accent-light text-xs uppercase tracking-wider">Architecture &amp; Quality</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Layout Engine</td>
+              <td class="px-6 py-3"><span class="check font-semibold">Constraint-based solver</span></td>
+              <td class="px-6 py-3 text-navy-200">Template-based</td>
+              <td class="px-6 py-3 text-navy-200">AI-assisted</td>
+              <td class="px-6 py-3 text-navy-200">Template-based</td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">QA Pipeline</td>
+              <td class="px-6 py-3"><span class="check font-semibold">5-pass auto-fix</span></td>
+              <td class="px-6 py-3"><span class="cross">None</span></td>
+              <td class="px-6 py-3"><span class="cross">None</span></td>
+              <td class="px-6 py-3"><span class="cross">None</span></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Batch Operations</td>
+              <td class="px-6 py-3"><span class="check font-semibold">Yes</span> <span class="text-navy-300 text-xs">(multi-deck, variations)</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+              <td class="px-6 py-3"><span class="cross">No</span></td>
+            </tr>
+
+            <!-- Output -->
+            <tr class="bg-navy-800/50">
+              <td colspan="5" class="px-6 py-3 font-semibold text-accent-light text-xs uppercase tracking-wider">Output &amp; Distribution</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Output Format</td>
+              <td class="px-6 py-3"><span class="check font-semibold">PPTX + Google Slides</span></td>
+              <td class="px-6 py-3 text-navy-200">Proprietary + PDF</td>
+              <td class="px-6 py-3 text-navy-200">Web + PDF</td>
+              <td class="px-6 py-3 text-navy-200">Google Slides</td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="px-6 py-3 font-medium">Target User</td>
+              <td class="px-6 py-3 text-navy-100">Developers, AI agents</td>
+              <td class="px-6 py-3 text-navy-200">Designers, teams</td>
+              <td class="px-6 py-3 text-navy-200">Content creators</td>
+              <td class="px-6 py-3 text-navy-200">Google Slides users</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why API-First -->
+  <section id="why-api" class="py-16 px-4 bg-navy-800/30">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">Why API-First Matters</h2>
+      <p class="text-navy-200 text-center mb-12 max-w-2xl mx-auto">
+        The presentation market is shifting from GUI-first to API-first.
+        Here's why that matters for developers and AI agents.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-navy-800 rounded-xl p-6 border border-navy-600/30">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Built for Developers</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">
+            Beautiful.ai and Gamma are GUI tools. They're great for designers,
+            but useless for CI/CD pipelines, automated reports, or programmatic
+            deck generation. DeckForge is an API -- one HTTP call creates a deck.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-navy-800 rounded-xl p-6 border border-navy-600/30">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Agent-Native</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">
+            AI agents can't click buttons in Beautiful.ai. They need APIs and
+            MCP servers. DeckForge ships an MCP server with 6 tools that any
+            Claude, LangChain, or CrewAI agent can discover and use natively.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-navy-800 rounded-xl p-6 border border-navy-600/30">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Machine Payments</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">
+            DeckForge supports x402 machine payments in USDC. An AI agent pays
+            $0.05 per render -- no subscription, no procurement, no human
+            approval. This is the future of agent-to-service commerce.
+          </p>
+        </div>
+      </div>
+
+      <!-- Use Cases -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-semibold text-center mb-8">Use Cases That Only API-First Enables</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-navy-800/60 rounded-lg p-5 border border-navy-600/20">
+            <h4 class="font-semibold text-accent-light mb-2">Automated Reporting</h4>
+            <p class="text-navy-200 text-sm">Generate weekly board updates from your data warehouse. Connect DeckForge to Snowflake/BigQuery, run on a cron job, email the deck to your team.</p>
+          </div>
+          <div class="bg-navy-800/60 rounded-lg p-5 border border-navy-600/20">
+            <h4 class="font-semibold text-accent-light mb-2">AI Agent Workflows</h4>
+            <p class="text-navy-200 text-sm">A CrewAI research agent gathers data, then a presenter agent calls DeckForge to render the findings. Zero human involvement in deck creation.</p>
+          </div>
+          <div class="bg-navy-800/60 rounded-lg p-5 border border-navy-600/20">
+            <h4 class="font-semibold text-accent-light mb-2">Deal Pipeline Decks</h4>
+            <p class="text-navy-200 text-sm">PE/IB firms generate IC decks, comp tables, and deal memos from CRM data. 9 finance-specific slide types handle institutional formatting automatically.</p>
+          </div>
+          <div class="bg-navy-800/60 rounded-lg p-5 border border-navy-600/20">
+            <h4 class="font-semibold text-accent-light mb-2">White-Label Platforms</h4>
+            <p class="text-navy-200 text-sm">Embed presentation generation in your SaaS product. Your users get polished decks without knowing DeckForge exists. Brand kit ensures your client's branding.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Comparison -->
+  <section id="pricing" class="py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">Pricing Comparison</h2>
+      <p class="text-navy-200 text-center mb-12 max-w-2xl mx-auto">
+        DeckForge offers a free tier for developers and per-call pricing for AI agents.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-navy-600/30">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-navy-700">
+              <th class="px-6 py-4 font-semibold text-left">Plan</th>
+              <th class="px-6 py-4 font-semibold text-center">
+                <span class="bg-gradient-to-r from-accent-light to-blue-400 bg-clip-text text-transparent">DeckForge</span>
+              </th>
+              <th class="px-6 py-4 font-semibold text-center text-navy-200">Beautiful.ai</th>
+              <th class="px-6 py-4 font-semibold text-center text-navy-200">Gamma</th>
+              <th class="px-6 py-4 font-semibold text-center text-navy-200">SlidesAI</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-navy-700">
+            <tr>
+              <td class="px-6 py-3 font-medium">Free Tier</td>
+              <td class="px-6 py-3 text-center"><span class="check font-semibold">50 credits/mo</span></td>
+              <td class="px-6 py-3 text-center text-navy-200">Limited trial</td>
+              <td class="px-6 py-3 text-center text-navy-200">Limited free</td>
+              <td class="px-6 py-3 text-center text-navy-200">3 presentations</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Paid Plans</td>
+              <td class="px-6 py-3 text-center text-navy-100">$79/mo Pro (500 credits)</td>
+              <td class="px-6 py-3 text-center text-navy-200">$12/mo - $40/mo</td>
+              <td class="px-6 py-3 text-center text-navy-200">Free - $16/mo</td>
+              <td class="px-6 py-3 text-center text-navy-200">$10/mo</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Per-Call Pricing</td>
+              <td class="px-6 py-3 text-center"><span class="check font-semibold">$0.05/render (x402)</span></td>
+              <td class="px-6 py-3 text-center"><span class="cross">No</span></td>
+              <td class="px-6 py-3 text-center"><span class="cross">No</span></td>
+              <td class="px-6 py-3 text-center"><span class="cross">No</span></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3 font-medium">Enterprise</td>
+              <td class="px-6 py-3 text-center text-navy-100">Custom + overage</td>
+              <td class="px-6 py-3 text-center text-navy-200">Custom</td>
+              <td class="px-6 py-3 text-center text-navy-200">Custom</td>
+              <td class="px-6 py-3 text-center"><span class="cross">No</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-navy-300 text-xs mt-4 text-center">
+        Pricing as of March 2026. DeckForge Pro at $79/mo is priced for developer/API use cases.
+        Beautiful.ai and Gamma are priced for individual GUI users. Different markets, different models.
+      </p>
+    </div>
+  </section>
+
+  <!-- Architecture Comparison -->
+  <section class="py-16 px-4 bg-navy-800/30">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">Architecture Deep Dive</h2>
+      <p class="text-navy-200 text-center mb-12 max-w-2xl mx-auto">
+        What makes DeckForge fundamentally different under the hood.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-light">DeckForge: Constraint-Based Layout</h3>
+          <div class="bg-navy-800 rounded-lg p-5 border border-navy-600/20 text-sm text-navy-200 space-y-3">
+            <p>DeckForge uses a constraint-based layout solver (kiwisolver). Every element has constraints -- minimum size, maximum size, margins, alignment rules. The solver finds the optimal position for all elements simultaneously.</p>
+            <p>This means a comp table with 5 companies and one with 15 companies both look correct -- the engine recalculates column widths, font sizes, and spacing automatically.</p>
+            <p>When content overflows, an adaptive cascade triggers: reduce font (2pt steps, min 10/14pt) -> reflow content -> split to multiple slides. Text never clips.</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-navy-300">Others: Template-Based Layout</h3>
+          <div class="bg-navy-800 rounded-lg p-5 border border-navy-600/20 text-sm text-navy-200 space-y-3">
+            <p>Beautiful.ai, Gamma, and SlidesAI use template-based layouts. Content fills predefined regions in predefined arrangements.</p>
+            <p>This works well for simple content but breaks when data varies. A comp table designed for 5 companies can't gracefully handle 15. A waterfall with 12 steps overflows a layout designed for 6.</p>
+            <p>Templates are predictable but inflexible. They optimize for the common case at the expense of edge cases -- which are exactly what finance presentations hit constantly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- QA Pipeline -->
+      <div class="mt-12 bg-navy-800 rounded-xl p-8 border border-navy-600/30">
+        <h3 class="text-xl font-semibold mb-6">5-Pass Quality Assurance (DeckForge Exclusive)</h3>
+        <div class="grid sm:grid-cols-5 gap-4">
+          <div class="text-center">
+            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-accent font-bold text-sm">1</span>
+            </div>
+            <p class="text-xs font-semibold">Structural</p>
+            <p class="text-xs text-navy-300 mt-1">Slide count, required elements</p>
+          </div>
+          <div class="text-center">
+            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-accent font-bold text-sm">2</span>
+            </div>
+            <p class="text-xs font-semibold">Text</p>
+            <p class="text-xs text-navy-300 mt-1">Overflow detection, font cascade</p>
+          </div>
+          <div class="text-center">
+            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-accent font-bold text-sm">3</span>
+            </div>
+            <p class="text-xs font-semibold">Visual</p>
+            <p class="text-xs text-navy-300 mt-1">WCAG contrast, alignment</p>
+          </div>
+          <div class="text-center">
+            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-accent font-bold text-sm">4</span>
+            </div>
+            <p class="text-xs font-semibold">Data</p>
+            <p class="text-xs text-navy-300 mt-1">Totals, percentages, consistency</p>
+          </div>
+          <div class="text-center">
+            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-accent font-bold text-sm">5</span>
+            </div>
+            <p class="text-xs font-semibold">Brand</p>
+            <p class="text-xs text-navy-300 mt-1">Colors, fonts, logo placement</p>
+          </div>
+        </div>
+        <p class="text-navy-300 text-xs mt-6 text-center">
+          No other presentation platform runs automated quality checks. Beautiful.ai, Gamma, and SlidesAI deliver whatever the AI generates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Build?</h2>
+      <p class="text-navy-200 mb-8">
+        Free tier includes 50 credits/month. No credit card required.
+        Generate your first deck in under 5 minutes.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://deckforge.io#pricing" class="bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors">
+          Get Free API Key
+        </a>
+        <a href="https://github.com/Whatsonyourmind/deckforge" class="border border-navy-400 text-navy-100 hover:bg-navy-700 px-8 py-3 rounded-lg font-medium transition-colors" target="_blank">
+          View on GitHub
+        </a>
+        <a href="https://www.npmjs.com/package/@deckforge/sdk" class="border border-navy-400 text-navy-100 hover:bg-navy-700 px-8 py-3 rounded-lg font-medium transition-colors" target="_blank">
+          npm install @deckforge/sdk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-navy-600/30 py-12 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <span class="text-xl font-bold bg-gradient-to-r from-accent-light to-blue-400 bg-clip-text text-transparent">DeckForge</span>
+          <p class="text-navy-300 text-sm mt-2">API-first AI presentation generation for developers and AI agents.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Product</h4>
+          <ul class="space-y-2 text-sm text-navy-300">
+            <li><a href="https://deckforge.io" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="https://docs.deckforge.io" class="hover:text-white transition-colors">API Docs</a></li>
+            <li><a href="https://deckforge.io#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="https://deckforge.io/demo" class="hover:text-white transition-colors">Demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Developers</h4>
+          <ul class="space-y-2 text-sm text-navy-300">
+            <li><a href="https://github.com/Whatsonyourmind/deckforge" class="hover:text-white transition-colors" target="_blank">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/@deckforge/sdk" class="hover:text-white transition-colors" target="_blank">npm SDK</a></li>
+            <li><a href="https://pypi.org/project/deckforge" class="hover:text-white transition-colors" target="_blank">PyPI</a></li>
+            <li><a href="https://github.com/Whatsonyourmind/deckforge/tree/main/growth/integrations" class="hover:text-white transition-colors" target="_blank">Integrations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Compare</h4>
+          <ul class="space-y-2 text-sm text-navy-300">
+            <li><a href="#comparison" class="hover:text-white transition-colors">DeckForge vs Beautiful.ai</a></li>
+            <li><a href="#comparison" class="hover:text-white transition-colors">DeckForge vs Gamma</a></li>
+            <li><a href="#comparison" class="hover:text-white transition-colors">DeckForge vs SlidesAI</a></li>
+            <li><a href="#why-api" class="hover:text-white transition-colors">Why API-First</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-navy-700 pt-6 text-center text-navy-400 text-xs">
+        <p>DeckForge is open source (MIT License). Built for developers and AI agents.</p>
+        <p class="mt-1">Beautiful.ai, Gamma, and SlidesAI are trademarks of their respective owners.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
