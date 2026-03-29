@@ -153,10 +153,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Infrastructure
 
-- [ ] **INFRA-01**: Docker Compose for local development (API + workers + Redis + PostgreSQL + MinIO)
-- [ ] **INFRA-02**: Dockerfile with bundled TrueType fonts for headless text measurement
-- [ ] **INFRA-03**: PostgreSQL database with SQLAlchemy models (users, api_keys, decks, usage_events)
-- [ ] **INFRA-04**: Alembic migrations
+- [x] **INFRA-01**: Docker Compose for local development (API + workers + Redis + PostgreSQL + MinIO)
+- [x] **INFRA-02**: Dockerfile with bundled TrueType fonts for headless text measurement
+- [x] **INFRA-03**: PostgreSQL database with SQLAlchemy models (users, api_keys, decks, usage_events)
+- [x] **INFRA-04**: Alembic migrations
 - [ ] **INFRA-05**: Railway/Fly.io deployment configuration for MVP launch
 
 ## v2 Requirements
@@ -296,10 +296,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WORKER-03 | Phase 1: Foundation + IR Schema | Pending |
 | WORKER-04 | Phase 1: Foundation + IR Schema | Pending |
 | WORKER-05 | Phase 1: Foundation + IR Schema | Pending |
-| INFRA-01 | Phase 1: Foundation + IR Schema | Pending |
-| INFRA-02 | Phase 1: Foundation + IR Schema | Pending |
-| INFRA-03 | Phase 1: Foundation + IR Schema | Pending |
-| INFRA-04 | Phase 1: Foundation + IR Schema | Pending |
+| INFRA-01 | Phase 1: Foundation + IR Schema | Complete |
+| INFRA-02 | Phase 1: Foundation + IR Schema | Complete |
+| INFRA-03 | Phase 1: Foundation + IR Schema | Complete |
+| INFRA-04 | Phase 1: Foundation + IR Schema | Complete |
 | INFRA-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
 
 **Coverage:**
