@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-01-PLAN.md (LLM Adapter Layer)
-last_updated: "2026-03-29T02:28:39.896Z"
-last_activity: 2026-03-29 -- Completed 05-02 Financial Data Layer plan
+stopped_at: Completed 05-01-PLAN.md (Static Chart Engine)
+last_updated: "2026-03-29T02:28:09Z"
+last_activity: 2026-03-29 -- Completed 05-01 Static Chart Engine plan
 progress:
   total_phases: 8
   completed_phases: 3
   total_plans: 14
-  completed_plans: 11
-  percent: 78
+  completed_plans: 12
+  percent: 85
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phase 5: Chart Engine & Finance Vertical (2 of 3 plans done)
+**Current focus:** Phase 5: Chart Engine & Finance Vertical (Plan 05-01 complete, 05-02 and 05-03 remaining)
 
 ## Current Position
 
 Phase: 5 of 8 (Chart Engine & Finance Vertical)
 Plan: 2 of 3 in current phase
 Status: In Progress
-Last activity: 2026-03-29 -- Completed 05-02 Financial Data Layer plan
+Last activity: 2026-03-29 -- Completed 05-01 Static Chart Engine plan
 
-Progress: [███████░░░] 78% (11/14 plans)
+Progress: [████████░░] 85% (12/14 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
-- Average duration: 7.3min
-- Total execution time: 1.2 hours
+- Total plans completed: 12
+- Average duration: 7.4min
+- Total execution time: 1.4 hours
 
 **By Phase:**
 
@@ -47,10 +47,10 @@ Progress: [███████░░░] 78% (11/14 plans)
 | 02-layout-engine-theme-system | 3 | 23min | 7.7min |
 | 03-pptx-rendering | 3 | 21min | 7min |
 
-| 05-chart-engine-finance-vertical | 2 | 12min+ | 6min+ |
+| 05-chart-engine-finance-vertical | 2 | 15min | 7.5min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (7min), 03-02 (8min), 03-03 (6min), 05-01 (?min), 05-02 (6min)
+- Last 5 plans: 03-02 (8min), 03-03 (6min), 04-01 (8min), 05-01 (9min), 05-02 (6min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -63,6 +63,7 @@ Progress: [███████░░░] 78% (11/14 plans)
 | Phase 03 P01 | 7min | 2 tasks | 12 files |
 | Phase 03 P02 | 8min | 2 tasks | 9 files |
 | Phase 03 P03 | 6min | 2 tasks | 10 files |
+| Phase 05 P01 | 9min | 2 tasks | 18 files |
 | Phase 05 P02 | 6min | 2 tasks | 8 files |
 | Phase 04 P01 | 8min | 2 tasks | 13 files |
 
@@ -122,6 +123,11 @@ Recent decisions affecting current work:
 - [Phase 04]: Custom adapters wrapping official SDKs instead of LiteLLM (supply chain compromise)
 - [Phase 04]: Claude tool_use, OpenAI json_schema, Gemini response_schema for structured output
 - [Phase 04]: Ollama retry-on-ValidationError (up to 3 attempts) with error feedback for self-correction
+- [05-01]: StaticChartRenderer uses 150 DPI * scale=2 for 300 effective DPI PNG export
+- [05-01]: Transparent background for Plotly charts to blend with slide backgrounds
+- [05-01]: Gantt renderer imports pandas locally inside _build_figure() to avoid import-time dependency
+- [05-01]: Waterfall _infer_measures() heuristic keyword match on last category for total detection
+- [05-01]: ChartRecommendation is frozen dataclass (not Pydantic) for simple output type
 
 ### Pending Todos
 
@@ -131,11 +137,11 @@ None yet.
 
 - [RESOLVED]: Layout engine built with kiwisolver constraint-based system -- 9 patterns, adaptive overflow, full engine
 - [Research]: LiteLLM supply chain compromise (March 2026) -- pin to 1.82.6, prepare fallback adapter
-- [Research]: python-pptx cannot create waterfall/treemap/sunburst natively -- static Plotly fallback needed
+- [RESOLVED]: python-pptx cannot create waterfall/treemap/sunburst natively -- implemented static Plotly PNG renderers in 05-01
 - [Research]: SSE fails through corporate proxies -- webhook-first design for async notifications
 
 ## Session Continuity
 
-Last session: 2026-03-29T02:28:39.891Z
-Stopped at: Completed 04-01-PLAN.md (LLM Adapter Layer)
+Last session: 2026-03-29T02:28:09Z
+Stopped at: Completed 05-01-PLAN.md (Static Chart Engine)
 Resume file: None
