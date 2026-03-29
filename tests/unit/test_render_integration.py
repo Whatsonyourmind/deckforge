@@ -89,7 +89,7 @@ class TestRenderPipeline:
     def test_simple_title_slide(self):
         """A single title slide produces valid PPTX bytes."""
         ir = Presentation.model_validate(_make_ir([_title_slide()]))
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         assert isinstance(result, bytes)
         assert len(result) > 1000
@@ -106,7 +106,7 @@ class TestRenderPipeline:
                 _chart_slide("bar"),
             ])
         )
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         prs = PptxPresentation(io.BytesIO(result))
         assert len(prs.slides) == 3
@@ -115,7 +115,7 @@ class TestRenderPipeline:
     def test_speaker_notes_survive_pipeline(self):
         """Speaker notes from IR appear in the generated PPTX."""
         ir = Presentation.model_validate(_make_ir([_title_slide()]))
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         prs = PptxPresentation(io.BytesIO(result))
         slide = prs.slides[0]
@@ -127,7 +127,7 @@ class TestRenderPipeline:
         ir = Presentation.model_validate(
             _make_ir([_title_slide()])
         )
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         # If the PPTX loads without error and has a slide, the transition was applied
         # (python-pptx doesn't expose a transition read API, but the XML is there)
@@ -140,7 +140,7 @@ class TestRenderPipeline:
         ir = Presentation.model_validate(_make_ir(slides))
 
         start = time.monotonic()
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
         elapsed = time.monotonic() - start
 
         assert elapsed < 5.0, f"Rendering took {elapsed:.1f}s (threshold: 5s)"
@@ -152,7 +152,7 @@ class TestRenderPipeline:
         ir = Presentation.model_validate(
             _make_ir([_title_slide()], theme="executive-dark")
         )
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         # Verify the PPTX is valid (background application is tested in
         # test_pptx_renderer.py; here we ensure the pipeline doesn't break it)
@@ -166,7 +166,7 @@ class TestRenderPipeline:
         ir = Presentation.model_validate(
             _make_ir([_bullet_slide()])
         )
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         prs = PptxPresentation(io.BytesIO(result))
         slide = prs.slides[0]
@@ -178,7 +178,7 @@ class TestRenderPipeline:
         ir = Presentation.model_validate(
             _make_ir([_chart_slide("bar")])
         )
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         prs = PptxPresentation(io.BytesIO(result))
         assert len(prs.slides) == 1
@@ -233,7 +233,7 @@ class TestRenderPipelineComponents:
             _bullet_slide("Summary", ["Point 1", "Point 2"]),
         ]
         ir = Presentation.model_validate(_make_ir(slides))
-        result = render_pipeline(ir)
+        result, _qa = render_pipeline(ir)
 
         prs = PptxPresentation(io.BytesIO(result))
         assert len(prs.slides) == 5

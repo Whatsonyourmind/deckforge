@@ -48,7 +48,8 @@ def _get_test_pptx_bytes(slide_count: int = 3) -> bytes:
     """Generate real PPTX bytes using the render pipeline."""
     slides = [_title_slide(f"Slide {i + 1}") for i in range(slide_count)]
     ir = Presentation.model_validate(_make_ir(slides))
-    return render_pipeline(ir)
+    pptx_bytes, _qa = render_pipeline(ir)
+    return pptx_bytes
 
 
 # ── Fallback Thumbnail Tests ─────────────────────────────────────────────────

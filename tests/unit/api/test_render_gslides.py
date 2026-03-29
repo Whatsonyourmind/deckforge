@@ -44,11 +44,12 @@ class TestGoogleSlidesResult:
 class TestRenderPipelineOutputFormat:
     """Test that render_pipeline dispatches correctly based on output_format."""
 
+    @patch("deckforge.workers.tasks.QAPipeline")
     @patch("deckforge.workers.tasks.PptxRenderer")
     @patch("deckforge.workers.tasks.LayoutEngine")
     @patch("deckforge.workers.tasks.ThemeRegistry")
     @patch("deckforge.workers.tasks.TextMeasurer")
-    def test_pptx_default(self, mock_tm, mock_tr, mock_le, mock_pptx):
+    def test_pptx_default(self, mock_tm, mock_tr, mock_le, mock_pptx, mock_qa):
         """Default output_format should use PptxRenderer."""
         from deckforge.workers.tasks import render_pipeline
 
@@ -62,17 +63,21 @@ class TestRenderPipelineOutputFormat:
         mock_pptx_instance = MagicMock()
         mock_pptx.return_value = mock_pptx_instance
         mock_pptx_instance.render.return_value = b"pptx_bytes"
+        mock_qa_instance = MagicMock()
+        mock_qa.return_value = mock_qa_instance
+        mock_qa_instance.run.return_value = MagicMock(quality_score=90, issues=[], fixes=[])
 
         presentation = MagicMock()
-        result = render_pipeline(presentation)
+        result, qa_report = render_pipeline(presentation)
         assert result == b"pptx_bytes"
         mock_pptx_instance.render.assert_called_once()
 
+    @patch("deckforge.workers.tasks.QAPipeline")
     @patch("deckforge.rendering.gslides.GoogleSlidesRenderer")
     @patch("deckforge.workers.tasks.LayoutEngine")
     @patch("deckforge.workers.tasks.ThemeRegistry")
     @patch("deckforge.workers.tasks.TextMeasurer")
-    def test_gslides_format(self, mock_tm, mock_tr, mock_le, mock_gsr):
+    def test_gslides_format(self, mock_tm, mock_tr, mock_le, mock_gsr, mock_qa):
         """output_format='gslides' should use GoogleSlidesRenderer."""
         from deckforge.workers.tasks import render_pipeline
 
@@ -83,6 +88,9 @@ class TestRenderPipelineOutputFormat:
         mock_le.return_value = mock_le_instance
         mock_le_instance.layout_presentation.return_value = []
         mock_tr_instance.get_theme.return_value = MagicMock()
+        mock_qa_instance = MagicMock()
+        mock_qa.return_value = mock_qa_instance
+        mock_qa_instance.run.return_value = MagicMock(quality_score=90, issues=[], fixes=[])
 
         mock_gsr_instance = MagicMock()
         mock_gsr.return_value = mock_gsr_instance
@@ -95,7 +103,7 @@ class TestRenderPipelineOutputFormat:
 
         presentation = MagicMock()
         credentials = MagicMock()
-        result = render_pipeline(presentation, output_format="gslides", credentials=credentials)
+        result, qa_report = render_pipeline(presentation, output_format="gslides", credentials=credentials)
 
         assert isinstance(result, GoogleSlidesResult)
         assert result.presentation_id == "pres_abc"
