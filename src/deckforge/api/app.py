@@ -9,6 +9,7 @@ from fastapi import FastAPI
 
 from deckforge.api.routes.auth_google import router as auth_google_router
 from deckforge.api.routes.batch import router as batch_router
+from deckforge.api.routes.billing import router as billing_router
 from deckforge.api.routes.decks import router as decks_router
 from deckforge.api.routes.estimate import router as estimate_router
 from deckforge.api.routes.generate import router as generate_router
@@ -38,5 +39,6 @@ def create_app(lifespan=None) -> FastAPI:
     app.include_router(estimate_router, prefix="/v1")
     app.include_router(batch_router, prefix="/v1")
     app.include_router(webhooks_router, prefix="/v1")
+    app.include_router(billing_router, prefix="/v1")
 
     return app

@@ -21,6 +21,7 @@ from fastapi.responses import Response, StreamingResponse
 
 from deckforge.api.deps import DbSession, RedisClient
 from deckforge.api.middleware.auth import CurrentApiKey
+from deckforge.api.middleware.credits import CreditCheck
 from deckforge.api.middleware.rate_limit import RateLimited
 from deckforge.api.schemas.responses import GoogleSlidesRenderResponse, RenderResponse
 from deckforge.config import settings
@@ -52,6 +53,7 @@ router = APIRouter(tags=["render"])
             },
         },
         401: {"description": "Invalid or missing API key"},
+        402: {"description": "Insufficient credits"},
         422: {"description": "IR validation error"},
         429: {"description": "Rate limit exceeded"},
     },
@@ -62,6 +64,7 @@ async def render(
     redis: RedisClient,
     api_key: CurrentApiKey,
     _rate_limit: RateLimited,
+    _credit_check: CreditCheck,
     background_tasks: BackgroundTasks,
     x_request_id: str | None = Header(None),
     output_format: str = Query(default="pptx", pattern="^(pptx|gslides)$"),

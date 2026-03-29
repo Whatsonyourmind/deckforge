@@ -53,6 +53,12 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str | None = None
     OLLAMA_BASE_URL: str = "http://localhost:11434"
 
+    # Stripe billing
+    STRIPE_SECRET_KEY: str | None = None
+    STRIPE_WEBHOOK_SECRET: str | None = None
+    STRIPE_STARTER_PRICE_ID: str | None = None
+    STRIPE_PRO_PRICE_ID: str | None = None
+
     # Google OAuth (for Google Slides output)
     GOOGLE_CLIENT_ID: str | None = None
     GOOGLE_CLIENT_SECRET: str | None = None
