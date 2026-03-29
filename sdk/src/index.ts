@@ -3,15 +3,31 @@
  *
  * @example
  * ```typescript
- * import { DeckForge } from '@deckforge/sdk';
+ * import { DeckForge, Presentation, Slide, Chart } from '@deckforge/sdk';
  *
  * const client = new DeckForge({ apiKey: 'dk_...' });
- * const result = await client.render(presentationIR);
+ *
+ * const ir = Presentation.create("Q4 Earnings")
+ *   .theme("corporate_dark")
+ *   .addSlide(Slide.title({ title: "Q4 2025", subtitle: "Board Deck" }))
+ *   .addSlide(Slide.chart({ title: "Revenue", chart: Chart.bar({ ... }) }))
+ *   .build();
+ *
+ * const result = await client.render(ir);
  * ```
  */
 
 // Client
 export { DeckForge } from "./client";
+
+// Builder
+export { PresentationBuilder, Presentation } from "./builder/presentation";
+export { Slide } from "./builder/slides";
+export { Element, Chart } from "./builder/elements";
+
+// Streaming
+export { streamGeneration, parseSSELine, StreamingHelper } from "./streaming";
+export type { StreamOptions } from "./streaming";
 
 // Errors
 export {
