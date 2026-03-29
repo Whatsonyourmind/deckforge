@@ -64,6 +64,16 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_SECRET: str | None = None
     GOOGLE_REDIRECT_URI: str = "http://localhost:8000/v1/auth/google/callback"
 
+    # Unkey API key management (replaces custom SHA-256 auth in production)
+    UNKEY_ROOT_KEY: str | None = None
+    UNKEY_API_ID: str | None = None
+
+    # x402 machine payment protocol (USDC per-call on Base L2)
+    X402_WALLET_ADDRESS: str | None = None
+    X402_FACILITATOR_URL: str = "https://x402.org/facilitator"
+    X402_NETWORK: str = "eip155:8453"  # Base Mainnet
+    X402_ENABLED: bool = False  # Opt-in; requires wallet address
+
     @property
     def llm_fallback_list(self) -> list[str]:
         """Parse the comma-separated fallback chain into a list."""
