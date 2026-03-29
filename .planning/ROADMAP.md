@@ -170,6 +170,6 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | 3. PPTX Rendering | 3/3 | Complete | 2026-03-29 |
 | 4. Content Generation Pipeline | 2/2 | Complete | 2026-03-29 |
 | 5. Chart Engine + Finance Vertical | 3/3 | Complete | 2026-03-29 |
-| 6. Google Slides Output | 0/2 | Not started | - |
-| 7. QA Pipeline + Deck Operations | 0/3 | Not started | - |
+| 6. Google Slides Output | 2/2 | Complete | 2026-03-29 |
+| 7. QA Pipeline + Deck Operations | 2/3 | In Progress | - |
 | 8. TypeScript SDK + Billing + Launch | 0/3 | Not started | - |

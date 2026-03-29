@@ -103,13 +103,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### QA Pipeline
 
-- [ ] **QA-01**: Structural integrity check (every slide has title, no empty slides, narrative flow)
-- [ ] **QA-02**: Text quality check (no overflow, no orphans/widows, consistent capitalization)
-- [ ] **QA-03**: Visual quality check (WCAG AA contrast, font size floors, alignment consistency)
-- [ ] **QA-04**: Data integrity check (chart data matches source, table totals correct, percentages sum)
-- [ ] **QA-05**: Brand compliance check (approved colors/fonts only, logo placement, confidentiality marking)
-- [ ] **QA-06**: Auto-fix engine that corrects font sizes, spacing, and contrast before delivery
-- [ ] **QA-07**: Executive readiness scoring (0-100) with quality report in API response
+- [x] **QA-01**: Structural integrity check (every slide has title, no empty slides, narrative flow)
+- [x] **QA-02**: Text quality check (no overflow, no orphans/widows, consistent capitalization)
+- [x] **QA-03**: Visual quality check (WCAG AA contrast, font size floors, alignment consistency)
+- [x] **QA-04**: Data integrity check (chart data matches source, table totals correct, percentages sum)
+- [x] **QA-05**: Brand compliance check (approved colors/fonts only, logo placement, confidentiality marking)
+- [x] **QA-06**: Auto-fix engine that corrects font sizes, spacing, and contrast before delivery
+- [x] **QA-07**: Executive readiness scoring (0-100) with quality report in API response
 
 ### Deck Operations
 
@@ -264,13 +264,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FIN-09 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | FIN-10 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | FIN-11 | Phase 5: Chart Engine + Finance Vertical | Complete |
-| QA-01 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| QA-02 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| QA-03 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| QA-04 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| QA-05 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| QA-06 | Phase 7: QA Pipeline + Deck Operations | Pending |
-| QA-07 | Phase 7: QA Pipeline + Deck Operations | Pending |
+| QA-01 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| QA-02 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| QA-03 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| QA-04 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| QA-05 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| QA-06 | Phase 7: QA Pipeline + Deck Operations | Complete |
+| QA-07 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | DECK-01 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | DECK-02 | Phase 7: QA Pipeline + Deck Operations | Complete |
 | DECK-03 | Phase 7: QA Pipeline + Deck Operations | Complete |
