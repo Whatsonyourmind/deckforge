@@ -5,8 +5,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import ForeignKey, String, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import JSON, ForeignKey, String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from deckforge.db.base import Base
@@ -37,7 +36,7 @@ class ApiKey(Base):
     key_prefix: Mapped[str] = mapped_column(String(16))
     name: Mapped[str] = mapped_column(String(100))
     scopes: Mapped[list[str]] = mapped_column(
-        JSONB,
+        JSON,
         default=lambda: ["read", "generate"],
     )
     tier: Mapped[str] = mapped_column(String(20), default="starter")

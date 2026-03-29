@@ -5,8 +5,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import ForeignKey, String, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import JSON, ForeignKey, String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from deckforge.db.base import Base
@@ -36,7 +35,7 @@ class Job(Base):
     queue_name: Mapped[str] = mapped_column(String(30))
     status: Mapped[str] = mapped_column(String(20), default="queued")
     progress: Mapped[float] = mapped_column(default=0.0)
-    result: Mapped[dict | None] = mapped_column(JSONB, default=None)
+    result: Mapped[dict | None] = mapped_column(JSON, default=None)
     error_message: Mapped[str | None] = mapped_column(default=None)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     started_at: Mapped[datetime | None] = mapped_column(default=None)
