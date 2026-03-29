@@ -159,6 +159,21 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **INFRA-04**: Alembic migrations
 - [x] **INFRA-05**: Railway/Fly.io deployment configuration for MVP launch
 
+### Go-To-Market & Monetization
+
+- [ ] **GTM-01**: x402 machine payment protocol — per-call USDC pricing on Base L2 for agent access
+- [ ] **GTM-02**: x402 per-call pricing: render $0.05, generate $0.10, finance slides $0.15, batch $0.08/deck
+- [ ] **GTM-03**: Receiving wallet configuration for USDC payments on Base mainnet
+- [ ] **GTM-04**: MCP server exposing DeckForge tools (render, generate, themes, slide-types) for AI agent discovery
+- [ ] **GTM-05**: Unkey integration replacing custom API key auth — key creation, rotation, revocation, usage metering
+- [ ] **GTM-06**: Landing page with value proposition, pricing table, live demo, quick start guide
+- [ ] **GTM-07**: GET /v1/pricing endpoint returning tier details + x402 per-call prices (agent-parseable)
+- [ ] **GTM-08**: npm publish workflow for @deckforge/sdk with README, examples, and CI/CD
+- [ ] **GTM-09**: README-driven marketing with benchmarks, code examples, pricing table
+- [ ] **GTM-10**: Usage analytics dashboard — calls by endpoint, revenue by channel (Stripe vs x402), top consumers
+- [ ] **GTM-11**: Onboarding flow — sign up, get API key, generate first deck in <5 minutes
+- [ ] **GTM-12**: GitHub repo setup with CI/CD, issue templates, contribution guide
+
 ## v2 Requirements
 
 Deferred to future release. Tracked but not in current roadmap.

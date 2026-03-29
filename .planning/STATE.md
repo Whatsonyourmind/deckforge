@@ -182,6 +182,10 @@ Recent decisions affecting current work:
 - [08-03]: Multi-stage Dockerfile separates build deps (gcc) from runtime image
 - [08-03]: Chromium in runtime for Kaleido/Plotly static chart PNG rendering
 
+### Roadmap Evolution
+
+- Phase 9 added: Monetization and Go-To-Market — x402 machine payments, Unkey API keys, MCP server, landing page, npm SDK publishing
+
 ### Pending Todos
 
 None yet.
