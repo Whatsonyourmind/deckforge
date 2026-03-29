@@ -150,7 +150,7 @@ Plans:
   3. A new user signs up on Starter tier (free, 50 credits), generates decks, sees credit balance decrease, and hits the limit -- upgrade to Pro unlocks 500 credits with Stripe payment
   4. GET /v1/themes, /v1/slide-types, and /v1/capabilities return complete self-describing API metadata that an agent can use to discover what DeckForge can do
   5. Credit costs are estimated before generation (pre-flight reservation) and actual charges reflect surcharges for NL, finance, and Google Slides output
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 
 Plans:
 - [ ] 08-01-PLAN.md -- TypeScript SDK: project scaffold, OpenAPI type generation, DeckForge client, fluent builder API, SSE streaming helper (Wave 1)
@@ -172,4 +172,4 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | 5. Chart Engine + Finance Vertical | 3/3 | Complete | 2026-03-29 |
 | 6. Google Slides Output | 2/2 | Complete | 2026-03-29 |
 | 7. QA Pipeline + Deck Operations | 2/3 | In Progress | - |
-| 8. TypeScript SDK + Billing + Launch | 0/3 | Not started | - |
+| 8. TypeScript SDK + Billing + Launch | 2/3 | In Progress|  |

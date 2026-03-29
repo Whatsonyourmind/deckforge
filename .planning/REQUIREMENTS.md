@@ -136,12 +136,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Billing & Auth
 
-- [ ] **BILL-01**: Three tiers: Starter ($0/50 credits), Pro ($79/500 credits), Enterprise (custom)
-- [ ] **BILL-02**: Credit cost model (1 credit per 10-slide structured render, surcharges for NL/finance/gslides)
-- [ ] **BILL-03**: Credit reservation pre-flight, actual deduction on completion
-- [ ] **BILL-04**: Stripe integration for payments and subscription management
-- [ ] **BILL-05**: Usage dashboard (credits remaining, history, projected spend)
-- [ ] **BILL-06**: Overage billing at tier-specific rates ($0.50/$0.30/volume)
+- [x] **BILL-01**: Three tiers: Starter ($0/50 credits), Pro ($79/500 credits), Enterprise (custom)
+- [x] **BILL-02**: Credit cost model (1 credit per 10-slide structured render, surcharges for NL/finance/gslides)
+- [x] **BILL-03**: Credit reservation pre-flight, actual deduction on completion
+- [x] **BILL-04**: Stripe integration for payments and subscription management
+- [x] **BILL-05**: Usage dashboard (credits remaining, history, projected spend)
+- [x] **BILL-06**: Overage billing at tier-specific rates ($0.50/$0.30/volume)
 
 ### Async & Workers
 
@@ -285,12 +285,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SDK-03 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
 | SDK-04 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
 | SDK-05 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
-| BILL-01 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| BILL-02 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| BILL-03 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| BILL-04 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| BILL-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| BILL-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| BILL-01 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| BILL-02 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| BILL-03 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| BILL-04 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| BILL-05 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| BILL-06 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
 | WORKER-01 | Phase 1: Foundation + IR Schema | Complete |
 | WORKER-02 | Phase 1: Foundation + IR Schema | Complete |
 | WORKER-03 | Phase 1: Foundation + IR Schema | Complete |
