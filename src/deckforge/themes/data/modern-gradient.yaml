@@ -1,0 +1,204 @@
+name: Modern Gradient
+description: Bold colors with gradient-capable surfaces, Poppins font — energetic modern feel
+version: "1.0"
+
+colors:
+  violet_900: "#4C1D95"
+  violet_600: "#7C3AED"
+  violet_400: "#A78BFA"
+  fuchsia_500: "#D946EF"
+  cyan_400: "#22D3EE"
+  white: "#FFFFFF"
+  gray_50: "#FAFAFA"
+  gray_100: "#F4F4F5"
+  gray_800: "#27272A"
+  gray_900: "#18181B"
+  green_500: "#22C55E"
+  red_500: "#EF4444"
+  amber_500: "#F59E0B"
+
+palette:
+  primary: "$colors.violet_600"
+  secondary: "$colors.fuchsia_500"
+  accent: "$colors.cyan_400"
+  background: "$colors.white"
+  surface: "$colors.gray_50"
+  text_primary: "$colors.gray_900"
+  text_secondary: "$colors.gray_800"
+  text_muted: "#71717A"
+  positive: "$colors.green_500"
+  negative: "$colors.red_500"
+  warning: "$colors.amber_500"
+
+typography:
+  heading_family: Poppins
+  body_family: Poppins
+  mono_family: Fira Code
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.5
+  margin_bottom: 0.5
+  margin_left: 0.75
+  margin_right: 0.75
+  gutter: 0.3
+  element_gap: 0.2
+  section_gap: 0.5
+
+slide_masters:
+  title_slide:
+    background: "$colors.violet_900"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Poppins
+        font_size: 22
+        color: "$colors.violet_400"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 36
+        font_weight: 700
+        color: "$colors.violet_900"
+      bullets:
+        font_family: Poppins
+        font_size: 18
+        color: "$colors.gray_800"
+        bullet_color: "$colors.violet_600"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 36
+        font_weight: 700
+        color: "$colors.violet_900"
+      left_column:
+        font_family: Poppins
+        font_size: 18
+        color: "$colors.gray_800"
+      right_column:
+        font_family: Poppins
+        font_size: 18
+        color: "$colors.gray_800"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 36
+        font_weight: 700
+        color: "$colors.violet_900"
+      chart_area:
+        background: "$colors.gray_50"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 36
+        font_weight: 700
+        color: "$colors.violet_900"
+      table_area:
+        font_family: Poppins
+        font_size: 14
+        color: "$colors.gray_900"
+  section_divider:
+    background: "$colors.violet_600"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+  quote_slide:
+    background: "$colors.gray_50"
+    regions:
+      quote:
+        font_family: Poppins
+        font_size: 28
+        color: "$colors.violet_900"
+        alignment: center
+      attribution:
+        font_family: Poppins
+        font_size: 16
+        color: "$colors.violet_600"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 36
+        font_weight: 700
+        color: "$colors.violet_900"
+      caption:
+        font_family: Poppins
+        font_size: 14
+        color: "#71717A"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Poppins
+        font_size: 60
+        font_weight: 700
+        color: "$colors.violet_600"
+        alignment: center
+      label:
+        font_family: Poppins
+        font_size: 18
+        color: "$colors.gray_800"
+        alignment: center
+  thank_you:
+    background: "$colors.violet_900"
+    regions:
+      title:
+        font_family: Poppins
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+
+chart_colors:
+  - "$colors.violet_600"
+  - "$colors.fuchsia_500"
+  - "$colors.cyan_400"
+  - "#F59E0B"
+  - "#10B981"
+  - "#EF4444"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

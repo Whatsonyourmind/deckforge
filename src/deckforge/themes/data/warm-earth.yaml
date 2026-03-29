@@ -1,0 +1,203 @@
+name: Warm Earth
+description: Earth tones with amber, terra cotta, and olive — Lora serif headings for warmth
+version: "1.0"
+
+colors:
+  terra_cotta: "#C2714F"
+  amber_700: "#B45309"
+  olive_700: "#4D7C0F"
+  cream: "#FFF8F0"
+  warm_white: "#FFFDF7"
+  sand: "#F5E6D3"
+  brown_800: "#3E2723"
+  brown_700: "#4E342E"
+  brown_500: "#6D4C41"
+  green_700: "#15803D"
+  red_700: "#B91C1C"
+  amber_600: "#D97706"
+
+palette:
+  primary: "$colors.terra_cotta"
+  secondary: "$colors.olive_700"
+  accent: "$colors.amber_700"
+  background: "$colors.warm_white"
+  surface: "$colors.cream"
+  text_primary: "$colors.brown_800"
+  text_secondary: "$colors.brown_700"
+  text_muted: "$colors.brown_500"
+  positive: "$colors.green_700"
+  negative: "$colors.red_700"
+  warning: "$colors.amber_600"
+
+typography:
+  heading_family: Lora
+  body_family: Source Sans Pro
+  mono_family: Source Code Pro
+  scale:
+    h1: 42
+    h2: 34
+    h3: 26
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.6
+
+spacing:
+  margin_top: 0.55
+  margin_bottom: 0.55
+  margin_left: 0.8
+  margin_right: 0.8
+  gutter: 0.3
+  element_gap: 0.25
+  section_gap: 0.55
+
+slide_masters:
+  title_slide:
+    background: "$colors.brown_800"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 42
+        font_weight: 700
+        color: "$colors.warm_white"
+        alignment: center
+      subtitle:
+        font_family: Source Sans Pro
+        font_size: 22
+        color: "$colors.sand"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 34
+        font_weight: 700
+        color: "$colors.brown_800"
+      bullets:
+        font_family: Source Sans Pro
+        font_size: 18
+        color: "$colors.brown_700"
+        bullet_color: "$colors.terra_cotta"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 34
+        font_weight: 700
+        color: "$colors.brown_800"
+      left_column:
+        font_family: Source Sans Pro
+        font_size: 18
+        color: "$colors.brown_700"
+      right_column:
+        font_family: Source Sans Pro
+        font_size: 18
+        color: "$colors.brown_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 34
+        font_weight: 700
+        color: "$colors.brown_800"
+      chart_area:
+        background: "$colors.cream"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 34
+        font_weight: 700
+        color: "$colors.brown_800"
+      table_area:
+        font_family: Source Sans Pro
+        font_size: 14
+        color: "$colors.brown_800"
+  section_divider:
+    background: "$colors.terra_cotta"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 42
+        font_weight: 700
+        color: "$colors.warm_white"
+        alignment: center
+  quote_slide:
+    background: "$colors.cream"
+    regions:
+      quote:
+        font_family: Lora
+        font_size: 28
+        color: "$colors.brown_800"
+        alignment: center
+      attribution:
+        font_family: Source Sans Pro
+        font_size: 16
+        color: "$colors.brown_500"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 34
+        font_weight: 700
+        color: "$colors.brown_800"
+      caption:
+        font_family: Source Sans Pro
+        font_size: 14
+        color: "$colors.brown_500"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Lora
+        font_size: 56
+        font_weight: 700
+        color: "$colors.terra_cotta"
+        alignment: center
+      label:
+        font_family: Source Sans Pro
+        font_size: 18
+        color: "$colors.brown_700"
+        alignment: center
+  thank_you:
+    background: "$colors.brown_800"
+    regions:
+      title:
+        font_family: Lora
+        font_size: 42
+        font_weight: 700
+        color: "$colors.warm_white"
+        alignment: center
+
+chart_colors:
+  - "$colors.terra_cotta"
+  - "$colors.olive_700"
+  - "$colors.amber_700"
+  - "#8B5CF6"
+  - "#0891B2"
+  - "#DB2777"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

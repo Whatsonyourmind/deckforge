@@ -1,0 +1,209 @@
+name: Corporate Blue
+description: Classic blue/white corporate palette with Arial/Calibri — clean professional presentations
+version: "1.0"
+
+colors:
+  blue_900: "#1E3A5F"
+  blue_700: "#2563EB"
+  blue_500: "#3B82F6"
+  blue_100: "#DBEAFE"
+  white: "#FFFFFF"
+  gray_50: "#F9FAFB"
+  gray_100: "#F3F4F6"
+  gray_700: "#374151"
+  gray_900: "#111827"
+  green_600: "#16A34A"
+  red_600: "#DC2626"
+  amber_600: "#D97706"
+
+palette:
+  primary: "$colors.blue_700"
+  secondary: "$colors.blue_900"
+  accent: "$colors.blue_500"
+  background: "$colors.white"
+  surface: "$colors.gray_50"
+  text_primary: "$colors.gray_900"
+  text_secondary: "$colors.gray_700"
+  text_muted: "#6B7280"
+  positive: "$colors.green_600"
+  negative: "$colors.red_600"
+  warning: "$colors.amber_600"
+
+typography:
+  heading_family: Arial
+  body_family: Calibri
+  mono_family: Consolas
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.4
+
+spacing:
+  margin_top: 0.5
+  margin_bottom: 0.5
+  margin_left: 0.75
+  margin_right: 0.75
+  gutter: 0.3
+  element_gap: 0.2
+  section_gap: 0.5
+
+slide_masters:
+  title_slide:
+    background: "$colors.blue_900"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Calibri
+        font_size: 22
+        color: "$colors.blue_100"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 36
+        font_weight: 700
+        color: "$colors.blue_900"
+      bullets:
+        font_family: Calibri
+        font_size: 18
+        color: "$colors.gray_700"
+        bullet_color: "$colors.blue_700"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 36
+        font_weight: 700
+        color: "$colors.blue_900"
+      left_column:
+        font_family: Calibri
+        font_size: 18
+        color: "$colors.gray_700"
+      right_column:
+        font_family: Calibri
+        font_size: 18
+        color: "$colors.gray_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 36
+        font_weight: 700
+        color: "$colors.blue_900"
+      chart_area:
+        background: "$colors.gray_50"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 36
+        font_weight: 700
+        color: "$colors.blue_900"
+      table_area:
+        font_family: Calibri
+        font_size: 14
+        color: "$colors.gray_900"
+        background: "$colors.gray_50"
+  section_divider:
+    background: "$colors.blue_700"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+  quote_slide:
+    background: "$colors.gray_50"
+    regions:
+      quote:
+        font_family: Arial
+        font_size: 28
+        color: "$colors.blue_900"
+        alignment: center
+      attribution:
+        font_family: Calibri
+        font_size: 16
+        color: "$colors.gray_700"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 36
+        font_weight: 700
+        color: "$colors.blue_900"
+      caption:
+        font_family: Calibri
+        font_size: 14
+        color: "$colors.gray_700"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Arial
+        font_size: 60
+        font_weight: 700
+        color: "$colors.blue_700"
+        alignment: center
+      label:
+        font_family: Calibri
+        font_size: 18
+        color: "$colors.gray_700"
+        alignment: center
+  thank_you:
+    background: "$colors.blue_900"
+    regions:
+      title:
+        font_family: Arial
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Calibri
+        font_size: 22
+        color: "$colors.blue_100"
+        alignment: center
+
+chart_colors:
+  - "$colors.blue_700"
+  - "$colors.green_600"
+  - "$colors.amber_600"
+  - "$colors.red_600"
+  - "#8B5CF6"
+  - "#EC4899"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

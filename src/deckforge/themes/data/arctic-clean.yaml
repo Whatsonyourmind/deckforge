@@ -1,0 +1,202 @@
+name: Arctic Clean
+description: Cool whites and ice blues, ultra-clean with high whitespace — pristine clarity
+version: "1.0"
+
+colors:
+  ice_blue: "#EFF6FF"
+  frost: "#F8FAFC"
+  snow: "#FFFFFF"
+  sky_500: "#0EA5E9"
+  sky_700: "#0369A1"
+  slate_900: "#0F172A"
+  slate_700: "#334155"
+  slate_500: "#64748B"
+  emerald_600: "#059669"
+  red_600: "#DC2626"
+  amber_600: "#D97706"
+
+palette:
+  primary: "$colors.sky_700"
+  secondary: "$colors.sky_500"
+  accent: "$colors.sky_500"
+  background: "$colors.snow"
+  surface: "$colors.frost"
+  text_primary: "$colors.slate_900"
+  text_secondary: "$colors.slate_700"
+  text_muted: "$colors.slate_500"
+  positive: "$colors.emerald_600"
+  negative: "$colors.red_600"
+  warning: "$colors.amber_600"
+
+typography:
+  heading_family: Manrope
+  body_family: Inter
+  mono_family: JetBrains Mono
+  scale:
+    h1: 40
+    h2: 32
+    h3: 26
+    subtitle: 20
+    body: 16
+    caption: 13
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 500
+    body: 400
+    caption: 400
+  line_height: 1.6
+
+spacing:
+  margin_top: 0.7
+  margin_bottom: 0.7
+  margin_left: 1.0
+  margin_right: 1.0
+  gutter: 0.4
+  element_gap: 0.3
+  section_gap: 0.65
+
+slide_masters:
+  title_slide:
+    background: "$colors.slate_900"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 40
+        font_weight: 700
+        color: "$colors.snow"
+        alignment: center
+      subtitle:
+        font_family: Inter
+        font_size: 20
+        color: "$colors.sky_500"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 32
+        font_weight: 700
+        color: "$colors.slate_900"
+      bullets:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.slate_700"
+        bullet_color: "$colors.sky_500"
+        indent: 0.4
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 32
+        font_weight: 700
+        color: "$colors.slate_900"
+      left_column:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.slate_700"
+      right_column:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.slate_700"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 32
+        font_weight: 700
+        color: "$colors.slate_900"
+      chart_area:
+        background: "$colors.frost"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 32
+        font_weight: 700
+        color: "$colors.slate_900"
+      table_area:
+        font_family: Inter
+        font_size: 14
+        color: "$colors.slate_900"
+  section_divider:
+    background: "$colors.sky_700"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 40
+        font_weight: 700
+        color: "$colors.snow"
+        alignment: center
+  quote_slide:
+    background: "$colors.frost"
+    regions:
+      quote:
+        font_family: Manrope
+        font_size: 26
+        color: "$colors.slate_900"
+        alignment: center
+      attribution:
+        font_family: Inter
+        font_size: 14
+        color: "$colors.slate_500"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 32
+        font_weight: 700
+        color: "$colors.slate_900"
+      caption:
+        font_family: Inter
+        font_size: 13
+        color: "$colors.slate_500"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Manrope
+        font_size: 56
+        font_weight: 700
+        color: "$colors.sky_700"
+        alignment: center
+      label:
+        font_family: Inter
+        font_size: 16
+        color: "$colors.slate_500"
+        alignment: center
+  thank_you:
+    background: "$colors.slate_900"
+    regions:
+      title:
+        font_family: Manrope
+        font_size: 40
+        font_weight: 700
+        color: "$colors.snow"
+        alignment: center
+
+chart_colors:
+  - "$colors.sky_700"
+  - "$colors.sky_500"
+  - "$colors.emerald_600"
+  - "#F59E0B"
+  - "#EF4444"
+  - "#8B5CF6"
+
+logo:
+  max_width: 0.9
+  max_height: 0.4
+  placement: top_left
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

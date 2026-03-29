@@ -1,0 +1,202 @@
+name: Bold Impact
+description: High contrast with oversized headings, Oswald/Roboto — maximum visual impact
+version: "1.0"
+
+colors:
+  black: "#000000"
+  near_black: "#0A0A0A"
+  dark_gray: "#1A1A1A"
+  white: "#FFFFFF"
+  off_white: "#F5F5F5"
+  light_gray: "#D4D4D4"
+  fire_red: "#FF0000"
+  electric_blue: "#0066FF"
+  bright_yellow: "#FFD600"
+  green_600: "#16A34A"
+  red_700: "#B91C1C"
+
+palette:
+  primary: "$colors.fire_red"
+  secondary: "$colors.electric_blue"
+  accent: "$colors.bright_yellow"
+  background: "$colors.white"
+  surface: "$colors.off_white"
+  text_primary: "$colors.black"
+  text_secondary: "$colors.dark_gray"
+  text_muted: "#525252"
+  positive: "$colors.green_600"
+  negative: "$colors.red_700"
+  warning: "$colors.bright_yellow"
+
+typography:
+  heading_family: Oswald
+  body_family: Roboto
+  mono_family: Roboto Mono
+  scale:
+    h1: 54
+    h2: 42
+    h3: 32
+    subtitle: 24
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 500
+    body: 400
+    caption: 400
+  line_height: 1.3
+
+spacing:
+  margin_top: 0.4
+  margin_bottom: 0.4
+  margin_left: 0.65
+  margin_right: 0.65
+  gutter: 0.25
+  element_gap: 0.2
+  section_gap: 0.45
+
+slide_masters:
+  title_slide:
+    background: "$colors.black"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 54
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Roboto
+        font_size: 24
+        color: "$colors.fire_red"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 42
+        font_weight: 700
+        color: "$colors.black"
+      bullets:
+        font_family: Roboto
+        font_size: 18
+        color: "$colors.dark_gray"
+        bullet_color: "$colors.fire_red"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 42
+        font_weight: 700
+        color: "$colors.black"
+      left_column:
+        font_family: Roboto
+        font_size: 18
+        color: "$colors.dark_gray"
+      right_column:
+        font_family: Roboto
+        font_size: 18
+        color: "$colors.dark_gray"
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 42
+        font_weight: 700
+        color: "$colors.black"
+      chart_area:
+        background: "$colors.off_white"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 42
+        font_weight: 700
+        color: "$colors.black"
+      table_area:
+        font_family: Roboto
+        font_size: 14
+        color: "$colors.black"
+  section_divider:
+    background: "$colors.fire_red"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 54
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+  quote_slide:
+    background: "$colors.black"
+    regions:
+      quote:
+        font_family: Oswald
+        font_size: 32
+        color: "$colors.white"
+        alignment: center
+      attribution:
+        font_family: Roboto
+        font_size: 16
+        color: "$colors.light_gray"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 42
+        font_weight: 700
+        color: "$colors.black"
+      caption:
+        font_family: Roboto
+        font_size: 14
+        color: "#525252"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Oswald
+        font_size: 72
+        font_weight: 700
+        color: "$colors.fire_red"
+        alignment: center
+      label:
+        font_family: Roboto
+        font_size: 18
+        color: "$colors.dark_gray"
+        alignment: center
+  thank_you:
+    background: "$colors.black"
+    regions:
+      title:
+        font_family: Oswald
+        font_size: 54
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+
+chart_colors:
+  - "$colors.fire_red"
+  - "$colors.electric_blue"
+  - "$colors.bright_yellow"
+  - "#10B981"
+  - "#8B5CF6"
+  - "#EC4899"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_right
+  opacity: 1.0
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height

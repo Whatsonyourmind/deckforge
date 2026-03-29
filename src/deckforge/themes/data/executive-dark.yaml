@@ -1,0 +1,223 @@
+name: Executive Dark
+description: Navy/dark backgrounds with white text, Montserrat headings — designed for board presentations
+version: "1.0"
+
+# Tier 1: Raw color values
+colors:
+  navy_900: "#0A1E3D"
+  navy_800: "#122B4F"
+  navy_700: "#1A3761"
+  slate_800: "#1E293B"
+  slate_600: "#475569"
+  white: "#FFFFFF"
+  off_white: "#F1F5F9"
+  light_gray: "#CBD5E1"
+  gold: "#D4A843"
+  emerald: "#10B981"
+  red_500: "#EF4444"
+  amber_500: "#F59E0B"
+
+# Tier 2: Semantic palette (references Tier 1)
+palette:
+  primary: "$colors.navy_900"
+  secondary: "$colors.gold"
+  accent: "$colors.gold"
+  background: "$colors.navy_900"
+  surface: "$colors.navy_800"
+  text_primary: "$colors.white"
+  text_secondary: "$colors.off_white"
+  text_muted: "$colors.light_gray"
+  positive: "$colors.emerald"
+  negative: "$colors.red_500"
+  warning: "$colors.amber_500"
+
+typography:
+  heading_family: Montserrat
+  body_family: Open Sans
+  mono_family: JetBrains Mono
+  scale:
+    h1: 44
+    h2: 36
+    h3: 28
+    subtitle: 22
+    body: 18
+    caption: 14
+    footnote: 10
+  weights:
+    heading: 700
+    subtitle: 600
+    body: 400
+    caption: 400
+  line_height: 1.5
+
+spacing:
+  margin_top: 0.5
+  margin_bottom: 0.5
+  margin_left: 0.75
+  margin_right: 0.75
+  gutter: 0.3
+  element_gap: 0.25
+  section_gap: 0.5
+
+# Tier 3: Slide masters (references Tier 2)
+slide_masters:
+  title_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Open Sans
+        font_size: 22
+        font_weight: 400
+        color: "$colors.gold"
+        alignment: center
+  bullet_points:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      bullets:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.off_white"
+        bullet_color: "$colors.gold"
+        indent: 0.5
+  two_column_text:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      left_column:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.off_white"
+        columns: 1
+      right_column:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.off_white"
+        columns: 1
+  chart_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      chart_area:
+        background: "$colors.navy_800"
+        min_height: 4.5
+  table_slide:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      table_area:
+        font_family: Open Sans
+        font_size: 14
+        color: "$colors.off_white"
+        background: "$colors.navy_800"
+  section_divider:
+    background: "$colors.navy_700"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Open Sans
+        font_size: 22
+        color: "$colors.gold"
+        alignment: center
+  quote_slide:
+    background: "$palette.background"
+    regions:
+      quote:
+        font_family: Montserrat
+        font_size: 28
+        font_weight: 400
+        color: "$colors.white"
+        alignment: center
+      attribution:
+        font_family: Open Sans
+        font_size: 16
+        color: "$colors.gold"
+        alignment: center
+  image_with_caption:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 36
+        font_weight: 700
+        color: "$colors.white"
+      caption:
+        font_family: Open Sans
+        font_size: 14
+        color: "$colors.light_gray"
+  stats_callout:
+    background: "$palette.background"
+    regions:
+      number:
+        font_family: Montserrat
+        font_size: 60
+        font_weight: 700
+        color: "$colors.gold"
+        alignment: center
+      label:
+        font_family: Open Sans
+        font_size: 18
+        color: "$colors.off_white"
+        alignment: center
+  thank_you:
+    background: "$palette.background"
+    regions:
+      title:
+        font_family: Montserrat
+        font_size: 44
+        font_weight: 700
+        color: "$colors.white"
+        alignment: center
+      subtitle:
+        font_family: Open Sans
+        font_size: 22
+        color: "$colors.gold"
+        alignment: center
+
+chart_colors:
+  - "$colors.gold"
+  - "$colors.emerald"
+  - "#6366F1"
+  - "#EC4899"
+  - "#8B5CF6"
+  - "#14B8A6"
+  - "#F97316"
+  - "#06B6D4"
+
+logo:
+  max_width: 1.0
+  max_height: 0.5
+  placement: top_left
+  opacity: 0.9
+
+_protected:
+  - spacing
+  - typography.scale
+  - typography.line_height
