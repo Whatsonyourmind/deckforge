@@ -1,8 +1,8 @@
 """ARQ task functions for rendering and content generation.
 
-These are stub implementations that validate IR, publish progress events,
-upload placeholder results to S3, and fire webhooks. Real rendering logic
-will be added in Phase 3.
+Implements the full rendering pipeline: IR validation -> layout engine ->
+PPTX renderer -> S3 upload. Also provides a synchronous render helper for
+small presentations (<=10 slides) called directly from the API layer.
 """
 
 from __future__ import annotations
@@ -14,6 +14,10 @@ from datetime import datetime, timezone
 
 from deckforge.db.repositories import deck_repo, job_repo
 from deckforge.ir import Presentation
+from deckforge.layout.engine import LayoutEngine
+from deckforge.layout.text_measurer import TextMeasurer
+from deckforge.rendering import PptxRenderer
+from deckforge.themes.registry import ThemeRegistry
 from deckforge.workers.storage import ensure_bucket, get_download_url, upload_file
 from deckforge.workers.webhooks import deliver_webhook
 
@@ -57,20 +61,50 @@ async def publish_progress(
                 await session.commit()
 
 
+def render_pipeline(presentation: Presentation) -> bytes:
+    """Run the full render pipeline synchronously: layout -> theme -> PPTX.
+
+    This is the core rendering function shared by both the async worker task
+    and the synchronous API path (<=10 slides).
+
+    Args:
+        presentation: Validated IR Presentation model.
+
+    Returns:
+        Raw bytes of the generated .pptx file.
+    """
+    theme_registry = ThemeRegistry()
+    text_measurer = TextMeasurer()
+    layout_engine = LayoutEngine(text_measurer, theme_registry)
+
+    # Run layout engine
+    layout_results = layout_engine.layout_presentation(presentation)
+
+    # Resolve theme
+    theme = theme_registry.get_theme(
+        presentation.theme,
+        presentation.brand_kit,
+    )
+
+    # Render PPTX
+    renderer = PptxRenderer()
+    return renderer.render(presentation, layout_results, theme)
+
+
 async def render_presentation(
     ctx: dict,
     job_id: str,
     ir_data: dict,
     webhook_url: str | None = None,
 ) -> dict:
-    """Render a presentation from IR data (stub).
+    """Render a presentation from IR data.
 
     Pipeline:
     1. Update job status to running
     2. Validate IR with Pydantic
-    3. Create placeholder output (JSON of validated IR)
+    3. Run layout engine + PPTX renderer to produce .pptx bytes
     4. Upload to S3
-    5. Update deck status to complete
+    5. Update deck/job status to complete
     6. Fire webhook if configured
     """
     db_factory = ctx.get("db_factory")
@@ -83,15 +117,17 @@ async def render_presentation(
 
         # 2. Validate IR
         presentation = Presentation.model_validate(ir_data)
-        await publish_progress(ctx, job_id, "rendering", 0.5)
+        await publish_progress(ctx, job_id, "rendering", 0.3)
 
-        # 3. Create placeholder file (JSON of validated IR)
-        output_data = json.dumps(
-            presentation.model_dump(mode="json"),
-            indent=2,
-        ).encode("utf-8")
+        # 3. Run full render pipeline (layout + PPTX)
+        pptx_bytes = render_pipeline(presentation)
+        await publish_progress(ctx, job_id, "uploading", 0.8)
 
-        file_key = f"renders/{job_id}/{uuid.uuid4().hex}.json"
+        file_key = f"renders/{job_id}/{uuid.uuid4().hex}.pptx"
+        content_type = (
+            "application/vnd.openxmlformats-officedocument"
+            ".presentationml.presentation"
+        )
         file_url = None
 
         # 4. Upload to S3
@@ -101,8 +137,8 @@ async def render_presentation(
                 s3_client,
                 s3_bucket,
                 file_key,
-                output_data,
-                "application/json",
+                pptx_bytes,
+                content_type,
             )
             file_url = get_download_url(s3_client, s3_bucket, file_key)
 
