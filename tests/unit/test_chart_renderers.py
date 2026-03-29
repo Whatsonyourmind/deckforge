@@ -347,7 +347,6 @@ class TestDonutChartRenderer:
 
     def test_donut_chart_is_doughnut_type(self, pptx_slide, theme, position):
         from deckforge.rendering.chart_renderers import CHART_RENDERERS
-        from pptx.enum.chart import XL_CHART_TYPE
 
         chart_data = DonutChartData(
             labels=["A", "B"],
@@ -356,9 +355,9 @@ class TestDonutChartRenderer:
         renderer = CHART_RENDERERS["donut"]
         renderer.render(pptx_slide, chart_data, position, theme)
         chart = pptx_slide.shapes[0].chart
-        # Verify it is a doughnut chart (not a pie)
+        # Verify it is a doughnut chart via plot class name
         plot = chart.plots[0]
-        assert plot.chart_type == XL_CHART_TYPE.DOUGHNUT
+        assert "Doughnut" in type(plot).__name__
 
 
 # ── Placeholder Tests ─────────────────────────────────────────────────────────
