@@ -1,0 +1,39 @@
+{
+  "name": "@deckforge/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for the DeckForge presentation generation API",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "deckforge",
+    "presentation",
+    "slides",
+    "pptx",
+    "sdk"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.1.0"
+  }
+}
