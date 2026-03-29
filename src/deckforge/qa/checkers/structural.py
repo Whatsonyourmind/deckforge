@@ -101,7 +101,7 @@ class StructuralChecker:
                             region=None,
                             message=(
                                 f"Slides {i + 1}-{i + 3} are all "
-                                f"{presentation.slides[i].slide_type.value} type"
+                                f"{presentation.slides[i].slide_type} type"
                             ),
                         )
                     )

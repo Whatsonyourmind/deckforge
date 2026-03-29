@@ -267,7 +267,7 @@ class TestGenerateContentWorkerTask:
             mock_pipeline_instance.run = AsyncMock(return_value=mock_ir)
             MockPipeline.return_value = mock_pipeline_instance
             MockRouter.return_value = MagicMock()
-            MockRender.return_value = b"fake pptx bytes"
+            MockRender.return_value = (b"fake pptx bytes", MagicMock(quality_score=85, issues=[], fixes=[]))
 
             result = await generate_content(
                 ctx,

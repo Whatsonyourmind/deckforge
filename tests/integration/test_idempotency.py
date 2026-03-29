@@ -14,6 +14,14 @@ VALID_IR = {
 }
 
 
+def _extract_deck_id(resp) -> str:
+    """Extract deck ID from either PPTX or JSON response."""
+    content_type = resp.headers.get("content-type", "")
+    if "openxmlformats" in content_type:
+        return resp.headers["x-deck-id"]
+    return resp.json()["id"]
+
+
 @pytest.mark.asyncio
 async def test_request_id_stored(async_client: AsyncClient, seed_api_key):
     """POST /v1/render with X-Request-Id stores the request_id on the deck."""
@@ -24,9 +32,8 @@ async def test_request_id_stored(async_client: AsyncClient, seed_api_key):
         headers={"X-API-Key": raw_key, "X-Request-Id": "req_unique_001"},
     )
     assert resp.status_code == 200
-    data = resp.json()
-    assert data["status"] in ("validated", "queued")
-    assert data["id"] is not None
+    deck_id = _extract_deck_id(resp)
+    assert deck_id is not None
 
 
 @pytest.mark.asyncio
@@ -38,14 +45,13 @@ async def test_duplicate_request_id_returns_existing(async_client: AsyncClient, 
     # First request creates the deck
     resp1 = await async_client.post("/v1/render", json=VALID_IR, headers=headers)
     assert resp1.status_code == 200
-    data1 = resp1.json()
-    first_id = data1["id"]
+    first_id = _extract_deck_id(resp1)
 
-    # Second request with same request_id returns the same deck
+    # Second request with same request_id returns the same deck (JSON idempotency response)
     resp2 = await async_client.post("/v1/render", json=VALID_IR, headers=headers)
     assert resp2.status_code == 200
-    data2 = resp2.json()
-    assert data2["id"] == first_id, "Duplicate request_id should return the same deck"
+    second_id = _extract_deck_id(resp2)
+    assert second_id == first_id, "Duplicate request_id should return the same deck"
 
 
 @pytest.mark.asyncio
@@ -56,10 +62,10 @@ async def test_no_request_id_creates_new_each_time(async_client: AsyncClient, se
 
     resp1 = await async_client.post("/v1/render", json=VALID_IR, headers=headers)
     assert resp1.status_code == 200
-    id1 = resp1.json()["id"]
+    id1 = _extract_deck_id(resp1)
 
     resp2 = await async_client.post("/v1/render", json=VALID_IR, headers=headers)
     assert resp2.status_code == 200
-    id2 = resp2.json()["id"]
+    id2 = _extract_deck_id(resp2)
 
     assert id1 != id2, "Requests without X-Request-Id should create separate decks"
