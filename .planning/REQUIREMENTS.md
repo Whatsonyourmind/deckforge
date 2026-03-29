@@ -9,12 +9,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### IR Schema & Core Models
 
-- [ ] **IR-01**: IR schema defines all 32 slide types as Pydantic discriminated unions
-- [ ] **IR-02**: IR schema defines all element types (text, data, visual, layout) with typed payloads
-- [ ] **IR-03**: IR schema defines all chart subtypes with data models
-- [ ] **IR-04**: IR schema validates input and returns descriptive errors for malformed payloads
-- [ ] **IR-05**: IR supports generation_options (target_slide_count, density, chart_style, quality_target)
-- [ ] **IR-06**: IR supports metadata (title, purpose, audience, confidentiality, language)
+- [x] **IR-01**: IR schema defines all 32 slide types as Pydantic discriminated unions
+- [x] **IR-02**: IR schema defines all element types (text, data, visual, layout) with typed payloads
+- [x] **IR-03**: IR schema defines all chart subtypes with data models
+- [x] **IR-04**: IR schema validates input and returns descriptive errors for malformed payloads
+- [x] **IR-05**: IR supports generation_options (target_slide_count, density, chart_style, quality_target)
+- [x] **IR-06**: IR supports metadata (title, purpose, audience, confidentiality, language)
 
 ### API & Infrastructure
 
@@ -197,12 +197,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IR-01 | Phase 1: Foundation + IR Schema | Pending |
-| IR-02 | Phase 1: Foundation + IR Schema | Pending |
-| IR-03 | Phase 1: Foundation + IR Schema | Pending |
-| IR-04 | Phase 1: Foundation + IR Schema | Pending |
-| IR-05 | Phase 1: Foundation + IR Schema | Pending |
-| IR-06 | Phase 1: Foundation + IR Schema | Pending |
+| IR-01 | Phase 1: Foundation + IR Schema | Complete |
+| IR-02 | Phase 1: Foundation + IR Schema | Complete |
+| IR-03 | Phase 1: Foundation + IR Schema | Complete |
+| IR-04 | Phase 1: Foundation + IR Schema | Complete |
+| IR-05 | Phase 1: Foundation + IR Schema | Complete |
+| IR-06 | Phase 1: Foundation + IR Schema | Complete |
 | API-01 | Phase 3: PPTX Rendering | Pending |
 | API-02 | Phase 4: Content Generation Pipeline | Pending |
 | API-03 | Phase 3: PPTX Rendering | Pending |
