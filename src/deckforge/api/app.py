@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
+from deckforge.api.routes.analytics import router as analytics_router
 from deckforge.api.routes.auth_google import router as auth_google_router
 from deckforge.api.routes.batch import router as batch_router
 from deckforge.api.routes.billing import router as billing_router
@@ -46,5 +47,6 @@ def create_app(lifespan=None) -> FastAPI:
     app.include_router(billing_router, prefix="/v1")
     app.include_router(pricing_router, prefix="/v1")
     app.include_router(onboarding_router, prefix="/v1")
+    app.include_router(analytics_router, prefix="/v1")
 
     return app
