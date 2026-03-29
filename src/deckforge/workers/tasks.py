@@ -1,8 +1,9 @@
 """ARQ task functions for rendering and content generation.
 
 Implements the full rendering pipeline: IR validation -> layout engine ->
-PPTX renderer -> S3 upload. Also provides a synchronous render helper for
-small presentations (<=10 slides) called directly from the API layer.
+PPTX renderer -> QA pipeline -> S3 upload. Also provides a synchronous
+render helper for small presentations (<=10 slides) called directly from
+the API layer.
 """
 
 from __future__ import annotations
@@ -12,10 +13,12 @@ import logging
 import uuid
 from datetime import datetime, timezone
 
-from deckforge.db.repositories import deck_repo, job_repo
+from deckforge.db.repositories import batch_repo, deck_repo, job_repo, webhook_repo
 from deckforge.ir import Presentation
 from deckforge.layout.engine import LayoutEngine
 from deckforge.layout.text_measurer import TextMeasurer
+from deckforge.qa.pipeline import QAPipeline
+from deckforge.qa.types import QAReport
 from deckforge.rendering import PptxRenderer
 from deckforge.themes.registry import ThemeRegistry
 from deckforge.workers.storage import ensure_bucket, get_download_url, upload_file
@@ -65,8 +68,8 @@ def render_pipeline(
     presentation: Presentation,
     output_format: str = "pptx",
     credentials=None,
-) -> bytes:
-    """Run the full render pipeline synchronously.
+) -> tuple[bytes, QAReport] | tuple:
+    """Run the full render pipeline synchronously with QA pass.
 
     Supports PPTX (default) and Google Slides output formats.
 
@@ -79,8 +82,8 @@ def render_pipeline(
         credentials: Google OAuth credentials (required for gslides).
 
     Returns:
-        Raw bytes of the generated .pptx file (for pptx format),
-        or GoogleSlidesResult (for gslides format).
+        For PPTX: tuple of (pptx_bytes, qa_report).
+        For Google Slides: tuple of (GoogleSlidesResult, qa_report).
     """
     theme_registry = ThemeRegistry()
     text_measurer = TextMeasurer()
@@ -99,11 +102,90 @@ def render_pipeline(
         from deckforge.rendering.gslides import GoogleSlidesRenderer
 
         renderer = GoogleSlidesRenderer()
-        return renderer.render(presentation, layout_results, theme, credentials)
+        result = renderer.render(presentation, layout_results, theme, credentials)
+
+        # QA pass
+        qa_pipeline = QAPipeline(theme_registry)
+        qa_report = qa_pipeline.run(presentation, layout_results, theme)
+
+        return result, qa_report
     else:
         # Default: PPTX
         renderer = PptxRenderer()
-        return renderer.render(presentation, layout_results, theme)
+        pptx_bytes = renderer.render(presentation, layout_results, theme)
+
+        # QA pass
+        qa_pipeline = QAPipeline(theme_registry)
+        qa_report = qa_pipeline.run(presentation, layout_results, theme)
+
+        return pptx_bytes, qa_report
+
+
+async def _fire_registered_webhooks(
+    db_factory,
+    api_key_id: uuid.UUID,
+    event_type: str,
+    payload: dict,
+) -> None:
+    """Look up registered webhooks for an event and deliver with HMAC signing."""
+    if not db_factory:
+        return
+
+    async with db_factory() as session:
+        hooks = await webhook_repo.get_by_event(session, api_key_id, event_type)
+
+    for hook in hooks:
+        try:
+            await deliver_webhook(
+                hook.url,
+                payload,
+                secret=hook.secret,
+            )
+        except Exception:
+            logger.warning(
+                "Failed to deliver registered webhook to %s for event %s",
+                hook.url,
+                event_type,
+            )
+
+
+async def _handle_batch_completion(
+    db_factory,
+    batch_id: uuid.UUID,
+    api_key_id: uuid.UUID,
+    job_id: str,
+    success: bool,
+) -> None:
+    """Update batch counters and fire batch.complete webhook if done."""
+    if not db_factory:
+        return
+
+    async with db_factory() as session:
+        if success:
+            batch = await batch_repo.increment_completed(session, batch_id)
+        else:
+            batch = await batch_repo.increment_failed(session, batch_id)
+        await session.commit()
+
+    # Check if batch is now complete
+    if batch and batch.status in ("complete", "partial_failure", "failed"):
+        event = f"batch.{batch.status}"
+        batch_payload = {
+            "event": event,
+            "batch_id": str(batch_id),
+            "total": batch.total_items,
+            "completed": batch.completed_items,
+            "failed": batch.failed_items,
+        }
+
+        # Fire batch webhook URL if configured
+        if batch.webhook_url:
+            await deliver_webhook(batch.webhook_url, batch_payload)
+
+        # Fire registered webhooks for batch event
+        await _fire_registered_webhooks(
+            db_factory, api_key_id, event, batch_payload
+        )
 
 
 async def render_presentation(
@@ -117,10 +199,11 @@ async def render_presentation(
     Pipeline:
     1. Update job status to running
     2. Validate IR with Pydantic
-    3. Run layout engine + PPTX renderer to produce .pptx bytes
+    3. Run layout engine + PPTX renderer + QA pipeline to produce .pptx bytes
     4. Upload to S3
-    5. Update deck/job status to complete
-    6. Fire webhook if configured
+    5. Update deck/job status to complete with quality_score
+    6. Fire webhooks (direct + registered)
+    7. Handle batch completion if part of a batch
     """
     db_factory = ctx.get("db_factory")
     s3_client = ctx.get("s3_client")
@@ -134,8 +217,8 @@ async def render_presentation(
         presentation = Presentation.model_validate(ir_data)
         await publish_progress(ctx, job_id, "rendering", 0.3)
 
-        # 3. Run full render pipeline (layout + PPTX)
-        pptx_bytes = render_pipeline(presentation)
+        # 3. Run full render pipeline (layout + PPTX + QA)
+        pptx_bytes, qa_report = render_pipeline(presentation)
         await publish_progress(ctx, job_id, "uploading", 0.8)
 
         file_key = f"renders/{job_id}/{uuid.uuid4().hex}.pptx"
@@ -157,56 +240,91 @@ async def render_presentation(
             )
             file_url = get_download_url(s3_client, s3_bucket, file_key)
 
-        # 5. Update deck/job status to complete
+        # 5. Update deck/job status to complete with quality_score
+        api_key_id = None
+        batch_id = None
         if db_factory:
             async with db_factory() as session:
-                # Find the deck associated with this job
+                # Find the job to get deck_id, api_key_id, batch_id
                 job = await job_repo.get_by_id(session, uuid.UUID(job_id))
-                if job and job.deck_id:
-                    await deck_repo.update_status(
-                        session,
-                        job.deck_id,
-                        "complete",
-                        file_url=file_url,
-                    )
+                if job:
+                    api_key_id = job.api_key_id
+                    batch_id = job.batch_id
+                    if job.deck_id:
+                        await deck_repo.update_status(
+                            session,
+                            job.deck_id,
+                            "complete",
+                            file_url=file_url,
+                            quality_score=qa_report.score,
+                        )
                 await job_repo.update_status(
                     session,
                     uuid.UUID(job_id),
                     "complete",
                     progress=1.0,
-                    result={"file_key": file_key, "file_url": file_url},
+                    result={
+                        "file_key": file_key,
+                        "file_url": file_url,
+                        "quality_score": qa_report.score,
+                        "quality_grade": qa_report.grade,
+                    },
                 )
                 await session.commit()
 
         await publish_progress(ctx, job_id, "complete", 1.0)
 
-        # 6. Fire webhook if configured
+        # 6. Fire webhooks
+        webhook_payload = {
+            "event": "render.complete",
+            "job_id": job_id,
+            "file_url": file_url,
+            "quality_score": qa_report.score,
+            "quality_grade": qa_report.grade,
+        }
+
+        # Direct webhook URL (from request parameter)
         if webhook_url:
-            await deliver_webhook(
-                webhook_url,
-                {
-                    "event": "render.complete",
-                    "job_id": job_id,
-                    "file_url": file_url,
-                },
+            await deliver_webhook(webhook_url, webhook_payload)
+
+        # Registered webhooks (from DB)
+        if api_key_id:
+            await _fire_registered_webhooks(
+                db_factory, api_key_id, "render.complete", webhook_payload
             )
 
-        return {"status": "complete", "file_key": file_key, "file_url": file_url}
+        # 7. Handle batch completion
+        if batch_id and api_key_id:
+            await _handle_batch_completion(
+                db_factory, batch_id, api_key_id, job_id, success=True
+            )
+
+        return {
+            "status": "complete",
+            "file_key": file_key,
+            "file_url": file_url,
+            "quality_score": qa_report.score,
+        }
 
     except Exception as exc:
         logger.exception("render_presentation failed for job %s", job_id)
 
         # Update status to failed
+        api_key_id = None
+        batch_id = None
         if db_factory:
             async with db_factory() as session:
                 job = await job_repo.get_by_id(session, uuid.UUID(job_id))
-                if job and job.deck_id:
-                    await deck_repo.update_status(
-                        session,
-                        job.deck_id,
-                        "failed",
-                        error=str(exc),
-                    )
+                if job:
+                    api_key_id = job.api_key_id
+                    batch_id = job.batch_id
+                    if job.deck_id:
+                        await deck_repo.update_status(
+                            session,
+                            job.deck_id,
+                            "failed",
+                            error=str(exc),
+                        )
                 await job_repo.update_status(
                     session,
                     uuid.UUID(job_id),
@@ -214,6 +332,12 @@ async def render_presentation(
                     error=str(exc),
                 )
                 await session.commit()
+
+        # Handle batch failure
+        if batch_id and api_key_id:
+            await _handle_batch_completion(
+                db_factory, batch_id, api_key_id, job_id, success=False
+            )
 
         raise
 
@@ -232,9 +356,9 @@ async def generate_content(
     Pipeline:
     1. Create LLMRouter (from user config or settings defaults)
     2. Run ContentPipeline (intent -> outline -> write -> refine)
-    3. Render the generated Presentation IR to PPTX
+    3. Render the generated Presentation IR to PPTX with QA
     4. Upload to S3
-    5. Update deck/job status to complete
+    5. Update deck/job status to complete with quality_score
     6. Fire webhook if configured
     """
     from deckforge.content.pipeline import ContentPipeline
@@ -269,9 +393,9 @@ async def generate_content(
             progress_callback=progress_callback,
         )
 
-        # 3. Render the IR to PPTX
+        # 3. Render the IR to PPTX with QA
         presentation = Presentation.model_validate(ir_data)
-        pptx_bytes = render_pipeline(presentation)
+        pptx_bytes, qa_report = render_pipeline(presentation)
         await publish_progress(ctx, job_id, "uploading", 0.95)
 
         file_key = f"renders/{job_id}/{uuid.uuid4().hex}.pptx"
@@ -287,7 +411,7 @@ async def generate_content(
             upload_file(s3_client, s3_bucket, file_key, pptx_bytes, content_type)
             file_url = get_download_url(s3_client, s3_bucket, file_key)
 
-        # 5. Update deck/job status to complete
+        # 5. Update deck/job status to complete with quality_score
         if db_factory:
             async with db_factory() as session:
                 job = await job_repo.get_by_id(session, uuid.UUID(job_id))
@@ -297,13 +421,20 @@ async def generate_content(
                         job.deck_id,
                         "complete",
                         file_url=file_url,
+                        quality_score=qa_report.score,
                     )
                 await job_repo.update_status(
                     session,
                     uuid.UUID(job_id),
                     "complete",
                     progress=1.0,
-                    result={"file_key": file_key, "file_url": file_url, "ir": ir_data},
+                    result={
+                        "file_key": file_key,
+                        "file_url": file_url,
+                        "ir": ir_data,
+                        "quality_score": qa_report.score,
+                        "quality_grade": qa_report.grade,
+                    },
                 )
                 await session.commit()
 
@@ -317,10 +448,17 @@ async def generate_content(
                     "event": "generate.complete",
                     "job_id": job_id,
                     "file_url": file_url,
+                    "quality_score": qa_report.score,
+                    "quality_grade": qa_report.grade,
                 },
             )
 
-        return {"status": "complete", "file_key": file_key, "file_url": file_url}
+        return {
+            "status": "complete",
+            "file_key": file_key,
+            "file_url": file_url,
+            "quality_score": qa_report.score,
+        }
 
     except Exception as exc:
         logger.exception("generate_content failed for job %s", job_id)

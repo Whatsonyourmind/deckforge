@@ -100,16 +100,18 @@ async def render(
     # ── PPTX output path (default) ────────────────────────────────────
     if slide_count <= SYNC_RENDER_THRESHOLD:
         # ── Synchronous render path ──────────────────────────────────────
-        pptx_bytes = render_pipeline(body)
+        pptx_bytes, qa_report = render_pipeline(body)
 
-        # Store the deck record
+        # Store the deck record with quality_score
         deck = await deck_repo.create(
             db,
             api_key_id=api_key.id,
             ir_snapshot=ir_dict,
             request_id=x_request_id,
         )
-        await deck_repo.update_status(db, deck.id, "complete")
+        await deck_repo.update_status(
+            db, deck.id, "complete", quality_score=qa_report.score
+        )
         await db.commit()
 
         return StreamingResponse(
@@ -118,6 +120,8 @@ async def render(
             headers={
                 "Content-Disposition": f'attachment; filename="deck-{deck.id}.pptx"',
                 "X-Deck-Id": str(deck.id),
+                "X-Quality-Score": str(qa_report.score),
+                "X-Quality-Grade": qa_report.grade,
             },
         )
     else:
@@ -203,17 +207,21 @@ async def _render_gslides(
         refresh_token=refresh_token,
     )
 
-    # Render
-    result = render_pipeline(body, output_format="gslides", credentials=credentials)
+    # Render (returns tuple: (GoogleSlidesResult, QAReport))
+    result, qa_report = render_pipeline(body, output_format="gslides", credentials=credentials)
 
-    # Store the deck record
+    # Store the deck record with quality_score
     deck = await deck_repo.create(
         db,
         api_key_id=api_key.id,
         ir_snapshot=ir_dict,
         request_id=x_request_id,
     )
-    await deck_repo.update_status(db, deck.id, "complete", file_url=result.presentation_url)
+    await deck_repo.update_status(
+        db, deck.id, "complete",
+        file_url=result.presentation_url,
+        quality_score=qa_report.score,
+    )
     await db.commit()
 
     return GoogleSlidesRenderResponse(

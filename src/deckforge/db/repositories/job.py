@@ -32,6 +32,7 @@ class JobRepository:
         job_type: str,
         queue_name: str,
         deck_id: uuid.UUID | None = None,
+        batch_id: uuid.UUID | None = None,
     ) -> Job:
         """Create a new job record."""
         job = Job(
@@ -39,6 +40,7 @@ class JobRepository:
             job_type=job_type,
             queue_name=queue_name,
             deck_id=deck_id,
+            batch_id=batch_id,
         )
         session.add(job)
         await session.flush()
