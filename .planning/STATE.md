@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 02-01-PLAN.md (Layout Foundation)
-last_updated: "2026-03-29T01:13:54Z"
-last_activity: 2026-03-29 -- Completed 02-01 Layout Foundation plan
+stopped_at: Completed 02-02-PLAN.md (Theme System)
+last_updated: "2026-03-29T01:17:33Z"
+last_activity: 2026-03-29 -- Completed 02-02 Theme System plan
 progress:
   total_phases: 8
   completed_phases: 1
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # Project State
@@ -21,33 +21,33 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phase 2: Layout Engine + Theme System (Plan 1 of 3 complete)
+**Current focus:** Phase 2: Layout Engine + Theme System (Plan 2 of 3 complete)
 
 ## Current Position
 
 Phase: 2 of 8 (Layout Engine + Theme System)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In Progress
-Last activity: 2026-03-29 -- Completed 02-01 Layout Foundation plan
+Last activity: 2026-03-29 -- Completed 02-02 Theme System plan
 
-Progress: [███-------] 33% (Phase 2 Plan 1/3)
+Progress: [██████----] 67% (Phase 2 Plan 2/3)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 8min
-- Total execution time: 0.5 hours
+- Total execution time: 0.6 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation-ir-schema | 3 | 24min | 8min |
-| 02-layout-engine-theme-system | 1 | 6min | 6min |
+| 02-layout-engine-theme-system | 2 | 15min | 7.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (9min), 01-02 (6min), 01-03 (9min), 02-01 (6min)
+- Last 5 plans: 01-02 (6min), 01-03 (9min), 02-01 (6min), 02-02 (9min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -55,6 +55,7 @@ Progress: [███-------] 33% (Phase 2 Plan 1/3)
 | Phase 01 P02 | 6min | 2 tasks | 16 files |
 | Phase 01 P03 | 9min | 2 tasks | 26 files |
 | Phase 02 P01 | 6min | 2 tasks | 9 files |
+| Phase 02 P02 | 9min | 2 tasks | 24 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,11 @@ Recent decisions affecting current work:
 - [02-01]: 5% safety margin on all text measurements for cross-platform rendering differences
 - [02-01]: Platform-aware font directory detection with fallback chain (mapped names -> raw names -> DejaVuSans -> any .ttf)
 - [02-01]: Added kiwisolver>=1.4 to pyproject.toml as explicit dependency
+- [02-02]: 3-tier design token YAML structure: colors (raw hex) -> palette (semantic $refs) -> slide_masters ($refs to palette)
+- [02-02]: ThemeResolver processes tiers in order (colors, palette, then rest) to avoid order-dependent resolution bugs
+- [02-02]: BrandKitMerger returns new ResolvedTheme (immutable) with protected keys: spacing, typography.scale, typography.line_height
+- [02-02]: ContrastChecker validates but does not reject -- logs warnings for WCAG AA failures during theme loading
+- [02-02]: LogoDefaults and FooterDefaults Pydantic models added to ResolvedTheme for renderer consumption
 
 ### Pending Todos
 
@@ -96,6 +102,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T01:13:54Z
-Stopped at: Completed 02-01-PLAN.md (Layout Foundation)
+Last session: 2026-03-29T01:17:33Z
+Stopped at: Completed 02-02-PLAN.md (Theme System)
 Resume file: None

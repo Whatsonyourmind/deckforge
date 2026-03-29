@@ -64,11 +64,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Theme Engine
 
-- [ ] **THEME-01**: 15 curated themes defined in YAML with full color/typography/spacing specs
-- [ ] **THEME-02**: Theme registry that loads and resolves variable references ($colors.primary -> #0A1E3D)
-- [ ] **THEME-03**: Brand kit overlay system (colors, fonts, logo placement) merging on top of themes
-- [ ] **THEME-04**: Slide masters per slide type within each theme
-- [ ] **THEME-05**: Color theory engine with WCAG AA contrast validation (4.5:1 text, 3:1 large)
+- [x] **THEME-01**: 15 curated themes defined in YAML with full color/typography/spacing specs
+- [x] **THEME-02**: Theme registry that loads and resolves variable references ($colors.primary -> #0A1E3D)
+- [x] **THEME-03**: Brand kit overlay system (colors, fonts, logo placement) merging on top of themes
+- [x] **THEME-04**: Slide masters per slide type within each theme
+- [x] **THEME-05**: Color theory engine with WCAG AA contrast validation (4.5:1 text, 3:1 large)
 
 ### Content Generation
 
@@ -237,11 +237,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LAYOUT-04 | Phase 2: Layout Engine + Theme System | Pending |
 | LAYOUT-05 | Phase 2: Layout Engine + Theme System | Complete |
 | LAYOUT-06 | Phase 2: Layout Engine + Theme System | Pending |
-| THEME-01 | Phase 2: Layout Engine + Theme System | Pending |
-| THEME-02 | Phase 2: Layout Engine + Theme System | Pending |
-| THEME-03 | Phase 2: Layout Engine + Theme System | Pending |
-| THEME-04 | Phase 2: Layout Engine + Theme System | Pending |
-| THEME-05 | Phase 2: Layout Engine + Theme System | Pending |
+| THEME-01 | Phase 2: Layout Engine + Theme System | Complete |
+| THEME-02 | Phase 2: Layout Engine + Theme System | Complete |
+| THEME-03 | Phase 2: Layout Engine + Theme System | Complete |
+| THEME-04 | Phase 2: Layout Engine + Theme System | Complete |
+| THEME-05 | Phase 2: Layout Engine + Theme System | Complete |
 | CONTENT-01 | Phase 4: Content Generation Pipeline | Pending |
 | CONTENT-02 | Phase 4: Content Generation Pipeline | Pending |
 | CONTENT-03 | Phase 4: Content Generation Pipeline | Pending |
