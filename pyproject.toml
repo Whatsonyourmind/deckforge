@@ -20,6 +20,7 @@ dependencies = [
     "boto3>=1.36",
     "httpx>=0.28",
     "python-multipart",
+    "kiwisolver>=1.4",
     "Pillow>=12.1.1",
     "pyyaml>=6.0",
 ]
