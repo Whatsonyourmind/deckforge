@@ -17,6 +17,10 @@ from deckforge.ir.charts.types import (
     StackedAreaChartData,
     PieChartData,
     DonutChartData,
+    ScatterChartData,
+    BubbleChartData,
+    ComboChartData,
+    RadarChartData,
     ChartDataSeries,
     WaterfallChartData,
 )
@@ -387,3 +391,265 @@ class TestPlaceholderChartRenderer:
         shape = pptx_slide.shapes[0]
         assert shape.has_text_frame
         assert "waterfall" in shape.text_frame.text.lower()
+
+
+# ── Scatter Chart Tests ───────────────────────────────────────────────────────
+
+
+class TestScatterChartRenderer:
+    def test_scatter_chart_creates_shape(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ScatterChartData(
+            x_values=[1.0, 2.0, 3.0, 4.0, 5.0],
+            series=[ChartDataSeries(name="Points", values=[10.0, 20.0, 15.0, 25.0, 30.0])],
+            title="Scatter Plot",
+        )
+        renderer = CHART_RENDERERS["scatter"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        assert pptx_slide.shapes[0].has_chart
+
+    def test_scatter_chart_is_native(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ScatterChartData(
+            x_values=[1.0, 2.0, 3.0],
+            series=[ChartDataSeries(name="S1", values=[10.0, 20.0, 30.0])],
+        )
+        renderer = CHART_RENDERERS["scatter"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        shape = pptx_slide.shapes[0]
+        # Verify it is a native chart object (not an image)
+        assert shape.has_chart
+        chart = shape.chart
+        assert len(chart.series) >= 1
+
+    def test_scatter_chart_with_multiple_series(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ScatterChartData(
+            x_values=[1.0, 2.0, 3.0],
+            series=[
+                ChartDataSeries(name="S1", values=[10.0, 20.0, 30.0]),
+                ChartDataSeries(name="S2", values=[15.0, 25.0, 35.0]),
+            ],
+        )
+        renderer = CHART_RENDERERS["scatter"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        chart = pptx_slide.shapes[0].chart
+        assert len(chart.series) == 2
+
+    def test_scatter_chart_with_title(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ScatterChartData(
+            x_values=[1.0, 2.0],
+            series=[ChartDataSeries(name="S1", values=[10.0, 20.0])],
+            title="My Scatter",
+        )
+        renderer = CHART_RENDERERS["scatter"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        chart = pptx_slide.shapes[0].chart
+        assert chart.has_title
+        assert chart.chart_title.text_frame.text == "My Scatter"
+
+
+# ── Bubble Chart Tests ────────────────────────────────────────────────────────
+
+
+class TestBubbleChartRenderer:
+    def test_bubble_chart_creates_shape(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = BubbleChartData(
+            x_values=[1.0, 2.0, 3.0],
+            series=[ChartDataSeries(name="Bubbles", values=[10.0, 20.0, 30.0])],
+            sizes=[5.0, 10.0, 15.0],
+        )
+        renderer = CHART_RENDERERS["bubble"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        assert pptx_slide.shapes[0].has_chart
+
+    def test_bubble_chart_is_native(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = BubbleChartData(
+            x_values=[10.0, 20.0, 30.0],
+            series=[ChartDataSeries(name="B1", values=[1.0, 2.0, 3.0])],
+            sizes=[5.0, 10.0, 15.0],
+        )
+        renderer = CHART_RENDERERS["bubble"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        shape = pptx_slide.shapes[0]
+        assert shape.has_chart
+        assert len(shape.chart.series) >= 1
+
+    def test_bubble_chart_with_title(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = BubbleChartData(
+            x_values=[1.0, 2.0],
+            series=[ChartDataSeries(name="B1", values=[10.0, 20.0])],
+            sizes=[5.0, 10.0],
+            title="Bubble Title",
+        )
+        renderer = CHART_RENDERERS["bubble"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        chart = pptx_slide.shapes[0].chart
+        assert chart.has_title
+
+
+# ── Combo Chart Tests ─────────────────────────────────────────────────────────
+
+
+class TestComboChartRenderer:
+    def test_combo_chart_creates_shape(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ComboChartData(
+            categories=["Q1", "Q2", "Q3", "Q4"],
+            series=[
+                ChartDataSeries(name="Revenue", values=[100, 120, 140, 160]),
+                ChartDataSeries(name="Cost", values=[80, 90, 100, 110]),
+            ],
+            line_series=[
+                ChartDataSeries(name="Margin", values=[20, 30, 40, 50]),
+            ],
+            title="Revenue vs Margin",
+        )
+        renderer = CHART_RENDERERS["combo"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        assert pptx_slide.shapes[0].has_chart
+
+    def test_combo_chart_has_all_series(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ComboChartData(
+            categories=["A", "B"],
+            series=[ChartDataSeries(name="Bar1", values=[10, 20])],
+            line_series=[ChartDataSeries(name="Line1", values=[15, 25])],
+        )
+        renderer = CHART_RENDERERS["combo"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        chart = pptx_slide.shapes[0].chart
+        # Should have at least 2 series total (1 bar + 1 line)
+        total_series = sum(len(plot.series) for plot in chart.plots)
+        assert total_series >= 2
+
+    def test_combo_chart_is_native(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = ComboChartData(
+            categories=["X", "Y", "Z"],
+            series=[ChartDataSeries(name="Bars", values=[10, 20, 30])],
+            line_series=[ChartDataSeries(name="Lines", values=[15, 25, 35])],
+        )
+        renderer = CHART_RENDERERS["combo"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        shape = pptx_slide.shapes[0]
+        assert shape.has_chart
+
+
+# ── Radar Chart Tests ─────────────────────────────────────────────────────────
+
+
+class TestRadarChartRenderer:
+    def test_radar_chart_creates_shape(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = RadarChartData(
+            axes=["Speed", "Power", "Range", "Defense"],
+            series=[
+                ChartDataSeries(name="Model A", values=[8, 6, 7, 9]),
+                ChartDataSeries(name="Model B", values=[6, 8, 5, 7]),
+            ],
+            title="Performance Comparison",
+        )
+        renderer = CHART_RENDERERS["radar"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        assert pptx_slide.shapes[0].has_chart
+
+    def test_radar_chart_is_native(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = RadarChartData(
+            axes=["A", "B", "C"],
+            series=[ChartDataSeries(name="S1", values=[1, 2, 3])],
+        )
+        renderer = CHART_RENDERERS["radar"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        shape = pptx_slide.shapes[0]
+        assert shape.has_chart
+        assert len(shape.chart.series) >= 1
+
+    def test_radar_chart_with_title(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = RadarChartData(
+            axes=["X", "Y", "Z"],
+            series=[ChartDataSeries(name="S1", values=[5, 6, 7])],
+            title="Radar Title",
+        )
+        renderer = CHART_RENDERERS["radar"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        chart = pptx_slide.shapes[0].chart
+        assert chart.has_title
+        assert chart.chart_title.text_frame.text == "Radar Title"
+
+    def test_radar_chart_with_multiple_series(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        chart_data = RadarChartData(
+            axes=["Speed", "Power", "Range", "Defense"],
+            series=[
+                ChartDataSeries(name="S1", values=[8, 6, 7, 9]),
+                ChartDataSeries(name="S2", values=[6, 8, 5, 7]),
+            ],
+        )
+        renderer = CHART_RENDERERS["radar"]
+        renderer.render(pptx_slide, chart_data, position, theme)
+        chart = pptx_slide.shapes[0].chart
+        assert len(chart.series) == 2
+
+
+# ── Full Registry Completeness Test ──────────────────────────────────────────
+
+
+class TestFullRegistry:
+    def test_registry_has_all_14_chart_types(self):
+        """After Task 2, registry should have all 14 native + 10 placeholder types."""
+        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+
+        all_types = [
+            # Native (14)
+            "bar", "stacked_bar", "grouped_bar", "horizontal_bar",
+            "line", "multi_line", "area", "stacked_area",
+            "pie", "donut",
+            "scatter", "bubble", "combo", "radar",
+            # Placeholder (10)
+            "waterfall", "funnel", "treemap", "tornado",
+            "football_field", "sensitivity_table",
+            "heatmap", "sankey", "gantt", "sunburst",
+        ]
+        for chart_type in all_types:
+            assert chart_type in CHART_RENDERERS, f"Missing: {chart_type}"
+
+    def test_render_chart_dispatches_scatter(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import render_chart
+
+        chart_data = ScatterChartData(
+            x_values=[1.0, 2.0, 3.0],
+            series=[ChartDataSeries(name="S1", values=[10.0, 20.0, 30.0])],
+        )
+        render_chart(pptx_slide, chart_data, position, theme)
+        assert pptx_slide.shapes[0].has_chart
+
+    def test_render_chart_dispatches_radar(self, pptx_slide, theme, position):
+        from deckforge.rendering.chart_renderers import render_chart
+
+        chart_data = RadarChartData(
+            axes=["A", "B", "C"],
+            series=[ChartDataSeries(name="S1", values=[1, 2, 3])],
+        )
+        render_chart(pptx_slide, chart_data, position, theme)
+        assert pptx_slide.shapes[0].has_chart
