@@ -13,7 +13,7 @@ DeckForge delivers an API-first presentation generation platform in eight phases
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation + IR Schema** - Project infrastructure, IR Pydantic models, API skeleton, auth, async workers (completed 2026-03-29)
-- [ ] **Phase 2: Layout Engine + Theme System** - Constraint-based layout solver, 15 curated themes, brand kit overlay
+- [x] **Phase 2: Layout Engine + Theme System** - Constraint-based layout solver, 15 curated themes, brand kit overlay (completed 2026-03-29)
 - [ ] **Phase 3: PPTX Rendering** - python-pptx renderer for all 23 universal slide types with sync render endpoint
 - [ ] **Phase 4: Content Generation Pipeline** - NL-to-IR via model-agnostic LLM orchestration with async generation
 - [ ] **Phase 5: Chart Engine + Finance Vertical** - Native/static charts and all 9 finance-specific slide types
@@ -50,12 +50,12 @@ Plans:
   3. A theme YAML file fully controls colors, typography, and spacing of a rendered slide, and switching themes produces visually distinct but structurally identical output
   4. A brand kit overlay (custom colors, fonts, logo) merges on top of any theme and the logo appears in the specified position on every slide
   5. All text meets WCAG AA contrast ratios (4.5:1 for body text, 3:1 for large text) against its background
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 
 Plans:
-- [ ] 02-01-PLAN.md -- Layout foundation: types, 12-column grid system, kiwisolver wrapper, Pillow text measurer (Wave 1)
-- [ ] 02-02-PLAN.md -- Theme system: 15 YAML themes, variable resolver, brand kit merger, WCAG contrast checker (Wave 1)
-- [ ] 02-03-PLAN.md -- Layout patterns for all 32 slide types, adaptive overflow handler, LayoutEngine orchestrator (Wave 2)
+- [x] 02-01-PLAN.md -- Layout foundation: types, 12-column grid system, kiwisolver wrapper, Pillow text measurer (Wave 1)
+- [x] 02-02-PLAN.md -- Theme system: 15 YAML themes, variable resolver, brand kit merger, WCAG contrast checker (Wave 1)
+- [x] 02-03-PLAN.md -- Layout patterns for all 32 slide types, adaptive overflow handler, LayoutEngine orchestrator (Wave 2)
 
 ### Phase 3: PPTX Rendering
 **Goal**: A complete PPTX file with all 23 universal slide types renders correctly and opens in PowerPoint/LibreOffice without errors
@@ -164,7 +164,7 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation + IR Schema | 3/3 | Complete   | 2026-03-29 |
-| 2. Layout Engine + Theme System | 2/3 | In Progress | - |
+| 2. Layout Engine + Theme System | 3/3 | Complete    | 2026-03-29 |
 | 3. PPTX Rendering | 0/3 | Not started | - |
 | 4. Content Generation Pipeline | 0/2 | Not started | - |
 | 5. Chart Engine + Finance Vertical | 0/3 | Not started | - |

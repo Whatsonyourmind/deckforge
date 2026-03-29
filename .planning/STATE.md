@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 02-02-PLAN.md (Theme System)
-last_updated: "2026-03-29T01:17:33Z"
-last_activity: 2026-03-29 -- Completed 02-02 Theme System plan
+stopped_at: Completed 02-03-PLAN.md (Layout Patterns + Engine)
+last_updated: "2026-03-29T01:30:08Z"
+last_activity: 2026-03-29 -- Completed 02-03 Layout Patterns + Engine plan (Phase 2 complete)
 progress:
   total_phases: 8
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 3
-  completed_plans: 2
-  percent: 67
+  completed_plans: 3
+  percent: 100
 ---
 
 # Project State
@@ -21,33 +21,33 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phase 2: Layout Engine + Theme System (Plan 2 of 3 complete)
+**Current focus:** Phase 2: Layout Engine + Theme System (COMPLETE - 3 of 3 plans done)
 
 ## Current Position
 
-Phase: 2 of 8 (Layout Engine + Theme System)
-Plan: 2 of 3 in current phase
-Status: In Progress
-Last activity: 2026-03-29 -- Completed 02-02 Theme System plan
+Phase: 2 of 8 (Layout Engine + Theme System) -- COMPLETE
+Plan: 3 of 3 in current phase (all complete)
+Status: Phase Complete
+Last activity: 2026-03-29 -- Completed 02-03 Layout Patterns + Engine plan
 
-Progress: [██████----] 67% (Phase 2 Plan 2/3)
+Progress: [██████████] 100% (Phase 2 Plan 3/3)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 8min
-- Total execution time: 0.6 hours
+- Total execution time: 0.7 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation-ir-schema | 3 | 24min | 8min |
-| 02-layout-engine-theme-system | 2 | 15min | 7.5min |
+| 02-layout-engine-theme-system | 3 | 23min | 7.7min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (6min), 01-03 (9min), 02-01 (6min), 02-02 (9min)
+- Last 5 plans: 01-03 (9min), 02-01 (6min), 02-02 (9min), 02-03 (8min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -56,6 +56,7 @@ Progress: [██████----] 67% (Phase 2 Plan 2/3)
 | Phase 01 P03 | 9min | 2 tasks | 26 files |
 | Phase 02 P01 | 6min | 2 tasks | 9 files |
 | Phase 02 P02 | 9min | 2 tasks | 24 files |
+| Phase 02 P03 | 8min | 2 tasks | 17 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,10 @@ Recent decisions affecting current work:
 - [02-02]: BrandKitMerger returns new ResolvedTheme (immutable) with protected keys: spacing, typography.scale, typography.line_height
 - [02-02]: ContrastChecker validates but does not reject -- logs warnings for WCAG AA failures during theme loading
 - [02-02]: LogoDefaults and FooterDefaults Pydantic models added to ResolvedTheme for renderer consumption
+- [02-03]: PATTERN_REGISTRY maps SlideType values to pattern classes, GenericPattern as fallback for 21 types
+- [02-03]: Adaptive overflow cascade: font reduction (2pt steps, min 10/14pt) -> reflow -> slide split
+- [02-03]: LayoutEngine uses _ELEMENT_TO_REGION mapping for measuring and position assignment
+- [02-03]: Fallback positions (equal distribution) used when constraints are infeasible
 
 ### Pending Todos
 
@@ -95,13 +100,13 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Research]: Layout engine has no off-the-shelf solution -- needs spike/prototype in Phase 2
+- [RESOLVED]: Layout engine built with kiwisolver constraint-based system -- 9 patterns, adaptive overflow, full engine
 - [Research]: LiteLLM supply chain compromise (March 2026) -- pin to 1.82.6, prepare fallback adapter
 - [Research]: python-pptx cannot create waterfall/treemap/sunburst natively -- static Plotly fallback needed
 - [Research]: SSE fails through corporate proxies -- webhook-first design for async notifications
 
 ## Session Continuity
 
-Last session: 2026-03-29T01:17:33Z
-Stopped at: Completed 02-02-PLAN.md (Theme System)
+Last session: 2026-03-29T01:30:08Z
+Stopped at: Completed 02-03-PLAN.md (Layout Patterns + Engine) -- Phase 2 complete
 Resume file: None
