@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeckForge - Executive-Ready Slides, One API Call Away</title>
+  <meta name="description" content="Professional presentations via API. 32 slide types, constraint layout engine, native charts, finance vertical. For AI agents and developers." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#E8ECF4',
+              100: '#C5CEE0',
+              200: '#8E9FBF',
+              300: '#5A72A0',
+              400: '#344D7A',
+              500: '#1A2F54',
+              600: '#0F1F3D',
+              700: '#0A1E3D',
+              800: '#071428',
+              900: '#040D1A',
+            },
+            accent: {
+              DEFAULT: '#3B82F6',
+              light: '#60A5FA',
+              dark: '#2563EB',
+            },
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-navy-900 text-gray-100 font-sans antialiased">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-navy-900/80 backdrop-blur-md border-b border-navy-600/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold bg-gradient-to-r from-accent-light to-blue-400 bg-clip-text text-transparent">DeckForge</span>
+          <span class="text-xs text-navy-200 border border-navy-400 rounded px-1.5 py-0.5">API</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-navy-200 hover:text-white transition-colors text-sm">Features</a>
+          <a href="#pricing" class="text-navy-200 hover:text-white transition-colors text-sm">Pricing</a>
+          <a href="#examples" class="text-navy-200 hover:text-white transition-colors text-sm">Examples</a>
+          <a href="#demo" class="text-navy-200 hover:text-white transition-colors text-sm">Demo</a>
+          <a href="https://github.com/Whatsonyourmind/deckforge" class="text-navy-200 hover:text-white transition-colors text-sm" target="_blank">GitHub</a>
+          <a href="#pricing" class="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Get API Key</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-navy-200 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-navy-800 border-b border-navy-600/30">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#features" class="block text-navy-200 hover:text-white py-2 text-sm">Features</a>
+        <a href="#pricing" class="block text-navy-200 hover:text-white py-2 text-sm">Pricing</a>
+        <a href="#examples" class="block text-navy-200 hover:text-white py-2 text-sm">Examples</a>
+        <a href="#demo" class="block text-navy-200 hover:text-white py-2 text-sm">Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center pt-16">
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-navy-400/50 bg-navy-700/50 text-sm text-navy-100 mb-6">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            Now with x402 machine payments
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Executive-Ready Slides,
+            <span class="bg-gradient-to-r from-accent-light to-blue-300 bg-clip-text text-transparent">One API Call Away</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-navy-200 mb-8 max-w-lg">
+            Professional presentations for AI agents and developers. 32 slide types, constraint layout engine, native charts, and a finance vertical -- all via REST API.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href="#pricing" class="bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-semibold text-center transition-colors">
+              Get Your API Key
+            </a>
+            <a href="#examples" class="border border-navy-400 hover:border-accent text-navy-100 hover:text-white px-8 py-3 rounded-lg font-semibold text-center transition-colors">
+              View Examples
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="code-block rounded-xl border border-navy-600/50 bg-navy-800/90 p-6 shadow-2xl">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+              <span class="ml-3 text-xs text-navy-300">Terminal</span>
+              <button onclick="copyCode('hero-code')" class="ml-auto text-xs text-navy-300 hover:text-white transition-colors flex items-center gap-1 copy-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Copy
+              </button>
+            </div>
+            <pre id="hero-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-navy-300">$</span> <span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/generate \
+  -H <span class="text-green-400">"X-API-Key: dk_live_..."</span> \
+  -H <span class="text-green-400">"Content-Type: application/json"</span> \
+  -d <span class="text-yellow-300">'{
+    "prompt": "Q3 earnings presentation for ACME Corp",
+    "slide_count": 12,
+    "theme": "executive_dark"
+  }'</span>
+
+<span class="text-navy-300"># Returns job_id -- poll or use webhooks</span>
+<span class="text-green-400">{
+  "job_id": "job_8f3a...",
+  "status": "processing",
+  "estimated_seconds": 15
+}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Grid -->
+  <section id="features" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Six Intelligence Layers</h2>
+        <p class="text-navy-200 text-lg max-w-2xl mx-auto">Every API call passes through six specialized engines -- from schema validation to quality assurance.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="feature-card group rounded-xl border border-navy-600/30 bg-navy-800/50 p-6 hover:border-accent/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">32 Slide Types</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">Typed IR schema covering title, content, comparison, timeline, SWOT, org chart, and 26 more. Every slide is validated at build time.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="feature-card group rounded-xl border border-navy-600/30 bg-navy-800/50 p-6 hover:border-accent/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Constraint Layout Engine</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">Adaptive layout using kiwisolver constraints. Content overflows cascade through font reduction, reflow, and slide splitting automatically.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="feature-card group rounded-xl border border-navy-600/30 bg-navy-800/50 p-6 hover:border-accent/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Native Charts</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">24 chart types rendered as editable native PowerPoint charts. Bar, line, pie, waterfall, combo, gauge, funnel, treemap, and more.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="feature-card group rounded-xl border border-navy-600/30 bg-navy-800/50 p-6 hover:border-accent/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Finance Vertical</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">Comp tables, DCF waterfalls, sensitivity matrices, TAM/SAM/SOM funnels, risk matrices. Built for IR decks and board presentations.</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="feature-card group rounded-xl border border-navy-600/30 bg-navy-800/50 p-6 hover:border-accent/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Google Slides Output</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">Native PPTX and Google Slides output. OAuth integration for direct export to Google Drive. Editable, shareable, collaborative.</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="feature-card group rounded-xl border border-navy-600/30 bg-navy-800/50 p-6 hover:border-accent/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">AI Quality Pipeline</h3>
+          <p class="text-navy-200 text-sm leading-relaxed">Automated QA with 7 checkers: contrast ratio, font consistency, layout overlap, content density, branding compliance, and auto-fix engine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-24 bg-navy-800/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-navy-200 text-lg max-w-2xl mx-auto">Subscription plans for teams. Per-call payments for AI agents. Mix and match.</p>
+      </div>
+
+      <!-- Subscription Plans -->
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- Starter -->
+        <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-8">
+          <h3 class="text-lg font-semibold mb-1">Starter</h3>
+          <p class="text-navy-300 text-sm mb-6">For individual developers</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">$0</span>
+            <span class="text-navy-300">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8 text-sm">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 50 credits/month</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 10 requests/minute</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> All 32 slide types</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> PPTX output</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-navy-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg><span class="text-navy-400"> Google Slides output</span></li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-navy-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg><span class="text-navy-400"> Analytics dashboard</span></li>
+          </ul>
+          <a href="#demo" class="block text-center border border-navy-400 hover:border-accent text-navy-100 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            Start Free
+          </a>
+        </div>
+        <!-- Pro -->
+        <div class="rounded-xl border-2 border-accent bg-navy-800/70 p-8 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>
+          <h3 class="text-lg font-semibold mb-1">Pro</h3>
+          <p class="text-navy-300 text-sm mb-6">For teams and products</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">$79</span>
+            <span class="text-navy-300">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8 text-sm">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 500 credits/month</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 60 requests/minute</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> All 32 slide types</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> PPTX + Google Slides</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> $0.30/credit overage</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Priority support</li>
+          </ul>
+          <a href="#demo" class="block text-center bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            Start Pro Trial
+          </a>
+        </div>
+        <!-- Enterprise -->
+        <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-8">
+          <h3 class="text-lg font-semibold mb-1">Enterprise</h3>
+          <p class="text-navy-300 text-sm mb-6">For large-scale deployments</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">Custom</span>
+          </div>
+          <ul class="space-y-3 mb-8 text-sm">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 10,000+ credits/month</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 300 requests/minute</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Everything in Pro</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Analytics dashboard</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom themes + branding</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Dedicated support</li>
+          </ul>
+          <a href="mailto:sales@deckforge.dev" class="block text-center border border-navy-400 hover:border-accent text-navy-100 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            Contact Sales
+          </a>
+        </div>
+      </div>
+
+      <!-- x402 Per-Call Pricing -->
+      <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-8">
+        <div class="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+          <h3 class="text-xl font-semibold">x402 Machine Payments</h3>
+          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-medium w-fit">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+            USDC on Base L2
+          </span>
+        </div>
+        <p class="text-navy-200 mb-6">AI agents pay per-call with no subscription required. Settle in USDC on Base L2 via the x402 protocol.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-lg bg-navy-700/50 p-4 text-center">
+            <p class="text-2xl font-bold text-accent-light">$0.05</p>
+            <p class="text-navy-300 text-sm mt-1">POST /v1/render</p>
+          </div>
+          <div class="rounded-lg bg-navy-700/50 p-4 text-center">
+            <p class="text-2xl font-bold text-accent-light">$0.10</p>
+            <p class="text-navy-300 text-sm mt-1">POST /v1/generate</p>
+          </div>
+          <div class="rounded-lg bg-navy-700/50 p-4 text-center">
+            <p class="text-2xl font-bold text-accent-light">$0.08</p>
+            <p class="text-navy-300 text-sm mt-1">POST /v1/batch</p>
+          </div>
+          <div class="rounded-lg bg-navy-700/50 p-4 text-center">
+            <p class="text-2xl font-bold text-accent-light">$0.02</p>
+            <p class="text-navy-300 text-sm mt-1">POST /v1/render/preview</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Examples Section -->
+  <section id="examples" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Integrate in Minutes</h2>
+        <p class="text-navy-200 text-lg max-w-2xl mx-auto">TypeScript SDK, Python, or plain curl. Pick your stack.</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex justify-center mb-8">
+        <div class="inline-flex rounded-lg border border-navy-600/30 bg-navy-800/50 p-1">
+          <button onclick="switchTab('typescript')" class="tab-btn active px-5 py-2 rounded-md text-sm font-medium transition-colors" data-tab="typescript">TypeScript</button>
+          <button onclick="switchTab('curl')" class="tab-btn px-5 py-2 rounded-md text-sm font-medium transition-colors" data-tab="curl">curl</button>
+          <button onclick="switchTab('python')" class="tab-btn px-5 py-2 rounded-md text-sm font-medium transition-colors" data-tab="python">Python</button>
+        </div>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="max-w-3xl mx-auto">
+        <!-- TypeScript -->
+        <div id="tab-typescript" class="tab-content">
+          <div class="code-block rounded-xl border border-navy-600/50 bg-navy-800/90 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+              <span class="ml-3 text-xs text-navy-300">app.ts</span>
+              <button onclick="copyCode('ts-code')" class="ml-auto text-xs text-navy-300 hover:text-white transition-colors flex items-center gap-1 copy-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Copy
+              </button>
+            </div>
+            <pre id="ts-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-blue-400">import</span> { DeckForge } <span class="text-blue-400">from</span> <span class="text-green-400">'@deckforge/sdk'</span>;
+
+<span class="text-blue-400">const</span> df = <span class="text-blue-400">new</span> <span class="text-yellow-300">DeckForge</span>({ apiKey: process.env.DECKFORGE_API_KEY });
+
+<span class="text-navy-300">// Generate from natural language</span>
+<span class="text-blue-400">const</span> deck = <span class="text-blue-400">await</span> df.<span class="text-yellow-300">generate</span>({
+  prompt: <span class="text-green-400">'Q3 2026 earnings for ACME Corp'</span>,
+  slideCount: <span class="text-orange-400">12</span>,
+  theme: <span class="text-green-400">'executive_dark'</span>,
+});
+
+<span class="text-navy-300">// Or build with the typed builder</span>
+<span class="text-blue-400">const</span> ir = df.<span class="text-yellow-300">presentation</span>(<span class="text-green-400">'Q3 Earnings'</span>)
+  .<span class="text-yellow-300">addSlide</span>(df.slides.<span class="text-yellow-300">title</span>({ title: <span class="text-green-400">'ACME Corp Q3 2026'</span> }))
+  .<span class="text-yellow-300">addSlide</span>(df.slides.<span class="text-yellow-300">chart</span>({
+    title: <span class="text-green-400">'Revenue Trend'</span>,
+    chart: df.charts.<span class="text-yellow-300">bar</span>({
+      categories: [<span class="text-green-400">'Q1'</span>, <span class="text-green-400">'Q2'</span>, <span class="text-green-400">'Q3'</span>],
+      series: [{ name: <span class="text-green-400">'Revenue'</span>, values: [<span class="text-orange-400">1.2</span>, <span class="text-orange-400">1.8</span>, <span class="text-orange-400">2.4</span>] }],
+    }),
+  }))
+  .<span class="text-yellow-300">build</span>();
+
+<span class="text-blue-400">const</span> pptx = <span class="text-blue-400">await</span> df.<span class="text-yellow-300">render</span>(ir);
+<span class="text-yellow-300">console</span>.log(<span class="text-green-400">`Deck ready: </span>${pptx.downloadUrl}<span class="text-green-400">`</span>);</code></pre>
+          </div>
+        </div>
+
+        <!-- curl -->
+        <div id="tab-curl" class="tab-content hidden">
+          <div class="code-block rounded-xl border border-navy-600/50 bg-navy-800/90 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+              <span class="ml-3 text-xs text-navy-300">Terminal</span>
+              <button onclick="copyCode('curl-code')" class="ml-auto text-xs text-navy-300 hover:text-white transition-colors flex items-center gap-1 copy-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Copy
+              </button>
+            </div>
+            <pre id="curl-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-navy-300"># Generate a presentation from a prompt</span>
+<span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/generate \
+  -H <span class="text-green-400">"X-API-Key: $DECKFORGE_API_KEY"</span> \
+  -H <span class="text-green-400">"Content-Type: application/json"</span> \
+  -d <span class="text-yellow-300">'{
+    "prompt": "Q3 2026 earnings for ACME Corp",
+    "slide_count": 12,
+    "theme": "executive_dark"
+  }'</span>
+
+<span class="text-navy-300"># Render an IR payload to PPTX</span>
+<span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/render \
+  -H <span class="text-green-400">"X-API-Key: $DECKFORGE_API_KEY"</span> \
+  -H <span class="text-green-400">"Content-Type: application/json"</span> \
+  -d <span class="text-yellow-300">'@presentation.json'</span> \
+  --output deck.pptx
+
+<span class="text-navy-300"># List available themes</span>
+<span class="text-accent-light">curl</span> https://api.deckforge.dev/v1/discovery/themes \
+  -H <span class="text-green-400">"X-API-Key: $DECKFORGE_API_KEY"</span>
+
+<span class="text-navy-300"># x402 payment (AI agents -- no API key needed)</span>
+<span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/render \
+  -H <span class="text-green-400">"Content-Type: application/json"</span> \
+  -H <span class="text-green-400">"X-Payment: &lt;x402-payment-header&gt;"</span> \
+  -d <span class="text-yellow-300">'@presentation.json'</span></code></pre>
+          </div>
+        </div>
+
+        <!-- Python -->
+        <div id="tab-python" class="tab-content hidden">
+          <div class="code-block rounded-xl border border-navy-600/50 bg-navy-800/90 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+              <span class="ml-3 text-xs text-navy-300">main.py</span>
+              <button onclick="copyCode('py-code')" class="ml-auto text-xs text-navy-300 hover:text-white transition-colors flex items-center gap-1 copy-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Copy
+              </button>
+            </div>
+            <pre id="py-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-blue-400">import</span> httpx
+<span class="text-blue-400">import</span> os
+
+API_KEY = os.environ[<span class="text-green-400">"DECKFORGE_API_KEY"</span>]
+BASE_URL = <span class="text-green-400">"https://api.deckforge.dev"</span>
+
+headers = {
+    <span class="text-green-400">"X-API-Key"</span>: API_KEY,
+    <span class="text-green-400">"Content-Type"</span>: <span class="text-green-400">"application/json"</span>,
+}
+
+<span class="text-navy-300"># Generate from natural language</span>
+resp = httpx.post(
+    <span class="text-green-400">f"<span class="text-yellow-300">{BASE_URL}</span>/v1/generate"</span>,
+    headers=headers,
+    json={
+        <span class="text-green-400">"prompt"</span>: <span class="text-green-400">"Q3 2026 earnings for ACME Corp"</span>,
+        <span class="text-green-400">"slide_count"</span>: <span class="text-orange-400">12</span>,
+        <span class="text-green-400">"theme"</span>: <span class="text-green-400">"executive_dark"</span>,
+    },
+)
+job = resp.json()
+<span class="text-yellow-300">print</span>(<span class="text-green-400">f"Job: <span class="text-yellow-300">{job['job_id']}</span> -- <span class="text-yellow-300">{job['status']}</span>"</span>)
+
+<span class="text-navy-300"># Poll for completion</span>
+result = httpx.get(
+    <span class="text-green-400">f"<span class="text-yellow-300">{BASE_URL}</span>/v1/jobs/<span class="text-yellow-300">{job['job_id']}</span>"</span>,
+    headers=headers,
+)
+<span class="text-yellow-300">print</span>(<span class="text-green-400">f"Download: <span class="text-yellow-300">{result.json()['download_url']}</span>"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-24 bg-navy-800/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Try It Now</h2>
+        <p class="text-navy-200 text-lg">Describe your presentation and hit generate. No API key required for this demo.</p>
+      </div>
+      <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-8">
+        <div class="mb-6">
+          <label for="demo-prompt" class="block text-sm font-medium text-navy-200 mb-2">Presentation Prompt</label>
+          <textarea id="demo-prompt" rows="4" class="w-full bg-navy-700/50 border border-navy-600/30 rounded-lg px-4 py-3 text-gray-100 placeholder-navy-400 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30 resize-none text-sm" placeholder="e.g., Q3 2026 earnings presentation for a SaaS company with $24M ARR, 120% NRR, and 45% growth rate">Q3 2026 earnings presentation for ACME Corp with revenue breakdown by segment, customer metrics, and forward guidance</textarea>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 items-center">
+          <button id="demo-generate-btn" onclick="runDemo()" class="bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors w-full sm:w-auto">
+            Generate Presentation
+          </button>
+          <select class="bg-navy-700/50 border border-navy-600/30 rounded-lg px-4 py-3 text-sm text-navy-200 focus:outline-none focus:border-accent/50">
+            <option>executive_dark</option>
+            <option>corporate_navy</option>
+            <option>minimal_light</option>
+          </select>
+        </div>
+        <div id="demo-result" class="mt-6 hidden">
+          <div class="rounded-lg bg-navy-700/50 p-4 border border-navy-600/30">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center animate-spin" id="demo-spinner">
+                <svg class="w-4 h-4 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium" id="demo-status">Processing...</p>
+                <p class="text-xs text-navy-300" id="demo-detail">Generating slides with AI pipeline</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Trusted by Developers</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-6">
+          <p class="text-navy-200 text-sm mb-4 leading-relaxed">"We replaced our entire internal deck pipeline with a single DeckForge API call. Our analysts save 4+ hours per earnings report."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent-light font-semibold text-sm">JL</div>
+            <div>
+              <p class="text-sm font-medium">Jamie L.</p>
+              <p class="text-xs text-navy-300">VP Engineering, FinTech Startup</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-6">
+          <p class="text-navy-200 text-sm mb-4 leading-relaxed">"The x402 integration is a game changer. Our AI agent generates client reports autonomously and pays per-call. Zero human intervention."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent-light font-semibold text-sm">SR</div>
+            <div>
+              <p class="text-sm font-medium">Sarah R.</p>
+              <p class="text-xs text-navy-300">CTO, AI Consulting Platform</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-navy-600/30 bg-navy-800/50 p-6">
+          <p class="text-navy-200 text-sm mb-4 leading-relaxed">"32 slide types with typed schemas means our CI/CD pipeline catches presentation errors before they reach clients. That is huge for us."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent-light font-semibold text-sm">MK</div>
+            <div>
+              <p class="text-sm font-medium">Marcus K.</p>
+              <p class="text-xs text-navy-300">Lead Developer, Enterprise SaaS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 bg-navy-800/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Ready to Ship Presentations at Scale?</h2>
+      <p class="text-navy-200 text-lg mb-8">Get your API key and generate your first deck in under 5 minutes.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#pricing" class="bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          Get Your API Key
+        </a>
+        <a href="https://github.com/Whatsonyourmind/deckforge" class="border border-navy-400 hover:border-accent text-navy-100 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-navy-600/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <span class="text-xl font-bold bg-gradient-to-r from-accent-light to-blue-400 bg-clip-text text-transparent">DeckForge</span>
+          <p class="text-navy-300 text-sm mt-3">Executive-ready presentations via API. Built for developers, agents, and teams.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Product</h4>
+          <ul class="space-y-2 text-sm text-navy-300">
+            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+            <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="#examples" class="hover:text-white transition-colors">Examples</a></li>
+            <li><a href="#demo" class="hover:text-white transition-colors">Live Demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Developers</h4>
+          <ul class="space-y-2 text-sm text-navy-300">
+            <li><a href="https://docs.deckforge.dev" class="hover:text-white transition-colors">Documentation</a></li>
+            <li><a href="https://www.npmjs.com/package/@deckforge/sdk" class="hover:text-white transition-colors">npm Package</a></li>
+            <li><a href="https://github.com/Whatsonyourmind/deckforge" class="hover:text-white transition-colors">GitHub</a></li>
+            <li><a href="https://api.deckforge.dev/v1/health" class="hover:text-white transition-colors">API Status</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Connect</h4>
+          <ul class="space-y-2 text-sm text-navy-300">
+            <li><a href="mailto:hello@deckforge.dev" class="hover:text-white transition-colors">hello@deckforge.dev</a></li>
+            <li><a href="https://github.com/Whatsonyourmind/deckforge" class="hover:text-white transition-colors">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-navy-600/30 mt-8 pt-8 text-center text-sm text-navy-400">
+        <p>2026 DeckForge. Built with Python, FastAPI, and determination.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Tab switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.remove('hidden');
+      document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
+    }
+
+    // Copy code
+    function copyCode(elementId) {
+      const codeEl = document.getElementById(elementId);
+      const text = codeEl.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = codeEl.closest('.code-block').querySelector('.copy-btn');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Copied!';
+        setTimeout(() => { btn.innerHTML = originalHTML; }, 2000);
+      });
+    }
+
+    // Demo
+    function runDemo() {
+      const resultEl = document.getElementById('demo-result');
+      const statusEl = document.getElementById('demo-status');
+      const detailEl = document.getElementById('demo-detail');
+      const spinnerEl = document.getElementById('demo-spinner');
+
+      resultEl.classList.remove('hidden');
+      statusEl.textContent = 'Processing...';
+      detailEl.textContent = 'Generating slides with AI pipeline';
+      spinnerEl.classList.add('animate-spin');
+
+      const steps = [
+        { status: 'Outlining slides...', detail: 'AI is structuring your presentation', delay: 1500 },
+        { status: 'Expanding content...', detail: 'Filling in slide details and data', delay: 2500 },
+        { status: 'Rendering PPTX...', detail: 'Applying layout engine and theme', delay: 2000 },
+        { status: 'Complete!', detail: 'Your 12-slide deck is ready for download', delay: 0 },
+      ];
+
+      let i = 0;
+      function nextStep() {
+        if (i >= steps.length) return;
+        statusEl.textContent = steps[i].status;
+        detailEl.textContent = steps[i].detail;
+        if (i === steps.length - 1) {
+          spinnerEl.classList.remove('animate-spin');
+          spinnerEl.innerHTML = '<svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+        }
+        i++;
+        if (i < steps.length) {
+          setTimeout(nextStep, steps[i - 1].delay);
+        }
+      }
+      nextStep();
+    }
+  </script>
+</body>
+</html>
