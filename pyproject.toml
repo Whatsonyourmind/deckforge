@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deckforge"
+version = "0.1.0"
+description = "Executive-ready slides, one API call away"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.135.2",
+    "uvicorn[standard]>=0.42.0",
+    "pydantic>=2.12",
+    "pydantic-settings>=2.6",
+    "sqlalchemy[asyncio]>=2.0.48",
+    "alembic>=1.18.4",
+    "psycopg[binary]>=3.2",
+    "arq>=0.26.1",
+    "redis>=5.0,<6",
+    "boto3>=1.36",
+    "httpx>=0.28",
+    "python-multipart",
+    "Pillow>=12.1.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=6.0",
+    "httpx>=0.28",
+    "fakeredis>=2.25",
+    "aiosqlite>=0.20",
+    "ruff>=0.9",
+    "mypy>=1.14",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
