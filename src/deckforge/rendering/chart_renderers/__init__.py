@@ -15,10 +15,16 @@ from deckforge.rendering.chart_renderers.category import (
     BarChartRenderer,
     LineChartRenderer,
 )
+from deckforge.rendering.chart_renderers.combo import ComboChartRenderer
 from deckforge.rendering.chart_renderers.placeholder import PlaceholderChartRenderer
 from deckforge.rendering.chart_renderers.proportional import (
     DonutChartRenderer,
     PieChartRenderer,
+)
+from deckforge.rendering.chart_renderers.radar import RadarChartRenderer
+from deckforge.rendering.chart_renderers.scatter import (
+    BubbleChartRenderer,
+    ScatterChartRenderer,
 )
 
 if TYPE_CHECKING:
@@ -48,11 +54,13 @@ CHART_RENDERERS: dict[str, BaseChartRenderer] = {
     # Proportional (native editable)
     "pie": PieChartRenderer(),
     "donut": DonutChartRenderer(),
-    # Scatter/Bubble/Combo/Radar — added in Task 2
-    # "scatter": ScatterChartRenderer(),
-    # "bubble": BubbleChartRenderer(),
-    # "combo": ComboChartRenderer(),
-    # "radar": RadarChartRenderer(),
+    # Scatter/Bubble (native editable)
+    "scatter": ScatterChartRenderer(),
+    "bubble": BubbleChartRenderer(),
+    # Combo (native editable — bar + line overlay)
+    "combo": ComboChartRenderer(),
+    # Radar (native editable)
+    "radar": RadarChartRenderer(),
     # Unsupported — Phase 5 placeholders
     "waterfall": PlaceholderChartRenderer(),
     "funnel": PlaceholderChartRenderer(),
