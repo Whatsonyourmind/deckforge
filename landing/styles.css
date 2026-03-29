@@ -1,0 +1,90 @@
+/* DeckForge Landing Page - Custom Styles
+ * Tailwind CDN handles utility classes; this file adds effects
+ * that can't be expressed as utilities.
+ */
+
+/* Hero gradient background */
+.hero-gradient {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(10, 30, 61, 0) 70%
+  );
+}
+
+/* Feature card hover glow */
+.feature-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.06);
+}
+
+/* Code block styling */
+.code-block {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+.code-block pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.2) transparent;
+}
+
+.code-block pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.code-block pre::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 3px;
+}
+
+.code-block pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Tab button states */
+.tab-btn {
+  color: rgba(142, 159, 191, 1);
+}
+
+.tab-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab-btn.active {
+  background: rgba(59, 130, 246, 0.15);
+  color: rgba(96, 165, 250, 1);
+}
+
+/* Smooth scroll offset for fixed nav */
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Pricing card glow for Pro tier */
+.border-accent {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
+}
+
+/* Animate pulse for status dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 640px) {
+  .code-block pre {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}

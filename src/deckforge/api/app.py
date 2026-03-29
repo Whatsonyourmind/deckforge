@@ -16,6 +16,7 @@ from deckforge.api.routes.estimate import router as estimate_router
 from deckforge.api.routes.generate import router as generate_router
 from deckforge.api.routes.health import router as health_router
 from deckforge.api.routes.jobs import router as jobs_router
+from deckforge.api.routes.onboarding import router as onboarding_router
 from deckforge.api.routes.pricing import router as pricing_router
 from deckforge.api.routes.preview import router as preview_router
 from deckforge.api.routes.render import router as render_router
@@ -44,5 +45,6 @@ def create_app(lifespan=None) -> FastAPI:
     app.include_router(webhooks_router, prefix="/v1")
     app.include_router(billing_router, prefix="/v1")
     app.include_router(pricing_router, prefix="/v1")
+    app.include_router(onboarding_router, prefix="/v1")
 
     return app
