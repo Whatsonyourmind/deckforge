@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: COMPLETE -- All 28 plans across 10 phases finished. Project fully built.
-last_updated: "2026-03-29T20:24:29.330Z"
-last_activity: 2026-03-29 -- Completed 10-03 agent ecosystem + finance outreach (FINAL PLAN)
+status: in_progress
+stopped_at: Completed 11-02 verification scripts
+last_updated: "2026-03-29T21:23:06Z"
+last_activity: 2026-03-29 -- Completed 11-02 verification scripts (Docker, smoke test, demo validation)
 progress:
-  total_phases: 10
+  total_phases: 11
   completed_phases: 10
-  total_plans: 28
-  completed_plans: 28
-  percent: 100
+  total_plans: 31
+  completed_plans: 30
+  percent: 97
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** PROJECT COMPLETE -- All 10 phases delivered (28/28 plans)
+**Current focus:** Phase 11 Production Launch -- verification and deployment
 
 ## Current Position
 
-Phase: 10 of 10 -- Zero-Budget Growth Engine
-Plan: 3 of 3 in current phase (28/28 total)
-Status: COMPLETE
-Last activity: 2026-03-29 -- Completed 10-03 agent ecosystem + finance outreach (FINAL PLAN)
+Phase: 11 of 11 -- Production Launch
+Plan: 2 of 3 in current phase (30/31 total)
+Status: in_progress
+Last activity: 2026-03-29 -- Completed 11-02 verification scripts (Docker, smoke test, demo validation)
 
-Progress: [██████████] 100% (28/28 plans)
+Progress: [█████████ ] 97% (30/31 plans)
 
 ## Performance Metrics
 
@@ -87,6 +87,7 @@ Progress: [██████████] 100% (28/28 plans)
 | Phase 10 P01 | 3min | 3 tasks | 10 files |
 | Phase 10 P02 | 13min | 3 tasks | 16 files |
 | Phase 10 P03 | 10min | 3 tasks | 9 files |
+| Phase 11 P02 | 3min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -211,6 +212,10 @@ Recent decisions affecting current work:
 - [Phase 10]: CrewAI: single unified tool with action parameter matching CrewAI conventions
 - [Phase 10]: AutoGen: plain function tools with Annotated types per AutoGen patterns
 - [Phase 10]: Comparison page: same Tailwind CDN + navy/accent scheme as landing page
+- [11-02]: Smoke test IR uses actual schema types (title_slide, bullet_points, two_column_text) with elements array
+- [11-02]: Render endpoint body is raw Presentation JSON (not wrapped in presentation key)
+- [11-02]: validate-demos.py uses render_pipeline directly in --direct mode to avoid server dependency
+- [11-02]: Docker verify uses grep-based service detection for portability across Compose v1/v2
 
 ### Roadmap Evolution
 
@@ -230,6 +235,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T20:22:41.756Z
-Stopped at: COMPLETE -- All 28 plans across 10 phases finished. Project fully built.
+Last session: 2026-03-29T21:23:06Z
+Stopped at: Completed 11-02-PLAN.md (verification scripts)
 Resume file: None
