@@ -67,12 +67,12 @@ Plans:
   3. Tables render with header/body/footer rows, proper alignment, and conditional formatting applied
   4. POST /v1/render/preview returns PNG thumbnail images of the first N slides
   5. Generated PPTX includes speaker notes and slide transitions as specified in the IR
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
-- [ ] 03-03: TBD
+- [ ] 03-01-PLAN.md -- Core PPTX renderer: element renderers (text, table, image, shape, data viz), PptxRenderer orchestrator, transitions, speaker notes (Wave 1)
+- [ ] 03-02-PLAN.md -- Native editable chart rendering: bar, line, area, pie, donut, scatter, bubble, combo, radar via python-pptx (Wave 1)
+- [ ] 03-03-PLAN.md -- Wire into API: sync render for <=10 slides, preview endpoint with PNG thumbnails, worker task integration (Wave 2)
 
 ### Phase 4: Content Generation Pipeline
 **Goal**: A natural language prompt produces a complete, coherent presentation IR through multi-stage LLM orchestration
