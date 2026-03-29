@@ -5,6 +5,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime, timezone
 
+from sqlalchemy import func as sa_func
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -73,6 +74,67 @@ class DeckRepository:
         if status in ("complete", "failed"):
             values["completed_at"] = datetime.now(timezone.utc)
 
+        stmt = update(Deck).where(Deck.id == deck_id).values(**values)
+        await session.execute(stmt)
+        await session.flush()
+
+    async def list_by_api_key(
+        self,
+        session: AsyncSession,
+        api_key_id: uuid.UUID,
+        offset: int = 0,
+        limit: int = 20,
+    ) -> list[Deck]:
+        """List decks belonging to an API key, paginated.
+
+        Excludes soft-deleted decks. Most recent first.
+        """
+        stmt = (
+            select(Deck)
+            .where(Deck.api_key_id == api_key_id, Deck.status != "deleted")
+            .order_by(Deck.created_at.desc())
+            .offset(offset)
+            .limit(limit)
+        )
+        result = await session.execute(stmt)
+        return list(result.scalars().all())
+
+    async def count_by_api_key(
+        self,
+        session: AsyncSession,
+        api_key_id: uuid.UUID,
+    ) -> int:
+        """Count non-deleted decks belonging to an API key."""
+        stmt = (
+            select(sa_func.count())
+            .select_from(Deck)
+            .where(Deck.api_key_id == api_key_id, Deck.status != "deleted")
+        )
+        result = await session.execute(stmt)
+        return result.scalar_one()
+
+    async def soft_delete(
+        self,
+        session: AsyncSession,
+        deck_id: uuid.UUID,
+    ) -> None:
+        """Soft delete a deck by setting status to 'deleted'."""
+        stmt = update(Deck).where(Deck.id == deck_id).values(status="deleted")
+        await session.execute(stmt)
+        await session.flush()
+
+    async def update_ir_snapshot(
+        self,
+        session: AsyncSession,
+        deck_id: uuid.UUID,
+        ir_snapshot: dict,
+        *,
+        file_url: str | None = None,
+    ) -> None:
+        """Update the IR snapshot (and optionally file_url) for a deck."""
+        values: dict = {"ir_snapshot": ir_snapshot}
+        if file_url is not None:
+            values["file_url"] = file_url
         stmt = update(Deck).where(Deck.id == deck_id).values(**values)
         await session.execute(stmt)
         await session.flush()
