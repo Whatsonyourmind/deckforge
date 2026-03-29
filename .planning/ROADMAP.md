@@ -17,9 +17,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: PPTX Rendering** - python-pptx renderer for all 23 universal slide types with sync render endpoint (completed 2026-03-29)
 - [x] **Phase 4: Content Generation Pipeline** - NL-to-IR via model-agnostic LLM orchestration with async generation (completed 2026-03-29)
 - [x] **Phase 5: Chart Engine + Finance Vertical** - Native/static charts and all 9 finance-specific slide types (completed 2026-03-29)
-- [ ] **Phase 6: Google Slides Output** - Native Google Slides renderer with Sheets-backed editable charts
-- [ ] **Phase 7: QA Pipeline + Deck Operations** - 5-pass quality assurance, auto-fix, deck composability, batch ops
-- [ ] **Phase 8: TypeScript SDK + Billing + Launch** - npm SDK, Stripe billing, discovery endpoints, launch readiness
+- [x] **Phase 6: Google Slides Output** - Native Google Slides renderer with Sheets-backed editable charts (completed 2026-03-29)
+- [x] **Phase 7: QA Pipeline + Deck Operations** - 5-pass quality assurance, auto-fix, deck composability, batch ops (completed 2026-03-29)
+- [x] **Phase 8: TypeScript SDK + Billing + Launch** - npm SDK, Stripe billing, discovery endpoints, launch readiness (completed 2026-03-29)
 
 ## Phase Details
 
@@ -150,12 +150,12 @@ Plans:
   3. A new user signs up on Starter tier (free, 50 credits), generates decks, sees credit balance decrease, and hits the limit -- upgrade to Pro unlocks 500 credits with Stripe payment
   4. GET /v1/themes, /v1/slide-types, and /v1/capabilities return complete self-describing API metadata that an agent can use to discover what DeckForge can do
   5. Credit costs are estimated before generation (pre-flight reservation) and actual charges reflect surcharges for NL, finance, and Google Slides output
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
-- [ ] 08-01-PLAN.md -- TypeScript SDK: project scaffold, OpenAPI type generation, DeckForge client, fluent builder API, SSE streaming helper (Wave 1)
-- [ ] 08-02-PLAN.md -- Stripe billing: tier definitions, credit reservation/deduction/release, Stripe subscriptions + metering, usage dashboard, credit middleware (Wave 1)
-- [ ] 08-03-PLAN.md -- Discovery endpoints (/v1/themes, /v1/slide-types, /v1/capabilities), slide type registry, production Dockerfile, Fly.io deployment config (Wave 2)
+- [x] 08-01-PLAN.md -- TypeScript SDK: project scaffold, OpenAPI type generation, DeckForge client, fluent builder API, SSE streaming helper (Wave 1)
+- [x] 08-02-PLAN.md -- Stripe billing: tier definitions, credit reservation/deduction/release, Stripe subscriptions + metering, usage dashboard, credit middleware (Wave 1)
+- [x] 08-03-PLAN.md -- Discovery endpoints (/v1/themes, /v1/slide-types, /v1/capabilities), slide type registry, production Dockerfile, Fly.io deployment config (Wave 2)
 
 ## Progress
 
@@ -171,5 +171,5 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | 4. Content Generation Pipeline | 2/2 | Complete | 2026-03-29 |
 | 5. Chart Engine + Finance Vertical | 3/3 | Complete | 2026-03-29 |
 | 6. Google Slides Output | 2/2 | Complete | 2026-03-29 |
-| 7. QA Pipeline + Deck Operations | 2/3 | In Progress | - |
-| 8. TypeScript SDK + Billing + Launch | 2/3 | In Progress|  |
+| 7. QA Pipeline + Deck Operations | 3/3 | Complete | 2026-03-29 |
+| 8. TypeScript SDK + Billing + Launch | 3/3 | Complete | 2026-03-29 |

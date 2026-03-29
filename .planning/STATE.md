@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 08-02-PLAN.md (Billing system with Stripe, credit management, usage dashboard)
-last_updated: "2026-03-29T08:00:38Z"
-last_activity: 2026-03-29 -- Completed 08-02 billing system (tiers, credits, Stripe, usage API)
+status: complete
+stopped_at: PROJECT COMPLETE -- All 22 plans across 8 phases finished
+last_updated: "2026-03-29T08:10:52Z"
+last_activity: 2026-03-29 -- Completed 08-03 discovery endpoints and deployment config (FINAL PLAN)
 progress:
   total_phases: 8
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 22
-  completed_plans: 21
+  completed_plans: 22
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phase 08 in progress. 21 of 22 plans done. SDK and billing complete, deployment remaining.
+**Current focus:** PROJECT COMPLETE. All 22 plans across 8 phases finished. Ready for deployment.
 
 ## Current Position
 
-Phase: 8 of 8 -- Phase 08 in progress (2/3 plans complete)
-Plan: 21 of 22 plans complete
-Status: Executing Phase 08 (TypeScript SDK + Billing + Launch)
-Last activity: 2026-03-29 -- Completed 08-02 billing system (tiers, credits, Stripe, usage API)
+Phase: 8 of 8 -- All phases complete
+Plan: 22 of 22 plans complete
+Status: COMPLETE
+Last activity: 2026-03-29 -- Completed 08-03 discovery endpoints and deployment config (FINAL PLAN)
 
-Progress: [█████████▌] 95% (21/22 plans)
+Progress: [██████████] 100% (22/22 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
-- Average duration: 7.5min
+- Total plans completed: 22
+- Average duration: 7.4min
 - Total execution time: 2.9 hours
 
 **By Phase:**
@@ -49,11 +49,11 @@ Progress: [█████████▌] 95% (21/22 plans)
 | 05-chart-engine-finance-vertical | 3 | 24min | 8min |
 | 06-google-slides-renderer | 2 | 16min | 8min |
 | 07-qa-pipeline-deck-operations | 3 | 22min | 7.3min |
-| 08-typescript-sdk-billing-launch | 2/3 | 12min | 6min |
+| 08-typescript-sdk-billing-launch | 3/3 | 18min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 07-02 (6min), 07-03 (8min), 08-01 (6min), 08-02 (6min)
-- Trend: Consistent ~6-8min per plan
+- Last 5 plans: 07-03 (8min), 08-01 (6min), 08-02 (6min), 08-03 (6min)
+- Trend: Consistent ~6min per plan
 
 *Updated after each plan completion*
 | Phase 01 P01 | 9min | 2 tasks | 24 files |
@@ -77,6 +77,7 @@ Progress: [█████████▌] 95% (21/22 plans)
 | Phase 07 P03 | 8min | 2 tasks | 18 files |
 | Phase 08 P01 | 6min | 2 tasks | 15 files |
 | Phase 08 P02 | 6min | 2 tasks | 18 files |
+| Phase 08 P03 | 6min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -174,6 +175,11 @@ Recent decisions affecting current work:
 - [08-02]: Enterprise tier allows overage, Starter/Pro block when credits exhausted
 - [08-02]: CreditCheck middleware reads raw request body for slide count estimation
 - [08-02]: Stripe StripeClient uses new stripe.StripeClient API (not legacy module-level stripe.api_key)
+- [08-03]: lru_cache for theme list (themes are static YAML, rarely change at runtime)
+- [08-03]: SlideTypeRegistry as static dict with class wrapper (no DB for discovery)
+- [08-03]: All 32 example IRs validated against Presentation.model_validate() at build time
+- [08-03]: Multi-stage Dockerfile separates build deps (gcc) from runtime image
+- [08-03]: Chromium in runtime for Kaleido/Plotly static chart PNG rendering
 
 ### Pending Todos
 
@@ -188,6 +194,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T08:00:38Z
-Stopped at: Completed 08-02-PLAN.md (Billing system with Stripe, credit management, usage dashboard)
+Last session: 2026-03-29T08:10:52Z
+Stopped at: PROJECT COMPLETE -- All 22 plans across 8 phases finished
 Resume file: None
