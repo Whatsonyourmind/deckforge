@@ -22,9 +22,9 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **API-02**: POST /v1/generate accepts NL prompt and returns deck asynchronously with job tracking
 - [x] **API-03**: POST /v1/render/preview returns first N slides as PNG thumbnails
 - [x] **API-04**: POST /v1/estimate returns credit cost estimate for a given IR or prompt
-- [ ] **API-05**: GET /v1/themes lists all available themes with metadata
-- [ ] **API-06**: GET /v1/slide-types lists all slide types with example IR
-- [ ] **API-07**: GET /v1/capabilities returns API capabilities and limits
+- [x] **API-05**: GET /v1/themes lists all available themes with metadata
+- [x] **API-06**: GET /v1/slide-types lists all slide types with example IR
+- [x] **API-07**: GET /v1/capabilities returns API capabilities and limits
 - [x] **API-08**: GET /v1/health returns API health status
 - [x] **API-09**: API key authentication (dk_live_/dk_test_ format) with scoped permissions
 - [x] **API-10**: Rate limiting per API key per tier (10/60/custom req/min)
@@ -157,7 +157,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **INFRA-02**: Dockerfile with bundled TrueType fonts for headless text measurement
 - [x] **INFRA-03**: PostgreSQL database with SQLAlchemy models (users, api_keys, decks, usage_events)
 - [x] **INFRA-04**: Alembic migrations
-- [ ] **INFRA-05**: Railway/Fly.io deployment configuration for MVP launch
+- [x] **INFRA-05**: Railway/Fly.io deployment configuration for MVP launch
 
 ## v2 Requirements
 
@@ -207,9 +207,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | API-02 | Phase 4: Content Generation Pipeline | Complete |
 | API-03 | Phase 3: PPTX Rendering | Complete |
 | API-04 | Phase 7: QA Pipeline + Deck Operations | Complete |
-| API-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| API-06 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
-| API-07 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| API-05 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| API-06 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
+| API-07 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
 | API-08 | Phase 1: Foundation + IR Schema | Complete |
 | API-09 | Phase 1: Foundation + IR Schema | Complete |
 | API-10 | Phase 1: Foundation + IR Schema | Complete |
@@ -300,7 +300,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-02 | Phase 1: Foundation + IR Schema | Complete |
 | INFRA-03 | Phase 1: Foundation + IR Schema | Complete |
 | INFRA-04 | Phase 1: Foundation + IR Schema | Complete |
-| INFRA-05 | Phase 8: TypeScript SDK + Billing + Launch | Pending |
+| INFRA-05 | Phase 8: TypeScript SDK + Billing + Launch | Complete |
 
 **Coverage:**
 - v1 requirements: 104 total
