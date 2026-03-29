@@ -81,11 +81,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Chart Engine
 
-- [ ] **CHART-01**: Native editable PPTX charts for supported types
-- [ ] **CHART-02**: Static image fallback via Plotly/Kaleido for unsupported chart types
-- [ ] **CHART-03**: Chart type recommender (data -> best chart type suggestion)
-- [ ] **CHART-04**: Axis, label, legend formatting with theme-aware styling
-- [ ] **CHART-05**: Financial chart types: waterfall (stacked bar workaround), sensitivity table, football field
+- [x] **CHART-01**: Native editable PPTX charts for supported types
+- [x] **CHART-02**: Static image fallback via Plotly/Kaleido for unsupported chart types
+- [x] **CHART-03**: Chart type recommender (data -> best chart type suggestion)
+- [x] **CHART-04**: Axis, label, legend formatting with theme-aware styling
+- [x] **CHART-05**: Financial chart types: waterfall (stacked bar workaround), sensitivity table, football field
 
 ### Finance Vertical
 
@@ -248,11 +248,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONTENT-04 | Phase 4: Content Generation Pipeline | Pending |
 | CONTENT-05 | Phase 4: Content Generation Pipeline | Complete |
 | CONTENT-06 | Phase 4: Content Generation Pipeline | Complete |
-| CHART-01 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| CHART-02 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| CHART-03 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| CHART-04 | Phase 5: Chart Engine + Finance Vertical | Pending |
-| CHART-05 | Phase 5: Chart Engine + Finance Vertical | Pending |
+| CHART-01 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| CHART-02 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| CHART-03 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| CHART-04 | Phase 5: Chart Engine + Finance Vertical | Complete |
+| CHART-05 | Phase 5: Chart Engine + Finance Vertical | Complete |
 | FIN-01 | Phase 5: Chart Engine + Finance Vertical | Pending |
 | FIN-02 | Phase 5: Chart Engine + Finance Vertical | Pending |
 | FIN-03 | Phase 5: Chart Engine + Finance Vertical | Pending |

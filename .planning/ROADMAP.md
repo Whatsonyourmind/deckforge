@@ -102,7 +102,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md -- Static chart engine: Plotly renderers for waterfall, heatmap, sankey, gantt, football field, sensitivity, funnel, treemap, tornado, sunburst + chart recommender (Wave 1)
+- [x] 05-01-PLAN.md -- Static chart engine: Plotly renderers for waterfall, heatmap, sankey, gantt, football field, sensitivity, funnel, treemap, tornado, sunburst + chart recommender (Wave 1)
 - [ ] 05-02-PLAN.md -- Finance data layer: financial number formatter, conditional formatting engine, CSV/Excel data ingestion with auto-mapping (Wave 1)
 - [ ] 05-03-PLAN.md -- Finance slide renderers: comp_table, dcf_summary, waterfall_chart, deal_overview, returns_analysis, capital_structure, market_landscape, investment_thesis, risk_matrix + PptxRenderer integration (Wave 2)
 
@@ -165,9 +165,9 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 |-------|----------------|--------|-----------|
 | 1. Foundation + IR Schema | 3/3 | Complete   | 2026-03-29 |
 | 2. Layout Engine + Theme System | 3/3 | Complete    | 2026-03-29 |
-| 3. PPTX Rendering | 1/3 | In progress | - |
-| 4. Content Generation Pipeline | 0/2 | Not started | - |
-| 5. Chart Engine + Finance Vertical | 0/3 | Not started | - |
+| 3. PPTX Rendering | 3/3 | Complete | 2026-03-29 |
+| 4. Content Generation Pipeline | 1/2 | In progress | - |
+| 5. Chart Engine + Finance Vertical | 1/3 | In progress | - |
 | 6. Google Slides Output | 0/2 | Not started | - |
 | 7. QA Pipeline + Deck Operations | 0/3 | Not started | - |
 | 8. TypeScript SDK + Billing + Launch | 0/3 | Not started | - |
