@@ -1,4 +1,4 @@
-"""Chart renderer registry — maps chart_type strings to renderer instances.
+"""Chart renderer registry -- maps chart_type strings to renderer instances.
 
 Usage:
     from deckforge.rendering.chart_renderers import render_chart
@@ -16,16 +16,26 @@ from deckforge.rendering.chart_renderers.category import (
     LineChartRenderer,
 )
 from deckforge.rendering.chart_renderers.combo import ComboChartRenderer
+from deckforge.rendering.chart_renderers.football_field import FootballFieldChartRenderer
+from deckforge.rendering.chart_renderers.funnel import FunnelChartRenderer
+from deckforge.rendering.chart_renderers.gantt import GanttChartRenderer
+from deckforge.rendering.chart_renderers.heatmap import HeatmapChartRenderer
 from deckforge.rendering.chart_renderers.placeholder import PlaceholderChartRenderer
 from deckforge.rendering.chart_renderers.proportional import (
     DonutChartRenderer,
     PieChartRenderer,
 )
 from deckforge.rendering.chart_renderers.radar import RadarChartRenderer
+from deckforge.rendering.chart_renderers.sankey import SankeyChartRenderer
 from deckforge.rendering.chart_renderers.scatter import (
     BubbleChartRenderer,
     ScatterChartRenderer,
 )
+from deckforge.rendering.chart_renderers.sensitivity import SensitivityChartRenderer
+from deckforge.rendering.chart_renderers.sunburst import SunburstChartRenderer
+from deckforge.rendering.chart_renderers.tornado import TornadoChartRenderer
+from deckforge.rendering.chart_renderers.treemap import TreemapChartRenderer
+from deckforge.rendering.chart_renderers.waterfall import WaterfallChartRenderer
 
 if TYPE_CHECKING:
     from pptx.slide import Slide
@@ -57,21 +67,21 @@ CHART_RENDERERS: dict[str, BaseChartRenderer] = {
     # Scatter/Bubble (native editable)
     "scatter": ScatterChartRenderer(),
     "bubble": BubbleChartRenderer(),
-    # Combo (native editable — bar + line overlay)
+    # Combo (native editable -- bar + line overlay)
     "combo": ComboChartRenderer(),
     # Radar (native editable)
     "radar": RadarChartRenderer(),
-    # Unsupported — Phase 5 placeholders
-    "waterfall": PlaceholderChartRenderer(),
-    "funnel": PlaceholderChartRenderer(),
-    "treemap": PlaceholderChartRenderer(),
-    "tornado": PlaceholderChartRenderer(),
-    "football_field": PlaceholderChartRenderer(),
-    "sensitivity_table": PlaceholderChartRenderer(),
-    "heatmap": PlaceholderChartRenderer(),
-    "sankey": PlaceholderChartRenderer(),
-    "gantt": PlaceholderChartRenderer(),
-    "sunburst": PlaceholderChartRenderer(),
+    # Static (Plotly-based PNG image charts)
+    "waterfall": WaterfallChartRenderer(),
+    "funnel": FunnelChartRenderer(),
+    "treemap": TreemapChartRenderer(),
+    "tornado": TornadoChartRenderer(),
+    "football_field": FootballFieldChartRenderer(),
+    "sensitivity_table": SensitivityChartRenderer(),
+    "heatmap": HeatmapChartRenderer(),
+    "sankey": SankeyChartRenderer(),
+    "gantt": GanttChartRenderer(),
+    "sunburst": SunburstChartRenderer(),
 }
 
 

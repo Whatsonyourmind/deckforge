@@ -369,24 +369,26 @@ class TestDonutChartRenderer:
 
 class TestPlaceholderChartRenderer:
     def test_placeholder_creates_shape(self, pptx_slide, theme, position):
-        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+        """Test PlaceholderChartRenderer directly (no longer in registry for waterfall)."""
+        from deckforge.rendering.chart_renderers.placeholder import PlaceholderChartRenderer
 
+        renderer = PlaceholderChartRenderer()
         chart_data = WaterfallChartData(
             categories=["Start", "Change", "End"],
             values=[100, -20, 80],
         )
-        renderer = CHART_RENDERERS["waterfall"]
         renderer.render(pptx_slide, chart_data, position, theme)
         assert len(pptx_slide.shapes) > 0
 
     def test_placeholder_has_text_label(self, pptx_slide, theme, position):
-        from deckforge.rendering.chart_renderers import CHART_RENDERERS
+        """Test PlaceholderChartRenderer directly (no longer in registry for waterfall)."""
+        from deckforge.rendering.chart_renderers.placeholder import PlaceholderChartRenderer
 
+        renderer = PlaceholderChartRenderer()
         chart_data = WaterfallChartData(
             categories=["Start", "End"],
             values=[100, 80],
         )
-        renderer = CHART_RENDERERS["waterfall"]
         renderer.render(pptx_slide, chart_data, position, theme)
         shape = pptx_slide.shapes[0]
         assert shape.has_text_frame
