@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 09-01-PLAN.md (x402 + Unkey dual auth)
-last_updated: "2026-03-29T18:18:01Z"
-last_activity: 2026-03-29 -- Completed 09-01 x402 + Unkey dual auth middleware + pricing endpoint
+stopped_at: Completed 09-02-PLAN.md (MCP server + SDK publishing + GitHub setup)
+last_updated: "2026-03-29T18:19:29Z"
+last_activity: 2026-03-29 -- Completed 09-02 MCP server + SDK publishing + GitHub repo setup
 progress:
   total_phases: 9
   completed_phases: 8
   total_plans: 25
-  completed_plans: 23
-  percent: 92
+  completed_plans: 24
+  percent: 96
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** Phase 9 -- Monetization and Go-To-Market. x402 + Unkey dual auth complete. MCP server and landing page remaining.
+**Current focus:** Phase 9 -- Monetization and Go-To-Market. x402 + Unkey auth and MCP server complete. Landing page remaining.
 
 ## Current Position
 
 Phase: 9 of 9 -- Monetization and Go-To-Market
-Plan: 1 of 3 in current phase (23/25 total)
+Plan: 2 of 3 in current phase (24/25 total)
 Status: IN PROGRESS
-Last activity: 2026-03-29 -- Completed 09-01 x402 + Unkey dual auth middleware + pricing endpoint
+Last activity: 2026-03-29 -- Completed 09-02 MCP server + SDK publishing + GitHub repo setup
 
-Progress: [█████████░] 92% (23/25 plans)
+Progress: [█████████░] 96% (24/25 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 23
+- Total plans completed: 24
 - Average duration: 7.4min
-- Total execution time: 3.0 hours
+- Total execution time: 3.1 hours
 
 **By Phase:**
 
@@ -51,10 +51,10 @@ Progress: [█████████░] 92% (23/25 plans)
 | 06-google-slides-renderer | 2 | 16min | 8min |
 | 07-qa-pipeline-deck-operations | 3 | 22min | 7.3min |
 | 08-typescript-sdk-billing-launch | 3/3 | 18min | 6min |
-| 09-monetization-and-go-to-market | 1/3 | 7min | 7min |
+| 09-monetization-and-go-to-market | 2/3 | 14min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 08-01 (6min), 08-02 (6min), 08-03 (6min), 09-01 (7min)
+- Last 5 plans: 08-02 (6min), 08-03 (6min), 09-01 (7min), 09-02 (7min)
 - Trend: Consistent ~6-7min per plan
 
 *Updated after each plan completion*
@@ -81,6 +81,7 @@ Progress: [█████████░] 92% (23/25 plans)
 | Phase 08 P02 | 6min | 2 tasks | 18 files |
 | Phase 08 P03 | 6min | 2 tasks | 9 files |
 | Phase 09 P01 | 7min | 2 tasks | 11 files |
+| Phase 09 P02 | 7min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -187,6 +188,10 @@ Recent decisions affecting current work:
 - [09-01]: httpx for Unkey API calls (direct HTTP, avoids SDK version coupling)
 - [09-01]: Legacy Redis token bucket preserved for DB-auth development mode
 - [09-01]: x402 payments skip rate limiting (per-call payment is self-throttling)
+- [09-02]: FastMCP with lazy imports in tool functions to avoid circular dependencies
+- [09-02]: MCP tool names simplified for agent ergonomics (render, generate, themes, etc.)
+- [09-02]: npm publish with --provenance flag for supply chain security
+- [09-02]: x402 per-call pricing: $0.05 render, $0.15 generate, free for metadata endpoints
 
 ### Roadmap Evolution
 
@@ -205,6 +210,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T18:18:01Z
-Stopped at: Completed 09-01-PLAN.md (x402 + Unkey dual auth)
+Last session: 2026-03-29T18:19:29Z
+Stopped at: Completed 09-02-PLAN.md (MCP server + SDK publishing + GitHub setup)
 Resume file: None
