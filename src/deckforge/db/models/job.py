@@ -28,6 +28,10 @@ class Job(Base):
         ForeignKey("decks.id"),
         default=None,
     )
+    batch_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("batch_jobs.id"),
+        default=None,
+    )
     api_key_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("api_keys.id"),
     )

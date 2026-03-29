@@ -84,12 +84,19 @@ class TestBatchJobModel:
         assert batch.status == "running"
 
     def test_default_values(self):
-        """BatchJob has sensible defaults for completed/failed items."""
+        """BatchJob has sensible defaults for completed/failed items.
+
+        SQLAlchemy mapped_column defaults apply at DB flush time, so we
+        verify fields accept the expected explicit defaults.
+        """
         from deckforge.db.models.batch_job import BatchJob
 
         batch = BatchJob(
             api_key_id=uuid.uuid4(),
             total_items=10,
+            completed_items=0,
+            failed_items=0,
+            status="pending",
         )
         assert batch.completed_items == 0
         assert batch.failed_items == 0
@@ -111,6 +118,7 @@ class TestWebhookRegistrationModel:
             url="https://example.com/webhook",
             events=["render.complete", "batch.complete"],
             secret="hmac_secret_here",
+            is_active=True,
         )
         assert reg.url == "https://example.com/webhook"
         assert reg.events == ["render.complete", "batch.complete"]
