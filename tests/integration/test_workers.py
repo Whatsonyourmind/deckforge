@@ -274,7 +274,9 @@ async def test_render_presentation_validates_and_completes(worker_ctx, seed_work
 async def test_generate_content_produces_ir_and_publishes_progress(
     worker_ctx, seed_worker_data
 ):
-    """generate_content creates minimal IR and publishes progress events."""
+    """generate_content runs ContentPipeline and publishes progress events."""
+    from unittest.mock import AsyncMock
+
     _, _, _, job = seed_worker_data
 
     # Change the job type to content for this test
@@ -294,16 +296,37 @@ async def test_generate_content_produces_ir_and_publishes_progress(
 
     redis.publish = tracking_publish
 
-    result = await generate_content(worker_ctx, str(job.id), "Quarterly earnings review")
+    # Mock the pipeline since we don't have real LLM keys
+    mock_ir = {
+        "schema_version": "1.0",
+        "metadata": {"title": "Quarterly earnings review"},
+        "slides": [
+            {
+                "slide_type": "title_slide",
+                "elements": [
+                    {"type": "heading", "content": {"text": "Quarterly Review", "level": "h1"}},
+                ],
+            }
+        ],
+    }
+
+    with (
+        patch("deckforge.content.pipeline.ContentPipeline") as MockPipeline,
+        patch("deckforge.llm.router.create_router") as MockRouter,
+    ):
+        mock_pipeline_instance = AsyncMock()
+        mock_pipeline_instance.run = AsyncMock(return_value=mock_ir)
+        MockPipeline.return_value = mock_pipeline_instance
+        MockRouter.return_value = MagicMock()
+
+        result = await generate_content(
+            worker_ctx, str(job.id), "Quarterly earnings review"
+        )
 
     assert result["status"] == "complete"
-    assert "ir" in result
-    ir = result["ir"]
-    assert ir["metadata"]["title"] == "Quarterly earnings review"
-    assert len(ir["slides"]) >= 1
+    assert "file_key" in result
 
-    # Verify progress stages were published
-    assert "parsing" in published_stages
+    # Verify progress stages were published (pipeline callback + task stages)
     assert "complete" in published_stages
 
     # Restore original

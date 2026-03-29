@@ -49,3 +49,20 @@ class JobResponse(BaseModel):
     job_type: str
     created_at: str
     result: dict | None = None
+
+
+class GenerateResponse(BaseModel):
+    """POST /v1/generate response."""
+
+    job_id: str
+    status: str
+    message: str | None = None
+
+
+class SSEProgressEvent(BaseModel):
+    """Server-Sent Event payload for pipeline progress updates."""
+
+    stage: str
+    progress: float
+    timestamp: str
+    detail: dict | None = None
