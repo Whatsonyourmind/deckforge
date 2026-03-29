@@ -21,6 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: QA Pipeline + Deck Operations** - 5-pass quality assurance, auto-fix, deck composability, batch ops (completed 2026-03-29)
 - [x] **Phase 8: TypeScript SDK + Billing + Launch** - npm SDK, Stripe billing, discovery endpoints, launch readiness (completed 2026-03-29)
 - [x] **Phase 9: Monetization and Go-To-Market** - x402 machine payments, Unkey API keys, MCP server, landing page, npm SDK publishing, analytics (completed 2026-03-29)
+- [ ] **Phase 10: Zero-Budget Growth Engine** - MCP directory listings, content marketing, demo decks, agent framework integrations, finance community outreach
 
 ## Phase Details
 
@@ -175,12 +176,33 @@ Plans:
 - [ ] 09-02-PLAN.md -- MCP server + SDK publishing: 6-tool MCP server, GitHub Actions npm publish workflow, marketing README, issue templates, contribution guide (Wave 1)
 - [ ] 09-03-PLAN.md -- Landing page + onboarding + analytics: static landing page, developer onboarding flow, PaymentEvent model, usage analytics dashboard with Stripe/x402 revenue split (Wave 2)
 
+### Phase 10: Zero-Budget Growth Engine
+**Goal:** DeckForge is listed on all major MCP directories, has content assets driving organic traffic, demo decks proving product quality, agent framework integrations expanding ecosystem reach, and finance community presence targeting highest-value customers -- all with zero paid ad spend
+**Depends on:** Phase 9
+**Requirements**: GROWTH-01, GROWTH-02, GROWTH-03, GROWTH-04, GROWTH-05, GROWTH-06, GROWTH-07, GROWTH-08, GROWTH-09, GROWTH-10
+**Success Criteria** (what must be TRUE):
+  1. DeckForge MCP server is submitted to or listed on 5+ MCP directories (Smithery, Glama, mcpservers.org, OpenTools, Cursor Directory)
+  2. GitHub repo has optimized topics, social preview spec, and README badges for maximum discoverability
+  3. npm SDK has 19+ search-optimized keywords covering powerpoint, mcp, ai-agents, finance, pitch-deck
+  4. 5 demo deck IRs exist showcasing McKinsey strategy, PE deal memo, startup pitch, board update, and product launch
+  5. Content assets ready for launch: Show HN post, 2 Dev.to articles, Twitter thread, Reddit posts, Product Hunt kit
+  6. Agent framework tool wrappers exist for LangChain, CrewAI, AutoGen, and Claude/MCP
+  7. Finance community content targets IB/PE professionals with quantified value propositions
+  8. SEO comparison page positions DeckForge against Beautiful.ai, Gamma, and SlidesAI
+**Plans:** 3 plans
+
+Plans:
+- [ ] 10-01-PLAN.md -- Distribution channels: MCP directory submissions, GitHub/npm optimization, install configs (Wave 1)
+- [ ] 10-02-PLAN.md -- Content engine: demo decks, Show HN, Dev.to articles, Twitter thread, Reddit posts, Product Hunt kit (Wave 1)
+- [ ] 10-03-PLAN.md -- Agent ecosystem + finance outreach: LangChain/CrewAI/AutoGen/Claude integrations, LinkedIn, WSO, comparison page (Wave 2)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 Note: Phase 9 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends on both (Wave 2).
+Note: Phase 10 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends on both (Wave 2).
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -193,3 +215,4 @@ Note: Phase 9 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends 
 | 7. QA Pipeline + Deck Operations | 3/3 | Complete | 2026-03-29 |
 | 8. TypeScript SDK + Billing + Launch | 3/3 | Complete | 2026-03-29 |
 | 9. Monetization and Go-To-Market | 3/3 | Complete | 2026-03-29 |
+| 10. Zero-Budget Growth Engine | 0/3 | Planned | - |
