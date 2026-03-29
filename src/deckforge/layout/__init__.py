@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from deckforge.layout.grid import GridSystem
 from deckforge.layout.solver import SlideLayoutSolver
+from deckforge.layout.text_measurer import TextMeasurer
 from deckforge.layout.types import BoundingBox, LayoutRegion, LayoutResult, ResolvedPosition
 
 __all__ = [
@@ -13,4 +14,5 @@ __all__ = [
     "LayoutResult",
     "ResolvedPosition",
     "SlideLayoutSolver",
+    "TextMeasurer",
 ]
