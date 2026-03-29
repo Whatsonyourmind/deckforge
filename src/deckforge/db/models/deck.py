@@ -5,8 +5,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import ForeignKey, String, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import JSON, ForeignKey, String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from deckforge.db.base import Base
@@ -34,7 +33,7 @@ class Deck(Base):
     api_key_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("api_keys.id"),
     )
-    ir_snapshot: Mapped[dict] = mapped_column(JSONB)
+    ir_snapshot: Mapped[dict] = mapped_column(JSON)
     status: Mapped[str] = mapped_column(
         String(20),
         default="pending",
