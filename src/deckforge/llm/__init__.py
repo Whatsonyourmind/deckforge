@@ -21,6 +21,7 @@ from deckforge.llm.adapters import (
     OllamaAdapter,
     OpenAIAdapter,
 )
+from deckforge.llm.router import LLMRouter, create_router
 
 __all__ = [
     # Base
@@ -39,4 +40,7 @@ __all__ = [
     "GeminiAdapter",
     "OllamaAdapter",
     "OpenAIAdapter",
+    # Router
+    "LLMRouter",
+    "create_router",
 ]
