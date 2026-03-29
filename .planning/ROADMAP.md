@@ -173,3 +173,19 @@ Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 | 6. Google Slides Output | 2/2 | Complete | 2026-03-29 |
 | 7. QA Pipeline + Deck Operations | 3/3 | Complete | 2026-03-29 |
 | 8. TypeScript SDK + Billing + Launch | 3/3 | Complete | 2026-03-29 |
+
+### Phase 9: Monetization and Go-To-Market
+
+**Goal:** DeckForge is discoverable, purchasable, and payable by both humans (Stripe subscriptions) and AI agents (x402 machine payments in USDC) — with landing page, MCP server, npm SDK published, and dual revenue streams active
+**Depends on:** Phase 8
+**Requirements**: GTM-01, GTM-02, GTM-03, GTM-04, GTM-05, GTM-06, GTM-07, GTM-08, GTM-09, GTM-10, GTM-11, GTM-12
+**Success Criteria** (what must be TRUE):
+  1. An AI agent can discover DeckForge via MCP server, call render/generate tools, and pay per-call in USDC via x402 protocol
+  2. A human developer can visit the landing page, sign up, get an API key, and generate their first deck within 5 minutes
+  3. The npm SDK (@deckforge/sdk) is published and installable, with working examples in the README
+  4. Unkey manages all API key lifecycle (creation, rotation, revocation, usage tracking) in production
+  5. GET /v1/pricing returns tier details and per-call x402 pricing that agents can parse programmatically
+**Plans**: TBD
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 9 to break down)
