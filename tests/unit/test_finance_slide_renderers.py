@@ -1,4 +1,4 @@
-"""Tests for finance slide renderers -- comp_table, dcf_summary, waterfall, and registry."""
+"""Tests for finance slide renderers -- all 9 types, registry, and PptxRenderer integration."""
 
 from __future__ import annotations
 
@@ -360,3 +360,369 @@ class TestFinanceSlideRegistry:
         mock_slide.slide_type = "title_slide"
         result = render_finance_slide(pptx_slide, mock_slide, theme)
         assert result is False, "render_finance_slide should return False for unknown types"
+
+
+# ── Helper factories for Task 2 slide types ──────────────────────────────────
+
+
+def _make_deal_overview_slide():
+    """Create a DealOverviewSlide with metrics and status indicators."""
+    from deckforge.ir.slides.finance import DealOverviewSlide
+
+    heading = HeadingElement(
+        content=HeadingContent(text="Project Alpha -- Deal Overview", level="h2"),
+        position=Position(x=0.75, y=0.5, width=11.8, height=0.8),
+    )
+    metrics_table = TableElement(
+        content=TableContent(
+            headers=["Metric", "Value"],
+            rows=[
+                ["Enterprise Value", 2500000000],
+                ["Equity Value", 1800000000],
+                ["Premium", 0.25],
+                ["Revenue", 750000000],
+                ["EBITDA", 180000000],
+            ],
+        ),
+        position=Position(x=0.75, y=1.5, width=5.5, height=3.5),
+    )
+    status_table = TableElement(
+        content=TableContent(
+            headers=["Workstream", "Status"],
+            rows=[
+                ["Due Diligence", "green"],
+                ["Financing", "yellow"],
+                ["Regulatory", "red"],
+            ],
+        ),
+        position=Position(x=7.0, y=1.5, width=5.5, height=2.5),
+    )
+    return DealOverviewSlide(elements=[heading, metrics_table, status_table])
+
+
+def _make_returns_analysis_slide():
+    """Create a ReturnsAnalysisSlide with scenario table."""
+    from deckforge.ir.slides.finance import ReturnsAnalysisSlide
+
+    heading = HeadingElement(
+        content=HeadingContent(text="Returns Analysis", level="h2"),
+        position=Position(x=0.75, y=0.5, width=11.8, height=0.8),
+    )
+    returns_table = TableElement(
+        content=TableContent(
+            headers=["Scenario", "IRR", "MOIC", "CoC", "Equity Value"],
+            rows=[
+                ["Base", 0.22, 2.5, 1.8, 500000000],
+                ["Upside", 0.35, 3.2, 2.4, 720000000],
+                ["Downside", 0.08, 1.4, 1.1, 280000000],
+            ],
+        ),
+        position=Position(x=0.75, y=1.5, width=11.8, height=3.5),
+    )
+    return ReturnsAnalysisSlide(elements=[heading, returns_table])
+
+
+def _make_capital_structure_slide():
+    """Create a CapitalStructureSlide with sources & uses."""
+    from deckforge.ir.slides.finance import CapitalStructureSlide
+
+    heading = HeadingElement(
+        content=HeadingContent(text="Capital Structure", level="h2"),
+        position=Position(x=0.75, y=0.5, width=11.8, height=0.8),
+    )
+    sources = TableElement(
+        content=TableContent(
+            headers=["Source", "Amount", "% of Total"],
+            rows=[
+                ["Senior Debt", 600000000, 0.40],
+                ["Mezzanine", 150000000, 0.10],
+                ["Equity", 750000000, 0.50],
+            ],
+            footer_row=["Total", 1500000000, 1.0],
+        ),
+        position=Position(x=0.75, y=1.5, width=5.5, height=3.5),
+    )
+    uses = TableElement(
+        content=TableContent(
+            headers=["Use", "Amount", "% of Total"],
+            rows=[
+                ["Enterprise Value", 1400000000, 0.933],
+                ["Fees & Expenses", 50000000, 0.033],
+                ["Working Capital", 50000000, 0.033],
+            ],
+            footer_row=["Total", 1500000000, 1.0],
+        ),
+        position=Position(x=7.0, y=1.5, width=5.5, height=3.5),
+    )
+    return CapitalStructureSlide(elements=[heading, sources, uses])
+
+
+def _make_market_landscape_slide():
+    """Create a MarketLandscapeSlide with TAM/SAM/SOM and market data."""
+    from deckforge.ir.slides.finance import MarketLandscapeSlide
+
+    heading = HeadingElement(
+        content=HeadingContent(text="Market Landscape", level="h2"),
+        position=Position(x=0.75, y=0.5, width=11.8, height=0.8),
+    )
+    tam_table = TableElement(
+        content=TableContent(
+            headers=["Segment", "Size", "Growth"],
+            rows=[
+                ["TAM", 50000000000, 0.12],
+                ["SAM", 15000000000, 0.15],
+                ["SOM", 3000000000, 0.20],
+            ],
+        ),
+        position=Position(x=0.75, y=1.5, width=5.5, height=3.0),
+    )
+    competitors = TableElement(
+        content=TableContent(
+            headers=["Competitor", "Market Share", "Revenue"],
+            rows=[
+                ["Alpha Corp", 0.30, 4500000000],
+                ["Beta Inc", 0.20, 3000000000],
+                ["Gamma Ltd", 0.15, 2250000000],
+            ],
+        ),
+        position=Position(x=7.0, y=1.5, width=5.5, height=3.0),
+    )
+    return MarketLandscapeSlide(elements=[heading, tam_table, competitors])
+
+
+def _make_investment_thesis_slide():
+    """Create an InvestmentThesisSlide with thesis points."""
+    from deckforge.ir.slides.finance import InvestmentThesisSlide
+
+    heading = HeadingElement(
+        content=HeadingContent(text="Investment Thesis", level="h2"),
+        position=Position(x=0.75, y=0.5, width=11.8, height=0.8),
+    )
+    point1 = BodyTextElement(
+        content=BodyTextContent(text="Market leader with 35% share in growing $50B market"),
+        position=Position(x=0.75, y=1.5, width=11.8, height=0.6),
+    )
+    point2 = BodyTextElement(
+        content=BodyTextContent(text="Strong recurring revenue base with 95% retention"),
+        position=Position(x=0.75, y=2.3, width=11.8, height=0.6),
+    )
+    point3 = BodyTextElement(
+        content=BodyTextContent(text="Multiple expansion levers: pricing, cross-sell, M&A"),
+        position=Position(x=0.75, y=3.1, width=11.8, height=0.6),
+    )
+    return InvestmentThesisSlide(elements=[heading, point1, point2, point3])
+
+
+def _make_risk_matrix_slide():
+    """Create a RiskMatrixSlide with risk items."""
+    from deckforge.ir.slides.finance import RiskMatrixSlide
+
+    heading = HeadingElement(
+        content=HeadingContent(text="Risk Assessment Matrix", level="h2"),
+        position=Position(x=0.75, y=0.5, width=11.8, height=0.8),
+    )
+    risk_table = TableElement(
+        content=TableContent(
+            headers=["Risk", "Likelihood", "Impact"],
+            rows=[
+                ["Regulatory change", "High", "High"],
+                ["Key person departure", "Medium", "High"],
+                ["Market downturn", "Medium", "Medium"],
+                ["Technology disruption", "Low", "High"],
+                ["Supply chain risk", "Low", "Low"],
+            ],
+        ),
+        position=Position(x=0.75, y=1.5, width=11.8, height=4.0),
+    )
+    return RiskMatrixSlide(
+        elements=[heading, risk_table],
+        axes_labels={"x": "Likelihood", "y": "Impact"},
+    )
+
+
+# ── DealOverviewRenderer Tests ──────────────────────────────────────────────
+
+
+class TestDealOverviewRenderer:
+    def test_produces_title_and_table(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.deal_overview import DealOverviewRenderer
+
+        renderer = DealOverviewRenderer()
+        ir_slide = _make_deal_overview_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        # Should have at least one table and a title text box
+        table_shapes = [s for s in pptx_slide.shapes if s.has_table]
+        text_shapes = [s for s in pptx_slide.shapes if s.has_text_frame]
+        assert len(table_shapes) >= 1, "Should produce at least one table"
+        assert len(text_shapes) >= 1, "Should produce title text"
+
+    def test_has_traffic_light_shapes(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.deal_overview import DealOverviewRenderer
+
+        renderer = DealOverviewRenderer()
+        ir_slide = _make_deal_overview_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        # Should have circular shapes for traffic lights
+        all_shapes = list(pptx_slide.shapes)
+        # Count shapes that are auto shapes (ovals)
+        auto_shapes = [s for s in all_shapes if hasattr(s, "shape_type") and s.shape_type == MSO_SHAPE_TYPE.AUTO_SHAPE]
+        assert len(auto_shapes) >= 1, "Should have traffic light indicator shapes"
+
+
+# ── ReturnsAnalysisRenderer Tests ────────────────────────────────────────────
+
+
+class TestReturnsAnalysisRenderer:
+    def test_produces_returns_table(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.returns_analysis import ReturnsAnalysisRenderer
+
+        renderer = ReturnsAnalysisRenderer()
+        ir_slide = _make_returns_analysis_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        table_shapes = [s for s in pptx_slide.shapes if s.has_table]
+        assert len(table_shapes) >= 1, "Should produce returns matrix table"
+
+        # Check the table has IRR/MOIC formatted cells
+        table = table_shapes[0].table
+        all_text = []
+        for row_idx in range(len(table.rows)):
+            for col_idx in range(len(table.columns)):
+                all_text.append(table.cell(row_idx, col_idx).text)
+        joined = " ".join(all_text)
+        # Should have percentage formatted IRR values
+        assert "%" in joined or "x" in joined, "Should contain formatted financial values"
+
+
+# ── CapitalStructureRenderer Tests ───────────────────────────────────────────
+
+
+class TestCapitalStructureRenderer:
+    def test_produces_sources_and_uses(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.capital_structure import CapitalStructureRenderer
+
+        renderer = CapitalStructureRenderer()
+        ir_slide = _make_capital_structure_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        table_shapes = [s for s in pptx_slide.shapes if s.has_table]
+        assert len(table_shapes) >= 2, \
+            f"Should produce sources and uses tables, got {len(table_shapes)}"
+
+
+# ── MarketLandscapeRenderer Tests ────────────────────────────────────────────
+
+
+class TestMarketLandscapeRenderer:
+    def test_produces_tam_and_market_data(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.market_landscape import MarketLandscapeRenderer
+
+        renderer = MarketLandscapeRenderer()
+        ir_slide = _make_market_landscape_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        # Should have shapes for TAM/SAM/SOM and/or tables
+        all_shapes = list(pptx_slide.shapes)
+        assert len(all_shapes) >= 3, \
+            f"Should produce TAM/SAM/SOM shapes and market data, got {len(all_shapes)} shapes"
+
+
+# ── InvestmentThesisRenderer Tests ───────────────────────────────────────────
+
+
+class TestInvestmentThesisRenderer:
+    def test_produces_numbered_points(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.investment_thesis import InvestmentThesisRenderer
+
+        renderer = InvestmentThesisRenderer()
+        ir_slide = _make_investment_thesis_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        # Should have text boxes with numbered thesis points
+        text_shapes = [s for s in pptx_slide.shapes if s.has_text_frame]
+        all_text = " ".join(s.text_frame.text for s in text_shapes)
+        assert "1." in all_text or "1)" in all_text, \
+            f"Should have numbered thesis points, got: {all_text[:200]}"
+
+
+# ── RiskMatrixRenderer Tests ─────────────────────────────────────────────────
+
+
+class TestRiskMatrixRenderer:
+    def test_produces_colored_grid(self, pptx_slide, theme):
+        from deckforge.rendering.slide_renderers.risk_matrix import RiskMatrixRenderer
+
+        renderer = RiskMatrixRenderer()
+        ir_slide = _make_risk_matrix_slide()
+        renderer.render(pptx_slide, ir_slide, theme)
+
+        table_shapes = [s for s in pptx_slide.shapes if s.has_table]
+        assert len(table_shapes) >= 1, "Should produce risk grid table"
+
+        # The grid table should have color-coded cells
+        table = table_shapes[0].table
+        fills = set()
+        for row_idx in range(1, len(table.rows)):
+            for col_idx in range(1, len(table.columns)):
+                cell = table.cell(row_idx, col_idx)
+                if cell.fill.type is not None:
+                    fills.add(str(cell.fill.fore_color.rgb))
+        assert len(fills) >= 2, "Risk matrix should have varied color-coded cells"
+
+
+# ── PptxRenderer Integration Tests ──────────────────────────────────────────
+
+
+class TestPptxRendererFinanceIntegration:
+    def test_dispatches_finance_slides(self, theme):
+        """PptxRenderer should dispatch finance slide types to FINANCE_SLIDE_RENDERERS."""
+        from deckforge.ir.presentation import Presentation
+        from deckforge.layout.types import LayoutResult
+        from deckforge.rendering.pptx_renderer import PptxRenderer
+
+        ir_slide = _make_comp_table_slide()
+        lr = LayoutResult(slide=ir_slide, positions={})
+        ir = Presentation.model_validate({
+            "schema_version": "1.0",
+            "metadata": {"title": "Finance Test"},
+            "slides": [ir_slide.model_dump()],
+        })
+
+        renderer = PptxRenderer()
+        result = renderer.render(ir, [lr], theme)
+
+        # Should produce valid PPTX bytes
+        assert isinstance(result, bytes) and len(result) > 0
+        prs = PptxPresentation(io.BytesIO(result))
+        slide = prs.slides[0]
+
+        # Finance renderer should have created table shapes
+        table_shapes = [s for s in slide.shapes if s.has_table]
+        assert len(table_shapes) >= 1, "Finance slide should have been rendered with table"
+
+    def test_non_finance_still_works(self, theme):
+        """Non-finance slides should still render via element renderers."""
+        from deckforge.ir.presentation import Presentation
+        from deckforge.ir.slides.universal import TitleSlide
+        from deckforge.layout.types import LayoutResult
+        from deckforge.rendering.pptx_renderer import PptxRenderer
+
+        slide = TitleSlide(elements=[
+            HeadingElement(
+                content=HeadingContent(text="Regular Title", level="h1"),
+                position=Position(x=1.0, y=2.0, width=11.0, height=2.0),
+            ),
+        ])
+        lr = LayoutResult(slide=slide, positions={})
+        ir = Presentation.model_validate({
+            "schema_version": "1.0",
+            "metadata": {"title": "Test"},
+            "slides": [slide.model_dump()],
+        })
+
+        renderer = PptxRenderer()
+        result = renderer.render(ir, [lr], theme)
+        prs = PptxPresentation(io.BytesIO(result))
+        assert len(prs.slides) == 1
