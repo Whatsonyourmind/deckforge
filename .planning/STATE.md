@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: PROJECT COMPLETE -- All 22 plans across 8 phases finished
-last_updated: "2026-03-29T08:14:34.560Z"
-last_activity: 2026-03-29 -- Completed 08-03 discovery endpoints and deployment config (FINAL PLAN)
+status: in_progress
+stopped_at: Completed 09-01-PLAN.md (x402 + Unkey dual auth)
+last_updated: "2026-03-29T18:18:01Z"
+last_activity: 2026-03-29 -- Completed 09-01 x402 + Unkey dual auth middleware + pricing endpoint
 progress:
-  total_phases: 8
+  total_phases: 9
   completed_phases: 8
-  total_plans: 22
-  completed_plans: 22
-  percent: 100
+  total_plans: 25
+  completed_plans: 23
+  percent: 92
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Any agent or human can produce a board-ready presentation in a single API call -- with professional layout, consistent branding, and verified quality.
-**Current focus:** PROJECT COMPLETE. All 22 plans across 8 phases finished. Ready for deployment.
+**Current focus:** Phase 9 -- Monetization and Go-To-Market. x402 + Unkey dual auth complete. MCP server and landing page remaining.
 
 ## Current Position
 
-Phase: 8 of 8 -- All phases complete
-Plan: 22 of 22 plans complete
-Status: COMPLETE
-Last activity: 2026-03-29 -- Completed 08-03 discovery endpoints and deployment config (FINAL PLAN)
+Phase: 9 of 9 -- Monetization and Go-To-Market
+Plan: 1 of 3 in current phase (23/25 total)
+Status: IN PROGRESS
+Last activity: 2026-03-29 -- Completed 09-01 x402 + Unkey dual auth middleware + pricing endpoint
 
-Progress: [██████████] 100% (22/22 plans)
+Progress: [█████████░] 92% (23/25 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 22
+- Total plans completed: 23
 - Average duration: 7.4min
-- Total execution time: 2.9 hours
+- Total execution time: 3.0 hours
 
 **By Phase:**
 
@@ -51,10 +51,11 @@ Progress: [██████████] 100% (22/22 plans)
 | 06-google-slides-renderer | 2 | 16min | 8min |
 | 07-qa-pipeline-deck-operations | 3 | 22min | 7.3min |
 | 08-typescript-sdk-billing-launch | 3/3 | 18min | 6min |
+| 09-monetization-and-go-to-market | 1/3 | 7min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 07-03 (8min), 08-01 (6min), 08-02 (6min), 08-03 (6min)
-- Trend: Consistent ~6min per plan
+- Last 5 plans: 08-01 (6min), 08-02 (6min), 08-03 (6min), 09-01 (7min)
+- Trend: Consistent ~6-7min per plan
 
 *Updated after each plan completion*
 | Phase 01 P01 | 9min | 2 tasks | 24 files |
@@ -79,6 +80,7 @@ Progress: [██████████] 100% (22/22 plans)
 | Phase 08 P01 | 6min | 2 tasks | 15 files |
 | Phase 08 P02 | 6min | 2 tasks | 18 files |
 | Phase 08 P03 | 6min | 2 tasks | 9 files |
+| Phase 09 P01 | 7min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -181,6 +183,10 @@ Recent decisions affecting current work:
 - [08-03]: All 32 example IRs validated against Presentation.model_validate() at build time
 - [08-03]: Multi-stage Dockerfile separates build deps (gcc) from runtime image
 - [08-03]: Chromium in runtime for Kaleido/Plotly static chart PNG rendering
+- [09-01]: AuthContext dataclass with .id property replaces ApiKey model for backwards compat across 20+ routes
+- [09-01]: httpx for Unkey API calls (direct HTTP, avoids SDK version coupling)
+- [09-01]: Legacy Redis token bucket preserved for DB-auth development mode
+- [09-01]: x402 payments skip rate limiting (per-call payment is self-throttling)
 
 ### Roadmap Evolution
 
@@ -199,6 +205,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T08:10:52Z
-Stopped at: PROJECT COMPLETE -- All 22 plans across 8 phases finished
+Last session: 2026-03-29T18:18:01Z
+Stopped at: Completed 09-01-PLAN.md (x402 + Unkey dual auth)
 Resume file: None

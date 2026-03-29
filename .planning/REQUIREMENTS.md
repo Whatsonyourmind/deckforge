@@ -161,13 +161,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Go-To-Market & Monetization
 
-- [ ] **GTM-01**: x402 machine payment protocol — per-call USDC pricing on Base L2 for agent access
-- [ ] **GTM-02**: x402 per-call pricing: render $0.05, generate $0.10, finance slides $0.15, batch $0.08/deck
-- [ ] **GTM-03**: Receiving wallet configuration for USDC payments on Base mainnet
+- [x] **GTM-01**: x402 machine payment protocol — per-call USDC pricing on Base L2 for agent access
+- [x] **GTM-02**: x402 per-call pricing: render $0.05, generate $0.10, finance slides $0.15, batch $0.08/deck
+- [x] **GTM-03**: Receiving wallet configuration for USDC payments on Base mainnet
 - [ ] **GTM-04**: MCP server exposing DeckForge tools (render, generate, themes, slide-types) for AI agent discovery
-- [ ] **GTM-05**: Unkey integration replacing custom API key auth — key creation, rotation, revocation, usage metering
+- [x] **GTM-05**: Unkey integration replacing custom API key auth — key creation, rotation, revocation, usage metering
 - [ ] **GTM-06**: Landing page with value proposition, pricing table, live demo, quick start guide
-- [ ] **GTM-07**: GET /v1/pricing endpoint returning tier details + x402 per-call prices (agent-parseable)
+- [x] **GTM-07**: GET /v1/pricing endpoint returning tier details + x402 per-call prices (agent-parseable)
 - [ ] **GTM-08**: npm publish workflow for @deckforge/sdk with README, examples, and CI/CD
 - [ ] **GTM-09**: README-driven marketing with benchmarks, code examples, pricing table
 - [ ] **GTM-10**: Usage analytics dashboard — calls by endpoint, revenue by channel (Stripe vs x402), top consumers
