@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_call:
+
+jobs:
+  python-tests:
+    name: Python Tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: deckforge
+          POSTGRES_PASSWORD: deckforge
+          POSTGRES_DB: deckforge
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U deckforge"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install ".[preview,dev]"
+
+      - name: Type check
+        run: mypy src/deckforge --ignore-missing-imports
+
+      - name: Run tests
+        env:
+          DECKFORGE_DATABASE_URL: postgresql+psycopg://deckforge:deckforge@localhost:5432/deckforge
+          DECKFORGE_REDIS_URL: redis://localhost:6379/0
+          DECKFORGE_ENVIRONMENT: development
+          DECKFORGE_DEBUG: "true"
+        run: pytest --tb=short -q
+
+  sdk-tests:
+    name: SDK Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        working-directory: sdk
+        run: npm ci
+
+      - name: Run tests
+        working-directory: sdk
+        run: npm test
+
+      - name: Type check
+        working-directory: sdk
+        run: npm run typecheck
+
+      - name: Build
+        working-directory: sdk
+        run: npm run build
