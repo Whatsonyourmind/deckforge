@@ -22,6 +22,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 8: TypeScript SDK + Billing + Launch** - npm SDK, Stripe billing, discovery endpoints, launch readiness (completed 2026-03-29)
 - [x] **Phase 9: Monetization and Go-To-Market** - x402 machine payments, Unkey API keys, MCP server, landing page, npm SDK publishing, analytics (completed 2026-03-29)
 - [x] **Phase 10: Zero-Budget Growth Engine** - MCP directory listings, content marketing, demo decks, agent framework integrations, finance community outreach (completed 2026-03-29)
+- [ ] **Phase 11: Production Launch** - README, .env, bootstrap scripts, verification, CI/CD, deployment docs, Stripe/Unkey/x402 setup
 
 ## Phase Details
 
@@ -196,13 +197,34 @@ Plans:
 - [x] 10-02-PLAN.md -- Content engine: demo decks, Show HN, Dev.to articles, Twitter thread, Reddit posts, Product Hunt kit (Wave 1)
 - [x] 10-03-PLAN.md -- Agent ecosystem + finance outreach: LangChain/CrewAI/AutoGen/Claude integrations, LinkedIn, WSO, comparison page (Wave 2)
 
+### Phase 11: Production Launch
+**Goal:** Anyone can clone, configure, deploy, and start earning with DeckForge within 30 minutes -- with production README, complete environment docs, verification scripts, CI/CD pipeline, and deployment documentation for all external services
+**Depends on:** Phase 10
+**Requirements**: LAUNCH-01, LAUNCH-02, LAUNCH-03, LAUNCH-04, LAUNCH-05, LAUNCH-06, LAUNCH-07, LAUNCH-08, LAUNCH-09, LAUNCH-10, LAUNCH-11, LAUNCH-12
+**Success Criteria** (what must be TRUE):
+  1. A developer can go from `git clone` to running API in under 10 minutes following README instructions
+  2. `cp .env.example .env` produces a working local config with every setting documented
+  3. Docker Compose starts all services and health check returns 200
+  4. The full render pipeline produces a valid .pptx file end-to-end
+  5. All 5 demo decks render to valid .pptx files
+  6. GitHub Actions CI runs tests on every push, deploy workflow ships to Fly.io
+  7. Stripe products and webhook are configurable via setup script
+  8. Deployment documentation covers Fly.io, Unkey, x402, and npm SDK publishing
+**Plans:** 3 plans
+
+Plans:
+- [ ] 11-01-PLAN.md -- Developer experience: README.md, .env.example, bootstrap-db.sh, CLAUDE.md (Wave 1)
+- [ ] 11-02-PLAN.md -- Verification: Docker smoke test, e2e render test, demo deck validation (Wave 1)
+- [ ] 11-03-PLAN.md -- Deployment and CI/CD: GitHub Actions, Stripe setup, Fly.io/Unkey/x402/npm docs (Wave 2)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
 Note: Phase 4 and Phase 5 both depend on Phase 3 and could execute in parallel.
 Note: Phase 9 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends on both (Wave 2).
 Note: Phase 10 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends on both (Wave 2).
+Note: Phase 11 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends on both (Wave 2).
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -216,13 +238,4 @@ Note: Phase 10 Plans 01 and 02 can execute in parallel (Wave 1). Plan 03 depends
 | 8. TypeScript SDK + Billing + Launch | 3/3 | Complete | 2026-03-29 |
 | 9. Monetization and Go-To-Market | 3/3 | Complete | 2026-03-29 |
 | 10. Zero-Budget Growth Engine | 3/3 | Complete    | 2026-03-29 |
-
-### Phase 11: Production Launch
-
-**Goal:** [To be planned]
-**Requirements**: TBD
-**Depends on:** Phase 10
-**Plans:** 0 plans
-
-Plans:
-- [ ] TBD (run /gsd:plan-phase 11 to break down)
+| 11. Production Launch | 0/3 | Planning | - |
