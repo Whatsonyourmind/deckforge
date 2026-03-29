@@ -235,14 +235,9 @@ class TestGenerateContentWorkerTask:
         mock_redis = AsyncMock()
         mock_redis.publish = AsyncMock()
 
-        mock_db_factory = MagicMock()
-        mock_session = AsyncMock()
-        mock_db_factory.return_value.__aenter__ = AsyncMock(return_value=mock_session)
-        mock_db_factory.return_value.__aexit__ = AsyncMock(return_value=False)
-
         ctx = {
             "redis": mock_redis,
-            "db_factory": mock_db_factory,
+            "db_factory": None,
             "s3_client": None,
             "s3_bucket": "deckforge",
         }
@@ -264,8 +259,8 @@ class TestGenerateContentWorkerTask:
         }
 
         with (
-            patch("deckforge.workers.tasks.ContentPipeline") as MockPipeline,
-            patch("deckforge.workers.tasks.create_router") as MockRouter,
+            patch("deckforge.content.pipeline.ContentPipeline") as MockPipeline,
+            patch("deckforge.llm.router.create_router") as MockRouter,
             patch("deckforge.workers.tasks.render_pipeline") as MockRender,
         ):
             mock_pipeline_instance = AsyncMock()
@@ -291,14 +286,9 @@ class TestGenerateContentWorkerTask:
         mock_redis = AsyncMock()
         mock_redis.publish = AsyncMock()
 
-        mock_db_factory = MagicMock()
-        mock_session = AsyncMock()
-        mock_db_factory.return_value.__aenter__ = AsyncMock(return_value=mock_session)
-        mock_db_factory.return_value.__aexit__ = AsyncMock(return_value=False)
-
         ctx = {
             "redis": mock_redis,
-            "db_factory": mock_db_factory,
+            "db_factory": None,
             "s3_client": None,
             "s3_bucket": "deckforge",
         }
@@ -306,8 +296,8 @@ class TestGenerateContentWorkerTask:
         job_id = str(uuid.uuid4())
 
         with (
-            patch("deckforge.workers.tasks.ContentPipeline") as MockPipeline,
-            patch("deckforge.workers.tasks.create_router") as MockRouter,
+            patch("deckforge.content.pipeline.ContentPipeline") as MockPipeline,
+            patch("deckforge.llm.router.create_router") as MockRouter,
         ):
             mock_pipeline_instance = AsyncMock()
             mock_pipeline_instance.run = AsyncMock(side_effect=ValueError("LLM error"))

@@ -207,61 +207,119 @@ async def generate_content(
     ctx: dict,
     job_id: str,
     prompt: str,
+    generation_options: dict | None = None,
+    theme: str = "executive-dark",
+    llm_config: dict | None = None,
     webhook_url: str | None = None,
 ) -> dict:
-    """Generate presentation content from a prompt (stub).
+    """Generate presentation content from a natural language prompt.
 
     Pipeline:
-    1. Update job status to running
-    2. Parse prompt, outline, write, refine (all stubbed)
-    3. Create minimal IR with a title slide from the prompt
-    4. Enqueue render_presentation with the generated IR
+    1. Create LLMRouter (from user config or settings defaults)
+    2. Run ContentPipeline (intent -> outline -> write -> refine)
+    3. Render the generated Presentation IR to PPTX
+    4. Upload to S3
+    5. Update deck/job status to complete
+    6. Fire webhook if configured
     """
+    from deckforge.content.pipeline import ContentPipeline
+    from deckforge.ir.metadata import GenerationOptions
+    from deckforge.llm.models import LLMConfig
+    from deckforge.llm.router import create_router
+
     db_factory = ctx.get("db_factory")
+    s3_client = ctx.get("s3_client")
+    s3_bucket = ctx.get("s3_bucket", "deckforge")
 
     try:
-        await publish_progress(ctx, job_id, "parsing", 0.1)
-        await publish_progress(ctx, job_id, "outlining", 0.3)
-        await publish_progress(ctx, job_id, "writing", 0.6)
-        await publish_progress(ctx, job_id, "refining", 0.8)
+        # 1. Create LLMRouter
+        user_llm_config = LLMConfig.model_validate(llm_config) if llm_config else None
+        router = create_router(llm_config=user_llm_config)
 
-        # Create minimal IR from the prompt
-        ir_data = {
-            "schema_version": "1.0",
-            "metadata": {"title": prompt[:100]},
-            "slides": [
-                {
-                    "slide_type": "title_slide",
-                    "title": prompt[:100],
-                    "subtitle": "Auto-generated presentation",
-                }
-            ],
-        }
+        # 2. Run content pipeline with progress publishing
+        pipeline = ContentPipeline(router)
 
-        # Update job with generated IR
+        gen_opts = (
+            GenerationOptions.model_validate(generation_options)
+            if generation_options
+            else None
+        )
+
+        async def progress_callback(stage: str, progress: float) -> None:
+            await publish_progress(ctx, job_id, stage, progress)
+
+        ir_data = await pipeline.run(
+            prompt,
+            generation_options=gen_opts,
+            progress_callback=progress_callback,
+        )
+
+        # 3. Render the IR to PPTX
+        presentation = Presentation.model_validate(ir_data)
+        pptx_bytes = render_pipeline(presentation)
+        await publish_progress(ctx, job_id, "uploading", 0.95)
+
+        file_key = f"renders/{job_id}/{uuid.uuid4().hex}.pptx"
+        content_type = (
+            "application/vnd.openxmlformats-officedocument"
+            ".presentationml.presentation"
+        )
+        file_url = None
+
+        # 4. Upload to S3
+        if s3_client:
+            ensure_bucket(s3_client, s3_bucket)
+            upload_file(s3_client, s3_bucket, file_key, pptx_bytes, content_type)
+            file_url = get_download_url(s3_client, s3_bucket, file_key)
+
+        # 5. Update deck/job status to complete
         if db_factory:
             async with db_factory() as session:
+                job = await job_repo.get_by_id(session, uuid.UUID(job_id))
+                if job and job.deck_id:
+                    await deck_repo.update_status(
+                        session,
+                        job.deck_id,
+                        "complete",
+                        file_url=file_url,
+                    )
                 await job_repo.update_status(
                     session,
                     uuid.UUID(job_id),
                     "complete",
                     progress=1.0,
-                    result={"ir": ir_data},
+                    result={"file_key": file_key, "file_url": file_url, "ir": ir_data},
                 )
                 await session.commit()
 
         await publish_progress(ctx, job_id, "complete", 1.0)
 
-        # In a real implementation, we would enqueue render_presentation here:
-        # await ctx["redis"].enqueue_job("render_presentation", job_id=..., ir_data=ir_data)
+        # 6. Fire webhook if configured
+        if webhook_url:
+            await deliver_webhook(
+                webhook_url,
+                {
+                    "event": "generate.complete",
+                    "job_id": job_id,
+                    "file_url": file_url,
+                },
+            )
 
-        return {"status": "complete", "ir": ir_data}
+        return {"status": "complete", "file_key": file_key, "file_url": file_url}
 
     except Exception as exc:
         logger.exception("generate_content failed for job %s", job_id)
 
         if db_factory:
             async with db_factory() as session:
+                job = await job_repo.get_by_id(session, uuid.UUID(job_id))
+                if job and job.deck_id:
+                    await deck_repo.update_status(
+                        session,
+                        job.deck_id,
+                        "failed",
+                        error=str(exc),
+                    )
                 await job_repo.update_status(
                     session,
                     uuid.UUID(job_id),
