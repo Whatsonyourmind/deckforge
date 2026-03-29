@@ -865,6 +865,44 @@ def build_chart_placeholder_requests(
     ]
 
 
+def _build_chart_with_sheets(
+    page_id: str,
+    element: Any,
+    position: Any,
+    theme: ResolvedTheme,
+    charts_builder: Any,
+) -> list[dict]:
+    """Build chart requests using SheetsChartBuilder.
+
+    Falls back to placeholder if the chart type is unsupported by Sheets.
+    """
+    content = element.content if isinstance(element.content, dict) else {}
+    chart_type = content.get("chart_type", "bar")
+    if hasattr(chart_type, "value"):
+        chart_type = chart_type.value
+
+    chart_data = content.get("data", {})
+    title = content.get("title", "Chart")
+
+    try:
+        chart_id = charts_builder.add_chart(chart_data, chart_type, title)
+    except Exception:
+        logger.exception("Failed to create Sheets chart, using placeholder")
+        return build_chart_placeholder_requests(page_id, element, position, theme)
+
+    if chart_id is not None:
+        # Sheets-backed editable chart
+        return [
+            charts_builder.get_slides_chart_request(
+                chart_id, page_id,
+                position.x, position.y, position.width, position.height,
+            )
+        ]
+    else:
+        # Unsupported chart type -- fall back to placeholder
+        return build_chart_placeholder_requests(page_id, element, position, theme)
+
+
 # ── Element type -> builder dispatch table ──────────────────────────────────
 
 ELEMENT_BUILDERS: dict[str, Any] = {
@@ -927,8 +965,9 @@ def dispatch_element_requests(
 
     # Chart elements can use SheetsChartBuilder if available
     if element_type == "chart" and charts_builder is not None:
-        # Plan 06-02 will implement this path
-        return build_chart_placeholder_requests(page_id, element, position, theme)
+        return _build_chart_with_sheets(
+            page_id, element, position, theme, charts_builder
+        )
 
     builder = ELEMENT_BUILDERS.get(element_type)
     if builder is None:
