@@ -2,80 +2,74 @@
 
 ## What This Is
 
-DeckForge is an API-first platform for generating executive-ready presentations, outputting both PPTX files and native Google Slides. It serves AI agents via a structured IR (Intermediate Representation) API and humans via a natural language endpoint. The finance vertical (IC decks, deal one-pagers, comp tables) is the wedge into high-value enterprise clients; horizontal presentation types (pitch decks, board updates, strategy presentations) provide scale.
+DeckForge is a shipped, production-ready API-first platform for generating executive-ready presentations. It outputs both PPTX and native Google Slides from a single IR (Intermediate Representation). Serves AI agents via structured API (deterministic, same input = same output) and humans via natural language endpoint. The finance vertical (IC decks, deal one-pagers, comp tables, DCF summaries) is the enterprise wedge; 23 universal slide types provide horizontal scale.
 
 ## Core Value
 
 Any agent or human can produce a board-ready presentation in a single API call — with professional layout, consistent branding, and verified quality — without design skills or manual formatting.
 
+## Current State (v1.0 Shipped)
+
+- **Codebase:** 23,832 lines Python + 2,639 lines TypeScript
+- **Tests:** 800+ tests across 58 files
+- **Repository:** https://github.com/Whatsonyourmind/deckforge
+- **Release:** v0.1.0 published
+
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Structured IR API (32 slide types, full validation) — v1.0
+- ✓ Natural language endpoint with 4-stage content pipeline — v1.0
+- ✓ PPTX output via python-pptx with native editable charts — v1.0
+- ✓ Google Slides output via Slides API with Sheets-backed charts — v1.0
+- ✓ Constraint-based layout engine (kiwisolver, 9 patterns, adaptive overflow) — v1.0
+- ✓ 15 curated themes with YAML definitions + WCAG AA contrast — v1.0
+- ✓ Brand kit overlay system (colors, fonts, logo, protected properties) — v1.0
+- ✓ Model-agnostic LLM (Claude, GPT, Gemini, Ollama with BYO key) — v1.0
+- ✓ 5-pass QA pipeline with auto-fix and executive readiness scoring — v1.0
+- ✓ TypeScript SDK with fluent builder API — v1.0
+- ✓ Stripe billing (3 tiers + credits) — v1.0
+- ✓ x402 machine payments (USDC on Base) — v1.0
+- ✓ MCP server (6 tools for agent discovery) — v1.0
+- ✓ Unkey API key management — v1.0
+- ✓ Finance vertical (9 slide types, financial formatter, data ingestion) — v1.0
+- ✓ Batch operations, webhooks, deck composability — v1.0
+- ✓ CI/CD pipeline (GitHub Actions) — v1.0
+- ✓ Landing page, growth content, agent framework integrations — v1.0
 
 ### Active
 
-- [ ] Structured IR API that accepts JSON and renders slides
-- [ ] Natural language endpoint that generates content + renders slides
-- [ ] PPTX output via python-pptx with native editable charts
-- [ ] Google Slides output via Slides API with Sheets-backed charts
-- [ ] Constraint-based layout engine (not fixed templates)
-- [ ] 15 curated professional themes with YAML definitions
-- [ ] Brand kit overlay system (colors, fonts, logo on any theme)
-- [ ] 32 slide types (23 universal + 9 finance vertical)
-- [ ] Model-agnostic LLM orchestration (Claude, GPT, Gemini, Ollama)
-- [ ] 5-pass QA pipeline with auto-fix and executive readiness scoring
-- [ ] TypeScript SDK with fluent builder API published to npm
-- [ ] Tiered subscription billing (Starter/Pro/Enterprise) with credit usage
-- [ ] API key + OAuth 2.0 authentication
-- [ ] Async workers (ARQ/Redis) for content generation and rendering
-- [ ] SSE streaming for generation progress
-- [ ] Webhook callbacks for async completion
-- [ ] Batch operations (multiple decks, theme variations)
-- [ ] Composable deck operations (append, replace, reorder, retheme slides)
-- [ ] Finance vertical: DCF summary, comp table, waterfall, deal overview, returns analysis
-- [ ] Self-describing API (discovery endpoints for themes, slide types, capabilities)
+(Next milestone — see /gsd:new-milestone)
 
 ### Out of Scope
 
 - Mobile app — API-first, consumers build their own UI
 - Real-time collaborative editing — Google Slides handles this natively
 - Video/animation authoring — static presentation generation only
-- Custom LLM fine-tuning — use general-purpose models with prompt engineering
-- White-label hosting — API only, no hosted presentation viewer
+- Custom LLM fine-tuning — prompt engineering sufficient
+- White-label hosting — API only, no presentation viewer
 - Template marketplace — curated themes only for quality control
 
 ## Context
 
-- **Prior art:** Aither (Project 2) has 865-line production PPTX generator with institutional-grade output, python-pptx 1.0.2, IC decks, deal one-pagers, AitherBranding dataclass, AI presentation service with Claude integration
-- **Target market:** AI agents (primary buyer), enterprise teams, financial services, consulting firms
-- **Competitive landscape:** Beautiful.ai (beautiful but dumb), Gamma (AI but limited API), SlidesAI (basic), none with agent-first API + finance vertical + QA pipeline
-- **Pricing model:** Tiered subscriptions with credit-based usage — agents prefer per-call costs over subscriptions
-- **Tech ecosystem:** python-pptx (PPTX), Google Slides API + Sheets API (native Google), FastAPI (HTTP), ARQ + Redis (async), PostgreSQL (persistence), S3/R2 (storage)
-
-## Constraints
-
-- **Tech stack**: Python FastAPI backend + TypeScript SDK — python-pptx is battle-tested, Google Slides Python client is official
-- **Architecture**: Modular monolith with async workers — clean module boundaries, extractable to microservices later
-- **Output fidelity**: Every deck must pass QA before delivery — no clipped text, no broken charts, no brand violations
-- **Agent compatibility**: Structured API must be deterministic — same IR input produces same visual output
-- **Performance**: Structured render <=10 slides must complete in <3s (sync); NL generation is always async with SSE
+- **Shipped:** v1.0 with 11 phases, 31 plans, 150 commits in 2 days
+- **Architecture:** Modular monolith (FastAPI + ARQ workers + Redis + PostgreSQL + S3)
+- **TAM:** $34.5B presentation + AI tools market; SAM $4.2B API-first segment
+- **Competitive moat:** Only product combining API-first + constraint layout + finance vertical + QA pipeline + MCP + x402
+- **Growth assets ready:** MCP directory submissions, Show HN draft, Dev.to articles, Twitter thread, Product Hunt kit, demo decks
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Python FastAPI + TS SDK (not hybrid) | python-pptx is strongest PPTX lib, Google Slides Python client is official, AI/ML is Python-native | — Pending |
-| Modular monolith (not microservices) | Ship fast, scale when needed, IR schema enforces module boundaries | — Pending |
-| IR as the product backbone | Structured API = IR; NL endpoint produces IR; themes operate on IR; both renderers consume IR | — Pending |
-| Constraint-based layout (not templates) | Templates fail when content volume varies; solver adapts layout to content | — Pending |
-| Model-agnostic from day 1 | Agents want to bring their own LLM keys; reduces vendor lock-in; wider market | — Pending |
-| Credit-based pricing | Standard for API products sold to agents; no subscription friction for per-call usage | — Pending |
-| Finance vertical as wedge | Aither experience gives genuine edge; high willingness to pay; competitors lack this depth | — Pending |
-| 5-pass QA pipeline | "Executive-ready" is the brand promise; automated QA with auto-fix is the quality guarantee | — Pending |
-| Curated themes + brand overlay | Opinionated themes = consistent quality; brand kit = enterprise stickiness | — Pending |
-| Both PPTX + native Google Slides | PPTX is universal baseline; native Slides is premium differentiator | — Pending |
+| Python FastAPI + TS SDK | python-pptx strongest, Google client official | ✓ Good |
+| Modular monolith + async workers | Ship fast, scale when needed | ✓ Good |
+| IR as product backbone | Deterministic, composable, format-agnostic | ✓ Good |
+| Constraint layout (kiwisolver) | Adapts to content volume unlike templates | ✓ Good |
+| Custom LLM adapters (not LiteLLM) | LiteLLM supply chain attack March 2026 | ✓ Good |
+| x402 + Stripe dual revenue | Agents pay per-call, humans subscribe | — Pending |
+| Finance vertical as wedge | Aither experience, high willingness to pay | — Pending |
 
 ---
-*Last updated: 2026-03-28 after initialization*
+*Last updated: 2026-03-30 after v1.0 milestone*
