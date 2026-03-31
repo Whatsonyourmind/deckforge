@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 
 from deckforge.db.repositories import batch_repo, deck_repo, job_repo, webhook_repo
 from deckforge.ir import Presentation
+from deckforge.ir.normalize import normalize_ir
 from deckforge.layout.engine import LayoutEngine
 from deckforge.layout.text_measurer import TextMeasurer
 from deckforge.qa.pipeline import QAPipeline
@@ -213,8 +214,8 @@ async def render_presentation(
         # 1. Update job status to running
         await publish_progress(ctx, job_id, "validating", 0.1)
 
-        # 2. Validate IR
-        presentation = Presentation.model_validate(ir_data)
+        # 2. Normalize + Validate IR
+        presentation = Presentation.model_validate(normalize_ir(ir_data))
         await publish_progress(ctx, job_id, "rendering", 0.3)
 
         # 3. Run full render pipeline (layout + PPTX + QA)

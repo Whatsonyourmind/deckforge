@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "User Growth Trajectory",
+    "author": "DeckForge Chart Tests"
+  },
+  "theme": "modern-gradient",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "User Growth Trajectory",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Monthly Active Users 2024-2026",
+          "role": "subtitle"
+        }
+      ]
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "MAU Growth (Thousands)",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "line",
+          "data": {
+            "categories": [
+              "Jan'25",
+              "Feb'25",
+              "Mar'25",
+              "Apr'25",
+              "May'25",
+              "Jun'25",
+              "Jul'25",
+              "Aug'25",
+              "Sep'25",
+              "Oct'25",
+              "Nov'25",
+              "Dec'25"
+            ],
+            "series": [
+              {
+                "name": "MAU (K)",
+                "values": [
+                  12,
+                  15,
+                  19,
+                  24,
+                  31,
+                  38,
+                  47,
+                  58,
+                  72,
+                  89,
+                  108,
+                  134
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "speaker_notes": "11x growth in 12 months, driven by viral referral loop."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Explosive Growth Continues",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "On track to reach 500K MAU by Q4 2026.",
+          "role": "body"
+        }
+      ]
+    }
+  ]
+}

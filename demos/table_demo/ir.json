@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Competitive Landscape Analysis",
+    "author": "DeckForge Chart Tests"
+  },
+  "theme": "finance-pro",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Competitive Landscape",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Market Position & Feature Comparison",
+          "role": "subtitle"
+        }
+      ]
+    },
+    {
+      "slide_type": "table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Feature Comparison Matrix",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": [
+              "Feature",
+              "Us",
+              "Competitor A",
+              "Competitor B",
+              "Competitor C"
+            ],
+            "rows": [
+              [
+                "AI-Powered Analytics",
+                "Yes",
+                "Partial",
+                "No",
+                "Yes"
+              ],
+              [
+                "Real-Time Dashboard",
+                "Yes",
+                "Yes",
+                "Yes",
+                "No"
+              ],
+              [
+                "API Integration",
+                "REST + GraphQL",
+                "REST only",
+                "REST only",
+                "None"
+              ],
+              [
+                "Pricing ($/mo)",
+                "$99",
+                "$149",
+                "$199",
+                "$79"
+              ],
+              [
+                "Uptime SLA",
+                "99.99%",
+                "99.9%",
+                "99.5%",
+                "99.0%"
+              ],
+              [
+                "Deployment Options",
+                "Cloud + On-Prem",
+                "Cloud only",
+                "Cloud only",
+                "Cloud only"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "content": "We lead on 5 of 6 dimensions while being priced 34% below the category average.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The comparison is based on published specs and pricing as of Q1 2026."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Best Value in Category",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Superior features at competitive pricing.",
+          "role": "body"
+        }
+      ]
+    }
+  ]
+}

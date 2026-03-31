@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Revenue Mix Analysis",
+    "author": "DeckForge Chart Tests"
+  },
+  "theme": "executive-dark",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Revenue Mix Analysis",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Product Line Contribution FY2025",
+          "role": "subtitle"
+        }
+      ]
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Revenue by Product Line",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "pie",
+          "data": {
+            "categories": [
+              "Enterprise SaaS",
+              "SMB SaaS",
+              "Professional Services",
+              "Marketplace",
+              "Other"
+            ],
+            "series": [
+              {
+                "name": "Revenue",
+                "values": [
+                  42,
+                  28,
+                  15,
+                  10,
+                  5
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "content": "Enterprise SaaS represents 42% of revenue, up from 35% last year.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "The shift toward enterprise is intentional -- higher ACV, lower churn, better margins."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Enterprise-Led Growth",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Enterprise SaaS is the growth engine. Target: 55% by FY2027.",
+          "role": "body"
+        }
+      ]
+    }
+  ]
+}
