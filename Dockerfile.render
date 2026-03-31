@@ -1,0 +1,59 @@
+# DeckForge v0.1 — Render-optimized Dockerfile
+# Slim build: no Chromium, no LibreOffice (thumbnails deferred to v0.2)
+# Sync rendering only (decks under 10 slides)
+
+# ── Stage 1: Builder ─────────────────────────────────────────────────────
+FROM python:3.12-slim AS builder
+
+WORKDIR /build
+
+# Build dependencies for native extensions (psycopg, kiwisolver, Pillow)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml ./
+# Install core dependencies only (skip preview extras — no pdf2image needed)
+RUN pip install --no-cache-dir --prefix=/install .
+
+# ── Stage 2: Runtime ─────────────────────────────────────────────────────
+FROM python:3.12-slim AS runtime
+
+# Minimal system deps: PostgreSQL client lib + fonts for text measurement
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq-dev \
+    fonts-liberation \
+    fonts-dejavu-core \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Non-root user for security
+RUN useradd --create-home --shell /bin/bash deckforge
+WORKDIR /app
+
+# Copy installed packages from builder
+COPY --from=builder /install /usr/local
+
+# Copy application code
+COPY src/ src/
+COPY alembic/ alembic/
+COPY alembic.ini .
+COPY pyproject.toml .
+
+# Ensure theme YAML files are included
+COPY src/deckforge/themes/data/ src/deckforge/themes/data/
+
+RUN chown -R deckforge:deckforge /app
+USER deckforge
+
+# Render injects PORT env var; expose default for local testing
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:' + __import__('os').environ.get('PORT', '8000') + '/v1/health')"
+
+# Render sets PORT dynamically; uvicorn reads it from env
+CMD uvicorn deckforge.main:app --host 0.0.0.0 --port ${PORT:-8000}
