@@ -5,7 +5,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import func
+from sqlalchemy import String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from deckforge.db.base import Base
@@ -22,6 +22,9 @@ class User(Base):
     )
     email: Mapped[str] = mapped_column(unique=True, index=True)
     name: Mapped[str | None] = mapped_column(default=None)
+    stripe_customer_id: Mapped[str | None] = mapped_column(
+        String(64), default=None
+    )
     is_active: Mapped[bool] = mapped_column(default=True)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime | None] = mapped_column(

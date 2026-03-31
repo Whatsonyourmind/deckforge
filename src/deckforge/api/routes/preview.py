@@ -49,7 +49,7 @@ async def render_preview(
     preview_ir = body.model_copy(update={"slides": preview_slides})
 
     # Run full render pipeline to get PPTX bytes
-    pptx_bytes = render_pipeline(preview_ir)
+    pptx_bytes, _qa_report = render_pipeline(preview_ir)
 
     # Convert to PNG thumbnails
     thumbnails_bytes = pptx_to_thumbnails(pptx_bytes, max_slides=max_slides)

@@ -47,6 +47,24 @@ class _NoOpRenderer(BaseElementRenderer):
         logger.debug("No-op render for element type: %s", getattr(element, "type", "unknown"))
 
 
+class _ChartElementRenderer(BaseElementRenderer):
+    """Delegates chart element rendering to the chart renderer registry.
+
+    Extracts ``chart_data`` from the ChartElement and dispatches to
+    ``render_chart()`` which handles all 24 chart types (14 native + 10 static).
+    """
+
+    def render(self, slide: Slide, element: BaseElement, position: Position, theme: ResolvedTheme) -> None:  # type: ignore[override]
+        from deckforge.rendering.chart_renderers import render_chart
+
+        chart_data = getattr(element, "chart_data", None)
+        if chart_data is None:
+            logger.warning("Chart element has no chart_data attribute, skipping render")
+            return
+
+        render_chart(slide, chart_data, position, theme)
+
+
 _text_renderer = TextRenderer()
 _bullet_renderer = BulletListRenderer()
 _numbered_renderer = NumberedListRenderer()
@@ -64,6 +82,7 @@ _progress_renderer = ProgressBarRenderer()
 _gauge_renderer = GaugeRenderer()
 _sparkline_renderer = SparklineRenderer()
 _noop = _NoOpRenderer()
+_chart_renderer = _ChartElementRenderer()
 
 
 ELEMENT_RENDERERS: dict[str, BaseElementRenderer] = {
@@ -79,7 +98,7 @@ ELEMENT_RENDERERS: dict[str, BaseElementRenderer] = {
     ElementType.LABEL.value: _text_renderer,
     # Data
     ElementType.TABLE.value: _table_renderer,
-    ElementType.CHART.value: _noop,  # Chart renderer is in separate module (03-02)
+    ElementType.CHART.value: _chart_renderer,
     ElementType.KPI_CARD.value: _kpi_renderer,
     ElementType.METRIC_GROUP.value: _metric_group_renderer,
     ElementType.PROGRESS_BAR.value: _progress_renderer,

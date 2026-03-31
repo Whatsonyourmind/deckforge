@@ -50,14 +50,14 @@ async def render_presentation(
     result, qa_report = render_pipeline(presentation, output_format=output_format)
 
     slide_count = len(presentation.slides)
-    quality_score = qa_report.overall_score if hasattr(qa_report, "overall_score") else 0
+    quality_score = qa_report.score
 
     return {
         "slide_count": slide_count,
         "quality_score": quality_score,
         "format": output_format,
         "size_bytes": len(result) if isinstance(result, bytes) else 0,
-        "qa_issues": len(qa_report.issues) if hasattr(qa_report, "issues") else 0,
+        "qa_issues": len(qa_report.issues),
     }
 
 
