@@ -37,7 +37,7 @@ async def worker_startup(ctx: dict) -> None:
     Redis client reference, and S3 client in the worker context dict.
     """
     engine = create_async_engine(
-        settings.DATABASE_URL,
+        settings.async_database_url,
         echo=False,
         pool_pre_ping=True,
     )

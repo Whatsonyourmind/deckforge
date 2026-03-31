@@ -30,12 +30,27 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 
+def _get_url() -> str:
+    """Return the database URL, preferring the env var over alembic.ini."""
+    import os
+
+    env_url = os.environ.get("DECKFORGE_DATABASE_URL")
+    if env_url:
+        # Normalise Render-style URLs for SQLAlchemy
+        if env_url.startswith("postgres://"):
+            env_url = env_url.replace("postgres://", "postgresql+psycopg://", 1)
+        elif env_url.startswith("postgresql://"):
+            env_url = env_url.replace("postgresql://", "postgresql+psycopg://", 1)
+        return env_url
+    return config.get_main_option("sqlalchemy.url")  # type: ignore[return-value]
+
+
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
 
     Generates SQL scripts without connecting to the database.
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = _get_url()
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -63,8 +78,10 @@ async def run_async_migrations() -> None:
 
     Creates an async engine and associates a connection with the context.
     """
+    section = dict(config.get_section(config.config_ini_section, {}))
+    section["sqlalchemy.url"] = _get_url()
     connectable = async_engine_from_config(
-        config.get_section(config.config_ini_section, {}),
+        section,
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
