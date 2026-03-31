@@ -75,6 +75,20 @@ class Settings(BaseSettings):
     X402_ENABLED: bool = False  # Opt-in; requires wallet address
 
     @property
+    def async_database_url(self) -> str:
+        """Return DATABASE_URL with async driver suffix for SQLAlchemy.
+
+        Render injects ``postgresql://...`` but SQLAlchemy async needs
+        ``postgresql+psycopg://...``.  This property normalises both forms.
+        """
+        url = self.DATABASE_URL
+        if url.startswith("postgresql://"):
+            url = url.replace("postgresql://", "postgresql+psycopg://", 1)
+        elif url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql+psycopg://", 1)
+        return url
+
+    @property
     def llm_fallback_list(self) -> list[str]:
         """Parse the comma-separated fallback chain into a list."""
         return [p.strip() for p in self.LLM_FALLBACK_CHAIN.split(",") if p.strip()]

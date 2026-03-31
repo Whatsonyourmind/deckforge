@@ -17,9 +17,24 @@ from deckforge.config import settings
 @asynccontextmanager
 async def lifespan(app):
     """Manage application startup and shutdown resources."""
-    # Startup: create and verify Redis connection
+    import asyncio
+    import logging
+
+    logger = logging.getLogger("deckforge")
+
+    # Startup: create Redis connection with retry for cold-start environments
     redis = Redis.from_url(settings.REDIS_URL, decode_responses=True)
-    await redis.ping()
+    for attempt in range(5):
+        try:
+            await redis.ping()
+            logger.info("Redis connected")
+            break
+        except Exception as exc:
+            if attempt < 4:
+                logger.warning("Redis not ready (attempt %d/5): %s", attempt + 1, exc)
+                await asyncio.sleep(2)
+            else:
+                logger.warning("Redis unavailable after 5 attempts, starting in degraded mode")
     app.state.redis = redis
 
     yield

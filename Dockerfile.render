@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml ./
+COPY src/ src/
 # Install core dependencies only (skip preview extras — no pdf2image needed)
 RUN pip install --no-cache-dir --prefix=/install .
 
