@@ -1,5 +1,5 @@
 {
-  "name": "@deckforge/sdk",
+  "name": "@lukastan/deckforge",
   "version": "0.1.0",
   "description": "TypeScript SDK for AI-powered presentation generation. 32 slide types, 15 themes, native charts, finance vertical. Generate executive-ready PowerPoint decks via API.",
   "type": "module",
