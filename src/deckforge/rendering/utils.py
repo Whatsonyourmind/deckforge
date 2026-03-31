@@ -33,8 +33,12 @@ _SAFE_FONTS = frozenset({
     "Garamond",
     "Georgia",
     "Impact",
+    "Liberation Sans",
+    "Liberation Serif",
+    "Liberation Mono",
     "Lucida Console",
     "Lucida Sans Unicode",
+    "Open Sans",
     "Palatino Linotype",
     "Segoe UI",
     "Tahoma",
@@ -48,8 +52,8 @@ _SAFE_FONTS = frozenset({
 # when the exact font is not installed on the rendering host.
 _FONT_SUBSTITUTES: dict[str, str] = {
     # Sans-serif: geometric/modern -> closest system match
-    "Montserrat": "Calibri",
-    "Open Sans": "Calibri",
+    "Montserrat": "Open Sans",
+    "Open Sans": "Open Sans",
     "Inter": "Calibri",
     "Roboto": "Arial",
     "Lato": "Calibri",

@@ -26,7 +26,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     fonts-liberation \
     fonts-dejavu-core \
-    && rm -rf /var/lib/apt/lists/*
+    fonts-open-sans \
+    fontconfig \
+    && rm -rf /var/lib/apt/lists/* \
+    && fc-cache -f
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1

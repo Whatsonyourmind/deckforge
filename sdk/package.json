@@ -35,6 +35,7 @@
     "slide-generation",
     "deck",
     "mcp",
+    "mcp-server",
     "ai-agents",
     "charts",
     "finance",
@@ -42,7 +43,11 @@
     "typescript",
     "executive",
     "pitch-deck",
-    "board-deck"
+    "board-deck",
+    "slide-deck",
+    "presentation-api",
+    "ai-presentation",
+    "report-generation"
   ],
   "license": "MIT",
   "repository": {
