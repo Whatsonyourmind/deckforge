@@ -20,6 +20,7 @@ from deckforge.ir.enums import (
     Transition,
 )
 from deckforge.ir.metadata import GenerationOptions, PresentationMetadata
+from deckforge.ir.normalize import normalize_ir
 from deckforge.ir.presentation import Presentation
 from deckforge.ir.slides import SlideUnion
 from deckforge.ir.slides.base import BaseSlide
@@ -32,6 +33,7 @@ __all__ = [
     "Presentation",
     "PresentationMetadata",
     "GenerationOptions",
+    "normalize_ir",
     "BrandKit",
     "BrandColors",
     "BrandFonts",

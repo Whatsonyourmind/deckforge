@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Quarterly Revenue by Region",
+    "author": "DeckForge Chart Tests"
+  },
+  "theme": "corporate-blue",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Quarterly Revenue by Region",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Q4 2025 Performance Analysis",
+          "role": "subtitle"
+        }
+      ]
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Revenue by Region ($M)",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "bar",
+          "data": {
+            "categories": [
+              "North America",
+              "Europe",
+              "Asia-Pacific",
+              "Latin America"
+            ],
+            "series": [
+              {
+                "name": "Q3 2025",
+                "values": [
+                  42.5,
+                  28.3,
+                  18.7,
+                  8.2
+                ]
+              },
+              {
+                "name": "Q4 2025",
+                "values": [
+                  48.1,
+                  31.6,
+                  22.4,
+                  9.8
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "content": "All regions showed positive growth. North America led with 13% QoQ growth.",
+          "role": "body"
+        }
+      ],
+      "speaker_notes": "North America remains our strongest region with 43% of total revenue."
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Strong Regional Performance",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "All four regions exceeded targets in Q4 2025.",
+          "role": "body"
+        }
+      ]
+    }
+  ]
+}

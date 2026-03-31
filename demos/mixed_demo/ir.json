@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "title": "Product Performance Dashboard",
+    "author": "DeckForge Chart Tests"
+  },
+  "theme": "arctic-clean",
+  "slides": [
+    {
+      "slide_type": "title",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Product Performance Dashboard",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Q4 2025 KPIs & Trends",
+          "role": "subtitle"
+        }
+      ]
+    },
+    {
+      "slide_type": "bullets",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Key Highlights",
+          "role": "title"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Monthly active users grew 34% to 2.1M",
+            "Average session duration increased 18% to 12.4 minutes",
+            "Net Promoter Score improved from 62 to 71",
+            "Customer acquisition cost decreased 22% to $28"
+          ]
+        }
+      ],
+      "speaker_notes": "All four KPIs moved in the right direction this quarter."
+    },
+    {
+      "slide_type": "chart",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Monthly Revenue Trend",
+          "role": "title"
+        },
+        {
+          "type": "chart",
+          "chart_type": "bar",
+          "data": {
+            "categories": [
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "series": [
+              {
+                "name": "Subscriptions ($K)",
+                "values": [
+                  320,
+                  345,
+                  380
+                ]
+              },
+              {
+                "name": "Add-ons ($K)",
+                "values": [
+                  45,
+                  52,
+                  68
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slide_type": "table",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Product Usage Metrics",
+          "role": "title"
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": [
+              "Metric",
+              "Oct",
+              "Nov",
+              "Dec",
+              "QoQ Change"
+            ],
+            "rows": [
+              [
+                "MAU (M)",
+                "1.57",
+                "1.82",
+                "2.10",
+                "+34%"
+              ],
+              [
+                "DAU/MAU",
+                "0.42",
+                "0.44",
+                "0.47",
+                "+12%"
+              ],
+              [
+                "Avg Session (min)",
+                "10.5",
+                "11.2",
+                "12.4",
+                "+18%"
+              ],
+              [
+                "Features Used/Session",
+                "3.2",
+                "3.5",
+                "3.8",
+                "+19%"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slide_type": "closing",
+      "elements": [
+        {
+          "type": "text",
+          "content": "Momentum Across All Metrics",
+          "role": "title"
+        },
+        {
+          "type": "text",
+          "content": "Q4 demonstrated strong product-market fit acceleration.",
+          "role": "body"
+        }
+      ]
+    }
+  ]
+}

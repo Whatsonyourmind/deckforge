@@ -14,19 +14,20 @@ from __future__ import annotations
 
 import io
 import logging
+from typing import Any
 
 from arq.connections import ArqRedis
-from fastapi import APIRouter, BackgroundTasks, Header, HTTPException, Query, status
+from fastapi import APIRouter, BackgroundTasks, Body, Header, HTTPException, Query, status
 from fastapi.responses import Response, StreamingResponse
 
 from deckforge.api.deps import DbSession, RedisClient
 from deckforge.api.middleware.auth import CurrentApiKey
 from deckforge.api.middleware.credits import CreditCheck
 from deckforge.api.middleware.rate_limit import RateLimited
-from deckforge.api.schemas.responses import GoogleSlidesRenderResponse, RenderResponse
-from deckforge.config import settings
+from deckforge.api.schemas.responses import RenderResponse
 from deckforge.db.repositories import deck_repo, job_repo
 from deckforge.ir import Presentation
+from deckforge.ir.normalize import normalize_ir
 from deckforge.workers.tasks import render_pipeline
 
 logger = logging.getLogger(__name__)
@@ -59,17 +60,22 @@ router = APIRouter(tags=["render"])
     },
 )
 async def render(
-    body: Presentation,
     db: DbSession,
     redis: RedisClient,
     api_key: CurrentApiKey,
     _rate_limit: RateLimited,
     _credit_check: CreditCheck,
     background_tasks: BackgroundTasks,
+    body: dict[str, Any] = Body(...),
     x_request_id: str | None = Header(None),
     output_format: str = Query(default="pptx", pattern="^(pptx|gslides)$"),
 ) -> Response:
     """Validate an IR payload and return a rendered presentation.
+
+    Accepts both the strict Pydantic IR schema *and* a simplified shorthand
+    format (e.g. ``"slide_type": "title"`` instead of ``"title_slide"``).
+    The payload is normalized before Pydantic validation so users can send
+    whichever format is most natural.
 
     For <=10 slides, renders synchronously and returns the .pptx file directly
     (or Google Slides URL for output_format=gslides).
@@ -93,17 +99,30 @@ async def render(
                 quality_score=existing.quality_score,
             )
 
-    ir_dict = body.model_dump(mode="json")
-    slide_count = len(body.slides)
+    # Normalize simplified IR into strict schema before Pydantic validation
+    normalized = normalize_ir(body)
+
+    try:
+        presentation = Presentation.model_validate(normalized)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"IR validation error: {exc}",
+        ) from exc
+
+    ir_dict = presentation.model_dump(mode="json")
+    slide_count = len(presentation.slides)
 
     # ── Google Slides output path ──────────────────────────────────────
     if output_format == "gslides":
-        return await _render_gslides(body, db, api_key, ir_dict, slide_count, x_request_id)
+        return await _render_gslides(
+            presentation, db, api_key, ir_dict, slide_count, x_request_id,
+        )
 
     # ── PPTX output path (default) ────────────────────────────────────
     if slide_count <= SYNC_RENDER_THRESHOLD:
         # ── Synchronous render path ──────────────────────────────────────
-        pptx_bytes, qa_report = render_pipeline(body)
+        pptx_bytes, qa_report = render_pipeline(presentation)
 
         # Store the deck record with quality_score
         deck = await deck_repo.create(
@@ -168,7 +187,7 @@ async def render(
 
 
 async def _render_gslides(
-    body: Presentation,
+    presentation: Presentation,
     db: DbSession,
     api_key: CurrentApiKey,
     ir_dict: dict,
@@ -177,61 +196,13 @@ async def _render_gslides(
 ) -> Response:
     """Handle Google Slides output format rendering.
 
-    Validates OAuth configuration, builds credentials from stored refresh token,
-    and renders via GoogleSlidesRenderer.
+    Google Slides export is deferred to v0.2.  Returns 501 Not Implemented.
     """
-    # Check Google OAuth is configured
-    if not settings.GOOGLE_CLIENT_ID or not settings.GOOGLE_CLIENT_SECRET:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Google Slides output is not configured. "
-            "Set DECKFORGE_GOOGLE_CLIENT_ID and DECKFORGE_GOOGLE_CLIENT_SECRET.",
-        )
-
-    # Check user has connected Google account
-    refresh_token = api_key.google_refresh_token
-    if not refresh_token:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Google account not connected. "
-            "Call GET /v1/auth/google/authorize first.",
-        )
-
-    # Build credentials
-    from deckforge.rendering.gslides.oauth import GoogleOAuthHandler
-
-    handler = GoogleOAuthHandler(
-        client_id=settings.GOOGLE_CLIENT_ID,
-        client_secret=settings.GOOGLE_CLIENT_SECRET,
-        redirect_uri=settings.GOOGLE_REDIRECT_URI,
-    )
-    credentials = handler.build_credentials(
-        access_token="",  # Will be refreshed automatically
-        refresh_token=refresh_token,
-    )
-
-    # Render (returns tuple: (GoogleSlidesResult, QAReport))
-    result, qa_report = render_pipeline(body, output_format="gslides", credentials=credentials)
-
-    # Store the deck record with quality_score
-    deck = await deck_repo.create(
-        db,
-        api_key_id=api_key.id,
-        ir_snapshot=ir_dict,
-        request_id=x_request_id,
-    )
-    await deck_repo.update_status(
-        db, deck.id, "complete",
-        file_url=result.presentation_url,
-        quality_score=qa_report.score,
-    )
-    await db.commit()
-
-    return GoogleSlidesRenderResponse(
-        id=str(deck.id),
-        status="complete",
-        presentation_id=result.presentation_id,
-        presentation_url=result.presentation_url,
-        title=result.title,
-        slide_count=result.slide_count,
+    raise HTTPException(
+        status_code=status.HTTP_501_NOT_IMPLEMENTED,
+        detail={
+            "error": "Google Slides export is coming in v0.2. "
+            "Use PPTX format for now.",
+            "suggestion": "Remove output_format=gslides or set output_format=pptx.",
+        },
     )
