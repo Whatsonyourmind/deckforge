@@ -125,7 +125,7 @@ async def get_capabilities() -> CapabilitiesResponse:
         api_version="1.0",
         max_slides_sync=10,
         max_slides_async=200,
-        supported_output_formats=["pptx"],
+        supported_output_formats=["pptx", "gslides"],
         supported_chart_types=[ct.value for ct in ChartType],
         rate_limits=RateLimits(starter=10, pro=60, enterprise=300),
         features=FeatureFlags(

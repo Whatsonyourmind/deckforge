@@ -5,11 +5,14 @@
 
 <p align="center">
   <a href="https://github.com/Whatsonyourmind/deckforge/actions/workflows/ci.yml"><img src="https://github.com/Whatsonyourmind/deckforge/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <img src="https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12">
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License">
-  <img src="https://img.shields.io/npm/v/@deckforge/sdk?color=cb3837&logo=npm" alt="npm @deckforge/sdk">
+  <a href="https://pypi.org/project/deckforge/"><img src="https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12"></a>
+  <a href="https://github.com/Whatsonyourmind/deckforge/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
+  <a href="https://www.npmjs.com/package/@lukastan/deckforge"><img src="https://img.shields.io/npm/v/@lukastan/deckforge?color=cb3837&logo=npm&label=SDK" alt="npm @lukastan/deckforge"></a>
+  <a href="https://deckforge-api.onrender.com/v1/health"><img src="https://img.shields.io/badge/API-live-brightgreen?logo=render" alt="API Live"></a>
   <img src="https://img.shields.io/badge/slides-32%20types-blueviolet" alt="32 slide types">
+  <img src="https://img.shields.io/badge/charts-24%20types-blue" alt="24 chart types">
   <img src="https://img.shields.io/badge/themes-15-orange" alt="15 themes">
+  <img src="https://img.shields.io/badge/MCP-6%20tools-purple?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQyIDAtOC0zLjU4LTgtOHMzLjU4LTggOC04IDggMy41OCA4IDgtMy41OCA4LTggNC00Ljp6Ii8+PC9zdmc+" alt="MCP Server">
 </p>
 
 ---

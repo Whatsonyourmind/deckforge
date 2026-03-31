@@ -25,10 +25,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     chromium \
     fonts-liberation \
     fonts-dejavu-core \
+    fonts-open-sans \
+    fontconfig \
     libpq-dev \
     libreoffice-impress \
     poppler-utils \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && fc-cache -f
 
 ENV CHROME_PATH=/usr/bin/chromium
 ENV PYTHONUNBUFFERED=1
