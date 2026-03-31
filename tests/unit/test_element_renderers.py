@@ -166,10 +166,17 @@ class TestResolveFontName:
 
         assert resolve_font_name("Inter") == "Calibri"
 
-    def test_unknown_font_custom_fallback(self):
+    def test_known_substitute_font(self):
         from deckforge.rendering.utils import resolve_font_name
 
-        assert resolve_font_name("Fira Code") == "Calibri"
+        # Fira Code is a known monospace font that maps to Consolas
+        assert resolve_font_name("Fira Code") == "Consolas"
+
+    def test_truly_unknown_font_fallback(self):
+        from deckforge.rendering.utils import resolve_font_name
+
+        # Completely unknown fonts should fall back to the default
+        assert resolve_font_name("UnknownFont12345") == "Calibri"
 
 
 class TestSetSlideBackground:

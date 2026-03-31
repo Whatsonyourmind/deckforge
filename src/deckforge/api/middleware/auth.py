@@ -40,6 +40,7 @@ class AuthContext:
     key_id: str
     tier: str = "starter"
     user_id: str | None = None
+    stripe_customer_id: str | None = None
     rate_limited: bool = False
     remaining: int | None = None
     scopes: list[str] = field(default_factory=lambda: ["read", "generate"])
@@ -92,6 +93,7 @@ async def _verify_via_unkey(api_key: str) -> AuthContext:
         key_id=data.get("keyId", "unknown"),
         tier=meta.get("tier", "starter"),
         user_id=meta.get("user_id"),
+        stripe_customer_id=meta.get("stripe_customer_id"),
         rate_limited=rate_limit.get("remaining", 1) <= 0,
         remaining=rate_limit.get("remaining"),
         scopes=meta.get("scopes", ["read", "generate"]),
@@ -104,6 +106,10 @@ async def _verify_via_db(db: AsyncSession, api_key: str) -> AuthContext:
 
     Used when UNKEY_ROOT_KEY is not configured (local development).
     """
+    from sqlalchemy import select
+
+    from deckforge.db.models.user import User
+
     key_hash = hashlib.sha256(api_key.encode()).hexdigest()
     db_key = await api_key_repo.get_by_hash(db, key_hash)
 
@@ -116,10 +122,18 @@ async def _verify_via_db(db: AsyncSession, api_key: str) -> AuthContext:
     # Fire-and-forget last_used_at update
     await api_key_repo.update_last_used(db, db_key.id)
 
+    # Look up the user's stripe_customer_id for billing integration
+    stripe_customer_id = None
+    if db_key.user_id:
+        stmt = select(User.stripe_customer_id).where(User.id == db_key.user_id)
+        result = await db.execute(stmt)
+        stripe_customer_id = result.scalar_one_or_none()
+
     return AuthContext(
         key_id=str(db_key.id),
         tier=db_key.tier,
         user_id=str(db_key.user_id),
+        stripe_customer_id=stripe_customer_id,
         rate_limited=False,  # DB mode has no built-in rate limit flag
         remaining=None,
         scopes=db_key.scopes or ["read", "generate"],

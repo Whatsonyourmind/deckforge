@@ -43,6 +43,41 @@ _SAFE_FONTS = frozenset({
     "Verdana",
 })
 
+# Mapping of popular Google/non-system fonts to their closest safe equivalents.
+# Themes reference these fonts, and this mapping ensures graceful degradation
+# when the exact font is not installed on the rendering host.
+_FONT_SUBSTITUTES: dict[str, str] = {
+    # Sans-serif: geometric/modern -> closest system match
+    "Montserrat": "Calibri",
+    "Open Sans": "Calibri",
+    "Inter": "Calibri",
+    "Roboto": "Arial",
+    "Lato": "Calibri",
+    "Poppins": "Calibri",
+    "Nunito": "Calibri",
+    "Work Sans": "Calibri",
+    "DM Sans": "Calibri",
+    "Source Sans Pro": "Calibri",
+    "Source Sans 3": "Calibri",
+    "Raleway": "Century Gothic",
+    "Space Grotesk": "Calibri",
+    "IBM Plex Sans": "Segoe UI",
+    # Sans-serif: condensed/display
+    "Oswald": "Franklin Gothic Medium",
+    # Serif fonts
+    "Merriweather": "Georgia",
+    "Playfair Display": "Georgia",
+    "Libre Baskerville": "Palatino Linotype",
+    # Monospace fonts
+    "JetBrains Mono": "Consolas",
+    "Roboto Mono": "Consolas",
+    "Fira Code": "Consolas",
+    "Fira Mono": "Consolas",
+    "IBM Plex Mono": "Consolas",
+    "Source Code Pro": "Consolas",
+    "Ubuntu Mono": "Consolas",
+}
+
 
 def hex_to_rgb(hex_color: str) -> RGBColor:
     """Convert a hex color string to a python-pptx RGBColor.
@@ -63,15 +98,25 @@ def hex_to_rgb(hex_color: str) -> RGBColor:
 def resolve_font_name(requested: str, fallback: str = "Calibri") -> str:
     """Map a requested font name to a safe PowerPoint font.
 
+    First checks if the font is already safe (universally available in
+    PowerPoint). If not, looks up the best substitute from the
+    ``_FONT_SUBSTITUTES`` mapping. Falls back to ``fallback`` if no
+    known substitute exists.
+
     Args:
         requested: The font name to look up.
-        fallback: The fallback font if the requested font is not safe.
+        fallback: The fallback font if no substitute is known.
 
     Returns:
         A safe font name.
     """
     if requested in _SAFE_FONTS:
         return requested
+    substitute = _FONT_SUBSTITUTES.get(requested)
+    if substitute:
+        logger.debug("Font substitute: %s -> %s", requested, substitute)
+        return substitute
+    logger.debug("Unknown font '%s', using fallback '%s'", requested, fallback)
     return fallback
 
 

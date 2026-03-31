@@ -224,7 +224,7 @@ class TestRenderPresentation:
         from deckforge.mcp.tools import render_presentation
 
         mock_qa = MagicMock()
-        mock_qa.overall_score = 85
+        mock_qa.score = 85
         mock_qa.issues = []
 
         with patch(
