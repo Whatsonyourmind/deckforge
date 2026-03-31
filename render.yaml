@@ -26,12 +26,12 @@ services:
       - key: DECKFORGE_DATABASE_URL
         fromDatabase:
           name: deckforge-db
-          property: connectionURI
+          property: connectionString
       - key: DECKFORGE_REDIS_URL
         fromService:
           type: redis
           name: deckforge-redis
-          property: connectionURI
+          property: connectionString
       - key: DECKFORGE_ENVIRONMENT
         value: production
       - key: DECKFORGE_DEBUG
