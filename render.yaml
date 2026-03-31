@@ -1,0 +1,62 @@
+# DeckForge Render Blueprint
+# Deploy: Render Dashboard -> New -> Blueprint -> Connect repo -> Auto-detect
+
+databases:
+  - name: deckforge-db
+    plan: free
+    region: frankfurt
+    postgresMajorVersion: "16"
+
+services:
+  - type: redis
+    name: deckforge-redis
+    plan: free
+    region: frankfurt
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []  # Only allow internal access
+
+  - type: web
+    name: deckforge-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile.render
+    region: frankfurt
+    plan: starter
+    healthCheckPath: /v1/health
+    envVars:
+      - key: DECKFORGE_DATABASE_URL
+        fromDatabase:
+          name: deckforge-db
+          property: connectionURI
+      - key: DECKFORGE_REDIS_URL
+        fromService:
+          type: redis
+          name: deckforge-redis
+          property: connectionURI
+      - key: DECKFORGE_ENVIRONMENT
+        value: production
+      - key: DECKFORGE_DEBUG
+        value: "false"
+      - key: DECKFORGE_LLM_DEFAULT_PROVIDER
+        value: anthropic
+      - key: DECKFORGE_ANTHROPIC_API_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: DECKFORGE_STRIPE_SECRET_KEY
+        sync: false
+      - key: DECKFORGE_STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: DECKFORGE_STRIPE_STARTER_PRICE_ID
+        sync: false
+      - key: DECKFORGE_STRIPE_PRO_PRICE_ID
+        sync: false
+      - key: DECKFORGE_UNKEY_ROOT_KEY
+        sync: false
+      - key: DECKFORGE_UNKEY_API_ID
+        sync: false
+      - key: DECKFORGE_S3_ENDPOINT_URL
+        sync: false
+      - key: DECKFORGE_S3_ACCESS_KEY
+        sync: false
+      - key: DECKFORGE_S3_SECRET_KEY
+        sync: false
+      - key: DECKFORGE_S3_BUCKET
+        value: deckforge

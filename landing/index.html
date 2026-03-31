@@ -109,7 +109,7 @@
                 Copy
               </button>
             </div>
-            <pre id="hero-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-navy-300">$</span> <span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/generate \
+            <pre id="hero-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-navy-300">$</span> <span class="text-accent-light">curl</span> -X POST https://deckforge-api.onrender.com/v1/generate \
   -H <span class="text-green-400">"X-API-Key: dk_live_..."</span> \
   -H <span class="text-green-400">"Content-Type: application/json"</span> \
   -d <span class="text-yellow-300">'{
@@ -326,7 +326,7 @@
                 Copy
               </button>
             </div>
-            <pre id="ts-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-blue-400">import</span> { DeckForge } <span class="text-blue-400">from</span> <span class="text-green-400">'@deckforge/sdk'</span>;
+            <pre id="ts-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-blue-400">import</span> { DeckForge } <span class="text-blue-400">from</span> <span class="text-green-400">'@lukastan/deckforge'</span>;
 
 <span class="text-blue-400">const</span> df = <span class="text-blue-400">new</span> <span class="text-yellow-300">DeckForge</span>({ apiKey: process.env.DECKFORGE_API_KEY });
 
@@ -368,7 +368,7 @@
               </button>
             </div>
             <pre id="curl-code" class="text-sm leading-relaxed overflow-x-auto"><code><span class="text-navy-300"># Generate a presentation from a prompt</span>
-<span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/generate \
+<span class="text-accent-light">curl</span> -X POST https://deckforge-api.onrender.com/v1/generate \
   -H <span class="text-green-400">"X-API-Key: $DECKFORGE_API_KEY"</span> \
   -H <span class="text-green-400">"Content-Type: application/json"</span> \
   -d <span class="text-yellow-300">'{
@@ -378,18 +378,18 @@
   }'</span>
 
 <span class="text-navy-300"># Render an IR payload to PPTX</span>
-<span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/render \
+<span class="text-accent-light">curl</span> -X POST https://deckforge-api.onrender.com/v1/render \
   -H <span class="text-green-400">"X-API-Key: $DECKFORGE_API_KEY"</span> \
   -H <span class="text-green-400">"Content-Type: application/json"</span> \
   -d <span class="text-yellow-300">'@presentation.json'</span> \
   --output deck.pptx
 
 <span class="text-navy-300"># List available themes</span>
-<span class="text-accent-light">curl</span> https://api.deckforge.dev/v1/discovery/themes \
+<span class="text-accent-light">curl</span> https://deckforge-api.onrender.com/v1/discovery/themes \
   -H <span class="text-green-400">"X-API-Key: $DECKFORGE_API_KEY"</span>
 
 <span class="text-navy-300"># x402 payment (AI agents -- no API key needed)</span>
-<span class="text-accent-light">curl</span> -X POST https://api.deckforge.dev/v1/render \
+<span class="text-accent-light">curl</span> -X POST https://deckforge-api.onrender.com/v1/render \
   -H <span class="text-green-400">"Content-Type: application/json"</span> \
   -H <span class="text-green-400">"X-Payment: &lt;x402-payment-header&gt;"</span> \
   -d <span class="text-yellow-300">'@presentation.json'</span></code></pre>
@@ -413,7 +413,7 @@
 <span class="text-blue-400">import</span> os
 
 API_KEY = os.environ[<span class="text-green-400">"DECKFORGE_API_KEY"</span>]
-BASE_URL = <span class="text-green-400">"https://api.deckforge.dev"</span>
+BASE_URL = <span class="text-green-400">"https://deckforge-api.onrender.com"</span>
 
 headers = {
     <span class="text-green-400">"X-API-Key"</span>: API_KEY,
@@ -561,10 +561,10 @@ result = httpx.get(
         <div>
           <h4 class="font-semibold text-sm mb-3">Developers</h4>
           <ul class="space-y-2 text-sm text-navy-300">
-            <li><a href="https://docs.deckforge.dev" class="hover:text-white transition-colors">Documentation</a></li>
-            <li><a href="https://www.npmjs.com/package/@deckforge/sdk" class="hover:text-white transition-colors">npm Package</a></li>
+            <li><a href="https://github.com/Whatsonyourmind/deckforge#readme" class="hover:text-white transition-colors">Documentation</a></li>
+            <li><a href="https://www.npmjs.com/package/@lukastan/deckforge" class="hover:text-white transition-colors">npm Package</a></li>
             <li><a href="https://github.com/Whatsonyourmind/deckforge" class="hover:text-white transition-colors">GitHub</a></li>
-            <li><a href="https://api.deckforge.dev/v1/health" class="hover:text-white transition-colors">API Status</a></li>
+            <li><a href="https://deckforge-api.onrender.com/v1/health" class="hover:text-white transition-colors">API Status</a></li>
           </ul>
         </div>
         <div>
