@@ -94,6 +94,9 @@ class ContentPipeline:
         # Build the final Presentation IR dict
         ir_dict = self._build_presentation_ir(outline, refined, intent)
 
+        # Stage 5 (optional): OraClaw intelligence enrichment
+        ir_dict = await self._apply_intelligence(ir_dict, intent)
+
         # Validate the output
         from deckforge.ir import Presentation
 
@@ -104,6 +107,44 @@ class ContentPipeline:
             len(refined.slides),
             len(refined.changes_made),
         )
+
+        return ir_dict
+
+    async def _apply_intelligence(self, ir_dict: dict, intent: Any) -> dict:
+        """Apply OraClaw intelligence enrichments if available.
+
+        Enriches finance slides with Monte Carlo projections and selects
+        optimal theme via contextual bandit. No-op when OraClaw is disabled.
+        """
+        try:
+            from deckforge.intelligence.pipeline_hooks import (
+                enrich_finance_slide,
+                is_intelligence_enabled,
+                select_intelligent_theme,
+            )
+
+            if not is_intelligence_enabled():
+                return ir_dict
+
+            # Intelligent theme selection when theme is "auto"
+            current_theme = ir_dict.get("theme", "corporate-blue")
+            metadata = ir_dict.get("metadata", {})
+            ir_dict["theme"] = await select_intelligent_theme(current_theme, metadata)
+
+            # Enrich finance slides with Monte Carlo data
+            finance_types = {
+                "dcf_summary", "returns_analysis", "sensitivity_table",
+                "capital_structure", "deal_overview",
+            }
+            for slide in ir_dict.get("slides", []):
+                if slide.get("slide_type") in finance_types:
+                    slide["elements"] = await enrich_finance_slide(
+                        slide["slide_type"],
+                        slide.get("elements", []),
+                    )
+
+        except Exception:
+            logger.warning("Intelligence enrichment failed, using defaults", exc_info=True)
 
         return ir_dict
 

@@ -68,6 +68,11 @@ class Settings(BaseSettings):
     UNKEY_ROOT_KEY: str | None = None
     UNKEY_API_ID: str | None = None
 
+    # OraClaw Intelligence Layer (proprietary algorithm backend)
+    ORACLAW_BASE_URL: str | None = None  # e.g., https://oraclaw-api.onrender.com
+    ORACLAW_API_KEY: str | None = None
+    ORACLAW_ENABLED: bool = False  # Opt-in; requires base_url
+
     # x402 machine payment protocol (USDC per-call on Base L2)
     X402_WALLET_ADDRESS: str | None = None
     X402_FACILITATOR_URL: str = "https://x402.org/facilitator"
