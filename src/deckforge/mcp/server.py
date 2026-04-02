@@ -145,10 +145,10 @@ async def pricing() -> dict:
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    transport = "stdio"
+    transport: str = "stdio"
     if "--transport" in sys.argv:
         idx = sys.argv.index("--transport")
         if idx + 1 < len(sys.argv):
             transport = sys.argv[idx + 1]
 
-    mcp.run(transport=transport)
+    mcp.run(transport=transport)  # type: ignore[arg-type]

@@ -82,7 +82,7 @@ async def generate_presentation(
     """
     from deckforge.content.pipeline import ContentPipeline
     from deckforge.ir.metadata import GenerationOptions
-    from deckforge.llm.router import LLMRouter
+    from deckforge.llm.router import create_router
 
     # Build generation options
     gen_options = GenerationOptions(
@@ -90,7 +90,7 @@ async def generate_presentation(
     )
 
     # Run the content generation pipeline
-    router = LLMRouter()
+    router = create_router()
     pipeline = ContentPipeline(router)
     ir_dict = await pipeline.run(prompt, generation_options=gen_options)
 
