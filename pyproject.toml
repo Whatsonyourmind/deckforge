@@ -53,6 +53,7 @@ dev = [
     "httpx>=0.28",
     "fakeredis>=2.25",
     "aiosqlite>=0.20",
+    "respx>=0.22",
     "ruff>=0.9",
     "mypy>=1.14",
 ]
