@@ -60,3 +60,7 @@ services:
         sync: false
       - key: DECKFORGE_S3_BUCKET
         value: deckforge
+      - key: DECKFORGE_X402_ENABLED
+        value: "true"
+      - key: DECKFORGE_X402_WALLET_ADDRESS
+        value: "0x450996401D587C8206803F544cCA74C33f6FbC93"
