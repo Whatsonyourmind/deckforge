@@ -42,15 +42,15 @@ class OraClaw:
         algorithm: str = "ucb1",
         config: dict[str, Any] | None = None,
     ) -> dict[str, Any] | None:
-        """Select the best arm using Multi-Armed Bandit.
+        """Select the best option from a set of candidates.
 
         Args:
-            arms: List of {"id": str, "name": str, "pulls": int, "totalReward": float}.
-            algorithm: "ucb1", "thompson", or "epsilon-greedy".
-            config: Optional {"explorationConstant": float, "rewardDecay": float}.
+            arms: List of candidate options with optional performance history.
+            algorithm: Selection strategy identifier.
+            config: Optional tuning parameters.
 
         Returns:
-            Selection result with "selected", "score", "algorithm" or None on failure.
+            Selection result with chosen option and confidence metrics, or None.
         """
         payload: dict[str, Any] = {"arms": arms, "algorithm": algorithm}
         if config:
@@ -64,16 +64,16 @@ class OraClaw:
         history: list[dict[str, Any]] | None = None,
         alpha: float = 1.0,
     ) -> dict[str, Any] | None:
-        """Select the best arm using Contextual Bandit (LinUCB).
+        """Select the best option given contextual features.
 
         Args:
-            arms: List of {"id": str, "name": str}.
-            context: Feature vector (e.g., [audience_type, formality, industry]).
-            history: Optional past rewards for learning.
-            alpha: Exploration parameter.
+            arms: List of candidate options.
+            context: Feature vector describing the current situation.
+            history: Optional past performance data for adaptive learning.
+            alpha: Exploration-exploitation balance parameter.
 
         Returns:
-            Selection with "selected", "expectedReward", "confidenceWidth" or None.
+            Selection with chosen option and confidence metrics, or None.
         """
         payload: dict[str, Any] = {
             "arms": arms,
@@ -137,15 +137,15 @@ class OraClaw:
         objectives: list[dict[str, Any]],
         config: dict[str, Any] | None = None,
     ) -> dict[str, Any] | None:
-        """Run genetic algorithm optimization.
+        """Run multi-objective optimization on a set of candidates.
 
         Args:
-            candidates: Initial population.
-            objectives: Optimization objectives.
-            config: GA parameters (generations, mutation_rate, etc.).
+            candidates: Initial solution set.
+            objectives: Optimization objectives and weights.
+            config: Optimization parameters.
 
         Returns:
-            Optimized solutions with Pareto frontier, or None.
+            Optimized solutions ranked by objective performance, or None.
         """
         payload: dict[str, Any] = {
             "candidates": candidates,

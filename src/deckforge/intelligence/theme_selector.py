@@ -76,7 +76,7 @@ class BanditThemeSelector:
     ) -> str:
         """Select the best theme for the given context.
 
-        If OraClaw is available, uses contextual bandit (LinUCB).
+        If OraClaw is available, uses adaptive selection.
         Otherwise returns user_theme or a sensible default.
 
         Args:

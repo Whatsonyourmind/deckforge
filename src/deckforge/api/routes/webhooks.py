@@ -61,7 +61,7 @@ async def create_webhook(
 
     reg = await webhook_repo.create(
         db,
-        api_key_id=api_key.id,
+        api_key_id=api_key.uuid_id,
         url=body.url,
         events=body.events,
     )
@@ -84,7 +84,7 @@ async def list_webhooks(
     _rate_limit: RateLimited,
 ) -> WebhookListResponse:
     """List all active webhook registrations for the current API key."""
-    hooks = await webhook_repo.get_by_api_key(db, api_key.id)
+    hooks = await webhook_repo.get_by_api_key(db, api_key.uuid_id)
 
     return WebhookListResponse(
         webhooks=[
@@ -118,7 +118,7 @@ async def delete_webhook(
         )
 
     hook = await webhook_repo.get_by_id(db, wid)
-    if hook is None or hook.api_key_id != api_key.id:
+    if hook is None or hook.api_key_id != api_key.uuid_id:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Webhook not found",

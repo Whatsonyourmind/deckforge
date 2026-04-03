@@ -46,7 +46,7 @@ async def batch_render(
     # Create batch record
     batch = await batch_repo.create(
         db,
-        api_key_id=api_key.id,
+        api_key_id=api_key.uuid_id,
         total_items=len(body.items),
         webhook_url=body.webhook_url,
     )
@@ -63,12 +63,12 @@ async def batch_render(
         # Create deck and job records
         deck = await deck_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             ir_snapshot=ir_data,
         )
         job = await job_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             job_type="render",
             queue_name="arq:render",
             deck_id=deck.id,
@@ -120,7 +120,7 @@ async def batch_variations(
     """
     batch = await batch_repo.create(
         db,
-        api_key_id=api_key.id,
+        api_key_id=api_key.uuid_id,
         total_items=len(body.themes),
         webhook_url=body.webhook_url,
     )
@@ -134,12 +134,12 @@ async def batch_variations(
 
         deck = await deck_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             ir_snapshot=ir_data,
         )
         job = await job_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             job_type="render",
             queue_name="arq:render",
             deck_id=deck.id,
@@ -191,7 +191,7 @@ async def batch_status(
         )
 
     batch = await batch_repo.get_by_id(db, bid)
-    if batch is None or batch.api_key_id != api_key.id:
+    if batch is None or batch.api_key_id != api_key.uuid_id:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Batch not found",
