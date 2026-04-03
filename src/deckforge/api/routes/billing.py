@@ -52,7 +52,7 @@ async def get_usage(
     tier_name = api_key.tier
     tier = get_tier(tier_name)
 
-    record = await usage_repo.get_or_create_current(db, api_key.id, tier_name)
+    record = await usage_repo.get_or_create_current(db, api_key.uuid_id, tier_name)
 
     available = max(0, record.credit_limit - record.credits_used - record.credits_reserved)
 
@@ -84,7 +84,7 @@ async def get_usage_history(
 
     Returns credit usage, limits, and overage costs per period.
     """
-    records = await usage_repo.get_usage_history(db, api_key.id, limit=12)
+    records = await usage_repo.get_usage_history(db, api_key.uuid_id, limit=12)
 
     periods = []
     for record in records:

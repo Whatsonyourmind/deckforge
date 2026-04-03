@@ -54,7 +54,7 @@ async def authorize(
         JSON with authorization_url.
     """
     handler = _get_oauth_handler()
-    auth_url = handler.get_authorization_url(state=state or str(api_key.id))
+    auth_url = handler.get_authorization_url(state=state or str(api_key.uuid_id))
 
     return {
         "authorization_url": auth_url,
@@ -135,7 +135,7 @@ async def revoke(
     """
     from deckforge.db.repositories import api_key_repo
 
-    await api_key_repo.update_google_token(db, api_key.id, None)
+    await api_key_repo.update_google_token(db, api_key.uuid_id, None)
     await db.commit()
 
     return {"status": "disconnected"}

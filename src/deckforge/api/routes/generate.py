@@ -65,13 +65,13 @@ async def generate(
 
     deck = await deck_repo.create(
         db,
-        api_key_id=api_key.id,
+        api_key_id=api_key.uuid_id,
         ir_snapshot=placeholder_ir,
     )
 
     job = await job_repo.create(
         db,
-        api_key_id=api_key.id,
+        api_key_id=api_key.uuid_id,
         job_type="generate",
         queue_name="arq:content",
         deck_id=deck.id,

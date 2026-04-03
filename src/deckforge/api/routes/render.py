@@ -127,7 +127,7 @@ async def render(
         # Store the deck record with quality_score
         deck = await deck_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             ir_snapshot=ir_dict,
             request_id=x_request_id,
         )
@@ -150,14 +150,14 @@ async def render(
         # ── Asynchronous render path (>10 slides) ────────────────────────
         deck = await deck_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             ir_snapshot=ir_dict,
             request_id=x_request_id,
         )
 
         job = await job_repo.create(
             db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             job_type="render",
             queue_name="arq:render",
             deck_id=deck.id,

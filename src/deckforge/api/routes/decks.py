@@ -88,7 +88,7 @@ async def _get_owned_deck(db: DbSession, api_key: CurrentApiKey, deck_id: str):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Deck not found.",
         )
-    if deck.api_key_id != api_key.id:
+    if deck.api_key_id != api_key.uuid_id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You do not own this deck.",
@@ -109,8 +109,8 @@ async def list_decks(
     limit: int = Query(default=20, ge=1, le=100),
 ) -> DeckListResponse:
     """List decks for the authenticated API key, paginated."""
-    decks = await deck_repo.list_by_api_key(db, api_key.id, offset=offset, limit=limit)
-    total = await deck_repo.count_by_api_key(db, api_key.id)
+    decks = await deck_repo.list_by_api_key(db, api_key.uuid_id, offset=offset, limit=limit)
+    total = await deck_repo.count_by_api_key(db, api_key.uuid_id)
     return DeckListResponse(
         items=[_deck_summary(d) for d in decks],
         total=total,

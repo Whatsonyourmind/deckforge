@@ -70,7 +70,7 @@ async def credit_check(
     try:
         reservation = await manager.reserve(
             session=db,
-            api_key_id=api_key.id,
+            api_key_id=api_key.uuid_id,
             tier=tier,
             estimated_credits=estimated_credits,
         )

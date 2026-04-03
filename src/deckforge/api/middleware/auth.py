@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import uuid
 from dataclasses import dataclass, field
 from typing import Annotated
 
@@ -54,6 +55,18 @@ class AuthContext:
         Existing routes reference api_key.id from the old ApiKey model.
         """
         return self.key_id
+
+    @property
+    def uuid_id(self) -> uuid.UUID:
+        """Return key_id as a UUID for repository queries.
+
+        Falls back to a deterministic UUID if key_id is not a valid UUID
+        (e.g., Unkey IDs or x402 payment IDs).
+        """
+        try:
+            return uuid.UUID(self.key_id)
+        except (ValueError, AttributeError):
+            return uuid.uuid5(uuid.NAMESPACE_URL, self.key_id)
 
 
 async def _verify_via_unkey(api_key: str) -> AuthContext:
