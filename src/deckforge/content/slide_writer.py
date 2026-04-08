@@ -1,6 +1,14 @@
 """Slide writer -- stage 3 of the content generation pipeline.
 
 Expands each SlideOutline into a full IR-compatible ExpandedSlide.
+
+Chart emission (closes STATE decision [03-01]):
+After the LLM returns an ExpandedSlide, :func:`ensure_chart_element` is
+applied to (a) validate any LLM-produced chart elements against the IR
+schema and drop malformed ones, and (b) inject a recommender-derived
+chart element when the slide is data-heavy but no valid chart was
+emitted. This wires all 24 chart renderers into the NL pipeline that
+previously only reached them via the direct ``/v1/render`` path.
 """
 
 from __future__ import annotations
@@ -8,6 +16,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
+from deckforge.content.chart_injector import ensure_chart_element
 from deckforge.content.models import ExpandedSlide, ParsedIntent, SlideOutline
 from deckforge.content.prompts.expand import EXPAND_SYSTEM_PROMPT, EXPAND_USER_TEMPLATE
 
@@ -66,10 +75,29 @@ class SlideWriter:
             temperature=0.5,
         )
 
+        # Post-process: validate LLM-emitted chart elements and, when the
+        # slide is data-heavy but missing a valid chart, inject one using
+        # the chart recommender. Closes P1 bug from STATE decision [03-01].
+        expanded = expanded.model_copy(
+            update={
+                "elements": ensure_chart_element(
+                    slide_type=expanded.slide_type,
+                    headline=expanded.title,
+                    key_points=slide_outline.key_points,
+                    elements=list(expanded.elements),
+                )
+            }
+        )
+
+        chart_count = sum(
+            1 for el in expanded.elements if isinstance(el, dict) and el.get("type") == "chart"
+        )
+
         logger.debug(
-            "Expanded slide %d: type=%s, elements=%d",
+            "Expanded slide %d: type=%s, elements=%d, charts=%d",
             slide_outline.position,
             expanded.slide_type,
             len(expanded.elements),
+            chart_count,
         )
         return expanded
