@@ -308,7 +308,15 @@ class TestSlideWriter:
         result = await writer.expand(slide_outline, intent)
         assert isinstance(result, ExpandedSlide)
         assert result.title == "Revenue Up 23%"
-        assert len(result.elements) == 2
+        # Chart emission post-processor may inject a chart when the slide
+        # carries numeric + revenue content (closes [03-01]); the LLM's
+        # 2 base elements must still be present.
+        base_types = [
+            el.get("type") for el in result.elements if isinstance(el, dict)
+        ]
+        assert "heading" in base_types
+        assert "bullet_list" in base_types
+        assert len(result.elements) >= 2
         assert result.speaker_notes is not None
         assert result.layout_hint is not None
 
