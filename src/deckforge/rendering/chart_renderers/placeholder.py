@@ -1,4 +1,16 @@
-"""Placeholder chart renderer — visual placeholder for unsupported chart types."""
+"""Placeholder chart renderer — visual placeholder for unknown chart types.
+
+Historically this renderer was used as a silent no-op whenever a chart
+element reached the PPTX renderer, because the content pipeline never
+produced valid chart IR (see STATE decision ``[03-01]``).
+
+That gap was closed by the chart emission wiring in
+:mod:`deckforge.content.chart_injector`. The renderer is now only hit
+when ``chart_data.chart_type`` is not registered in
+:data:`deckforge.rendering.chart_renderers.CHART_RENDERERS` -- every
+valid NL-generated chart dispatches to a real renderer through
+``render_chart()``.
+"""
 
 from __future__ import annotations
 

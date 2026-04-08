@@ -20,7 +20,7 @@ three_column, grid_2x2, grid_3x3, centered, title_only, blank]
 
 ## Element Format
 
-Each element is a dict with "type" and "content" keys:
+Each element is a dict with "type" and "content" keys (chart uses "chart_data"):
 - heading: {"type": "heading", "content": {"text": "...", "level": "h1"}}
 - subheading: {"type": "subheading", "content": {"text": "..."}}
 - body_text: {"type": "body_text", "content": {"text": "...", "markdown": false}}
@@ -28,6 +28,46 @@ Each element is a dict with "type" and "content" keys:
 - numbered_list: {"type": "numbered_list", "content": {"items": ["..."], "start": 1}}
 - callout_box: {"type": "callout_box", "content": {"text": "...", "style": "info"}}
 - kpi_card: {"type": "kpi_card", "content": {"label": "...", "value": "...", "trend": "up"}}
+- chart: {"type": "chart", "chart_data": {...}}  # see "Chart Elements" below
+
+## Chart Elements
+
+When the slide carries numeric data, trends, breakdowns, or comparisons
+(revenue, growth, margins, market share, allocations, projections, etc.),
+you MUST emit a ``chart`` element alongside the text. A deck without
+charts on data-heavy slides is a DeckForge failure mode -- always prefer
+a chart to a wall of numbers.
+
+``chart_data`` is a discriminated union on ``chart_type``. Pick the
+shape that best matches the data:
+
+- bar / grouped_bar / stacked_bar / horizontal_bar:
+  {"chart_type": "bar", "categories": ["Q1", "Q2", "Q3", "Q4"],
+   "series": [{"name": "Revenue", "values": [120, 135, 148, 165]}],
+   "title": "Quarterly Revenue"}
+- line / multi_line / area / stacked_area:
+  {"chart_type": "line", "categories": ["2022", "2023", "2024"],
+   "series": [{"name": "ARR", "values": [10, 18, 27]}], "title": "ARR Growth"}
+- pie / donut:
+  {"chart_type": "pie", "labels": ["US", "EU", "APAC"],
+   "values": [45, 30, 25], "title": "Revenue Mix"}
+- waterfall:
+  {"chart_type": "waterfall", "categories": ["Start", "New", "Churn", "End"],
+   "values": [100, 30, -10, 120], "title": "ARR Bridge"}
+- funnel:
+  {"chart_type": "funnel", "stages": ["Visits", "Leads", "SQLs", "Wins"],
+   "values": [10000, 2500, 600, 120], "title": "Pipeline Funnel"}
+- combo: bar + line overlay, use line_series for the overlay series.
+
+Rules for charts:
+- Always include a short "title" (max 8 words).
+- Values MUST be pure numbers (no "$", no "%", no commas, no units).
+- Use the most specific chart_type that fits -- default to "bar" only if
+  no better match exists.
+- DO NOT emit chart_data with empty arrays or placeholder values; if you
+  have no numbers, omit the chart element entirely and the system will
+  inject one from the recommender when appropriate.
+- Prefer one chart per slide; never emit more than two.
 
 ## Writing Rules
 
