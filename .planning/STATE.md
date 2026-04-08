@@ -130,6 +130,7 @@ Recent decisions affecting current work:
 - [03-01]: Open XML manipulation via lxml for transitions (python-pptx has no native transition API)
 - [03-01]: Safe font allowlist (22 fonts) with Calibri fallback for unknown fonts
 - [03-01]: Chart element mapped to no-op renderer pending 03-02 plan
+- [03-01] CLOSED 2026-04-09: Chart emission wired in NL pipeline via expand.py + recommender fallback (src/deckforge/content/chart_injector.py + slide_writer.py post-processor; prompt schema updated; tests/content/test_chart_emission.py)
 - [03-01]: Gauge rendered as progress bar (simplified from circular arc)
 - [03-02]: Combo chart via XML injection -- python-pptx 1.0.2 has no native combo API, lineChart injected into plotArea
 - [03-02]: Pie/donut axis access wraps ValueError (not just AttributeError) since python-pptx raises ValueError for axisless charts
