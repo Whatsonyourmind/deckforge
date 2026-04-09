@@ -1,13 +1,22 @@
-"""LLM router with model-prefix dispatch and fallback chains.
+"""LLM router with model-prefix dispatch, tier routing, and fallback chains.
 
-Routes requests to the correct provider adapter based on model name prefix.
-Falls back through a configurable chain on rate limit or service errors.
+Routes requests to the correct provider adapter based on:
+
+1. **Explicit model** (``model="claude-sonnet-4..."``) — prefix match.
+2. **Tier** (``tier="starter"``) — picks the cheapest model for that tier,
+   see :data:`TIER_MODEL_MAP`.
+3. **Default** — first provider in the fallback chain.
+
+Falls back through a configurable chain on rate limit or service errors. When
+a tier's primary model is unavailable (provider not configured), steps down
+to the next tier's model.
 """
 
 from __future__ import annotations
 
 import logging
 from collections.abc import AsyncIterator
+from enum import Enum
 from typing import TYPE_CHECKING, Any
 
 from pydantic import BaseModel
@@ -30,6 +39,47 @@ if TYPE_CHECKING:
     from deckforge.config import Settings
 
 logger = logging.getLogger(__name__)
+
+
+class LLMTier(str, Enum):
+    """Customer tier — drives model selection for cost optimization.
+
+    * ``starter``    -> Gemini Flash 2.0 (cheapest, good quality)
+    * ``pro``        -> Claude Sonnet (balanced, default)
+    * ``enterprise`` -> Claude Opus (best quality)
+    * ``byok``       -> user-provided config (no routing override)
+    """
+
+    STARTER = "starter"
+    PRO = "pro"
+    ENTERPRISE = "enterprise"
+    BYOK = "byok"
+
+
+# Primary model per tier. On miss, we cascade through the fallback tiers
+# in ``_TIER_FALLBACK_ORDER`` to pick the next-best supported provider.
+TIER_MODEL_MAP: dict[LLMTier, str] = {
+    LLMTier.STARTER: "gemini-2.0-flash",
+    LLMTier.PRO: "claude-sonnet-4-20250514",
+    LLMTier.ENTERPRISE: "claude-opus-4-20250514",
+    LLMTier.BYOK: "claude-sonnet-4-20250514",  # default for byok
+}
+
+# Approximate USD cost per 1M tokens (input) — used for Pino-style logging.
+# Numbers reflect April 2026 published rates.
+_TIER_COST_PER_MTOK: dict[LLMTier, float] = {
+    LLMTier.STARTER: 0.10,  # gemini flash
+    LLMTier.PRO: 3.00,  # claude sonnet
+    LLMTier.ENTERPRISE: 15.00,  # claude opus
+    LLMTier.BYOK: 3.00,  # assume sonnet-class
+}
+
+# When a tier's primary model isn't available, cascade in this order.
+_TIER_FALLBACK_ORDER: list[LLMTier] = [
+    LLMTier.STARTER,
+    LLMTier.PRO,
+    LLMTier.ENTERPRISE,
+]
 
 # Model-prefix to provider mapping
 _PREFIX_MAP: dict[str, str] = {
@@ -76,6 +126,82 @@ class LLMRouter:
         # Default to first in fallback chain
         return self._fallback_chain[0]
 
+    def resolve_tier_model(self, tier: LLMTier | str) -> str:
+        """Return the best available model for a given customer tier.
+
+        If the tier's primary provider is not configured, cascades through
+        adjacent tiers in ``_TIER_FALLBACK_ORDER``. Raises ``AllProvidersFailedError``
+        if no tier's primary provider is available.
+        """
+        if isinstance(tier, str):
+            tier = LLMTier(tier)
+
+        primary_model = TIER_MODEL_MAP[tier]
+        primary_provider = self._provider_for_model(primary_model)
+        if primary_provider in self._adapters:
+            return primary_model
+
+        logger.warning(
+            "Tier %s primary provider %s unavailable, stepping down",
+            tier.value,
+            primary_provider,
+        )
+
+        # Cascade: try each tier in the fallback order
+        try:
+            start_idx = _TIER_FALLBACK_ORDER.index(tier)
+        except ValueError:
+            start_idx = 0
+        for next_tier in _TIER_FALLBACK_ORDER[start_idx + 1 :]:
+            candidate = TIER_MODEL_MAP[next_tier]
+            if self._provider_for_model(candidate) in self._adapters:
+                return candidate
+        # Final safety net: if nothing matched, try cheaper haiku on claude
+        if "claude" in self._adapters:
+            return "claude-haiku-4-20250514"
+        # Otherwise return whatever the first provider in the chain is
+        raise AllProvidersFailedError(
+            f"No provider available for tier={tier.value} "
+            f"(configured providers: {sorted(self._adapters.keys())})"
+        )
+
+    @staticmethod
+    def _provider_for_model(model: str) -> str:
+        """Return the provider key (e.g. 'claude', 'gemini') for a model name."""
+        model_lower = model.lower()
+        for prefix, provider in _PREFIX_MAP.items():
+            if model_lower.startswith(prefix):
+                return provider
+        return "claude"  # safe default
+
+    def _apply_tier(
+        self, model: str | None, tier: LLMTier | str | None
+    ) -> str | None:
+        """If ``tier`` is set and no explicit model, resolve via tier routing.
+
+        Logs estimated cost per request for observability (matches Pino-style
+        structured logging in the rest of the platform).
+        """
+        if tier is None:
+            return model
+        if isinstance(tier, str):
+            try:
+                tier = LLMTier(tier)
+            except ValueError:
+                logger.warning("Unknown tier %r, ignoring", tier)
+                return model
+        if tier == LLMTier.BYOK or model is not None:
+            # BYOK respects explicit config; explicit model always wins
+            return model
+        chosen = self.resolve_tier_model(tier)
+        logger.info(
+            "llm.tier_route tier=%s model=%s cost_per_mtok_usd=%.2f",
+            tier.value,
+            chosen,
+            _TIER_COST_PER_MTOK[tier],
+        )
+        return chosen
+
     def _get_chain(self, primary: str) -> list[str]:
         """Build an ordered chain starting with primary, then remaining fallbacks."""
         chain = [primary]
@@ -88,9 +214,16 @@ class LLMRouter:
         self,
         messages: list[dict[str, str]],
         model: str | None = None,
+        *,
+        tier: LLMTier | str | None = None,
         **kwargs: Any,
     ) -> CompletionResponse:
-        """Route a completion request with fallback on transient errors."""
+        """Route a completion request with fallback on transient errors.
+
+        If ``tier`` is provided and ``model`` is None, the model is resolved
+        via :meth:`resolve_tier_model`. Explicit ``model`` always wins.
+        """
+        model = self._apply_tier(model, tier)
         primary = self._resolve_provider(model)
         chain = self._get_chain(primary)
         errors: list[Exception] = []
@@ -118,9 +251,11 @@ class LLMRouter:
         model: str | None = None,
         *,
         response_model: type[BaseModel],
+        tier: LLMTier | str | None = None,
         **kwargs: Any,
     ) -> BaseModel:
         """Route a structured completion request with fallback on transient errors."""
+        model = self._apply_tier(model, tier)
         primary = self._resolve_provider(model)
         chain = self._get_chain(primary)
         errors: list[Exception] = []
@@ -148,9 +283,12 @@ class LLMRouter:
         self,
         messages: list[dict[str, str]],
         model: str | None = None,
+        *,
+        tier: LLMTier | str | None = None,
         **kwargs: Any,
     ) -> AsyncIterator[StreamChunk]:
         """Route a streaming request (no mid-stream fallback)."""
+        model = self._apply_tier(model, tier)
         primary = self._resolve_provider(model)
         adapter = self._adapters.get(primary)
         if adapter is None:

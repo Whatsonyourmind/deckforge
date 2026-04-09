@@ -28,7 +28,12 @@ from deckforge.llm.batch import (
     BatchState,
     BatchStatus,
 )
-from deckforge.llm.router import LLMRouter, create_router
+from deckforge.llm.router import (
+    TIER_MODEL_MAP,
+    LLMRouter,
+    LLMTier,
+    create_router,
+)
 
 __all__ = [
     # Base
@@ -55,5 +60,7 @@ __all__ = [
     "BatchStatus",
     # Router
     "LLMRouter",
+    "LLMTier",
+    "TIER_MODEL_MAP",
     "create_router",
 ]
