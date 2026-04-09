@@ -20,6 +20,7 @@ from deckforge.llm.adapters import (
     GeminiAdapter,
     OllamaAdapter,
     OpenAIAdapter,
+    build_cached_system,
 )
 from deckforge.llm.router import LLMRouter, create_router
 
@@ -40,6 +41,7 @@ __all__ = [
     "GeminiAdapter",
     "OllamaAdapter",
     "OpenAIAdapter",
+    "build_cached_system",
     # Router
     "LLMRouter",
     "create_router",
