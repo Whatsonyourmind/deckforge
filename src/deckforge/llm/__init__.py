@@ -22,6 +22,12 @@ from deckforge.llm.adapters import (
     OpenAIAdapter,
     build_cached_system,
 )
+from deckforge.llm.batch import (
+    BatchLLMJob,
+    BatchResult,
+    BatchState,
+    BatchStatus,
+)
 from deckforge.llm.router import LLMRouter, create_router
 
 __all__ = [
@@ -42,6 +48,11 @@ __all__ = [
     "OllamaAdapter",
     "OpenAIAdapter",
     "build_cached_system",
+    # Batch API
+    "BatchLLMJob",
+    "BatchResult",
+    "BatchState",
+    "BatchStatus",
     # Router
     "LLMRouter",
     "create_router",
