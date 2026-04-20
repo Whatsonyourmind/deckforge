@@ -1,0 +1,71 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Whatsonyourmind/deckforge",
+  "description": "Generate executive-ready presentations from natural language or JSON IR. 32 slide types (23 universal + 9 finance), 24 chart types, 15 themes, native PPTX + Google Slides output. MCP tools: render, generate, list themes, list slide types, estimate cost, preview. Remote streamable-http endpoint available.",
+  "repository": {
+    "url": "https://github.com/Whatsonyourmind/deckforge",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "deckforge",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeArguments": [
+        {
+          "type": "positional",
+          "value": "-m",
+          "valueHint": "module"
+        },
+        {
+          "type": "positional",
+          "value": "deckforge.mcp.server",
+          "valueHint": "entrypoint"
+        }
+      ],
+      "environmentVariables": [
+        {
+          "name": "DECKFORGE_ANTHROPIC_API_KEY",
+          "description": "Anthropic API key for Claude content generation (one LLM key required)",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "DECKFORGE_OPENAI_API_KEY",
+          "description": "OpenAI API key for content generation",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "DECKFORGE_GEMINI_API_KEY",
+          "description": "Google Gemini API key",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "DECKFORGE_DATABASE_URL",
+          "description": "PostgreSQL connection string (defaults to SQLite for dev)",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "DECKFORGE_REDIS_URL",
+          "description": "Redis URL for queue + cache (default redis://localhost:6379/0)",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://deckforge-api.onrender.com/v1/mcp",
+      "description": "Remote MCP endpoint — production API on Render. No local install needed; point your MCP client here."
+    }
+  ]
+}
