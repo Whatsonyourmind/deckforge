@@ -11,9 +11,19 @@ Available composers:
 - ``compose_teaser`` — 6-slide anonymized deal teaser
 - ``compose_lp_quarterly`` — 9-slide LP quarterly fund report
 - ``compose_exit_memo`` — 8-slide exit recommendation deck
+- ``compose_pitch_deck`` — 13-slide startup pitch deck
+- ``compose_portfolio_review`` — 11-slide internal GP portfolio review
+- ``compose_board_update`` — 9-slide portfolio-company board update
 """
 from __future__ import annotations
 
+from deckforge.compose.board_update import (
+    BoardAsk,
+    BoardUpdateFacts,
+    FinancialRow,
+    KpiScorecardEntry,
+    compose_board_update,
+)
 from deckforge.compose.exit_memo import (
     BuyerCandidate,
     ExitMemoFacts,
@@ -30,6 +40,22 @@ from deckforge.compose.lp_quarterly import (
     PortfolioHolding,
     PortfolioMover,
     compose_lp_quarterly,
+)
+from deckforge.compose.pitch_deck import (
+    CompetitorRow,
+    PitchDeckFacts,
+    TeamMember,
+    compose_pitch_deck,
+)
+from deckforge.compose.portfolio_review import (
+    ExitRecord,
+    IcAsk,
+    PortfolioCompany,
+    PortfolioReviewFacts,
+    TopPerformer,
+    ValueCreationAction,
+    WatchlistItem,
+    compose_portfolio_review,
 )
 from deckforge.compose.teaser import (
     ProcessMilestone,
@@ -56,4 +82,24 @@ __all__ = [
     "ExitMemoFacts",
     "ExitMilestone",
     "compose_exit_memo",
+    # Pitch deck
+    "CompetitorRow",
+    "PitchDeckFacts",
+    "TeamMember",
+    "compose_pitch_deck",
+    # Portfolio review
+    "ExitRecord",
+    "IcAsk",
+    "PortfolioCompany",
+    "PortfolioReviewFacts",
+    "TopPerformer",
+    "ValueCreationAction",
+    "WatchlistItem",
+    "compose_portfolio_review",
+    # Board update
+    "BoardAsk",
+    "BoardUpdateFacts",
+    "FinancialRow",
+    "KpiScorecardEntry",
+    "compose_board_update",
 ]
