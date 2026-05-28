@@ -48,6 +48,10 @@ COPY alembic/ alembic/
 COPY alembic.ini .
 COPY pyproject.toml .
 
+# Migrate-on-deploy entrypoint: runs `alembic upgrade head` before uvicorn.
+COPY scripts/render-entrypoint.sh /app/scripts/render-entrypoint.sh
+RUN chmod +x /app/scripts/render-entrypoint.sh
+
 # Ensure theme YAML files are included
 COPY src/deckforge/themes/data/ src/deckforge/themes/data/
 
@@ -60,5 +64,6 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:' + __import__('os').environ.get('PORT', '8000') + '/v1/health')"
 
-# Render sets PORT dynamically; uvicorn reads it from env
-CMD uvicorn deckforge.main:app --host 0.0.0.0 --port ${PORT:-8000}
+# Render sets PORT dynamically. The entrypoint runs `alembic upgrade head`
+# (idempotent) before exec-ing uvicorn so missing tables can't cause a 500.
+CMD ["/app/scripts/render-entrypoint.sh"]

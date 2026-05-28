@@ -181,12 +181,44 @@ async def get_api_key(
             detail="Invalid API key format. Keys must start with dk_live_ or dk_test_.",
         )
 
-    # Unkey path (production)
-    if settings.UNKEY_ROOT_KEY is not None:
-        return await _verify_via_unkey(api_key)
+    # ── Fail-closed verification ─────────────────────────────────────────
+    # A bad/unverifiable key MUST resolve to a clean 401, never an opaque 500.
+    # Any unexpected error in the backing stores (Unkey network failure,
+    # missing config, DB connectivity, missing api_keys table) is caught,
+    # logged, and converted to 401 — a VALID key still validates whenever the
+    # backing store is healthy.
+    try:
+        # Unkey path (production). On a clean upstream failure (502) or any
+        # transport-level error we fall back to the DB verification path so a
+        # transient Unkey outage cannot lock out a valid, DB-backed key.
+        if settings.UNKEY_ROOT_KEY is not None:
+            try:
+                return await _verify_via_unkey(api_key)
+            except HTTPException as unkey_exc:
+                # 401 from Unkey = key is genuinely invalid → propagate cleanly.
+                if unkey_exc.status_code == status.HTTP_401_UNAUTHORIZED:
+                    raise
+                # 5xx (e.g. 502 upstream unavailable) → attempt DB fallback.
+                logger.error(
+                    "Unkey verification failed (%s); attempting DB fallback.",
+                    unkey_exc.status_code,
+                )
+                return await _verify_via_db(db, api_key)
 
-    # DB fallback (development)
-    return await _verify_via_db(db, api_key)
+        # DB-only path (development / Unkey not configured).
+        return await _verify_via_db(db, api_key)
+
+    except HTTPException:
+        # Intentional, already-clean auth rejections (401, etc.) pass through.
+        raise
+    except Exception:  # noqa: BLE001 — fail closed on ANY unexpected error
+        # Examples: httpx transport errors, missing UNKEY_API_ID, DB
+        # OperationalError/ProgrammingError (missing tables). Never leak a 500.
+        logger.exception("Unexpected error during API key verification")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or unverifiable API key.",
+        )
 
 
 CurrentApiKey = Annotated[AuthContext, Depends(get_api_key)]

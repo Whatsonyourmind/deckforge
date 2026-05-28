@@ -85,7 +85,16 @@ async def _create_unkey_key(
         )
 
     data = resp.json()
-    return data["key"]
+    key = data.get("key")
+    if not key:
+        # Unkey returned 200 but no key field — treat as an upstream failure
+        # rather than letting a KeyError bubble up as an opaque 500.
+        logger.error("Unkey createKey returned 200 without a 'key' field: %s", data)
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail="Key provisioning service returned an unexpected response.",
+        )
+    return key
 
 
 async def _create_db_key(
@@ -141,18 +150,37 @@ async def signup(body: SignupRequest, db: DbSession) -> SignupResponse:
     db.add(user)
     await db.flush()
 
-    # Provision API key
+    # Provision API key.
+    # Wrap external/DB provisioning so a provider or infrastructure failure
+    # returns a clear 4xx/5xx instead of an opaque 500 — the user either gets
+    # a key or a useful explanation of why they didn't.
     tier_config = get_tier(body.tier)
 
-    if settings.UNKEY_ROOT_KEY is not None:
-        raw_key = await _create_unkey_key(
-            tier=body.tier,
-            user_id=str(user.id),
-        )
-    else:
-        raw_key = await _create_db_key(db, user.id, body.tier)
+    try:
+        if settings.UNKEY_ROOT_KEY is not None:
+            raw_key = await _create_unkey_key(
+                tier=body.tier,
+                user_id=str(user.id),
+            )
+        else:
+            raw_key = await _create_db_key(db, user.id, body.tier)
 
-    await db.commit()
+        await db.commit()
+    except HTTPException:
+        # Already-clean errors (e.g. 502 from the Unkey helper) propagate as-is.
+        raise
+    except Exception:  # noqa: BLE001 — convert provisioning failures to 503
+        # Examples: httpx transport error reaching Unkey, or a DB error such
+        # as a missing api_keys table on the DB-fallback path.
+        logger.exception("API key provisioning failed during signup")
+        await db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=(
+                "Account created but API key provisioning is temporarily "
+                "unavailable. Please retry signup shortly."
+            ),
+        )
 
     return SignupResponse(
         user_id=str(user.id),
