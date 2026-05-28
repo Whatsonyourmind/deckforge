@@ -28,3 +28,10 @@ miniodata/
 
 # Scratch
 tmp/
+
+# Internal — moved to deckforge-private
+launch/
+.planning/
+growth/content/
+growth/mcp-listings/
+MARKET_RESEARCH.md
