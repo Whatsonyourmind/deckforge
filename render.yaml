@@ -1,11 +1,9 @@
 # DeckForge Render Blueprint
 # Deploy: Render Dashboard -> New -> Blueprint -> Connect repo -> Auto-detect
-
-databases:
-  - name: deckforge-db
-    plan: free
-    region: frankfurt
-    postgresMajorVersion: "16"
+#
+# Database: Neon (https://neon.tech) free tier.
+# Set DECKFORGE_DATABASE_URL manually in Render dashboard with your Neon
+# connection string. Format: postgresql://user:pass@host/db?sslmode=require
 
 services:
   - type: redis
@@ -24,9 +22,7 @@ services:
     healthCheckPath: /v1/health
     envVars:
       - key: DECKFORGE_DATABASE_URL
-        fromDatabase:
-          name: deckforge-db
-          property: connectionString
+        sync: false  # Set manually: Neon connection string
       - key: DECKFORGE_REDIS_URL
         fromService:
           type: redis
