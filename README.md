@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://github.com/Whatsonyourmind/deckforge/actions/workflows/ci.yml"><img src="https://github.com/Whatsonyourmind/deckforge/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://pypi.org/project/deckforge/"><img src="https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12"></a>
+  <img src="https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12">
   <a href="https://github.com/Whatsonyourmind/deckforge/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
   <a href="https://www.npmjs.com/package/@lukastan/deckforge"><img src="https://img.shields.io/npm/v/@lukastan/deckforge?color=cb3837&logo=npm&label=SDK" alt="npm @lukastan/deckforge"></a>
   <a href="https://deckforge-api.onrender.com/v1/health"><img src="https://img.shields.io/badge/API-live-brightgreen?logo=render" alt="API Live"></a>

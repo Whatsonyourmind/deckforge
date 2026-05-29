@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
+from deckforge import __version__
 from deckforge.api.routes.analytics import router as analytics_router
 from deckforge.api.routes.auth_google import router as auth_google_router
 from deckforge.api.routes.batch import router as batch_router
@@ -28,7 +29,7 @@ def create_app(lifespan=None) -> FastAPI:
     """Build the FastAPI application with all routes registered."""
     app = FastAPI(
         title="DeckForge API",
-        version="0.1.0",
+        version=__version__,
         description="Executive-ready slides, one API call away.",
         lifespan=lifespan,
     )

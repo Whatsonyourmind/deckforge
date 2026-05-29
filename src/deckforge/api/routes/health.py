@@ -9,6 +9,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Request
 from sqlalchemy import text
 
+from deckforge import __version__
 from deckforge.api.schemas.responses import HealthResponse
 
 router = APIRouter(tags=["health"])
@@ -41,5 +42,5 @@ async def health_check(request: Request) -> HealthResponse:
     return HealthResponse(
         status="healthy" if all_ok else "degraded",
         checks=checks,
-        version="0.1.0",
+        version=__version__,
     )
