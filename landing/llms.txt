@@ -1,0 +1,25 @@
+# DeckForge
+
+> DeckForge is an API-first presentation engine that turns a structured JSON Intermediate Representation (IR) — or a natural-language prompt — into a themed PowerPoint (.pptx) or Google Slides deck, with constraint-based layout and an automated quality pass. Use it when an application or AI agent needs to produce a finished, consistent deck programmatically (board updates, pitch decks, finance memos) instead of hand-writing python-pptx, and when an agent should discover valid slide/theme options and estimate cost before rendering.
+
+## Capabilities
+- 32 slide types (23 general-purpose + 9 finance: DCF summary, comp table, waterfall, deal overview, returns analysis, capital structure, market landscape, risk matrix, investment thesis)
+- 24 chart types (bar/line/area/pie families plus waterfall, tornado, football field, sensitivity table, treemap, radar, sankey, gantt, sunburst, and more)
+- 15 built-in themes controlling color, typography, spacing, and slide masters (plus custom brand kits)
+- Native PPTX output and Google Slides export
+- Natural-language to IR via a 4-stage content pipeline (intent, outline, expand, refine; requires an LLM provider key)
+- Constraint-based layout (12-column grid) with adaptive overflow and a QA pipeline that returns a quality_score and qa_issues count
+
+## MCP Tools (6)
+- `render` — render a Presentation IR to PPTX/Google Slides; returns slide_count, quality_score, format, size_bytes, qa_issues
+- `generate` — generate a structured IR from a prompt (then chain into render); returns title, slide_count, theme, ir
+- `themes` — list available themes (id, name, description, version)
+- `slide_types` — list slide types with category and required/optional elements (optional category filter)
+- `cost_estimate` — pre-flight credit cost of an IR (base ceil(slides/10) + finance/chart/NL surcharges) with USD equivalent
+- `pricing` — subscription tiers and x402 per-call rates
+
+## Links
+- Repository: https://github.com/Whatsonyourmind/deckforge
+- Install (TypeScript SDK): `npm install @lukastan/deckforge`
+- Run MCP server (stdio): `python -m deckforge.mcp.server`
+- API health: https://deckforge-api.onrender.com/v1/health

@@ -1,17 +1,10 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Whatsonyourmind/deckforge",
-  "description": "Generate executive-ready presentations from natural language or JSON IR. 32 slide types (23 universal + 9 finance), 24 chart types, 15 themes, native PPTX + Google Slides output. MCP tools: render, generate, list themes, list slide types, estimate cost, preview. Remote streamable-http endpoint available.",
+  "description": "Generate executive-ready presentations from natural language or JSON IR. 32 slide types (23 universal + 9 finance), 24 chart types, 15 themes, native PPTX + Google Slides output. MCP tools: render, generate, themes, slide_types, cost_estimate, pricing.",
   "repository": {
     "url": "https://github.com/Whatsonyourmind/deckforge",
     "source": "github"
   },
-  "version": "0.2.0",
-  "remotes": [
-    {
-      "type": "streamable-http",
-      "url": "https://deckforge-api.onrender.com/v1/mcp",
-      "description": "Remote MCP endpoint — production API on Render. No local install needed; point your MCP client here."
-    }
-  ]
+  "version": "0.2.0"
 }

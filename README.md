@@ -17,12 +17,23 @@
 
 ---
 
-Executive-ready slides, one API call away. Send a JSON intermediate representation (IR) or a natural-language prompt and get back a `.pptx` file, Google Slides deck, or thumbnail PNG -- with professional layout, consistent branding, and verified quality.
+Executive-ready slides, one API call away. Send a JSON intermediate representation (IR) or a natural-language prompt and get back a `.pptx` file or Google Slides deck -- with professional layout, consistent branding, and verified quality.
 
 ---
 
 > **🚀 Using DeckForge in production — or want higher limits, priority support, or a specific slide/chart capability?**
 > [**Tell me about your use case →**](https://github.com/Whatsonyourmind/deckforge/issues/new?template=early-access.yml) — I read every one.
+
+---
+
+## What this solves
+
+- **Your agent needs to turn a structured slide spec into a real PowerPoint — without a headless Office install or hand-written python-pptx code.** Send a Presentation IR (slides, elements, theme) to `render` and get a themed `.pptx` (or Google Slides) deck plus a quality score and a count of layout/QA issues.
+- **Your agent needs a deck from a one-line prompt — without designing the narrative itself.** `generate` runs a 4-stage content pipeline (intent → outline → expand → refine) that picks slide types and writes content, returning a structured IR you can then `render`.
+- **You need finance-flavored slides — without rebuilding DCF, comp-table, waterfall, or returns layouts every time.** 9 finance slide types and finance-oriented chart types (waterfall, tornado, football field, sensitivity table) are first-class IR, so a model output of numbers becomes an auditable, themed slide.
+- **Your agent must choose valid `slide_type`, `theme`, and chart values at runtime — without guessing.** `themes` (15) and `slide_types` (32: 23 universal + 9 finance, with required/optional elements) are discovery tools that return the exact identifiers and element requirements to build correct IR.
+- **You need a deterministic cost before spending on a render — without trial calls.** `cost_estimate` computes credits from `ceil(slides/10)` plus per-finance-slide and per-chart surcharges, returning a breakdown and USD equivalent so an autonomous agent can budget before it acts.
+- **You want decks to be consistent and machine-checked — without a human design pass.** Every render runs a QA pipeline with auto-fix for contrast, overflow, and alignment, and reports a `quality_score` and `qa_issues` count back to the caller.
 
 ---
 
@@ -37,7 +48,7 @@ Executive-ready slides, one API call away. Send a JSON intermediate representati
 - **AI content generation** -- natural-language to slides via Claude, OpenAI, Gemini, or Ollama (4-stage pipeline: intent, outline, expand, refine)
 - **5-pass QA pipeline** -- automated quality checks with auto-fix engine for contrast, overflow, alignment, and more
 - **Constraint-based layout** -- kiwisolver constraint solver, 12-column grid, adaptive overflow (font reduce, reflow, split)
-- **MCP server** -- 6 tools for AI agent integration (render, generate, themes, slide types, estimate, preview)
+- **MCP server** -- 6 tools for AI agent integration (render, generate, themes, slide_types, cost_estimate, pricing)
 - **x402 machine payments** -- per-call USDC pricing on Base L2 for autonomous AI agents
 - **Stripe billing** -- subscription tiers (Starter free, Pro $79/mo, Enterprise custom) with credit system
 - **TypeScript SDK** -- `@lukastan/deckforge` with fluent builder pattern, full type safety, SSE streaming
@@ -462,13 +473,13 @@ DeckForge includes a [Model Context Protocol](https://modelcontextprotocol.io/) 
   "mcpServers": {
     "deckforge": {
       "command": "python",
-      "args": ["-m", "deckforge.mcp"]
+      "args": ["-m", "deckforge.mcp.server"]
     }
   }
 }
 ```
 
-Tools: `render`, `generate`, `themes`, `slide_types`, `estimate`, `preview`
+Tools: `render`, `generate`, `themes`, `slide_types`, `cost_estimate`, `pricing`
 
 ### Agent Framework Support
 
