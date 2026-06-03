@@ -1,0 +1,32 @@
+name: "🚀 Early Access / Commercial Inquiry"
+description: "Using DeckForge in production, or want higher limits, priority support, or a specific capability? Tell me about it."
+title: "[Early Access] "
+labels: ["early-access"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest. This helps me prioritize features and, where relevant, discuss managed/commercial options. No obligation — and feel free to leave contact blank to keep it in-thread.
+  - type: textarea
+    id: usecase
+    attributes:
+      label: What are you building?
+      description: The product, agent, or workflow you'd use DeckForge in.
+      placeholder: "e.g. an AI agent that generates board decks from a data room"
+    validations:
+      required: true
+  - type: textarea
+    id: needs
+    attributes:
+      label: What do you need?
+      description: Slide/chart types, themes, output formats, volume, SLAs, or support.
+  - type: input
+    id: scale
+    attributes:
+      label: Scale / timeline
+      description: Rough volume (decks per month) and when you'd want this.
+  - type: input
+    id: contact
+    attributes:
+      label: Best way to reach you (optional)
+      description: "Email or handle if you'd like a direct reply. Note: issues are public — leave blank to keep it in-thread."

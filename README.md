@@ -19,6 +19,13 @@
 
 Executive-ready slides, one API call away. Send a JSON intermediate representation (IR) or a natural-language prompt and get back a `.pptx` file, Google Slides deck, or thumbnail PNG -- with professional layout, consistent branding, and verified quality.
 
+---
+
+> **🚀 Using DeckForge in production — or want higher limits, priority support, or a specific slide/chart capability?**
+> [**Tell me about your use case →**](https://github.com/Whatsonyourmind/deckforge/issues/new?template=early-access.yml) — I read every one.
+
+---
+
 ## Features
 
 - **32 slide types** -- title, agenda, bullet points, comparison, timeline, process flow, org chart, stats callout, table, chart, matrix, funnel, map, and more
