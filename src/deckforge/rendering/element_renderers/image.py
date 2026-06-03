@@ -41,13 +41,16 @@ class ImageRenderer(BaseElementRenderer):
             except Exception:
                 logger.warning("Failed to decode base64 image, using placeholder")
 
-        # Try URL download
+        # Try URL download (SSRF-guarded: public http(s) hosts only, no redirects)
         if image_bytes is None and content.url:
             try:
                 import httpx
 
+                from deckforge.security.url_guard import validate_public_url
+
+                safe_url = validate_public_url(content.url)
                 with httpx.Client(timeout=10.0) as client:
-                    response = client.get(content.url)
+                    response = client.get(safe_url, follow_redirects=False)
                     response.raise_for_status()
                     image_bytes = response.content
             except Exception:
