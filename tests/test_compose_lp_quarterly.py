@@ -14,7 +14,7 @@ from deckforge.ir.enums import Audience, Confidentiality, Purpose
 
 def _sample_report() -> LPQuarterlyFacts:
     return LPQuarterlyFacts(
-        fund_name="Aither PERE Italia I",
+        fund_name="Acme PERE Fund I",
         vintage_year=2023,
         reporting_quarter="Q1",
         reporting_year=2026,
@@ -29,14 +29,14 @@ def _sample_report() -> LPQuarterlyFacts:
         dpi=0.12,
         rvpi=1.17,
         headline=(
-            "Fund NAV +6% QoQ driven by PBSA lease-up at Project Bicocca."
+            "Fund NAV +6% QoQ driven by PBSA lease-up at Project Atlas."
         ),
         quarter_defining_event=(
             "Partial exit on Project Navigli — €22M distribution, 2.3x MOIC."
         ),
         holdings=[
             PortfolioHolding(
-                company="Project Bicocca",
+                company="Project Atlas",
                 sector="PBSA",
                 invested_eur_m=40.0,
                 current_fmv_eur_m=52.0,
@@ -54,7 +54,7 @@ def _sample_report() -> LPQuarterlyFacts:
         ],
         top_movers=[
             PortfolioMover(
-                company="Project Bicocca",
+                company="Project Atlas",
                 change_eur_m=4.5,
                 commentary="Lease-up ahead of schedule at +5% vs underwrite",
             ),
@@ -67,10 +67,10 @@ def _sample_report() -> LPQuarterlyFacts:
         capital_calls_eur_m=12.0,
         distributions_this_quarter_eur_m=22.0,
         market_commentary=(
-            "Italian PBSA market remains supply-constrained. "
+            "PBSA market remains supply-constrained. "
             "Investor appetite for value-add strategies strengthening."
         ),
-        esg_highlights=["First green bond issuance at Project Bicocca"],
+        esg_highlights=["First green bond issuance at Project Atlas"],
         operational_highlights=["All covenants in compliance"],
         outlook_headline="Focus on value creation + selective deployment",
     )
@@ -169,7 +169,7 @@ def test_top_movers_surface_with_change_and_commentary():
     movers = pres.slides[4]
     bullet_el = movers.elements[1]
     joined = "\n".join(bullet_el.content.items)
-    assert "Project Bicocca" in joined
+    assert "Project Atlas" in joined
     assert "+4.5" in joined or "+4.5 €M" in joined
     assert "-1.2" in joined
     assert "Permit delay" in joined

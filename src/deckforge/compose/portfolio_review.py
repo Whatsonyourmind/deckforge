@@ -112,7 +112,7 @@ class PortfolioReviewFacts(BaseModel):
     reporting_year: int
     review_date: date
     author: str = "GP Deal Team"
-    company: str = "Aither"
+    company: str = "Acme Capital"
     confidentiality: Literal[
         "public", "internal", "confidential", "restricted"
     ] = "internal"

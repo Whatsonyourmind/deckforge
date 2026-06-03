@@ -70,7 +70,7 @@ class LPQuarterlyFacts(BaseModel):
     reporting_year: int
     report_date: date
     author: str = "Fund GP"
-    company: str = "Aither"
+    company: str = "Acme Capital"
     confidentiality: Literal[
         "public", "internal", "confidential", "restricted"
     ] = "confidential"

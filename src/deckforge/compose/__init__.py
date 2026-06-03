@@ -1,6 +1,6 @@
 """Deal-deck composers — turn structured deal data into DeckForge IR.
 
-Callers (CreditAI, Aither, any investment platform) POST a facts payload to
+Callers (any investment platform) POST a facts payload to
 ``/v1/compose/<type>`` or import these composers directly to get a fully
 validated Presentation IR, which they then POST to ``/v1/render`` for a
 .pptx binary.

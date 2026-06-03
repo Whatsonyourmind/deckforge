@@ -18,16 +18,16 @@ from deckforge.ir.enums import Audience, Confidentiality, Purpose
 
 def _sample_review() -> PortfolioReviewFacts:
     return PortfolioReviewFacts(
-        fund_name="Aither PERE Italia I",
+        fund_name="Acme PERE Fund I",
         vintage_year=2023,
         reporting_quarter="Q1",
         reporting_year=2026,
         review_date=date(2026, 4, 30),
         author="GP Deal Team",
-        company="Aither",
+        company="Acme Capital",
         holdings=[
             PortfolioCompany(
-                company="Project Bicocca",
+                company="Project Atlas",
                 sector="PBSA",
                 invested_eur_m=40.0,
                 current_fmv_eur_m=52.0,
@@ -47,7 +47,7 @@ def _sample_review() -> PortfolioReviewFacts:
         ],
         top_performers=[
             TopPerformer(
-                company="Project Bicocca",
+                company="Project Atlas",
                 value_change_eur_m=4.5,
                 driver="Lease-up +5% vs underwrite",
             ),
@@ -61,7 +61,7 @@ def _sample_review() -> PortfolioReviewFacts:
         ],
         value_creation_actions=[
             ValueCreationAction(
-                company="Project Bicocca",
+                company="Project Atlas",
                 action="Negotiate 5-year fixed lease with anchor tenant",
                 owner="Asset Mgmt — MR",
                 target_date=date(2026, 6, 30),
@@ -97,7 +97,7 @@ def _sample_review() -> PortfolioReviewFacts:
                 notes="IOIs received, binding bids July",
             ),
         ],
-        market_view="Italian PBSA supply-constrained — selective buy and hold",
+        market_view="PBSA supply-constrained — selective buy and hold",
         sector_commentary="Office-to-resi conversions watch construction cost inflation",
         portfolio_risks=[
             "Construction cost inflation across 3 active developments.",
@@ -105,7 +105,7 @@ def _sample_review() -> PortfolioReviewFacts:
         ],
         ic_asks=[
             IcAsk(
-                label="Approve €5M follow-on for Project Bicocca",
+                label="Approve €5M follow-on for Project Atlas",
                 detail="Fund minority recap of remaining sponsor equity",
             ),
             IcAsk(
@@ -173,7 +173,7 @@ def test_top_performers_carry_change_and_driver():
     top = pres.slides[2]
     bullet_el = top.elements[1]
     joined = "\n".join(bullet_el.content.items)
-    assert "Project Bicocca" in joined
+    assert "Project Atlas" in joined
     assert "+4.5" in joined
     assert "Lease-up" in joined
 
@@ -246,7 +246,7 @@ def test_asks_slide_lists_decision_requests():
     asks = pres.slides[-1]
     bullet_el = asks.elements[1]
     joined = "\n".join(bullet_el.content.items)
-    assert "Project Bicocca" in joined
+    assert "Project Atlas" in joined
     assert "follow-on" in joined.lower()
 
 

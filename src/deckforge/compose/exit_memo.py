@@ -67,7 +67,7 @@ class ExitMemoFacts(BaseModel):
     country: str = "IT"
     exit_memo_date: date
     author: str = "Deal Team"
-    company: str = "Aither"
+    company: str = "Acme Capital"
     confidentiality: Literal[
         "public", "internal", "confidential", "restricted"
     ] = "confidential"

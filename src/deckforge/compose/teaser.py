@@ -55,7 +55,7 @@ class TeaserFacts(BaseModel):
     geography_detail: str = ""
     deal_date: date
     author: str = "Advisor"
-    company: str = "Aither"
+    company: str = "Acme Capital"
     confidentiality: Literal[
         "public", "internal", "confidential", "restricted"
     ] = "confidential"

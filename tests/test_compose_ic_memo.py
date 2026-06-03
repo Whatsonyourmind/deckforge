@@ -15,21 +15,21 @@ from deckforge.ir.enums import Audience, Confidentiality, Purpose
 
 def _sample_deal() -> DealFacts:
     return DealFacts(
-        deal_name="Via Pirelli 4 Milano — PBSA Acquisition",
+        deal_name="123 Riverside — PBSA Acquisition",
         sector="Real Estate — PBSA",
         vertical="re",
         country="IT",
         deal_date=date(2026, 4, 21),
         author="Deal Team",
-        company="Aither",
+        company="Acme Capital",
         total_size_eur_m=45.0,
         equity_required_eur_m=20.25,
         debt_eur_m=24.75,
         hold_period_years=7,
         investment_thesis_bullets=[
-            "Strong university demand in Milano Bicocca submarket.",
-            "State co-financing (L.338) covers 50% of eligible CapEx.",
-            "Exit cap at 4.5% aligns with 2025-26 Italian PBSA comps.",
+            "Strong university demand in City University submarket.",
+            "Government co-financing covers 50% of eligible CapEx.",
+            "Exit cap at 4.5% aligns with 2025-26 PBSA comps.",
         ],
         target_irr_pct=0.15,
         target_moic=2.1,
@@ -44,7 +44,7 @@ def _sample_deal() -> DealFacts:
                 notes="PBSA 450 beds",
             ),
             ComparableTransaction(
-                target="Milano Bovisa",
+                target="North Campus",
                 year=2024,
                 size_eur_m=52.0,
                 multiple=4.5,

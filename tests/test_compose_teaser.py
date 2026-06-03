@@ -22,9 +22,9 @@ def _sample_teaser() -> TeaserFacts:
         geography_detail="Lombardia",
         deal_date=date(2026, 5, 1),
         author="Advisor",
-        company="Aither",
+        company="Acme Capital",
         one_line_thesis=(
-            "Italian mid-cap automation leader with 40% EBITDA margin "
+            "Mid-cap automation leader with 40% EBITDA margin "
             "and 15% export growth."
         ),
         revenue_eur_m=80.0,
@@ -50,7 +50,7 @@ def _sample_teaser() -> TeaserFacts:
         ],
         contact_name="Deal Captain",
         contact_role="Managing Director",
-        contact_email="advisor@aither.example",
+        contact_email="advisor@acme.example",
     )
 
 
@@ -153,7 +153,7 @@ def test_contact_slide_includes_email_and_name():
     pres = compose_teaser(_sample_teaser())
     contact = pres.slides[5]
     body = contact.elements[1]
-    assert "advisor@aither.example" in body.content.text
+    assert "advisor@acme.example" in body.content.text
     assert "Deal Captain" in body.content.text
 
 

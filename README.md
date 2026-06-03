@@ -300,9 +300,21 @@ All variables are prefixed with `DECKFORGE_`. See [`.env.example`](.env.example)
 
 ## Deployment
 
-### Fly.io (Recommended)
+### Render (recommended)
 
-DeckForge ships with a production-ready `fly.toml` and multi-stage `Dockerfile`.
+The hosted production API runs on Render at `https://deckforge-api.onrender.com`. DeckForge ships a `render.yaml` blueprint:
+
+1. In the Render dashboard choose **New → Blueprint** and point it at this repo — Render reads `render.yaml` (web service + worker + managed Postgres + Redis).
+2. Set production secrets (Stripe / Anthropic / S3) in the service's **Environment** tab, then trigger the first deploy.
+
+```bash
+# Verify
+curl https://deckforge-api.onrender.com/v1/health
+```
+
+### Fly.io (alternative)
+
+DeckForge also ships a production-ready `fly.toml` and multi-stage `Dockerfile`.
 
 ```bash
 # 1. Install Fly CLI
@@ -341,7 +353,7 @@ fly deploy
 fly ssh console -C "alembic upgrade head"
 
 # 8. Verify
-curl https://deckforge-api.fly.dev/v1/health
+curl https://<your-app>.fly.dev/v1/health
 ```
 
 **Fly.io configuration highlights:**

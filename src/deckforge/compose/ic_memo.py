@@ -84,7 +84,7 @@ class DealFacts(BaseModel):
     country: str = "IT"
     deal_date: date
     author: str = "Deal Team"
-    company: str = "Aither"
+    company: str = "Acme Capital"
     confidentiality: Literal[
         "public", "internal", "confidential", "restricted"
     ] = "confidential"
@@ -188,7 +188,7 @@ def _executive_summary_slide(deal: DealFacts) -> dict[str, Any]:
     thesis_summary = (
         deal.investment_thesis_bullets[0]
         if deal.investment_thesis_bullets
-        else "High-conviction deal in Italian private markets."
+        else "High-conviction deal in private markets."
     )
     summary_line = (
         f"Size {_format_eur(deal.total_size_eur_m)} · "

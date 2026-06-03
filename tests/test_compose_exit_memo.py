@@ -43,7 +43,7 @@ def _sample_exit() -> ExitMemoFacts:
             "Current PBSA transaction multiples are 10% above underwrite."
         ),
         market_commentary=(
-            "Italian PBSA M&A activity robust — 3 comparable transactions "
+            "PBSA M&A activity robust — 3 comparable transactions "
             "closed in last 6 months at 4.5-4.8% cap rate."
         ),
         buyer_candidates=[
@@ -51,7 +51,7 @@ def _sample_exit() -> ExitMemoFacts:
                 name="Global PBSA Operator Alpha",
                 buyer_type="strategic",
                 country="UK",
-                fit_notes="Roll-up play — bolt-on to Italian portfolio",
+                fit_notes="Roll-up play — bolt-on to existing portfolio",
                 indicated_range_eur_m="€105-115M",
             ),
             BuyerCandidate(
