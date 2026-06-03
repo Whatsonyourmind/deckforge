@@ -5,6 +5,8 @@ from __future__ import annotations
 import pytest
 from httpx import AsyncClient
 
+from deckforge import __version__
+
 
 @pytest.mark.asyncio
 async def test_health_returns_200_with_checks(async_client: AsyncClient):
@@ -16,7 +18,7 @@ async def test_health_returns_200_with_checks(async_client: AsyncClient):
     assert data["status"] in ("healthy", "degraded")
     assert "postgres" in data["checks"]
     assert "redis" in data["checks"]
-    assert data["version"] == "0.1.0"
+    assert data["version"] == __version__
 
 
 @pytest.mark.asyncio
