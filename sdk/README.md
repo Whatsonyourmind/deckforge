@@ -1,6 +1,6 @@
-# @deckforge/sdk
+# @lukastan/deckforge
 
-[![npm version](https://img.shields.io/npm/v/@deckforge/sdk)](https://www.npmjs.com/package/@deckforge/sdk)
+[![npm version](https://img.shields.io/npm/v/@lukastan/deckforge)](https://www.npmjs.com/package/@lukastan/deckforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5+-3178c6)](https://www.typescriptlang.org/)
 
@@ -9,7 +9,7 @@
 Generate and render professional PowerPoint decks from TypeScript with an immutable builder API, 32 slide types, 15 themes, and real-time streaming.
 
 ```bash
-npm install @deckforge/sdk
+npm install @lukastan/deckforge
 ```
 
 ---
@@ -17,7 +17,7 @@ npm install @deckforge/sdk
 ## Quick Start
 
 ```typescript
-import { DeckForge, Presentation, Slide } from '@deckforge/sdk';
+import { DeckForge, Presentation, Slide } from '@lukastan/deckforge';
 
 const df = new DeckForge({ apiKey: 'dk_live_...' });
 
@@ -32,7 +32,7 @@ const pptx = await df.render(
     .build()
 );
 
-console.log(pptx.download_url); // https://api.deckforge.io/v1/files/...
+console.log(pptx.download_url); // https://deckforge-api.onrender.com/v1/files/...
 ```
 
 Five lines of code. A board-ready deck.
@@ -79,11 +79,11 @@ Five lines of code. A board-ready deck.
 ### DeckForge Client
 
 ```typescript
-import { DeckForge } from '@deckforge/sdk';
+import { DeckForge } from '@lukastan/deckforge';
 
 const df = new DeckForge({
   apiKey: 'dk_live_...',        // Required
-  baseUrl: 'https://api.deckforge.io', // Optional
+  baseUrl: 'https://deckforge-api.onrender.com', // Optional
   timeout: 30_000,              // Optional (ms)
   maxRetries: 2,                // Optional
 });
@@ -125,7 +125,7 @@ const df = new DeckForge({
 ### Presentation
 
 ```typescript
-import { Presentation } from '@deckforge/sdk';
+import { Presentation } from '@lukastan/deckforge';
 
 const ir = Presentation.create('Annual Review')
   .theme('executive-dark')
@@ -142,7 +142,7 @@ The builder is immutable -- every method returns a new `PresentationBuilder` ins
 All 32 slide types have typed factory functions:
 
 ```typescript
-import { Slide } from '@deckforge/sdk';
+import { Slide } from '@lukastan/deckforge';
 
 // Universal slides
 Slide.title({ title: 'Hello World', subtitle: 'Subtitle' })
@@ -186,7 +186,7 @@ Slide.investmentThesis({ title: 'Thesis', items: [...] })
 All 24 chart types:
 
 ```typescript
-import { Chart } from '@deckforge/sdk';
+import { Chart } from '@lukastan/deckforge';
 
 // Standard charts
 Chart.bar({ categories: ['Q1', 'Q2'], series: [{ name: 'Rev', values: [10, 15] }] })
@@ -222,7 +222,7 @@ Chart.sunburst({ ... })
 For advanced slide construction:
 
 ```typescript
-import { Element } from '@deckforge/sdk';
+import { Element } from '@lukastan/deckforge';
 
 Element.heading('Title Text')
 Element.subheading('Subtitle')
@@ -272,7 +272,7 @@ import {
   RateLimitError,
   InsufficientCreditsError,
   NotFoundError,
-} from '@deckforge/sdk';
+} from '@lukastan/deckforge';
 
 try {
   await df.render(ir);
@@ -299,7 +299,7 @@ All errors extend `DeckForgeError` with a `statusCode` property. The client auto
 DeckForge has first-class support for financial presentations:
 
 ```typescript
-import { DeckForge, Presentation, Slide, Chart } from '@deckforge/sdk';
+import { DeckForge, Presentation, Slide, Chart } from '@lukastan/deckforge';
 
 const df = new DeckForge({ apiKey: 'dk_live_...' });
 
@@ -406,4 +406,4 @@ MIT
 
 ---
 
-Built by [DeckForge](https://deckforge.dev) -- Professional presentations at API speed.
+Built by [DeckForge](https://github.com/Whatsonyourmind/deckforge) -- Professional presentations at API speed.

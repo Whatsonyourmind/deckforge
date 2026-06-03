@@ -4,7 +4,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Whatsonyourmind/deckforge/actions/workflows/ci.yml"><img src="https://github.com/Whatsonyourmind/deckforge/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12">
   <a href="https://github.com/Whatsonyourmind/deckforge/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
   <a href="https://www.npmjs.com/package/@lukastan/deckforge"><img src="https://img.shields.io/npm/v/@lukastan/deckforge?color=cb3837&logo=npm&label=SDK" alt="npm @lukastan/deckforge"></a>
@@ -33,7 +32,7 @@ Executive-ready slides, one API call away. Send a JSON intermediate representati
 - **MCP server** -- 6 tools for AI agent integration (render, generate, themes, slide types, estimate, preview)
 - **x402 machine payments** -- per-call USDC pricing on Base L2 for autonomous AI agents
 - **Stripe billing** -- subscription tiers (Starter free, Pro $79/mo, Enterprise custom) with credit system
-- **TypeScript SDK** -- `@deckforge/sdk` with fluent builder pattern, full type safety, SSE streaming
+- **TypeScript SDK** -- `@lukastan/deckforge` with fluent builder pattern, full type safety, SSE streaming
 
 ## Quick Start
 
@@ -136,13 +135,13 @@ curl -X POST http://localhost:8000/v1/estimate \
 Install from npm:
 
 ```bash
-npm install @deckforge/sdk
+npm install @lukastan/deckforge
 ```
 
 Fluent builder with full type safety:
 
 ```typescript
-import { DeckForge, Presentation, Slides } from "@deckforge/sdk";
+import { DeckForge, Presentation, Slides } from "@lukastan/deckforge";
 
 const client = new DeckForge({ apiKey: "dk_test_YOUR_KEY_HERE" });
 
@@ -461,9 +460,9 @@ See [`demos/`](demos/) for integration examples.
 
 ## Links
 
-- [TypeScript SDK (`@deckforge/sdk`)](sdk/README.md)
+- [TypeScript SDK (`@lukastan/deckforge`)](sdk/README.md)
 - [API Docs (interactive)](http://localhost:8000/docs)
-- [Landing Page](https://deckforge.dev)
+- [API Status](https://deckforge-api.onrender.com/v1/health)
 - [GitHub Issues](https://github.com/Whatsonyourmind/deckforge/issues)
 
 ## Contributing
