@@ -49,8 +49,8 @@ Executive-ready slides, one API call away. Send a JSON intermediate representati
 - **5-pass QA pipeline** -- automated quality checks with auto-fix engine for contrast, overflow, alignment, and more
 - **Constraint-based layout** -- kiwisolver constraint solver, 12-column grid, adaptive overflow (font reduce, reflow, split)
 - **MCP server** -- 6 tools for AI agent integration (render, generate, themes, slide_types, cost_estimate, pricing)
-- **x402 machine payments** -- per-call USDC pricing on Base L2 for autonomous AI agents
-- **Stripe billing** -- subscription tiers (Starter free, Pro $79/mo, Enterprise custom) with credit system
+- **x402 payment middleware** -- optional per-call USDC support (Base L2) for self-hosted deployments; disabled by default
+- **Billing infrastructure** -- Stripe subscription + credit-system support for self-hosted deployments (no hosted paid plans are offered yet)
 - **TypeScript SDK** -- `@lukastan/deckforge` with fluent builder pattern, full type safety, SSE streaming
 
 ## Quick Start
@@ -412,33 +412,18 @@ docker compose down -v
 
 ## Pricing
 
-### Subscription Tiers
+**Pricing is not yet available — there are no paid plans you can purchase today.**
+Want a hosted or commercial version, higher limits, or priority support? [Join Early Access →](https://github.com/Whatsonyourmind/deckforge/issues/new?template=early-access.yml)
 
-| Tier | Price | Credits/month | Rate Limit | Best For |
-|------|-------|---------------|------------|----------|
-| **Starter** | Free | 50 | 10 req/min | Evaluation, hobby projects |
-| **Pro** | $79/month | 500 | 60 req/min | Teams, production apps |
-| **Enterprise** | Custom | 10,000+ | 300 req/min | High-volume, overage allowed |
+The billing code in this repo (Stripe subscriptions, credit system, x402 USDC middleware) is infrastructure for self-hosted deployments and is disabled by default.
 
-### Credit Cost
+### Credit Cost (engine mechanics)
 
 Each API call consumes credits based on complexity:
 - **Simple render** (< 5 slides): 1 credit
 - **Standard render** (5-20 slides): 2-3 credits
 - **Complex render** (charts, finance slides): 3-5 credits
 - **Content generation** (NL-to-IR): +2 credits (LLM usage)
-
-### x402 Per-Call Pricing (AI Agents)
-
-For autonomous AI agents that prefer pay-per-call over subscriptions:
-
-| Endpoint | USDC Price | Network |
-|----------|-----------|---------|
-| `/v1/render` | $0.05 | Base L2 |
-| `/v1/generate` | $0.15 | Base L2 |
-| Metadata endpoints | Free | -- |
-
-x402 payments bypass rate limiting (per-call payment is self-throttling).
 
 ## Demo Decks
 

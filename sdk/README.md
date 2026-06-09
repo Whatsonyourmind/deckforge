@@ -57,20 +57,8 @@ Five lines of code. A board-ready deck.
 
 ## Pricing
 
-| Tier | Price | Credits/mo | Rate Limit | Overage |
-|------|-------|------------|------------|---------|
-| **Starter** | Free | 50 | 10 req/min | $0.50/credit |
-| **Pro** | $79/mo | 500 | 60 req/min | $0.30/credit |
-| **Enterprise** | Custom | 10,000+ | 300 req/min | $0.10/credit |
-
-**x402 Per-Call Pricing** (machine-to-machine, no subscription required):
-
-| Operation | Price |
-|-----------|-------|
-| Render presentation | $0.05 |
-| Generate from prompt | $0.15 |
-| Estimate cost | Free |
-| List themes / slide types | Free |
+**Pricing is not yet available — there are no paid plans you can purchase today.**
+Want a hosted or commercial version, higher limits, or priority support? [Join Early Access →](https://github.com/Whatsonyourmind/deckforge/issues/new?template=early-access.yml)
 
 ---
 

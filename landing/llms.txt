@@ -16,7 +16,7 @@
 - `themes` — list available themes (id, name, description, version)
 - `slide_types` — list slide types with category and required/optional elements (optional category filter)
 - `cost_estimate` — pre-flight credit cost of an IR (base ceil(slides/10) + finance/chart/NL surcharges) with USD equivalent
-- `pricing` — subscription tiers and x402 per-call rates
+- `pricing` — billing configuration of the target deployment (no hosted paid plans are offered yet)
 
 ## Links
 - Repository: https://github.com/Whatsonyourmind/deckforge
