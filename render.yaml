@@ -18,7 +18,7 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile.render
     region: frankfurt
-    plan: starter
+    plan: free
     healthCheckPath: /v1/health
     envVars:
       - key: DECKFORGE_DATABASE_URL
