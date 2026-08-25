@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "deckforge"
 version = "0.2.0"
 description = "Executive-ready slides, one API call away"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.135.2",

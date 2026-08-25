@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Whatsonyourmind/deckforge",
-  "description": "Generate executive-ready presentations from natural language or JSON IR. 32 slide types (23 universal + 9 finance), 24 chart types, 15 themes, native PPTX + Google Slides output. MCP tools: render, generate, themes, slide_types, cost_estimate, pricing.",
+  "description": "Executive-ready PPTX and Google Slides decks from natural language or JSON IR. 32 slide types.",
   "repository": {
     "url": "https://github.com/Whatsonyourmind/deckforge",
     "source": "github"
