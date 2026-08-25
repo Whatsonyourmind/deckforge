@@ -6,5 +6,35 @@
     "url": "https://github.com/Whatsonyourmind/deckforge",
     "source": "github"
   },
-  "version": "0.2.0"
+  "version": "0.2.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "deckforge",
+      "version": "0.2.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "ANTHROPIC_API_KEY",
+          "description": "Anthropic API key - required only for the `generate` tool (natural-language deck generation). The other five tools (render, themes, slide_types, cost_estimate, pricing) need no key.",
+          "isSecret": true,
+          "isRequired": false
+        },
+        {
+          "name": "OPENAI_API_KEY",
+          "description": "OpenAI API key - optional alternative LLM provider for the `generate` tool.",
+          "isSecret": true,
+          "isRequired": false
+        },
+        {
+          "name": "GEMINI_API_KEY",
+          "description": "Google Gemini API key - optional alternative LLM provider for the `generate` tool.",
+          "isSecret": true,
+          "isRequired": false
+        }
+      ]
+    }
+  ]
 }

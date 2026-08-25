@@ -34,7 +34,7 @@ dependencies = [
     "openpyxl>=3.1",
     "unkey-py>=0.7",
     "x402>=0.1",
-    "mcp[cli]>=1.26",
+    "mcp[cli]>=1.26,<2",
 ]
 
 [project.optional-dependencies]
