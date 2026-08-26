@@ -324,6 +324,14 @@ class TestAppRouterRegistration:
         from deckforge.api.app import create_app
 
         app = create_app()
-        routes = [r.path for r in app.routes]
-        assert "/v1/generate" in routes
-        assert "/v1/generate/{job_id}/stream" in routes
+        # Resolve via the public router API rather than walking app.routes.
+        # FastAPI >=0.141 stores _IncludedRouter wrappers in app.routes, which
+        # have no .path; url_path_for resolves through them on every version and
+        # raises NoMatchFound if a route is not registered.
+        # (app.openapi() is not usable here - schema generation currently raises
+        # PydanticSerializationError, which is also why /openapi.json returns 500.)
+        assert app.url_path_for("generate") == "/v1/generate"
+        assert (
+            app.url_path_for("generate_stream", job_id="abc")
+            == "/v1/generate/abc/stream"
+        )
